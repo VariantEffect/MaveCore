@@ -1,5 +1,5 @@
 import re
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 MAVEDB_EXPERIMENTSET_URN_DIGITS = 8
 MAVEDB_TMP_URN_DIGITS = 16
