@@ -20,32 +20,7 @@ from mavecore.validators.constants import (
     ,
 )
 
-# from core.utilities import (
-#    is_null,
-#    null_values_list,
-#    null_values_re,
-#    readable_null_values,
-# )
-# Used in CSV formatting
-NA_value = "NA"
-
-null_values_list = (
-    "nan",
-    "na",
-    "none",
-    "",
-    "undefined",
-    "n/a",
-    "null",
-    "nil",
-    NA_value,
-)
-null_values_re = re.compile(
-    r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
-)
-readable_null_values = [
-    "'{}'".format(v) for v in set([v.lower() for v in null_values_list]) if v.strip()
-] + ["whitespace"]
+from mavecore.validators.constants import NA_value, null_values_list, null_values_re, readable_null_values
 
 
 def is_null(value):
