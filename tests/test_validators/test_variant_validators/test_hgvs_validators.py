@@ -1,23 +1,9 @@
 # from core.utilities import null_values_list
 from unittest import TestCase
 
-from mavetools.validators.variant_validators import hgvs
-from mavetools.validators.exceptions import ValidationError
-
-# Used in CSV formatting
-NA_value = "NA"
-
-null_values_list = (
-    "nan",
-    "na",
-    "none",
-    "",
-    "undefined",
-    "n/a",
-    "null",
-    "nil",
-    NA_value,
-)
+from mavecore.validators.variant_validators import hgvs
+from mavecore.validators.exceptions import ValidationError
+from mavecore.validators.constants import null_values_list
 
 
 class TestValidateHgvsString(TestCase):
