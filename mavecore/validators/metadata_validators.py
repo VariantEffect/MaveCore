@@ -2,11 +2,7 @@ import re
 import idutils
 
 from mavecore.validators.exceptions import ValidationError
-
-NA_value = "NA"
-null_values_re = re.compile(
-    r"\s+|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
-)
+from mavecore.validators.constants import null_values_re
 
 
 def is_null(value):
