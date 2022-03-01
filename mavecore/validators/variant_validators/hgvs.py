@@ -19,7 +19,7 @@ def is_null(value):
     return null_values_re.fullmatch(value) or not value
 
 
-from mavetools.validators.for_variant_validators.constants import (
+from mavecore.validators.for_variant_validators.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
