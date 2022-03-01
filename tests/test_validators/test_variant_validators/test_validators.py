@@ -430,7 +430,7 @@ class TestMaveDataset(TestCase):
         self.assertEqual(dataset.index_column, self.HGVS_NT_COL)
 
     def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
-        for v in null_values_list:
+        for v in constants.null_values_list:
             with self.subTest(msg=v):
                 data = (
                     "{},{},{}\n"
