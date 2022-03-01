@@ -5,7 +5,7 @@ from mavecore.validators.for_variant_validators.constants import (
     variant_count_data,
     required_score_column,
 )
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 
 def validate_columns_match(variant, scoreset) -> None:
