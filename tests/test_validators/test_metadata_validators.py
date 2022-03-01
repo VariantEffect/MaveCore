@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from mavetools.validators.metadata_validators import (
+from mavecore.validators.metadata_validators import (
     validate_doi_identifier,
     validate_doi_list,
     validate_keyword,
