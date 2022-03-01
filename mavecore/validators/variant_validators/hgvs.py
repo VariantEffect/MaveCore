@@ -5,13 +5,7 @@ import re
 from mavehgvs import Variant, MaveHgvsParseError
 from mavecore.validators.exceptions import ValidationError
 
-# from core.utilities import is_null
-# Used in CSV formatting
-NA_value = "NA"
-null_values_re = re.compile(
-    r"\s+|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
-)
-
+from mavecore.validators.constants import NA_value, null_values_re
 
 def is_null(value):
     """Returns True if a stripped/lowercase value in in `nan_col_values`."""
