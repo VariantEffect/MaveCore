@@ -208,7 +208,7 @@ class TestMaveDataset(TestCase):
                 )
 
     def test_invalid_null_values_in_header(self):
-        for value in null_values_list:
+        for value in constants.null_values_list:
             with self.subTest(msg=f"'{value}'"):
                 data = "{},{},{}\n{},1.0,1.0".format(
                     self.HGVS_NT_COL, self.SCORE_COL, value, generate_hgvs()
