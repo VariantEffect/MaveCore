@@ -11,7 +11,7 @@ from mavehgvs import MaveHgvsParseError, Variant
 from fqfa.util.translate import translate_dna
 from fqfa.util.infer import infer_sequence_type
 
-from mavecore.validators.for_variant_validators.constants import (
+from mavecore.validators.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
