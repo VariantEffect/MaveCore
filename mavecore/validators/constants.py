@@ -1,5 +1,8 @@
 import re
 
+"""
+Null Constant definitions
+"""
 NA_value = "NA"
 null_values_list = (
     "nan",
