@@ -13,6 +13,7 @@ from mavecore.validators.constants import (
     hgvs_pro_column,
 )
 
+
 # from core.utilities import is_null
 def is_null(value):
     """Returns True if a stripped/lowercase value in in `nan_col_values`."""
