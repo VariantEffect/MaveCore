@@ -16,6 +16,24 @@ null_values_list = (
     NA_value,
 )
 
+null_values_re = re.compile(
+    r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
+)
+
+readable_null_values = [
+    "'{}'".format(v) for v in set([v.lower() for v in null_values_list]) if v.strip()
+] + ["whitespace"]
+
+"""
+Sequence constants
+"""
+AA_LETTERS = "ABCDEFGHIKLMNPQRSTVWXYZ"
+DNA_LETTERS = "ATCG"
+
+DNA_SEQ_PATTERN = fr"[{DNA_LETTERS}]+"
+AA_SEQ_PATTERN = fr"[{AA_LETTERS}]+"
+
+
 """
 Constant definitions for application `experiment`.
 """
