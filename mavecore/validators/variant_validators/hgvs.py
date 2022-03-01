@@ -7,13 +7,7 @@ from mavecore.validators.exceptions import ValidationError
 
 from mavecore.validators.constants import NA_value, null_values_re
 
-def is_null(value):
-    """Returns True if a stripped/lowercase value in in `nan_col_values`."""
-    value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
-
-
-from mavecore.validators.for_variant_validators.constants import (
+from mavecore.validators.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
