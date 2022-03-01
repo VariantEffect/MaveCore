@@ -11,7 +11,7 @@ to be validated against each other.
 """
 import re
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 # from core.utilities import is_null
 # Used in CSV formatting
