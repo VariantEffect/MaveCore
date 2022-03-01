@@ -310,7 +310,7 @@ class TestMaveDataset(TestCase):
 
     def test_data_method_converts_null_values_to_None(self):
         hgvs = generate_hgvs()
-        for value in null_values_list:
+        for value in constants.null_values_list:
             with self.subTest(msg=value):
                 data = "{},{}\n{},{}".format(
                     self.HGVS_NT_COL, self.SCORE_COL, hgvs, value
