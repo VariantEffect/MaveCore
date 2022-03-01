@@ -19,14 +19,7 @@ from mavecore.validators import constants
 def is_null(value):
     """Returns True if a stripped/lowercase value in in `nan_col_values`."""
     value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
-
-
-AA_LETTERS = "ABCDEFGHIKLMNPQRSTVWXYZ"
-DNA_LETTERS = "ATCG"
-
-DNA_SEQ_PATTERN = fr"[{DNA_LETTERS}]+"
-AA_SEQ_PATTERN = fr"[{AA_LETTERS}]+"
+    return constants.null_values_re.fullmatch(value) or not value
 
 
 # min_start_validator = MinValueValidator(
