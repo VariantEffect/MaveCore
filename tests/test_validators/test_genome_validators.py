@@ -19,20 +19,7 @@ from mavecore.validators.genome_validators import (
 )
 from mavecore.validators.exceptions import ValidationError
 
-# from core.utilities import null_values_list
-# Used in CSV formatting
-NA_value = "NA"
-null_values_list = (
-    "nan",
-    "na",
-    "none",
-    "",
-    "undefined",
-    "n/a",
-    "null",
-    "nil",
-    NA_value,
-)
+from mavecore.validators.constants import null_values_list
 
 
 class TestWildTypeSequenceValidators(TestCase):
