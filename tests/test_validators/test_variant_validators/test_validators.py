@@ -11,7 +11,7 @@ from mavecore.validators import constants
 from mavecore.validators.exceptions import ValidationError
 
 # from ..factories import generate_hgvs, VariantFactory
-from mavetools.validators.variant_validators import (
+from mavecore.validators.variant_validators import (
     MaveDataset,
     validate_variant_json,
     validate_hgvs_string,
