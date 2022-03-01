@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from mavecore.validators.metadata_validators import (
+from mavecore.validation.metadata_validators import (
     validate_doi_identifier,
     validate_doi_list,
     validate_keyword,
@@ -16,7 +16,7 @@ from mavecore.validators.metadata_validators import (
     validate_ensembl_identifier,
     validate_ensembl_list,
 )
-from mavecore.validators.exceptions import ValidationError
+from mavecore.validation.exceptions import ValidationError
 
 
 class TestDOIValidators(TestCase):

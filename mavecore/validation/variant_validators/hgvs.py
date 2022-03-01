@@ -3,11 +3,11 @@ from typing import Optional, Union
 import re
 
 from mavehgvs import Variant, MaveHgvsParseError
-from mavecore.validators.exceptions import ValidationError
+from mavecore.validation.exceptions import ValidationError
 
-from mavecore.validators.constants import NA_value, null_values_re
+from mavecore.validation.constants import NA_value, null_values_re
 
-from mavecore.validators.constants import (
+from mavecore.validation.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,

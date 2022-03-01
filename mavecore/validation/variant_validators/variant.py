@@ -1,11 +1,11 @@
 from typing import Dict
 
-from mavecore.validators.constants import (
+from mavecore.validation.constants import (
     variant_score_data,
     variant_count_data,
     required_score_column,
 )
-from mavecore.validators.exceptions import ValidationError
+from mavecore.validation.exceptions import ValidationError
 
 
 def validate_columns_match(variant, scoreset) -> None:

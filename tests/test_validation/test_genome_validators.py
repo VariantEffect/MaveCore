@@ -1,15 +1,15 @@
 from unittest import TestCase
 
-from mavecore.validators.genome_validators import WildTypeSequence
+from mavecore.validation.genome_validators import WildTypeSequence
 
-# from mavetools.validators.genome_factories import (
+# from mavetools.validation.genome_factories import (
 #    ReferenceMapFactory,
 #    ReferenceGenomeFactory,
 #    GenomicIntervalFactory,
 # )
 
 
-from mavecore.validators.genome_validators import (
+from mavecore.validation.genome_validators import (
     validate_wildtype_sequence,
     validate_gene_name,
     validate_genome_short_name,
@@ -17,14 +17,14 @@ from mavecore.validators.genome_validators import (
     sequence_is_protein,
     sequence_is_dna,
 )
-from mavecore.validators.exceptions import ValidationError
+from mavecore.validation.exceptions import ValidationError
 
-from mavecore.validators.constants import null_values_list
+from mavecore.validation.constants import null_values_list
 
 
 class TestWildTypeSequenceValidators(TestCase):
     """
-    Tests validators associated with :class:`WildTypeSequence`. Tests:
+    Tests validation associated with :class:`WildTypeSequence`. Tests:
 
         - validate_wildtype_sequence
     """
@@ -105,7 +105,7 @@ class TestIsDNASequence(TestCase):
 
 class TestReferenceGenomeValidators(TestCase):
     """
-    Tests validators associated with :class:`ReferenceGenome`:
+    Tests validation associated with :class:`ReferenceGenome`:
 
         - validate_reference_genome_has_one_external_identifier
         - validate_organism_name
@@ -125,7 +125,7 @@ class TestReferenceGenomeValidators(TestCase):
 
 class TestTargetGeneValidators(TestCase):
     """
-    Tests validators asscociated with :class:`TargetGene`:
+    Tests validation asscociated with :class:`TargetGene`:
 
         - validate_gene_name
         - validate_target_has_one_primary_reference_map

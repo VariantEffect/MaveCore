@@ -1,4 +1,4 @@
-from mavecore.validators import dataset_validators
+from mavecore.validation import dataset_validators
 
 
 def validate_all(countfile=None, scorefile=None, scorejson=None):
@@ -11,7 +11,7 @@ def validate_all(countfile=None, scorefile=None, scorejson=None):
 def validate_dataset(countfile=None, scorefile=None, scorejson=None):
     """
     This function calls all of the validation functions within
-    mavetools/mavetools/validators/dataset_validation.py
+    mavetools/mavetools/validation/dataset_validation.py
 
     Returns
     -------

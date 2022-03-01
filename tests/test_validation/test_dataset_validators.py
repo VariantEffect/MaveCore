@@ -4,9 +4,9 @@ from unittest import TestCase
 
 import pandas as pd
 
-from mavecore.validators import constants
+from mavecore.validation import constants
 
-from mavecore.validators.dataset_validators import (
+from mavecore.validation.dataset_validators import (
     validate_scoreset_count_data_input,
     validate_scoreset_score_data_input,
     validate_at_least_one_additional_column,

@@ -11,7 +11,7 @@ from mavehgvs import MaveHgvsParseError, Variant
 from fqfa.util.translate import translate_dna
 from fqfa.util.infer import infer_sequence_type
 
-from mavecore.validators.constants import (
+from mavecore.validation.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
@@ -20,7 +20,7 @@ from mavecore.validators.constants import (
     ,
 )
 
-from mavecore.validators.constants import NA_value, null_values_list, null_values_re, readable_null_values
+from mavecore.validation.constants import NA_value, null_values_list, null_values_re, readable_null_values
 
 
 def is_null(value):

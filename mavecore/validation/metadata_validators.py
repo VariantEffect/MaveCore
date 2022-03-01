@@ -1,8 +1,8 @@
 import re
 import idutils
 
-from mavecore.validators.exceptions import ValidationError
-from mavecore.validators.constants import null_values_re
+from mavecore.validation.exceptions import ValidationError
+from mavecore.validation.constants import null_values_re
 
 
 def is_null(value):

@@ -1,9 +1,9 @@
 # from core.utilities import null_values_list
 from unittest import TestCase
 
-from mavecore.validators.variant_validators import hgvs
-from mavecore.validators.exceptions import ValidationError
-from mavecore.validators.constants import null_values_list
+from mavecore.validation.variant_validators import hgvs
+from mavecore.validation.exceptions import ValidationError
+from mavecore.validation.constants import null_values_list
 
 
 class TestValidateHgvsString(TestCase):

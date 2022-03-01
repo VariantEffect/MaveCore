@@ -6,14 +6,14 @@ Validator functions for the fields of the following classes:
     ReferenceMap
     GenomicInterval
 
-Most validators should validate one specific field, unless fields need
+Most validation should validate one specific field, unless fields need
 to be validated against each other.
 """
 import re
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
-from mavecore.validators.exceptions import ValidationError
+from mavecore.validation.exceptions import ValidationError
 
-from mavecore.validators import constants
+from mavecore.validation import constants
 
 
 def is_null(value):
@@ -84,7 +84,7 @@ class WildTypeSequence:
     #    blank=False,
     #    null=False,
     #    verbose_name="Reference sequence",
-    #    validators=[validate_wildtype_sequence],
+    #    validation=[validate_wildtype_sequence],
     # )
     # sequence_type = models.CharField(
     #    blank=True,
