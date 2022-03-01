@@ -3,7 +3,7 @@ from typing import Optional, Union
 import re
 
 from mavehgvs import Variant, MaveHgvsParseError
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 # from core.utilities import is_null
 # Used in CSV formatting
