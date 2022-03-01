@@ -9,7 +9,7 @@ from mavecore.validators.genome_validators import WildTypeSequence
 # )
 
 
-from mavetools.validators.genome_validators import (
+from mavecore.validators.genome_validators import (
     validate_wildtype_sequence,
     validate_gene_name,
     validate_genome_short_name,
