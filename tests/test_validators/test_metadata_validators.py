@@ -16,7 +16,7 @@ from mavecore.validators.metadata_validators import (
     validate_ensembl_identifier,
     validate_ensembl_list,
 )
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 
 class TestDOIValidators(TestCase):
