@@ -17,7 +17,7 @@ from mavecore.validators.genome_validators import (
     sequence_is_protein,
     sequence_is_dna,
 )
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 # from core.utilities import null_values_list
 # Used in CSV formatting
