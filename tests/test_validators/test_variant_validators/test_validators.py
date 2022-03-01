@@ -454,7 +454,7 @@ class TestMaveDataset(TestCase):
                 print(dataset.errors)
 
     def test_error_missing_value_in_pro_column_when_pro_is_primary(self):
-        for v in null_values_list:
+        for v in constants.null_values_list:
             with self.subTest(msg=v):
                 data = "{},{}\n{},1.0\n{},1.0".format(
                     self.HGVS_PRO_COL, self.SCORE_COL, generate_hgvs(prefix="p"), v
