@@ -13,12 +13,7 @@ import re
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
 from mavecore.validators.exceptions import ValidationError
 
-# from core.utilities import is_null
-# Used in CSV formatting
-NA_value = "NA"
-null_values_re = re.compile(
-    r"\s+|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
-)
+from mavecore.validators import constants
 
 
 def is_null(value):
