@@ -90,7 +90,7 @@ class TestHGVSValidator(TestCase):
         validate_hgvs_string(b"c.427A>G", column="splice")
 
     def test_return_none_for_null(self):
-        for c in null_values_list:
+        for c in constants.null_values_list:
             self.assertIsNone(validate_hgvs_string(c, column="nt"))
 
 
