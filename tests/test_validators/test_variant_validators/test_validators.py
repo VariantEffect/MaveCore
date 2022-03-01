@@ -7,8 +7,8 @@ import pandas as pd
 from pandas.testing import assert_index_equal
 
 # from dataset import constants
-from mavetools.validators.for_variant_validators import constants
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators import constants
+from mavecore.validators.exceptions import ValidationError
 
 # from ..factories import generate_hgvs, VariantFactory
 from mavetools.validators.variant_validators import (
