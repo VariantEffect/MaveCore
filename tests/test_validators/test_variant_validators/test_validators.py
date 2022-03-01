@@ -177,7 +177,7 @@ class TestMaveDataset(TestCase):
 
     def test_replaces_null_with_none_in_secondary_hgvs_column(self):
         hgvs_nt = generate_hgvs(prefix="c")
-        for c in null_values_list:
+        for c in constants.null_values_list:
             with self.subTest(msg=f"'{c}'"):
                 data = "{},{},{}\n{},{},1.0 ".format(
                     self.HGVS_NT_COL, self.HGVS_PRO_COL, self.SCORE_COL, hgvs_nt, c
