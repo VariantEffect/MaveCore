@@ -1,6 +1,6 @@
 from typing import Dict
 
-from mavetools.validators.for_variant_validators.constants import (
+from mavecore.validators.for_variant_validators.constants import (
     variant_score_data,
     variant_count_data,
     required_score_column,
