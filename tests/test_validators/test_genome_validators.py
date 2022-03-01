@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from mavetools.validators.genome_validators import WildTypeSequence
+from mavecore.validators.genome_validators import WildTypeSequence
 
 # from mavetools.validators.genome_factories import (
 #    ReferenceMapFactory,
