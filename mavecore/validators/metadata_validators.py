@@ -1,7 +1,7 @@
 import re
 import idutils
 
-from mavetools.validators.exceptions import ValidationError
+from mavecore.validators.exceptions import ValidationError
 
 NA_value = "NA"
 null_values_re = re.compile(
