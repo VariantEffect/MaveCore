@@ -208,6 +208,12 @@ class WildTypeSequence:
         return self.sequence.upper()
 
     def is_attached(self):
+        """
+
+        Returns
+        _______
+
+        """
         return getattr(self, "target", None) is not None
 
 
