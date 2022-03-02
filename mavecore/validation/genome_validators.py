@@ -220,6 +220,21 @@ class WildTypeSequence:
 # GenomicInterval
 # ------------------------------------------------------------------------- #
 def validate_interval_start_lteq_end(start, end):
+    """
+
+    Parameters
+    __________
+    start :
+    end :
+
+    Returns
+    _______
+
+    Raises
+    ______
+    ValidationError
+        If an interval's starting coordinate is greater than the ending coordinate.
+    """
     # Intervals may be underspecified, but will be ignored so skip validation.
     if start is None or end is None:
         return
