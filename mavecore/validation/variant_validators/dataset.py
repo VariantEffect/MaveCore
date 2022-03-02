@@ -1004,6 +1004,9 @@ class MaveScoresDataset(MaveDataset):
 
 
 class MaveCountsDataset(MaveDataset):
+    """
+
+    """
     @property
     def label(self) -> str:
         return "counts"
