@@ -442,8 +442,14 @@ def validate_one_primary_map(reference_maps):
     This function validates the existence of one primary reference map and raises an error
     if it does not exist.
 
-    :param reference_maps:
-    :return:
+    Parameters
+    __________
+    reference_maps :
+
+    Raises
+    ______
+    ValidationError
+        If target has less than or more than one primary reference map.
     """
     primary_count = sum(a.is_primary_reference_map() for a in reference_maps)
     if primary_count > 1 or primary_count < 1:
