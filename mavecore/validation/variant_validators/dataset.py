@@ -957,6 +957,16 @@ class MaveScoresDataset(MaveDataset):
         return "scores"
 
     def _validate_columns(self) -> "MaveDataset":
+        """
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         super()._validate_columns()
 
         if self.AdditionalColumns.SCORES not in self.columns:
