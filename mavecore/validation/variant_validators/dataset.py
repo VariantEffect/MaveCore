@@ -177,6 +177,12 @@ class MaveDataset:
     # ---------------------- Public ----------------------------------------- #
     @property
     def label(self) -> str:
+        """
+
+        Returns
+        _______
+        str
+        """
         return "dataset"
 
     @property
