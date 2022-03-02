@@ -311,6 +311,11 @@ class MaveDataset:
         ----------
         serializable: bool
             Replaces `np.NaN` with `None` for JSON compatibility.
+
+        Returns
+        _______
+        `pd.DataFrame`
+
         """
         if serializable:
             # need to force "object" type to allow None values
