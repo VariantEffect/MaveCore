@@ -864,6 +864,24 @@ class MaveDataset:
     def _validate_variant_prefix_for_column(
         self, variant: Variant, prefix: str, column: str, splice_defined: bool
     ) -> Optional[str]:
+        """
+
+        Parameters
+        __________
+        variant : Variant
+        prefix : str
+        column : str
+        splice_defined : bool
+
+        Returns
+        _______
+        Optional[str]
+
+        Raises
+        ______
+        ValueError
+            If there is an unknown column as column argument.
+        """
         prefix = prefix.lower()
 
         if column == self.HGVSColumns.NUCLEOTIDE:
