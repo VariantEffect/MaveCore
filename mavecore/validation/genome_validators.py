@@ -458,6 +458,7 @@ def validate_gene_name(value):
     __________
     value :
         The gene name.
+
     Raises
     ______
     ValidationError
