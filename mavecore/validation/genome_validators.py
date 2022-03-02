@@ -377,6 +377,11 @@ def validate_organism_name(value):
 
 
 def validate_reference_genome_has_one_external_identifier(referencegenome):
+    """
+
+    :param referencegenome:
+    :return:
+    """
     if not referencegenome.genome_id:
         raise ValidationError(
             "Only one external identifier can be specified for a reference" "genome."
