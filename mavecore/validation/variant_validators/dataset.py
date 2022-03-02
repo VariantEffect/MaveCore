@@ -115,6 +115,12 @@ class MaveDataset:
     def _for_type(
         cls, file: Union[str, TextIO, BinaryIO], dataset_type: str
     ) -> Union["MaveScoresDataset", "MaveCountsDataset"]:
+        """
+
+        Parameters
+        __________
+        file : Union[str, TextIO, BinaryIO]
+        dataset_type : str
 
         if isinstance(file, str):
             handle = file
