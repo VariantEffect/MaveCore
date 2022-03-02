@@ -55,6 +55,9 @@ class WildTypeSequence:
     """
 
     class SequenceType:
+        """
+
+        """
         DNA = "dna"
         PROTEIN = "protein"
         INFER = "infer"
