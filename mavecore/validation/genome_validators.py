@@ -367,6 +367,11 @@ def sequence_is_protein(seq):
 # ReferenceGenome
 # ------------------------------------------------------------------------- #
 def validate_organism_name(value):
+    """
+
+    :param value:
+    :return:
+    """
     if is_null(value):
         raise ValidationError("Species name must not be null.")
 
