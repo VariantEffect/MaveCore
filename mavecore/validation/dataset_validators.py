@@ -170,6 +170,17 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
 
 
 def validate_header_contains_no_null_columns(header, label=None, msg=None):
+    """
+    Parameters
+    __________
+    header :
+    label :
+    msg :
+
+    Raises
+    ______
+    ValueError
+    """
     if label is None:
         label = "File"
     any_null = any([is_null(v) for v in header])
