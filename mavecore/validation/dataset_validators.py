@@ -138,6 +138,19 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
 
 
 def validate_at_least_one_additional_column(header, label=None, msg=None):
+    """
+    Parameters
+    __________
+    header :
+    label :
+        default = None
+    msg :
+        default = None
+
+    Raises
+    ______
+    ValueError
+    """
     if label is None:
         label = "Uploaded"
     params = {}
