@@ -24,6 +24,9 @@ def is_null(value):
 
 
 class WordLimitValidator:
+    """
+
+    """
     message = "This field is limited to {} words."
     code = "invalid"
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
