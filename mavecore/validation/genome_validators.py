@@ -248,6 +248,17 @@ def validate_interval_start_lteq_end(start, end):
 
 
 def validate_strand(value):
+    """
+
+    Parameters
+    __________
+    value :
+
+    Raises
+    ______
+    ValidationError
+        If GenomicInterval strand is not positive or negative.
+    """
     if value not in ("+", "-"):
         raise ValidationError("GenomicInterval strand must be either '+' or '-'")
 
