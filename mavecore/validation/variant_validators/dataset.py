@@ -606,6 +606,21 @@ class MaveDataset:
     def _validate_transcript_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
+        """
+
+        Parameters
+        __________
+        targetseq :
+        relaxed_ordering :
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         defines_nt = not self._column_is_null(self.HGVSColumns.NUCLEOTIDE)
         defines_tx = not self._column_is_null(self.HGVSColumns.TRANSCRIPT)
 
