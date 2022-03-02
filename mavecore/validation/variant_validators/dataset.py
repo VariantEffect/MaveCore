@@ -823,6 +823,16 @@ class MaveDataset:
         return validated_variants, prefixes, errors
 
     def _column_is_null(self, column) -> bool:
+        """
+
+        Parameters
+        __________
+        column :
+
+        Returns
+        _______
+        bool
+        """
         return len(self._df[self._df[column].isna()]) == len(self._df)
 
     def _column_is_partially_null(self, column) -> bool:
