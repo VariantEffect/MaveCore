@@ -241,6 +241,11 @@ def validate_scoreset_score_data_input(file):
     ----------
     file : :class:`io.FileIO`
         An open file handle in read mode.
+
+    Raises
+    ______
+    ValueError
+        If score data file is missing the required column constants.required_score_column
     """
     file.seek(0)
     header = read_header_from_io(file, label="Score")
