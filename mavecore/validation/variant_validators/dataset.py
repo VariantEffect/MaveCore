@@ -122,6 +122,17 @@ class MaveDataset:
         file : Union[str, TextIO, BinaryIO]
         dataset_type : str
 
+        Returns
+        _______
+        Union[`MaveScoreDataset`, `MaveCountsDataset`]
+
+        Raises
+        ______
+        TypeError
+            If file parameter is not expected file path or buffer object.
+        ValueError
+            If dataset_type parameter is not a recognized dataset type.
+        """
         if isinstance(file, str):
             handle = file
         elif hasattr(file, "read"):
