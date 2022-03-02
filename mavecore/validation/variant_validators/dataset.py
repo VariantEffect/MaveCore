@@ -293,6 +293,12 @@ class MaveDataset:
 
     @property
     def index(self) -> Optional[pd.Index]:
+        """
+
+        Returns
+        _______
+        Optional[`pd.Index`]
+        """
         if self._errors:
             return None
         return self._df.index.copy(deep=True)
