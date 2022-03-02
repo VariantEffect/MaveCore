@@ -187,6 +187,12 @@ class MaveDataset:
 
     @property
     def is_valid(self) -> Optional[bool]:
+        """
+
+        Returns
+        _______
+        Optional[bool]
+        """
         if self._errors is None:
             return None
         return len(self._errors) == 0
