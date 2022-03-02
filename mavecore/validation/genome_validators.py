@@ -414,6 +414,11 @@ def validate_map_has_unique_reference_genome(annotations):
 
 
 def validate_map_has_at_least_one_interval(reference_map):
+    """
+
+    :param reference_map:
+    :return:
+    """
     if not reference_map.get_intervals().count():
         raise ValidationError(
             "You must specify at least one interval for each reference map."
