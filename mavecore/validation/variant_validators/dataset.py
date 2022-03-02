@@ -938,6 +938,12 @@ class MaveScoresDataset(MaveDataset):
 
         @classmethod
         def options(cls) -> List[str]:
+            """
+
+            Returns
+            _______
+            List[str]
+            """
             return [cls.SCORES]
 
     @property
