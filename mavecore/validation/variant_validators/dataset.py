@@ -84,6 +84,17 @@ class MaveDataset:
     # ---------------------- Construction------------------------------------ #
     @classmethod
     def for_scores(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveScoresDataset":
+        """
+
+        Parameters
+        __________
+        file : Union[str, TextIO, BinaryIO]
+
+        Returns
+        _______
+        `MaveScoresDataset`
+
+        """
         return cls._for_type(file=file, dataset_type=cls.DatasetType.SCORES)
 
     @classmethod
