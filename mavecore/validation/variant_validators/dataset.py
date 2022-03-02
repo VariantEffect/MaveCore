@@ -231,6 +231,12 @@ class MaveDataset:
 
     @property
     def columns(self) -> List[str]:
+        """
+
+        Returns
+        _______
+        List[str]
+        """
         return list(self._df.columns)
 
     @property
