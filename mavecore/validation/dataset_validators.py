@@ -105,6 +105,20 @@ def read_header_from_io(file, label=None, msg=None):
 
 
 def validate_has_hgvs_in_header(header, label=None, msg=None):
+    """
+    Parameters
+    __________
+    header :
+    label :
+        default = None
+    msg :
+        default = None
+
+    Raises
+    ______
+    ValueError
+        If
+    """
     if label is None:
         label = "Uploaded"
     params = {}
