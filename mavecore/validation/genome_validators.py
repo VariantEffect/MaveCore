@@ -264,6 +264,11 @@ def validate_strand(value):
 
 
 def validate_chromosome(value):
+    """
+
+    :param value:
+    :return:
+    """
     # Intervals may be underspecified, but will be ignored so skip validation.
     if value is None:
         return
