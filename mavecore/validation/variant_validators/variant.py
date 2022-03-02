@@ -12,6 +12,18 @@ def validate_columns_match(variant, scoreset) -> None:
     """
     Validate that a child matches parents defined columns to keep
     data in sync.
+
+    Parameters
+    __________
+    variant :
+    scoreset :
+
+    Raises
+    ______
+    ValidationError
+        If variant score columns do not match scoreset score columns.
+    ValidationError
+        If variant count columns do not match scoreset count columns.
     """
     try:
         if variant.score_columns != scoreset.score_columns:
