@@ -158,6 +158,12 @@ class WildTypeSequence:
 
     @property
     def is_dna(self):
+        """
+
+        Returns
+        _______
+
+        """
         return self.__class__.SequenceType.is_dna(self.sequence_type)
 
     @property
