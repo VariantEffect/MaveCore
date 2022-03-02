@@ -355,6 +355,10 @@ class MaveDataset:
         Returns underlying dataframe as dictionary in 'records' orientation.
         Keys will be index values and values will be an inner dictionary mapping
         column names to row values for said index.
+
+        Returns
+        _______
+        Dict[str, Dict]
         """
         # Convert np.NaN values to None for consistency across all columns and
         # for compatibility in PostgresSQL queries. Replaces all values which
