@@ -43,6 +43,9 @@ class MaveDataset:
 
     """
     class DatasetType:
+        """
+
+        """
         SCORES = "scores"
         COUNTS = "counts"
 
