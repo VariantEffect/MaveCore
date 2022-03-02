@@ -271,6 +271,12 @@ class MaveDataset:
 
     @property
     def n_columns(self) -> int:
+        """
+
+        Returns
+        _______
+        int
+        """
         return len(self.columns)
 
     @property
