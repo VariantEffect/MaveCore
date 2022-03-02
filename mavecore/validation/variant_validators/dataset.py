@@ -23,7 +23,17 @@ from mavecore.validation.constants import (
 
 
 def is_null(value):
-    """Returns True if a stripped/lowercase value in in `nan_col_values`."""
+    """
+    Returns True if a stripped/lowercase value in in `nan_col_values`.
+
+    Parameters
+    __________
+    value :
+
+    Returns
+    _______
+    bool
+    """
     value = str(value).strip().lower()
     return null_values_re.fullmatch(value) or not value
 
