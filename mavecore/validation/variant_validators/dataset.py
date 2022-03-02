@@ -21,8 +21,6 @@ from mavecore.validation.constants import (
     readable_null_values
 )
 
-from mavecore.validation.constants import NA_value, null_values_list, null_values_re, readable_null_values
-
 
 def is_null(value):
     """Returns True if a stripped/lowercase value in in `nan_col_values`."""
