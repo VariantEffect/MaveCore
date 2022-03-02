@@ -350,6 +350,11 @@ def sequence_is_dna(seq):
 
 
 def sequence_is_protein(seq):
+    """
+
+    :param seq:
+    :return:
+    """
     # Explicitly check for these cases as they are also valid AA sequences.
     if is_null(seq):
         return False
