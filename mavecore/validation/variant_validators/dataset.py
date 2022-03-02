@@ -372,6 +372,22 @@ class MaveDataset:
         relaxed_ordering: bool = False,
         allow_index_duplicates: bool = False,
     ) -> "MaveDataset":
+        """
+
+        Parameters
+        __________
+        targetseq :
+        relaxed_ordering :
+        allow_index_duplicates :
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
 
         self._errors = []
         self._df.index = pd.RangeIndex(start=0, stop=self.n_rows, step=1)
