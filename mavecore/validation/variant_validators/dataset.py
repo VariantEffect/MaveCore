@@ -948,6 +948,12 @@ class MaveScoresDataset(MaveDataset):
 
     @property
     def label(self) -> str:
+        """
+
+        Returns
+        _______
+        str
+        """
         return "scores"
 
     def _validate_columns(self) -> "MaveDataset":
