@@ -426,6 +426,17 @@ class MaveDataset:
         index_column: Optional[str] = None,
         errors: Optional[List[str]] = None,
     ):
+        """
+
+        Parameters
+        df :
+        index_column :
+        errors :
+
+        Raises
+        ______
+
+        """
         self._df: pd.DataFrame = pd.DataFrame() if df is None else df
         self._index_column = index_column or None
         self._errors = None if errors is None else list(errors)
