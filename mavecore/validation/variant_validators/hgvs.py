@@ -38,6 +38,38 @@ def validate_hgvs_string(
     targetseq: Optional[str] = None,
     relaxed_ordering: bool = False,
 ) -> Optional[str]:
+    """
+
+    Parameters
+    __________
+    value :
+    column :
+    splice_present :
+    targetseq :
+    relaxed_ordering :
+
+    Returns
+    _______
+
+    Raises
+    ______
+    ValidationError
+        If variant HGVS input values are not strings.
+    ValidationError
+        If value is _sy or _wt, which are no longer supported.
+    ValidationError
+        If
+    ValidationError
+        If value is not a genomic variant (prefix 'g.'). Nucleotide variants must
+        be genomic if transcript variants are also defined.
+    ValidationError
+        If value is not a transcript variant. The accepted transcript variant
+        prefixes are 'c.', 'n.'.
+    ValidationError
+        If value is not a protein variant. The accepted protein variant prefix is 'p.'.
+    ValueError
+        If there exists an unknown column. Function expects nt, splice or p."
+    """
     if is_null(value):
         return None
 
