@@ -221,6 +221,12 @@ class MaveDataset:
 
     @property
     def is_empty(self) -> bool:
+        """
+
+        Returns
+        _______
+        bool
+        """
         return self._df.empty
 
     @property
