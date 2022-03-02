@@ -241,6 +241,12 @@ class MaveDataset:
 
     @property
     def hgvs_columns(self) -> List[str]:
+        """
+
+        Returns
+        _______
+        List[str]
+        """
         return [c for c in self.columns if c in self.HGVSColumns.options()]
 
     @property
