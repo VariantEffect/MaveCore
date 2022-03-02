@@ -553,6 +553,21 @@ class MaveDataset:
     def _validate_genomic_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
+        """
+
+        Parameters
+        __________
+        targetseq :
+        relaxed_ordering :
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         if self._column_is_null(self.HGVSColumns.NUCLEOTIDE):
             return self
 
