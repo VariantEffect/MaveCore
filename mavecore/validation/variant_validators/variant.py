@@ -37,6 +37,17 @@ def validate_variant_json(data: Dict[str, Dict]) -> None:
     ----------
     data : dict[str, dict]
         Dictionary of keys mapping to a list.
+
+    Raises
+    ______
+    ValidationError
+        If missing the required key.
+    ValidationError
+        If missing the required column in variant's score data.
+    ValidationError
+        If encountered unexpected keys.
+    ValidationError
+        If value for key is not of type dict.
     """
     expected_keys = [variant_score_data, variant_count_data]
     for key in expected_keys:
