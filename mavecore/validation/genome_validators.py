@@ -103,6 +103,16 @@ class WildTypeSequence:
 
         @classmethod
         def is_dna(cls, value):
+            """
+
+            Parameters
+            __________
+            value :
+
+            Returns
+            _______
+
+            """
             return value == cls.DNA
 
         @classmethod
