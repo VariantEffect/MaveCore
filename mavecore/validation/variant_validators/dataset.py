@@ -63,6 +63,7 @@ class MaveDataset:
 
             Returns
             _______
+            List[str]
             """
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
