@@ -652,6 +652,21 @@ class MaveDataset:
     def _validate_protein_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
+        """
+
+        Parameters
+        __________
+        targetseq :
+        relaxed_ordering :
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         if self._column_is_null(self.HGVSColumns.PROTEIN):
             return self
 
