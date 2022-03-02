@@ -530,6 +530,12 @@ class MaveDataset:
         return self
 
     def _normalize_data(self) -> "MaveDataset":
+        """
+
+        Returns
+        _______
+        `MaveDataset`
+        """
         if self._errors:
             return self
 
