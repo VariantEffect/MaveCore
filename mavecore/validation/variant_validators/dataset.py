@@ -73,6 +73,12 @@ class MaveDataset:
         """
         @classmethod
         def options(cls) -> List[str]:
+            """
+
+            Returns
+            _______
+            List[str]
+            """
             return []
 
     # ---------------------- Construction------------------------------------ #
