@@ -125,6 +125,9 @@ class WildTypeSequence:
             return [(cls.INFER, "Infer"), (cls.DNA, "DNA"), (cls.PROTEIN, "Protein")]
 
     class Meta:
+        """
+
+        """
         verbose_name = "Reference sequence"
         verbose_name_plural = "Reference sequences"
 
