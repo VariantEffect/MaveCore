@@ -479,6 +479,16 @@ class MaveDataset:
         )
 
     def _validate_columns(self) -> "MaveDataset":
+        """
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         if self._errors:
             return self
 
