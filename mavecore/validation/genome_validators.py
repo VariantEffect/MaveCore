@@ -117,6 +117,11 @@ class WildTypeSequence:
 
         @classmethod
         def choices(cls):
+            """
+
+            Returns
+            _______
+            """
             return [(cls.INFER, "Infer"), (cls.DNA, "DNA"), (cls.PROTEIN, "Protein")]
 
     class Meta:
