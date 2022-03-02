@@ -251,6 +251,12 @@ class MaveDataset:
 
     @property
     def non_hgvs_columns(self) -> List[str]:
+        """
+
+        Returns
+        _______
+        List[str]
+        """
         return [c for c in self.columns if c not in self.HGVSColumns.options()]
 
     @property
