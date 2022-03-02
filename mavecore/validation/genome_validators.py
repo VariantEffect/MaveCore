@@ -401,6 +401,11 @@ def validate_genome_short_name(value):
 # ReferenceMap
 # ------------------------------------------------------------------------- #
 def validate_map_has_unique_reference_genome(annotations):
+    """
+
+    :param annotations:
+    :return:
+    """
     genomes = set([str(a.get_reference_genome_name()).lower() for a in annotations])
     if len(genomes) < len(annotations):
         raise ValidationError(
