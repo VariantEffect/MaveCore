@@ -32,6 +32,14 @@ class WordLimitValidator:
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
 
     def __init__(self, word_limit, message=None, code=None):
+        """
+
+        Parameters
+        __________
+        word_limit :
+        message :
+        code :
+        """
         if message is not None:
             self.message = message
         if code is not None:
