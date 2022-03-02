@@ -168,6 +168,12 @@ class WildTypeSequence:
 
     @property
     def is_protein(self):
+        """
+
+        Returns
+        _______
+
+        """
         return self.__class__.SequenceType.is_protein(self.sequence_type)
 
     def save(self, *args, **kwargs):
