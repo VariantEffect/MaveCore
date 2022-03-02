@@ -15,9 +15,10 @@ from mavecore.validation.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
-    required_score_column
-    # constants
-    ,
+    required_score_column,
+    null_values_list,
+    null_values_re,
+    readable_null_values
 )
 
 from mavecore.validation.constants import NA_value, null_values_list, null_values_re, readable_null_values
