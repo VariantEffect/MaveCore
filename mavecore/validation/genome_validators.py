@@ -64,6 +64,20 @@ class WildTypeSequence:
 
         @classmethod
         def detect_sequence_type(cls, sequence):
+            """
+
+            Parameters
+            __________
+            sequence :
+
+            Returns
+            _______
+
+            Raises
+            ______
+            ValueError
+                If sequence parameter is not protein or DNA
+            """
             if sequence_is_dna(sequence):
                 return cls.DNA
             elif sequence_is_protein(sequence):
