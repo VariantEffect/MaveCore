@@ -67,6 +67,23 @@ class WordLimitValidator:
 
 
 def read_header_from_io(file, label=None, msg=None):
+    """
+    Parameters
+    __________
+    file :
+    label :
+        default = None
+    msg :
+        default = None
+
+    Returns
+    _______
+
+    Raises
+    ______
+    ValueError
+        If
+    """
     if label is None:
         label = "uploaded"
 
