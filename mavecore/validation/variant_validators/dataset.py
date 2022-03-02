@@ -67,6 +67,9 @@ class MaveDataset:
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
     class AdditionalColumns:
+        """
+
+        """
         @classmethod
         def options(cls) -> List[str]:
             return []
