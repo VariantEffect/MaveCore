@@ -442,6 +442,12 @@ class MaveDataset:
         self._errors = None if errors is None else list(errors)
 
     def __repr__(self):
+        """
+
+        Returns
+        _______
+
+        """
         return (
             f"<"
             f"{self.__class__.__name__} "
