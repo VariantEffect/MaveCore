@@ -132,6 +132,12 @@ class WildTypeSequence:
         verbose_name_plural = "Reference sequences"
 
     def __str__(self):
+        """
+
+        Returns
+        _______
+
+        """
         return self.get_sequence()
 
     # sequence = models.TextField(
