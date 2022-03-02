@@ -451,5 +451,17 @@ def validate_one_primary_map(reference_maps):
 # TargetGene
 # ------------------------------------------------------------------------- #
 def validate_gene_name(value):
+    """
+    This function checks to see if a gene name is null and raises and error if it is.
+
+    Parameters
+    __________
+    value :
+        The gene name.
+    Raises
+    ______
+    ValidationError
+        If gene name (value parameter) is null.
+    """
     if is_null(value):
         raise ValidationError("Gene name must not be null.")
