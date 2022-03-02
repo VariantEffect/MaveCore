@@ -89,6 +89,16 @@ class WildTypeSequence:
 
         @classmethod
         def is_protein(cls, value):
+            """
+
+            Parameters
+            __________
+            value :
+
+            Returns
+            _______
+
+            """
             return value == cls.PROTEIN
 
         @classmethod

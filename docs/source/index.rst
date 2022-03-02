@@ -20,7 +20,7 @@ Building a local copy of the documentation requires the following additional pac
    :maxdepth: 2
    :caption: Contents:
 
-   validators
+   validation
 
 
 Indices and tables
