@@ -50,6 +50,9 @@ class MaveDataset:
         COUNTS = "counts"
 
     class HGVSColumns:
+        """
+
+        """
         NUCLEOTIDE: str = hgvs_nt_column
         TRANSCRIPT: str = hgvs_splice_column
         PROTEIN: str = hgvs_pro_column
