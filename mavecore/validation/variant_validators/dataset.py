@@ -459,6 +459,12 @@ class MaveDataset:
 
     @property
     def _column_order(self) -> Dict[str, int]:
+        """
+
+        Returns
+        _______
+        Dict[str, int]
+        """
         return defaultdict(
             lambda: 100,
             {
