@@ -205,6 +205,11 @@ def validate_datasets_define_same_variants(scores, counts):
         Scores dataframe parsed from an uploaded scores file.
     counts : `pd.DataFrame`
         Scores dataframe parsed from an uploaded counts file.
+
+    Raises
+    ______
+    ValueError
+        If score and counts files do not define the same variants.
     """
     try:
         assert_array_equal(
