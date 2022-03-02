@@ -849,6 +849,16 @@ class MaveDataset:
         return 0 < len(self._df[self._df[column].isna()]) < len(self._df)
 
     def _column_is_fully_specified(self, column) -> bool:
+        """
+
+        Parameters
+        __________
+        column :
+
+        Returns
+        _______
+        bool
+        """
         return len(self._df[self._df[column].isna()]) == 0
 
     def _validate_variant_prefix_for_column(
