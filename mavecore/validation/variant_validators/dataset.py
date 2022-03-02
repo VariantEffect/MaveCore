@@ -931,6 +931,9 @@ class MaveScoresDataset(MaveDataset):
 
     """
     class AdditionalColumns:
+        """
+
+        """
         SCORES = required_score_column
 
         @classmethod
