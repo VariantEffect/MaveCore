@@ -281,6 +281,12 @@ class MaveDataset:
 
     @property
     def index_column(self) -> Optional[str]:
+        """
+
+        Returns
+        _______
+        Optional[str]
+        """
         if self._errors:
             return None
         return self._index_column
