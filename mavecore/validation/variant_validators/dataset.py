@@ -211,6 +211,12 @@ class MaveDataset:
 
     @property
     def errors(self) -> Optional[List[str]]:
+        """
+
+        Returns
+        _______
+        Optional[List[str]]
+        """
         return self._errors
 
     @property
