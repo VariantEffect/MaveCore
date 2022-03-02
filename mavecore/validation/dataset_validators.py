@@ -289,6 +289,19 @@ def validate_scoreset_json(dict_):
     ----------
     dict_ : dict
         Dictionary of keys mapping to a list.
+
+    Raises
+    ______
+    ValueError
+        If scoreset data is missing the required key.
+    ValueError
+        If header values are not strings.
+    ValueError
+        If
+    ValueError
+        If missing required column constants.required_score_column for score dataset.
+    ValueError
+        If encountered unexpected keys extras.
     """
     required_columns = [constants.score_columns, constants.count_columns]
 
