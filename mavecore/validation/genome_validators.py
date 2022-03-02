@@ -439,6 +439,8 @@ def validate_at_least_one_map(reference_maps):
 
 def validate_one_primary_map(reference_maps):
     """
+    This function validates the existence of one primary reference map and raises an error
+    if it does not exist.
 
     :param reference_maps:
     :return:
