@@ -47,6 +47,19 @@ class WordLimitValidator:
         self.word_limit = int(word_limit)
 
     def __call__(self, value):
+        """
+        Parameters
+        __________
+        value :
+
+        Returns
+        _______
+
+        Raises
+        ______
+        ValueError
+            If
+        """
         if not value:
             return
         if len(self.counter.findall(value)) > self.word_limit:
