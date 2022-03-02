@@ -99,6 +99,16 @@ class MaveDataset:
 
     @classmethod
     def for_counts(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveCountsDataset":
+        """
+
+        Parameters
+        __________
+        file : Union[str, TextIO, BinaryIO]
+
+        Returns
+        _______
+        `MaveCountsDataset`
+        """
         return cls._for_type(file=file, dataset_type=cls.DatasetType.COUNTS)
 
     @classmethod
