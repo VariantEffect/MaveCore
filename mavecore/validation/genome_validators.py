@@ -277,6 +277,11 @@ def validate_chromosome(value):
 
 
 def validate_unique_intervals(intervals):
+    """
+
+    :param intervals:
+    :return:
+    """
     for interval1 in intervals:
         for interval2 in intervals:
             if (
