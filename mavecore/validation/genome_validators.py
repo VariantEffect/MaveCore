@@ -389,6 +389,11 @@ def validate_reference_genome_has_one_external_identifier(referencegenome):
 
 
 def validate_genome_short_name(value):
+    """
+
+    :param value:
+    :return:
+    """
     if is_null(value):
         raise ValidationError("Genome short name must not be null.")
 
