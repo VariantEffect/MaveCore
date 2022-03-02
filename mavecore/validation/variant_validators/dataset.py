@@ -754,6 +754,23 @@ class MaveDataset:
         targetseq: Optional[str] = None,
         relaxed_ordering: bool = False,
     ) -> Tuple[pd.Series, Set[str], List[str]]:
+        """
+
+        Parameters
+        __________
+        column : str
+        splice_defined : Optional[bool]
+        targetseq : Optional[str]
+        relaxed_ordering : bool
+
+        Returns
+        _______
+        Tuple[`pd.Series`, Set[str], List[str]]
+
+        Raises
+        ______
+
+        """
 
         prefixes = set()
         errors = []
