@@ -335,8 +335,9 @@ class MaveDataset:
 
         Returns
         -------
-        A boolean indicating index match, otherwise `None` if either instance
-        is not valid.
+        Optional[bool]
+            A boolean indicating index match, otherwise `None` if either instance
+            is not valid.
         """
         if (not self.is_valid) or (not other.is_valid):
             return None
