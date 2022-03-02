@@ -836,6 +836,16 @@ class MaveDataset:
         return len(self._df[self._df[column].isna()]) == len(self._df)
 
     def _column_is_partially_null(self, column) -> bool:
+        """
+
+        Parameters
+        __________
+        column :
+
+        Returns
+        _______
+        bool
+        """
         return 0 < len(self._df[self._df[column].isna()]) < len(self._df)
 
     def _column_is_fully_specified(self, column) -> bool:
