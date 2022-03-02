@@ -199,6 +199,12 @@ class WildTypeSequence:
         return super().save(*args, **kwargs)
 
     def get_sequence(self):
+        """
+
+        Returns
+        _______
+
+        """
         return self.sequence.upper()
 
     def is_attached(self):
