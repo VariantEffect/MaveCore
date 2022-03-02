@@ -979,6 +979,17 @@ class MaveScoresDataset(MaveDataset):
         return self
 
     def _normalize_data(self) -> "MaveDataset":
+        """
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+        ValueError
+
+        """
         super()._normalize_data()
 
         should_be_numeric = [self.AdditionalColumns.SCORES]
