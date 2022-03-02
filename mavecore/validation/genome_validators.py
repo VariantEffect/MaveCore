@@ -299,6 +299,12 @@ def validate_unique_intervals(intervals):
 # WildTypeSequence
 # ------------------------------------------------------------------------- #
 def validate_wildtype_sequence(seq, as_type="any"):
+    """
+
+    :param seq:
+    :param as_type:
+    :return:
+    """
     # from .models import WildTypeSequence
 
     # Explicitly check for these cases as they are also valid AA sequences.
