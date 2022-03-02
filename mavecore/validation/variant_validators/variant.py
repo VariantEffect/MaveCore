@@ -35,7 +35,7 @@ def validate_variant_json(data: Dict[str, Dict]) -> None:
 
     Parameters
     ----------
-    data : dict
+    data : dict[str, dict]
         Dictionary of keys mapping to a list.
     """
     expected_keys = [variant_score_data, variant_count_data]
