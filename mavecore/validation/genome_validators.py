@@ -426,6 +426,11 @@ def validate_map_has_at_least_one_interval(reference_map):
 
 
 def validate_at_least_one_map(reference_maps):
+    """
+
+    :param reference_maps:
+    :return:
+    """
     if not len(reference_maps):
         raise ValidationError(
             "A target must have at least one reference map specified."
