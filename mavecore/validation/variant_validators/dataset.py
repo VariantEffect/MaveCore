@@ -703,6 +703,20 @@ class MaveDataset:
         return self
 
     def _validate_index_column(self, allow_duplicates: bool = False) -> "MaveDataset":
+        """
+
+        Parameters
+        __________
+        allow_duplicates : bool
+
+        Returns
+        _______
+        `MaveDataset`
+
+        Raises
+        ______
+
+        """
         if self._errors:
             return self
 
