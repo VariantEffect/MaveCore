@@ -438,6 +438,11 @@ def validate_at_least_one_map(reference_maps):
 
 
 def validate_one_primary_map(reference_maps):
+    """
+
+    :param reference_maps:
+    :return:
+    """
     primary_count = sum(a.is_primary_reference_map() for a in reference_maps)
     if primary_count > 1 or primary_count < 1:
         raise ValidationError("A target must have one primary reference map.")
