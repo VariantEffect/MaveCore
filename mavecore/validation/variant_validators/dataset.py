@@ -199,6 +199,12 @@ class MaveDataset:
 
     @property
     def n_errors(self) -> Optional[int]:
+        """
+
+        Returns
+        _______
+        Optional[int]
+        """
         if self._errors is None:
             return None
         return len(self._errors)
