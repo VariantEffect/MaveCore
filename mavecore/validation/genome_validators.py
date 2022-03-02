@@ -177,6 +177,17 @@ class WildTypeSequence:
         return self.__class__.SequenceType.is_protein(self.sequence_type)
 
     def save(self, *args, **kwargs):
+        """
+
+        Parameters
+        __________
+        args :
+        kwargs :
+
+        Returns
+        _______
+
+        """
         if self.sequence is not None:
             self.sequence = self.sequence.upper()
             self.sequence_type = (
