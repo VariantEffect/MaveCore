@@ -332,7 +332,7 @@ def validate_unique_intervals(intervals):
 # ------------------------------------------------------------------------- #
 def validate_wildtype_sequence(seq, as_type="any"):
     # TODO
-    # add description and seq type plus description
+    # add description to as_type parameter
     """
 
     Parameters
