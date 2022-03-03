@@ -222,6 +222,8 @@ class WildTypeSequence:
 # ------------------------------------------------------------------------- #
 def validate_interval_start_lteq_end(start, end):
     """
+    This function validates whether or not an interval's starting coordinate is less than
+    or equal to that interval's ending coordinate.
 
     Parameters
     __________
