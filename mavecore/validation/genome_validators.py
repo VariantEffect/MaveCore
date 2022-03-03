@@ -335,9 +335,18 @@ def validate_wildtype_sequence(seq, as_type="any"):
     # add description and seq type plus description
     """
 
-    :param seq:
-    :param as_type:
-    :return:
+    Parameters
+    __________
+    seq :
+    as_type : str
+        (default = "any")
+
+    Raises
+    ______
+    ValidationError
+        If seq is not a valid wild type sequence.
+    ValidationError
+        If seq is not a valid DNA or protein reference sequence.
     """
     # from .models import WildTypeSequence
 
