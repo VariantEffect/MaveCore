@@ -429,9 +429,7 @@ def validate_map_has_at_least_one_interval(reference_map):
         If the reference_map does not have at least one interval.
     """
     if not reference_map.get_intervals().count():
-        raise ValidationError(
-            "You must specify at least one interval for each reference map."
-        )
+        raise ValidationError("You must specify at least one interval for each reference map.")
 
 
 def validate_at_least_one_map(reference_maps):
