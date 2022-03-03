@@ -338,7 +338,8 @@ def validate_wildtype_sequence(seq, as_type="any"):
 
     Parameters
     __________
-    seq :
+    seq : str
+        The sequence being validated.
     as_type : str
         (default = "any")
 
