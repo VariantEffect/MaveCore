@@ -406,8 +406,15 @@ def sequence_is_protein(seq):
     """
     This function check if seq is a protein sequence.
 
-    :param seq:
-    :return:
+    Parameters
+    __________
+    seq : str
+        The sequence being validated.
+
+    Returns
+    _______
+    bool
+        True if seq is not null, is a DNA sequence or amino_acids_validator returns a match object.
     """
     # Explicitly check for these cases as they are also valid AA sequences.
     if is_null(seq):
