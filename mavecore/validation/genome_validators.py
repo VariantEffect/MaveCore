@@ -305,8 +305,14 @@ def validate_unique_intervals(intervals):
     # add description and interval parameter type plus description
     """
 
-    :param intervals:
-    :return:
+    Parameters
+    __________
+    intervals :
+
+    Raises
+    ______
+    ValidationError
+        If the same interval was specified twice.
     """
     for interval1 in intervals:
         for interval2 in intervals:
