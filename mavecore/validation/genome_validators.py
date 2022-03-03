@@ -441,8 +441,11 @@ def validate_at_least_one_map(reference_maps):
     __________
     reference_maps :
 
-    :param reference_maps:
-    :return:
+
+    Raises
+    ______
+    ValidationError
+        If the target does not have at least one reference map specified.
     """
     if not len(reference_maps):
         raise ValidationError(
