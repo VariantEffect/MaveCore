@@ -227,8 +227,10 @@ def validate_interval_start_lteq_end(start, end):
 
     Parameters
     __________
-    start :
-    end :
+    start : int
+        The interval's starting coordinate.
+    end : int
+        The interval's ending coordinate.
 
     Returns
     _______
