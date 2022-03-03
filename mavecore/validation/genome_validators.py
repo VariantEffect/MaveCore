@@ -23,6 +23,7 @@ def is_null(value):
     Parameters
     __________
     value :
+        The value to be checked.
 
     Returns
     _______
