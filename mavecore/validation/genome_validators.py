@@ -383,8 +383,15 @@ def sequence_is_dna(seq):
     """
     This function checks if seq is a DNA sequence.
 
-    :param seq:
-    :return:
+    Parameters
+    __________
+    seq : str
+        The sequence to be validated.
+
+    Returns
+    _______
+    bool
+        True if the dna_bases_validator returns a match object.
     """
     # Explicitly check for these cases as they are also valid AA sequences.
     if is_null(seq):
