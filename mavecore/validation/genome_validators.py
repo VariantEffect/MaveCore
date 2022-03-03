@@ -404,6 +404,7 @@ def sequence_is_dna(seq):
 
 def sequence_is_protein(seq):
     """
+    This function check if seq is a protein sequence.
 
     :param seq:
     :return:
