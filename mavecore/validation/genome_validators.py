@@ -27,7 +27,7 @@ def is_null(value):
     Returns
     _______
     bool
-        True if a stripped/lowercase value in in `nan_col_values`.
+        True if a stripped/lowercase value in `nan_col_values`.
     """
     value = str(value).strip().lower()
     return constants.null_values_re.fullmatch(value) or not value
