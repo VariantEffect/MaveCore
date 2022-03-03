@@ -381,6 +381,7 @@ def validate_wildtype_sequence(seq, as_type="any"):
 
 def sequence_is_dna(seq):
     """
+    This function checks if seq is a DNA sequence.
 
     :param seq:
     :return:
