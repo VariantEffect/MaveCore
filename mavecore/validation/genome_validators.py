@@ -255,6 +255,8 @@ def validate_interval_start_lteq_end(start, end):
 
 
 def validate_strand(value):
+    # TODO
+    # find the type of value
     """
 
     Parameters
