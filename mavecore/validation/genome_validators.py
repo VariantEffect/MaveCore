@@ -9,7 +9,6 @@ Validator functions for the fields of the following classes:
 Most validation should validate one specific field, unless fields need
 to be validated against each other.
 """
-import re
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
 from mavecore.validation.exceptions import ValidationError
 
