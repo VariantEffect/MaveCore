@@ -418,8 +418,15 @@ def validate_map_has_at_least_one_interval(reference_map):
     This function validates that a reference map has at least one interval and raises an error
     if this is not the case.
 
-    :param reference_map:
-    :return:
+    Parameters
+    __________
+    reference_map :
+        Reference map.
+
+    Raises
+    ______
+    ValidationError
+        If the reference_map does not have at least one interval.
     """
     if not reference_map.get_intervals().count():
         raise ValidationError(
