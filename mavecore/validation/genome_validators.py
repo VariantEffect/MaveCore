@@ -334,6 +334,7 @@ def validate_wildtype_sequence(seq, as_type="any"):
     # TODO
     # add description to as_type parameter
     """
+    This function checks whether or not seq is a wildtype sequence.
 
     Parameters
     __________
