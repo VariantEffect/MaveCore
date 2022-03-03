@@ -415,6 +415,8 @@ def validate_map_has_unique_reference_genome(annotations):
 
 def validate_map_has_at_least_one_interval(reference_map):
     """
+    This function validates that a reference map has at least one interval and raises an error
+    if this is not the case.
 
     :param reference_map:
     :return:
