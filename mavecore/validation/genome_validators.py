@@ -263,6 +263,7 @@ def validate_strand(value):
     Parameters
     __________
     value :
+        The Genomic Interval strand to be validated.
 
     Raises
     ______
