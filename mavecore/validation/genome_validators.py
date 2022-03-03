@@ -279,8 +279,19 @@ def validate_chromosome(value):
     # add description and type for value parameter
     """
 
-    :param value:
-    :return:
+    Parameters
+    __________
+    value :
+
+    Returns
+    _______
+    None
+        If value is NoneType.
+
+    Raises
+    ______
+    ValidationError
+        If chromosome identifier is null.
     """
     # Intervals may be underspecified, but will be ignored so skip validation.
     if value is None:
