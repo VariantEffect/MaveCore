@@ -434,6 +434,12 @@ def validate_map_has_at_least_one_interval(reference_map):
 
 def validate_at_least_one_map(reference_maps):
     """
+    This function validates whether a target has at least one reference map specified
+    and raises an error if it does not.
+
+    Parameters
+    __________
+    reference_maps :
 
     :param reference_maps:
     :return:
