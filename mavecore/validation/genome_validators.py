@@ -301,6 +301,8 @@ def validate_chromosome(value):
 
 
 def validate_unique_intervals(intervals):
+    # TODO
+    # add description and interval parameter type plus description
     """
 
     :param intervals:
