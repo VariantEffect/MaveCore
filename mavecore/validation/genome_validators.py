@@ -234,6 +234,8 @@ def validate_interval_start_lteq_end(start, end):
 
     Returns
     _______
+    None
+        If start is NoneType or end is NoneType.
 
     Raises
     ______
