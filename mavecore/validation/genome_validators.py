@@ -258,6 +258,7 @@ def validate_strand(value):
     # TODO
     # find the type of value
     """
+    This function validates a GenomicInterval strand and raises an error if the strand is invalid.
 
     Parameters
     __________
