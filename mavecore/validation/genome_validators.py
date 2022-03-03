@@ -448,9 +448,7 @@ def validate_at_least_one_map(reference_maps):
         If the target does not have at least one reference map specified.
     """
     if not len(reference_maps):
-        raise ValidationError(
-            "A target must have at least one reference map specified."
-        )
+        raise ValidationError("A target must have at least one reference map specified.")
 
 
 def validate_one_primary_map(reference_maps):
