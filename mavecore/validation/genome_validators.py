@@ -275,6 +275,8 @@ def validate_strand(value):
 
 
 def validate_chromosome(value):
+    # TODO
+    # add description and type for value parameter
     """
 
     :param value:
