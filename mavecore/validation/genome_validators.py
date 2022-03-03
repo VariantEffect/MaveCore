@@ -18,7 +18,7 @@ from mavecore.validation import constants
 
 def is_null(value):
     """
-    Returns True if a stripped/lowercase value in in `nan_col_values`.
+    This function checks if the value exists or is null.
 
     Parameters
     __________
