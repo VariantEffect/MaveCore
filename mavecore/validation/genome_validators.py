@@ -74,7 +74,7 @@ class WildTypeSequence:
 
             Parameters
             __________
-            sequence :
+            sequence : str
 
             Returns
             _______
