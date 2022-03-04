@@ -448,6 +448,10 @@ def validate_organism_name(organism_name):
 
 
 def validate_reference_genome_has_one_external_identifier(referencegenome):
+    # TODO
+    # revise description, make sure it is accurate
+    # anything greater than 0 will return True, so should it be == 1 or > 0?
+    # determine what type referencegenome is
     """
 
     :param referencegenome:
