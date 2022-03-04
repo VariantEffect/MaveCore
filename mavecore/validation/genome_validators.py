@@ -574,7 +574,9 @@ def validate_one_primary_map(reference_maps):
 
 # TargetGene
 # ------------------------------------------------------------------------- #
-def validate_gene_name(value):
+def validate_gene_name(gene_name):
+    # TODO
+    # confirm gene_name type
     """
     This function checks to see if a gene name is null and raises and error if it is.
 
