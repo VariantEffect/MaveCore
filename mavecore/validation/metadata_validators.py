@@ -93,6 +93,16 @@ def validate_genome_identifier(identifier):
 
 
 def validate_keyword_list(values):
+    """
+    This function takes a list of keyword values and validates that each one is valid.
+    A valid keyword is a non-null string. The validate_keyword function will raise an
+    ValidationError if any of the keywords are invalid.
+
+    Parameters
+    __________
+    values : list[str]
+        The list of values to be validated.
+    """
     for value in values:
         if not is_null(value):
             validate_keyword(value)
