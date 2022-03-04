@@ -68,6 +68,9 @@ class WildTypeSequence:
             # TODO
             # confirm sequence parameter type
             """
+            This function determines if the sequence is a DNA or protein sequence and
+            returns "dna" if it is DNA or "protein" if it is protein. An error is raised
+            if it is neither.
 
             Parameters
             __________
