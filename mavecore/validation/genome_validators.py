@@ -590,5 +590,5 @@ def validate_gene_name(gene_name):
     ValidationError
         If gene name (value parameter) is null.
     """
-    if is_null(value):
+    if is_null(gene_name):
         raise ValidationError("Gene name must not be null.")
