@@ -1,4 +1,3 @@
-import re
 import idutils
 
 from mavecore.validation.exceptions import ValidationError
