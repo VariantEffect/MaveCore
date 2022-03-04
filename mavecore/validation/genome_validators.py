@@ -472,6 +472,8 @@ def validate_reference_genome_has_one_external_identifier(referencegenome):
 
 
 def validate_genome_short_name(value):
+    # TODO
+    # confirm the type of the value parameter
     """
 
     :param value:
