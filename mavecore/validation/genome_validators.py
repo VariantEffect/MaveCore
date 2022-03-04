@@ -475,6 +475,7 @@ def validate_genome_short_name(value):
     # TODO
     # confirm the type of the value parameter
     """
+    This function validates the genome short name and raises an error if the value is null.
 
     :param value:
     :return:
