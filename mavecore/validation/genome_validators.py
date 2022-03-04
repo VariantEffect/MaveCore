@@ -498,6 +498,8 @@ def validate_map_has_unique_reference_genome(annotations):
     # check the type of annotations
     # add description to annotations parameter
     """
+    This function validates whether or not each map in annotations has a
+    unique reference genome and raises an error if this is not the case.
 
     :param annotations:
     :return:
