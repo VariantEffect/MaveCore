@@ -456,8 +456,14 @@ def validate_reference_genome_has_one_external_identifier(referencegenome):
     This function validates whether or not the reference genome has one external identifier.
     An error is raised if
 
-    :param referencegenome:
-    :return:
+    Parameters
+    __________
+    referencegenome :
+
+    Raises
+    ______
+    ValidationError
+        If
     """
     if not referencegenome.genome_id:
         raise ValidationError(
