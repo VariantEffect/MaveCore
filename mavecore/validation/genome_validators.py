@@ -78,6 +78,8 @@ class WildTypeSequence:
 
             Returns
             _______
+            str
+                "dna" or "protein" depending on if the sequence is a DNA or protein sequence.
 
             Raises
             ______
