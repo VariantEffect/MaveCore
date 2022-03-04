@@ -443,7 +443,7 @@ def validate_organism_name(organism_name):
     ValidationError
         If the organism name is null.
     """
-    if is_null(value):
+    if is_null(organism_name):
         raise ValidationError("Species name must not be null.")
 
 
