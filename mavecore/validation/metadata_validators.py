@@ -6,7 +6,21 @@ from mavecore.validation.constants import null_values_re
 
 
 def is_null(value):
-    """Returns True if a stripped/lowercase value in in `nan_col_values`."""
+    # TODO
+    # check that parameter type is accurate
+    """
+    This function checks that the passed value is null.
+
+    Parameters
+    __________
+    value : str
+        Value to be checked if null.
+
+    Returns
+    _______
+    bool
+        True if a stripped/lowercase value in in `nan_col_values`.
+    """
     value = str(value).strip().lower()
     return null_values_re.fullmatch(value) or not value
 
