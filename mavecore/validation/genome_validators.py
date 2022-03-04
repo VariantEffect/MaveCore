@@ -431,6 +431,7 @@ def validate_organism_name(organism_name):
     # TODO
     # confirm organism_name type
     """
+    This function validates the organism name by checking that the name is not null.
 
     :param value:
     :return:
