@@ -477,8 +477,15 @@ def validate_genome_short_name(value):
     """
     This function validates the genome short name and raises an error if the value is null.
 
-    :param value:
-    :return:
+    Parameters
+    __________
+    value : str
+        The genome short name to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the genome short name is null.
     """
     if is_null(value):
         raise ValidationError("Genome short name must not be null.")
