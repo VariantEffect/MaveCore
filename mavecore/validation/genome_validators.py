@@ -65,6 +65,8 @@ class WildTypeSequence:
 
         @classmethod
         def detect_sequence_type(cls, sequence):
+            # TODO
+            # confirm sequence parameter type
             """
 
             Parameters
