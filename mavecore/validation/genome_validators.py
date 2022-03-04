@@ -582,7 +582,7 @@ def validate_gene_name(gene_name):
 
     Parameters
     __________
-    value :
+    gene_name : str
         The gene name.
 
     Raises
