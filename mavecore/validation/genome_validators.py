@@ -84,7 +84,7 @@ class WildTypeSequence:
             Raises
             ______
             ValueError
-                If sequence parameter is not protein or DNA
+                If sequence parameter is not protein or DNA.
             """
             if sequence_is_dna(sequence):
                 return cls.DNA
