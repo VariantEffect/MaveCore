@@ -427,7 +427,9 @@ def sequence_is_protein(seq):
 
 # ReferenceGenome
 # ------------------------------------------------------------------------- #
-def validate_organism_name(value):
+def validate_organism_name(organism_name):
+    # TODO
+    # confirm organism_name type
     """
 
     :param value:
