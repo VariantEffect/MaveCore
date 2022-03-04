@@ -453,6 +453,8 @@ def validate_reference_genome_has_one_external_identifier(referencegenome):
     # anything greater than 0 will return True, so should it be == 1 or > 0?
     # determine what type referencegenome is
     """
+    This function validates whether or not the reference genome has one external identifier.
+    An error is raised if
 
     :param referencegenome:
     :return:
