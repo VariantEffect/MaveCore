@@ -494,6 +494,9 @@ def validate_genome_short_name(value):
 # ReferenceMap
 # ------------------------------------------------------------------------- #
 def validate_map_has_unique_reference_genome(annotations):
+    # TODO
+    # check the type of annotations
+    # add description to annotations parameter
     """
 
     :param annotations:
