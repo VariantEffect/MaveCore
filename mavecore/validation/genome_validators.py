@@ -433,8 +433,15 @@ def validate_organism_name(organism_name):
     """
     This function validates the organism name by checking that the name is not null.
 
-    :param value:
-    :return:
+    Parameters
+    __________
+    organism_name : str
+        The organism name to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the organism name is null.
     """
     if is_null(value):
         raise ValidationError("Species name must not be null.")
