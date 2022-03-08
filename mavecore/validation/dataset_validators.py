@@ -194,6 +194,9 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
 
 def validate_header_contains_no_null_columns(header, label=None, msg=None):
     """
+    This function checks that the header parameter does not contain any null columns that
+    are not in the case-insensitive null values listed in constants.readable_null_values.
+
     Parameters
     __________
     header :
