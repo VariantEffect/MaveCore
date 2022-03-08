@@ -203,6 +203,7 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
     label :
         (default = None)
     msg :
+        (default = None)
 
     Raises
     ______
