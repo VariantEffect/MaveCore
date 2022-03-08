@@ -20,6 +20,12 @@ def validate_dataset(countfile=None, scorefile=None, scorejson=None):
     This function calls all of the validation functions within
     mavetools/mavetools/validation/dataset_validation.py
 
+    Parameters
+    __________
+    countfile :
+    scorefile :
+    scorejson :
+
     Returns
     -------
 
