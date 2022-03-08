@@ -98,7 +98,8 @@ def read_header_from_io(file, label=None, msg=None):
     Raises
     ______
     ValueError
-        If
+        If a header could not be parsed from file. Columns must be coma delimited. Column names
+        with commas must be escaped by enclosing them in double quotes.
     """
     if label is None:
         label = "uploaded"
