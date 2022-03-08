@@ -1,6 +1,6 @@
 Validation
 ==========
-Validation features mave dataset validators functions applied in MaveTools and MaveDB.
+Validation features MAVE dataset validator functions applied in MaveTools and MaveDB.
 
 .. toctree::
    :maxdepth: 2
