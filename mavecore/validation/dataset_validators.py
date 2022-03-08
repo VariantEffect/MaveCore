@@ -155,6 +155,8 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
 
 
 def validate_at_least_one_additional_column(header, label=None, msg=None):
+    # TODO
+    # verify parameter types
     """
     Parameters
     __________
