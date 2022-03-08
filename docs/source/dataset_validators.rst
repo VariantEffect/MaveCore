@@ -1,7 +1,7 @@
 dataset validation
 ==================
 
-dataset validation description
+Dataset validation contains validation code for datasets.
 
 
 .. automodule:: mavecore.validation.dataset_validators
