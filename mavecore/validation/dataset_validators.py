@@ -172,6 +172,7 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
     Raises
     ______
     ValueError
+        If there are not additional columns in the header argument.
     """
     if label is None:
         label = "Uploaded"
