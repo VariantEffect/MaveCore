@@ -101,11 +101,21 @@ def validate_uniprot_identifier(identifier):
 
 
 def validate_refseq_identifier(identifier):
+    """
+
+    :param identifier:
+    :return:
+    """
     if not idutils.is_refseq(identifier):
         raise ValidationError(f"'{identifier}' is not a valid RefSeq accession.")
 
 
 def validate_genome_identifier(identifier):
+    """
+
+    :param identifier:
+    :return:
+    """
     if not idutils.is_genome(identifier):
         raise ValidationError(
             f"'{identifier}' is not a valid GenBank or RefSeq genome assembly."
@@ -129,36 +139,65 @@ def validate_keyword_list(values):
 
 
 def validate_pubmed_list(values):
+    """
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_pubmed_identifier(value)
 
 
 def validate_sra_list(values):
+    """
+
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_sra_identifier(value)
 
 
 def validate_doi_list(values):
+    """
+
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_doi_identifier(value)
 
 
 def validate_ensembl_list(values):
+    """
+
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_ensembl_identifier(value)
 
 
 def validate_refseq_list(values):
+    """
+
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_refseq_identifier(value)
 
 
 def validate_uniprot_list(values):
+    """
+
+    :param values:
+    :return:
+    """
     for value in values:
         if not is_null(value):
             validate_uniprot_identifier(value)
