@@ -6,5 +6,8 @@ Validation features mave dataset validators functions applied in MaveTools and M
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: mavecore.validation.dataset_validators
-   :members:
+   dataset_validators
+   genome_validators
+   metadata_validators
+   urn_validators
+   variant_validators
