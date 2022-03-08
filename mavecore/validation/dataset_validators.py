@@ -85,10 +85,10 @@ def read_header_from_io(file, label=None, msg=None):
     Parameters
     __________
     file :
-    label :
-        default = None
-    msg :
-        default = None
+    label : str
+        (default = None)
+    msg : str
+        (default = None) The message that is printed in the event of an error is raised.
 
     Returns
     _______
