@@ -158,6 +158,9 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
     # TODO
     # verify parameter types
     """
+    This function checks the passed header to see if there exists additional columns besides the three
+    specified by constants.hgvs_nt_column, constants.hgvs_splice_column, and constants.hgvs_pro_column.
+
     Parameters
     __________
     header :
