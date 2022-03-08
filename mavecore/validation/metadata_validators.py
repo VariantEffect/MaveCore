@@ -61,6 +61,11 @@ def validate_keyword(kw):
 
 
 def validate_pubmed_identifier(identifier):
+    """
+
+    :param identifier:
+    :return:
+    """
     if not idutils.is_pmid(identifier):
         raise ValidationError(f"'{identifier} is not a valid PubMed identifier.")
 
