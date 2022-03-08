@@ -18,7 +18,8 @@ def is_null(value):
 
     Returns
     _______
-
+    bool
+        True value is NoneType or if value matches the stated regex patterns in constants.null_values_re.
     """
     value = str(value).strip().lower()
     return constants.null_values_re.fullmatch(value) or not value
