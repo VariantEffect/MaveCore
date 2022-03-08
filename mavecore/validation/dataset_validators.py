@@ -13,7 +13,8 @@ def is_null(value):
 
     Parameters
     __________
-    value
+    value : str
+        The value to be checked as null or not.
 
     Returns
     _______
