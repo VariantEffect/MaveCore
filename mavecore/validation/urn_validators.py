@@ -56,6 +56,11 @@ MAVEDB_ANY_URN_RE = re.compile(MAVEDB_ANY_URN_PATTERN)
 
 
 def validate_mavedb_urn(urn):
+    """
+
+    :param urn:
+    :return:
+    """
     if not MAVEDB_ANY_URN_RE.match(urn):
         raise ValidationError(
             "Error test"
@@ -64,6 +69,11 @@ def validate_mavedb_urn(urn):
 
 
 def validate_mavedb_urn_experimentset(urn):
+    """
+
+    :param urn:
+    :return:
+    """
     if not (MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
             "Error test"
@@ -72,6 +82,11 @@ def validate_mavedb_urn_experimentset(urn):
 
 
 def validate_mavedb_urn_experiment(urn):
+    """
+
+    :param urn:
+    :return:
+    """
     if not (MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
             "Error test"
@@ -80,6 +95,11 @@ def validate_mavedb_urn_experiment(urn):
 
 
 def validate_mavedb_urn_scoreset(urn):
+    """
+
+    :param urn:
+    :return:
+    """
     if not (MAVEDB_SCORESET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
             "Error test"
@@ -88,6 +108,11 @@ def validate_mavedb_urn_scoreset(urn):
 
 
 def validate_mavedb_urn_variant(urn):
+    """
+
+    :param urn:
+    :return:
+    """
     if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
             "Error test"
