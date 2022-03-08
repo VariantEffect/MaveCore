@@ -92,6 +92,8 @@ def read_header_from_io(file, label=None, msg=None):
 
     Returns
     _______
+    str
+        The header that was read from io.
 
     Raises
     ______
