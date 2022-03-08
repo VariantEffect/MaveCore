@@ -3,7 +3,14 @@ from mavecore.validation import dataset_validators
 
 def validate_all(countfile=None, scorefile=None, scorejson=None):
     """
-    By calling other helper functions, this function runs all of the validation code
+    By calling other helper functions, this function runs all of the validation code.
+
+    Parameters
+    __________
+    countfile :
+    scorefile :
+    scorejson :
+
     """
     validate_dataset(countfile, scorefile, scorejson)
 
