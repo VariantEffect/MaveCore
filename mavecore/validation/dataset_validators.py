@@ -38,6 +38,8 @@ class WordLimitValidator:
         # TODO
         # check the code parameter type
         """
+        This constructor sets the values of the WordLimitValidator class attributes
+        message, code, and counter.
 
         Parameters
         __________
