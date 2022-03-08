@@ -80,6 +80,8 @@ def read_header_from_io(file, label=None, msg=None):
     # TODO
     # confirm types for parameters
     """
+    This takes a file and reads the header from that file.
+
     Parameters
     __________
     file :
