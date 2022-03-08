@@ -208,6 +208,9 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
     Raises
     ______
     ValueError
+         If the file header contains blank/empty/whitespace. Only columns or the
+         case-insensitive null values listed in constants.readable_null_values
+         are permitted.
     """
     if label is None:
         label = "File"
