@@ -4,8 +4,8 @@
    contain the root `toctree` directive.
 
 MaveCore
-=========
-MaveTools is a pure Python Module for bioinformatics and computational biology.
+========
+MaveCore is a pure Python Module for bioinformatics and computational biology.
 It features all the shared functionality of MaveDB and MaveTools.
 
 Install MaveCore using pip::
