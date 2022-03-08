@@ -43,9 +43,12 @@ class WordLimitValidator:
 
         Parameters
         __________
-        word_limit :
-        message :
+        word_limit : int
+            The word limit assigned to the word limit attribute.
+        message : str
+            (default = None) The message assigned to the message attribute.
         code :
+            (default = None) The code assigned to the code attribute.
         """
         if message is not None:
             self.message = message
