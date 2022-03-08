@@ -71,6 +71,11 @@ def validate_pubmed_identifier(identifier):
 
 
 def validate_doi_identifier(identifier):
+    """
+
+    :param identifier:
+    :return:
+    """
     if not idutils.is_doi(identifier):
         raise ValidationError(f"'{identifier}' is not a valid DOI.")
 
