@@ -9,6 +9,8 @@ from mavecore.validation.exceptions import ValidationError
 
 
 def validate_columns_match(variant, scoreset) -> None:
+    # TODO
+    # document errors correctly, note key error
     """
     Validate that a child matches parents defined columns to keep
     data in sync.
