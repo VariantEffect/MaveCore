@@ -27,6 +27,7 @@ def is_null(value):
 
 class WordLimitValidator:
     """
+    This class
 
     """
     message = "This field is limited to {} words."
