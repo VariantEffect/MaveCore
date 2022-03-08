@@ -81,6 +81,11 @@ def validate_doi_identifier(identifier):
 
 
 def validate_ensembl_identifier(identifier):
+    """
+
+    :param identifier:
+    :return:
+    """
     if not idutils.is_ensembl(identifier):
         raise ValidationError(f"'{identifier}' is not a valid Ensembl accession.")
 
