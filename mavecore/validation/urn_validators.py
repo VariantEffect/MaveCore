@@ -119,8 +119,15 @@ def validate_mavedb_urn_scoreset(urn):
     """
     This function validates a Scoreset urn and raises an error if it is not valid.
 
-    :param urn:
-    :return:
+    Parameters
+    __________
+    urn : str
+        The Scoreset urn to be validated
+
+    Raises
+    ______
+    ValidationError
+        If the Scoreset urn is not valid.
     """
     if not (MAVEDB_SCORESET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
