@@ -139,8 +139,15 @@ def validate_mavedb_urn_variant(urn):
     """
     This function validates a MaveDB Variant urn and raises an error if it is not valid.
 
-    :param urn:
-    :return:
+    Parameters
+    __________
+    urn : str
+        The MaveDB Variant urn to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the MaveDB Variant urn is not valid.
     """
     if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
