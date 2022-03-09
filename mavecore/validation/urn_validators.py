@@ -57,6 +57,7 @@ MAVEDB_ANY_URN_RE = re.compile(MAVEDB_ANY_URN_PATTERN)
 
 def validate_mavedb_urn(urn):
     """
+    This function validates a MaveDB urn and raises an error if it is not valid.
 
     :param urn:
     :return:
