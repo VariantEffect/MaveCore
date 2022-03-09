@@ -137,6 +137,7 @@ def validate_mavedb_urn_scoreset(urn):
 
 def validate_mavedb_urn_variant(urn):
     """
+    This function validates a MaveDB Variant urn and raises an error if it is not valid.
 
     :param urn:
     :return:
