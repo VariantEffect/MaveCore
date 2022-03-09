@@ -59,8 +59,15 @@ def validate_mavedb_urn(urn):
     """
     This function validates a MaveDB urn and raises an error if it is not valid.
 
-    :param urn:
-    :return:
+    Parameters
+    __________
+    urn : str
+        The MaveDB urn to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the MaveDB urn is not valid.
     """
     if not MAVEDB_ANY_URN_RE.match(urn):
         raise ValidationError(
