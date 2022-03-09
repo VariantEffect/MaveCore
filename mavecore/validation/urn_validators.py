@@ -71,8 +71,7 @@ def validate_mavedb_urn(urn):
     """
     if not MAVEDB_ANY_URN_RE.match(urn):
         raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid urn.", params={"urn": urn}
+            "%(urn)s is not a valid urn.", params={"urn": urn}
         )
 
 
