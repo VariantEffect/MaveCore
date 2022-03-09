@@ -151,6 +151,5 @@ def validate_mavedb_urn_variant(urn):
     """
     if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid Variant urn.", params={"urn": urn}
+            "%(urn)s is not a valid Variant urn.", params={"urn": urn}
         )
