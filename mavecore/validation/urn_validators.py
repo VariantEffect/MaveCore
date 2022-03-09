@@ -77,6 +77,7 @@ def validate_mavedb_urn(urn):
 
 def validate_mavedb_urn_experimentset(urn):
     """
+    This function validates a Experiment Set urn and raises an error if it is not valid.
 
     :param urn:
     :return:
