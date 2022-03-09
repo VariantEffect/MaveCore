@@ -91,8 +91,7 @@ def validate_mavedb_urn_experimentset(urn):
     """
     if not (MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid Experiment Set urn.", params={"urn": urn}
+            "%(urn)s is not a valid Experiment Set urn.", params={"urn": urn}
         )
 
 
