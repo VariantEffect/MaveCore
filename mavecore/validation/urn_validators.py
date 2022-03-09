@@ -99,8 +99,15 @@ def validate_mavedb_urn_experiment(urn):
     """
     This function validates an Experiment urn and raises an error if it is not valid.
 
-    :param urn:
-    :return:
+    Parameters
+    __________
+    urn : str
+        The Experiment urn to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the Experiemnt urn is not valid.
     """
     if not (MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
         raise ValidationError(
