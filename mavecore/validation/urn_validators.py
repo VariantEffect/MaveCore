@@ -117,6 +117,7 @@ def validate_mavedb_urn_experiment(urn):
 
 def validate_mavedb_urn_scoreset(urn):
     """
+    This function validates a Scoreset urn and raises an error if it is not valid.
 
     :param urn:
     :return:
