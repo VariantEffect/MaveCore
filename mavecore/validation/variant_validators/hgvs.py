@@ -13,6 +13,7 @@ from mavecore.validation.constants import (
     hgvs_pro_column,
 )
 
+__all__ = ["validate_hgvs_string"]
 
 # from core.utilities import is_null
 def is_null(value):
@@ -83,7 +84,9 @@ def validate_hgvs_string(
                 f"protein variant prefix is 'p.'."
             )
     else:
-        raise ValueError("Unknown column '{}'. Expected nt, splice or p".format(column))
+        raise ValueError(
+            "Unknown column '{}'. Expected nt, splice or p".format(column)
+        )
 
     return str(variant)
 
