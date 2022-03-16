@@ -1,4 +1,4 @@
-from validation.variant_validators import (
+from mavecore.validation.variant_validators import (
     validate_hgvs_string,
     validate_variant_json,
     validate_columns_match,
