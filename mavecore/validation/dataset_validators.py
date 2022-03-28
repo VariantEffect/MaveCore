@@ -5,7 +5,7 @@ import re
 from numpy.testing import assert_array_equal
 
 from mavecore.validation import constants
-
+from mavecore.validation.exceptions import ValidationError
 
 def is_null(value):
     """
