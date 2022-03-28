@@ -1,13 +1,13 @@
 import setuptools
-import sys
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-requirements = ["fqfa>=1.2.1"]
-# fqfa requires backported dataclasses in Python 3.6
-if sys.version_info.major == 3 and sys.version_info.minor == 6:
-    requirements.append("dataclasses")
+requirements = ["fqfa>=1.2.1",
+                "mavehgvs>=0.4.0",
+                "idutils>=1.1.0",
+                "pandas>=1.1.0",
+                ]
 
 setuptools.setup(
     name="mavecore",
