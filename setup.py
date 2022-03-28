@@ -3,20 +3,19 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-requirements = ["fqfa>=1.2.1",
-                "mavehgvs>=0.4.0",
-                "idutils>=1.1.0",
-                "pandas>=1.1.0",
-                ]
+requirements = [
+    "fqfa>=1.2.1",
+    "mavehgvs>=0.4.0",
+    "idutils>=1.1.0",
+    "pandas>=1.1.0",
+]
 
 setuptools.setup(
     name="mavecore",
     version="0.1.0",
     author="MaveDB Developers",
     author_email="alan.rubin@wehi.edu.au",
-    description=(
-        "MaveCore implements shared functionality for MaveTools and MaveDB."
-    ),
+    description=("MaveCore implements shared functionality for MaveTools and MaveDB."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/VariantEffect/MaveCore/",

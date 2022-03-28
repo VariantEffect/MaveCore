@@ -18,7 +18,7 @@ from mavecore.validation.constants import (
     required_score_column,
     null_values_list,
     null_values_re,
-    readable_null_values
+    readable_null_values,
 )
 
 
@@ -41,22 +41,17 @@ def is_null(value):
 
 class MaveDataset:
     # TODO
-    """
+    """ """
 
-    """
     class DatasetType:
         # TODO
-        """
-
-        """
+        """ """
         SCORES = "scores"
         COUNTS = "counts"
 
     class HGVSColumns:
         # TODO
-        """
-
-        """
+        """ """
         NUCLEOTIDE: str = hgvs_nt_column
         TRANSCRIPT: str = hgvs_splice_column
         PROTEIN: str = hgvs_pro_column
@@ -74,9 +69,8 @@ class MaveDataset:
 
     class AdditionalColumns:
         # TODO
-        """
+        """ """
 
-        """
         @classmethod
         def options(cls) -> List[str]:
             # TODO
@@ -969,14 +963,11 @@ class MaveDataset:
 
 class MaveScoresDataset(MaveDataset):
     # TODO
-    """
+    """ """
 
-    """
     class AdditionalColumns:
         # TODO
-        """
-
-        """
+        """ """
         SCORES = required_score_column
 
         @classmethod
@@ -1052,9 +1043,8 @@ class MaveScoresDataset(MaveDataset):
 
 class MaveCountsDataset(MaveDataset):
     # TODO
-    """
+    """ """
 
-    """
     @property
     def label(self) -> str:
         # TODO
