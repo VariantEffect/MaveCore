@@ -1,6 +1,5 @@
 from functools import partial
 from typing import Optional, Union
-import re
 
 from mavehgvs import Variant, MaveHgvsParseError
 from mavecore.validation.exceptions import ValidationError
