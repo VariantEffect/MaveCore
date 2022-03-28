@@ -11,22 +11,7 @@ from mavecore.validation.constants import (
 )
 
 
-# from core.utilities import is_null
-def is_null(value):
-    """
-    Returns True if a stripped/lowercase value in in `nan_col_values`.
-
-    Parameters
-    __________
-    value
-
-    Returns
-    _______
-
-    """
-    value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
-
+from mavecore.validation.utilities import is_null
 
 def validate_hgvs_string(
     value: Union[str, bytes],
