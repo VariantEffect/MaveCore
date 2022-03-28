@@ -14,6 +14,14 @@ class WordLimitValidator:
     """
     This class
 
+    Attributes
+    __________
+    message : str
+        Message template to describe how many words a field is limited to.
+    code : str
+
+    counter : str
+
     """
     message = "This field is limited to {} words."
     code = "invalid"
