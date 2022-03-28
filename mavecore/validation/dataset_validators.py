@@ -5,20 +5,45 @@ import re
 from numpy.testing import assert_array_equal
 
 from mavecore.validation import constants
+from mavecore.validation.exceptions import ValidationError
 
-
-def is_null(value):
-    """Returns True if a stripped/lowercase value in in `nan_col_values`."""
-    value = str(value).strip().lower()
-    return constants.null_values_re.fullmatch(value) or not value
+from mavecore.validation.utilities import is_null
 
 
 class WordLimitValidator:
+    """
+    This class
+
+    Attributes
+    __________
+    message : str
+        Message template to describe how many words a field is limited to.
+    code : str
+
+    counter : str
+
+    """
+
     message = "This field is limited to {} words."
     code = "invalid"
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
 
     def __init__(self, word_limit, message=None, code=None):
+        # TODO
+        # check the code parameter type
+        """
+        This constructor sets the values of the WordLimitValidator class attributes
+        message, code, and counter.
+
+        Parameters
+        __________
+        word_limit : int
+            The word limit assigned to the word limit attribute.
+        message : str
+            (default = None) The message assigned to the message attribute.
+        code :
+            (default = None) The code assigned to the code attribute.
+        """
         if message is not None:
             self.message = message
         if code is not None:
@@ -26,13 +51,50 @@ class WordLimitValidator:
         self.word_limit = int(word_limit)
 
     def __call__(self, value):
+        """
+        Parameters
+        __________
+        value :
+
+        Returns
+        _______
+
+        Raises
+        ______
+        ValidationError
+            If
+        """
         if not value:
             return
         if len(self.counter.findall(value)) > self.word_limit:
-            raise ValueError(self.message.format(self.word_limit))
+            raise ValidationError(self.message.format(self.word_limit))
 
 
 def read_header_from_io(file, label=None, msg=None):
+    # TODO
+    # confirm types for parameters
+    """
+    This takes a file and reads the header from that file.
+
+    Parameters
+    __________
+    file :
+    label : str
+        (default = None)
+    msg : str
+        (default = None) The message that is printed in the event of an error is raised.
+
+    Returns
+    _______
+    str
+        The header that was read from io.
+
+    Raises
+    ______
+    ValidationError
+        If a header could not be parsed from file. Columns must be coma delimited. Column names
+        with commas must be escaped by enclosing them in double quotes.
+    """
     if label is None:
         label = "uploaded"
 
@@ -50,10 +112,24 @@ def read_header_from_io(file, label=None, msg=None):
                 "Columns are comma delimited. Column names with commas must be"
                 "escaped by enclosing them in double quotes.".format(label)
             )
-        raise ValueError(msg)
+        raise ValidationError(msg)
 
 
 def validate_has_hgvs_in_header(header, label=None, msg=None):
+    """
+    Parameters
+    __________
+    header :
+    label :
+        default = None
+    msg :
+        default = None
+
+    Raises
+    ______
+    ValidationError
+        If
+    """
     if label is None:
         label = "Uploaded"
     params = {}
@@ -69,10 +145,29 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
             "col_p": constants.hgvs_pro_column,
         }
     if not set(header) & set(constants.hgvs_columns):
-        raise ValueError(msg)
+        raise ValidationError(msg)
 
 
 def validate_at_least_one_additional_column(header, label=None, msg=None):
+    # TODO
+    # verify parameter types
+    """
+    This function checks the passed header to see if there exists additional columns besides the three
+    specified by constants.hgvs_nt_column, constants.hgvs_splice_column, and constants.hgvs_pro_column.
+
+    Parameters
+    __________
+    header :
+    label :
+        default = None
+    msg :
+        default = None
+
+    Raises
+    ______
+    ValidationError
+        If there are not additional columns in the header argument.
+    """
     if label is None:
         label = "Uploaded"
     params = {}
@@ -88,10 +183,29 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
                 )
             )
             params = {"label": label}
-        raise ValueError(msg)
+        raise ValidationError(msg)
 
 
 def validate_header_contains_no_null_columns(header, label=None, msg=None):
+    """
+    This function checks that the header parameter does not contain any null columns that
+    are not in the case-insensitive null values listed in constants.readable_null_values.
+
+    Parameters
+    __________
+    header :
+    label :
+        (default = None)
+    msg :
+        (default = None)
+
+    Raises
+    ______
+    ValidationError
+         If the file header contains blank/empty/whitespace. Only columns or the
+         case-insensitive null values listed in constants.readable_null_values
+         are permitted.
+    """
     if label is None:
         label = "File"
     any_null = any([is_null(v) for v in header])
@@ -100,9 +214,11 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
             msg = (
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
-                "values: {}.".format(label, ", ".join(constants.readable_null_values))
+                "values: {}.".format(
+                    label, ", ".join(constants.readable_null_values)
+                )
             )
-        raise ValueError(msg)
+        raise ValidationError(msg)
 
 
 def validate_datasets_define_same_variants(scores, counts):
@@ -116,6 +232,11 @@ def validate_datasets_define_same_variants(scores, counts):
         Scores dataframe parsed from an uploaded scores file.
     counts : `pd.DataFrame`
         Scores dataframe parsed from an uploaded counts file.
+
+    Raises
+    ______
+    ValidationError
+        If score and counts files do not define the same variants.
     """
     try:
         assert_array_equal(
@@ -131,7 +252,7 @@ def validate_datasets_define_same_variants(scores, counts):
             counts[constants.hgvs_pro_column].sort_values().values,
         )
     except AssertionError:
-        raise ValueError(
+        raise ValidationError(
             "Your score and counts files do not define the same variants. "
             "Check that the hgvs columns in both files match."
         )
@@ -147,6 +268,11 @@ def validate_scoreset_score_data_input(file):
     ----------
     file : :class:`io.FileIO`
         An open file handle in read mode.
+
+    Raises
+    ______
+    ValidationError
+        If score data file is missing the required column constants.required_score_column
     """
     file.seek(0)
     header = read_header_from_io(file, label="Score")
@@ -155,7 +281,7 @@ def validate_scoreset_score_data_input(file):
     validate_at_least_one_additional_column(header, label="Score")
 
     if constants.required_score_column not in header:
-        raise ValueError(
+        raise ValidationError(
             "Score data file is missing the required column "
             + constants.required_score_column
             + "."
@@ -190,27 +316,45 @@ def validate_scoreset_json(dict_):
     ----------
     dict_ : dict
         Dictionary of keys mapping to a list.
+
+    Raises
+    ______
+    ValidationError
+        If scoreset data is missing the required key.
+    ValidationError
+        If header values are not strings.
+    ValidationError
+        If
+    ValidationError
+        If missing required column constants.required_score_column for score dataset.
+    ValidationError
+        If encountered unexpected keys extras.
     """
     required_columns = [constants.score_columns, constants.count_columns]
 
     for key in required_columns:
         if key not in dict_.keys():
-            raise ValueError("Scoreset data is missing the required key " + key)
+            raise ValidationError(
+                "Scoreset data is missing the required key " + key
+            )
 
         columns = dict_[key]
         if not all([isinstance(c, str) for c in columns]):
-            raise ValueError("Header values must be strings.")
+            raise ValidationError("Header values must be strings.")
 
         if not isinstance(columns, list):
             type_ = type(columns).__name__
-            raise ValueError(
-                "Value for " + key.replace("_", " ") + " must be a list not " + type_
+            raise ValidationError(
+                "Value for "
+                + key.replace("_", " ")
+                + " must be a list not "
+                + type_
             )
 
         # Check score columns is not-empty and at least contains hgvs and score
         if key == constants.score_columns:
             if constants.required_score_column not in columns:
-                raise ValueError(
+                raise ValidationError(
                     "Missing required column constants.required_score_column "
                     "for score dataset."
                 )
@@ -220,4 +364,4 @@ def validate_scoreset_json(dict_):
     extras = [k for k in dict_.keys() if k not in set(required_columns)]
     if len(extras) > 0:
         extras = [k for k in dict_.keys() if k not in required_columns]
-        raise ValueError("Encountered unexpected keys extras")
+        raise ValidationError("Encountered unexpected keys extras")
