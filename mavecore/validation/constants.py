@@ -3,7 +3,7 @@ import re
 """
 Null Constant definitions
 """
-NA_value = "NA"
+NA_STRING = "NA"
 null_values_list = (
     "nan",
     "na",
@@ -13,11 +13,11 @@ null_values_list = (
     "n/a",
     "null",
     "nil",
-    NA_value,
+    NA_STRING,
 )
 
 null_values_re = re.compile(
-    r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_value), flags=re.IGNORECASE
+    r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_STRING), flags=re.IGNORECASE
 )
 
 readable_null_values = [
