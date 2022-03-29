@@ -13,11 +13,17 @@ null_values_list = (
     "n/a",
     "null",
     "nil",
-    NA_STRING,
 )
+# enforce the assumption that these are all lowercase values
+null_values_list = [s.lower() for s in null_values_list]
+# add the NA_STRING only if it's not already in the list
+if NA_STRING.lower() not in null_values_list:
+    null_values_list.append(NA_STRING.lower())
+null_values_list.sort()
 
 null_values_re = re.compile(
-    r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_STRING), flags=re.IGNORECASE
+    r"^\s+$|" + "|".join(f"^{s}$" for s in null_values_list if len(s)),
+    flags=re.IGNORECASE,
 )
 
 readable_null_values_list = [f"'{s}'" for s in null_values_list] + ["whitespace"]
