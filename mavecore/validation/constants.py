@@ -20,9 +20,7 @@ null_values_re = re.compile(
     r"^\s+$|none|nan|na|undefined|n/a|null|nil|{}".format(NA_STRING), flags=re.IGNORECASE
 )
 
-readable_null_values = [
-    "'{}'".format(v) for v in set([v.lower() for v in null_values_list]) if v.strip()
-] + ["whitespace"]
+readable_null_values_list = [f"'{s}'" for s in null_values_list] + ["whitespace"]
 
 hgvs_nt_column = "hgvs_nt"
 hgvs_splice_column = "hgvs_splice"

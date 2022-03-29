@@ -9,7 +9,7 @@ from mavecore.validation import constants
 
 def is_null(value):
     """
-    Returns True if a stripped/lowercase value in in `nan_col_values`.
+    Checks if a stripped/lowercase value is one of the recognized NA or NULL string values.
 
     Parameters
     __________
@@ -19,7 +19,8 @@ def is_null(value):
     Returns
     _______
     bool
-        True value is NoneType or if value matches the stated regex patterns in constants.null_values_re.
+        True value is NoneType, is an empty string, or if value matches the stated regex patterns in
+        constants.null_values_re.
     """
     value = str(value).strip().lower()
     return constants.null_values_re.fullmatch(value) or not value
@@ -221,7 +222,9 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
             msg = (
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
-                "values: {}.".format(label, ", ".join(constants.readable_null_values))
+                "values: {}.".format(
+                    label, ", ".join(constants.readable_null_values_list)
+                )
             )
         raise ValueError(msg)
 
