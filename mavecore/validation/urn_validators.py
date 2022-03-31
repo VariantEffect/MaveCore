@@ -57,39 +57,33 @@ MAVEDB_ANY_URN_RE = re.compile(MAVEDB_ANY_URN_PATTERN)
 
 def validate_mavedb_urn(urn):
     if not MAVEDB_ANY_URN_RE.match(urn):
-        raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid urn.", params={"urn": urn}
-        )
+        raise ValidationError("{} is not a valid urn.".format(urn))
 
 
 def validate_mavedb_urn_experimentset(urn):
-    if not (MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+    if not (
+        MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)
+    ):
         raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid Experiment Set urn.", params={"urn": urn}
+            # "Error test"
+            "{}'s is not a valid Experiment Set urn.".format(urn)
         )
 
 
 def validate_mavedb_urn_experiment(urn):
-    if not (MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+    if not (
+        MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)
+    ):
         raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid Experiment urn.", params={"urn": urn}
+            "{}'s is not a valid Experiment urn.".format(urn)
         )
 
 
 def validate_mavedb_urn_scoreset(urn):
     if not (MAVEDB_SCORESET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid score set urn.", params={"urn": urn}
-        )
+        raise ValidationError("{}'s is not a valid score set urn.".format(urn))
 
 
 def validate_mavedb_urn_variant(urn):
     if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError(
-            "Error test"
-            # "%(urn)s is not a valid Variant urn.", params={"urn": urn}
-        )
+        raise ValidationError("{}'s is not a valid Variant urn.".format(urn))
