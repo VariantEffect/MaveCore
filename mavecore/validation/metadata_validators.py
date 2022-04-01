@@ -1,3 +1,4 @@
+# TODO Django dependent, Django forms, whole file needs to be refactored
 import idutils
 
 from mavecore.validation.exceptions import ValidationError
