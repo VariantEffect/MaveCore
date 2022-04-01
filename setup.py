@@ -12,14 +12,14 @@ if sys.version_info.major == 3 and sys.version_info.minor == 6:
 setuptools.setup(
     name="mavecore",
     version="0.1.0",
-    author="Daniel Esposito and Alan F Rubin",
+    author="MaveDB developers",
     author_email="alan.rubin@wehi.edu.au",
     description=(
         "MaveCore is to create a new dependency that contains all the shared functionality for MaveTools and MaveDB."
     ),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/VariantEffect/MaveCore/tree/add_validation",
+    url="https://github.com/VariantEffect/MaveCore/tree/testMaveCore",
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
