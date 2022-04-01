@@ -29,7 +29,6 @@ class WordLimitValidator:
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
 
     def __init__(self, word_limit, message=None, code=None):
-        # TODO
         # check the code parameter type
         """
         This constructor sets the values of the WordLimitValidator class attributes
