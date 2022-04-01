@@ -23,7 +23,7 @@ from mavecore.validation.constants import (
 
 
 def is_null(value):
-    # TODO
+    # TODO this is not Django dependent
     """
     Returns True if a stripped/lowercase value in in `nan_col_values`.
 
@@ -34,6 +34,7 @@ def is_null(value):
     Returns
     _______
     bool
+
     """
     value = str(value).strip().lower()
     return null_values_re.fullmatch(value) or not value
