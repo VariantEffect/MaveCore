@@ -57,7 +57,7 @@ MAVEDB_ANY_URN_RE = re.compile(MAVEDB_ANY_URN_PATTERN)
 
 def validate_mavedb_urn(urn):
     if not MAVEDB_ANY_URN_RE.match(urn):
-        raise ValidationError("{} is not a valid urn.".format(urn))
+        raise ValidationError("{}'s is not a valid urn.".format(urn))
 
 
 def validate_mavedb_urn_experimentset(urn):
