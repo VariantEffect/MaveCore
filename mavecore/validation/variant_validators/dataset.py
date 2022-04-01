@@ -1,3 +1,4 @@
+# TODO Django dependent, whole file will need to be refactored
 import re
 from collections import defaultdict
 from io import StringIO
