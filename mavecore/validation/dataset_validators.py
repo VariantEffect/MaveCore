@@ -268,7 +268,7 @@ def validate_scoreset_score_data_input(file):
 
     Raises
     ______
-    ValueError
+    ValidationError
         If score data file is missing the required column constants.required_score_column
     """
     file.seek(0)
