@@ -23,6 +23,7 @@ class WordLimitValidator:
     counter : str
 
     """
+
     message = "This field is limited to {} words."
     code = "invalid"
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
@@ -213,7 +214,9 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
             msg = (
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
-                "values: {}.".format(label, ", ".join(constants.readable_null_values))
+                "values: {}.".format(
+                    label, ", ".join(constants.readable_null_values)
+                )
             )
         raise ValidationError(msg)
 
@@ -331,7 +334,9 @@ def validate_scoreset_json(dict_):
 
     for key in required_columns:
         if key not in dict_.keys():
-            raise ValidationError("Scoreset data is missing the required key " + key)
+            raise ValidationError(
+                "Scoreset data is missing the required key " + key
+            )
 
         columns = dict_[key]
         if not all([isinstance(c, str) for c in columns]):
@@ -340,7 +345,10 @@ def validate_scoreset_json(dict_):
         if not isinstance(columns, list):
             type_ = type(columns).__name__
             raise ValidationError(
-                "Value for " + key.replace("_", " ") + " must be a list not " + type_
+                "Value for "
+                + key.replace("_", " ")
+                + " must be a list not "
+                + type_
             )
 
         # Check score columns is not-empty and at least contains hgvs and score

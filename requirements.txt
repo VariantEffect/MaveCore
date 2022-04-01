@@ -1,6 +1,2 @@
-pandas~=1.4.1
-mavehgvs~=0.4.0
 numpy~=1.22.2
-fqfa~=1.2.1
-IDUtils~=1.1.12
 setuptools~=60.9.3
