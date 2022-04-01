@@ -23,7 +23,6 @@ from mavecore.validation.constants import (
 
 
 def is_null(value):
-    # TODO this is not Django dependent
     """
     Returns True if a stripped/lowercase value in in `nan_col_values`.
 
@@ -41,12 +40,10 @@ def is_null(value):
 
 
 class MaveDataset:
-    # TODO
     """
 
     """
     class DatasetType:
-        # TODO
         """
 
         """
@@ -54,7 +51,6 @@ class MaveDataset:
         COUNTS = "counts"
 
     class HGVSColumns:
-        # TODO
         """
 
         """
@@ -64,7 +60,6 @@ class MaveDataset:
 
         @classmethod
         def options(cls) -> List[str]:
-            # TODO
             """
 
             Returns
@@ -74,13 +69,11 @@ class MaveDataset:
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
     class AdditionalColumns:
-        # TODO
         """
 
         """
         @classmethod
         def options(cls) -> List[str]:
-            # TODO
             """
 
             Returns
@@ -92,7 +85,6 @@ class MaveDataset:
     # ---------------------- Construction------------------------------------ #
     @classmethod
     def for_scores(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveScoresDataset":
-        # TODO
         """
 
         Parameters
@@ -108,7 +100,6 @@ class MaveDataset:
 
     @classmethod
     def for_counts(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveCountsDataset":
-        # TODO
         """
 
         Parameters
@@ -125,7 +116,6 @@ class MaveDataset:
     def _for_type(
         cls, file: Union[str, TextIO, BinaryIO], dataset_type: str
     ) -> Union["MaveScoresDataset", "MaveCountsDataset"]:
-        # TODO
         """
 
         Parameters
@@ -188,7 +178,6 @@ class MaveDataset:
     # ---------------------- Public ----------------------------------------- #
     @property
     def label(self) -> str:
-        # TODO
         """
 
         Returns
@@ -199,7 +188,6 @@ class MaveDataset:
 
     @property
     def is_valid(self) -> Optional[bool]:
-        # TODO
         """
 
         Returns
@@ -212,7 +200,6 @@ class MaveDataset:
 
     @property
     def n_errors(self) -> Optional[int]:
-        # TODO
         """
 
         Returns
@@ -225,7 +212,6 @@ class MaveDataset:
 
     @property
     def errors(self) -> Optional[List[str]]:
-        # TODO
         """
 
         Returns
@@ -236,7 +222,6 @@ class MaveDataset:
 
     @property
     def is_empty(self) -> bool:
-        # TODO
         """
 
         Returns
@@ -247,7 +232,6 @@ class MaveDataset:
 
     @property
     def columns(self) -> List[str]:
-        # TODO
         """
 
         Returns
@@ -258,7 +242,6 @@ class MaveDataset:
 
     @property
     def hgvs_columns(self) -> List[str]:
-        # TODO
         """
 
         Returns
@@ -269,7 +252,6 @@ class MaveDataset:
 
     @property
     def non_hgvs_columns(self) -> List[str]:
-        # TODO
         """
 
         Returns
@@ -280,7 +262,6 @@ class MaveDataset:
 
     @property
     def n_rows(self) -> int:
-        # TODO
         """
 
         Returns
@@ -291,7 +272,6 @@ class MaveDataset:
 
     @property
     def n_columns(self) -> int:
-        # TODO
         """
 
         Returns
@@ -302,7 +282,6 @@ class MaveDataset:
 
     @property
     def index_column(self) -> Optional[str]:
-        # TODO
         """
 
         Returns
@@ -315,7 +294,6 @@ class MaveDataset:
 
     @property
     def index(self) -> Optional[pd.Index]:
-        # TODO
         """
 
         Returns
@@ -327,7 +305,6 @@ class MaveDataset:
         return self._df.index.copy(deep=True)
 
     def data(self, serializable=False) -> pd.DataFrame:
-        # TODO
         """
         Return underlying dataframe object.
 
@@ -349,7 +326,6 @@ class MaveDataset:
         return self._df.copy(deep=True)
 
     def match_other(self, other: "MaveDataset") -> Optional[bool]:
-        # TODO
         """
         Check that each dataset defined the same variants in each column.
 
@@ -376,7 +352,6 @@ class MaveDataset:
         )
 
     def to_dict(self) -> Dict[str, Dict]:
-        # TODO
         """
         Returns underlying dataframe as dictionary in 'records' orientation.
         Keys will be index values and values will be an inner dictionary mapping
@@ -398,7 +373,6 @@ class MaveDataset:
         relaxed_ordering: bool = False,
         allow_index_duplicates: bool = False,
     ) -> "MaveDataset":
-        # TODO
         """
 
         Parameters
@@ -453,7 +427,6 @@ class MaveDataset:
         index_column: Optional[str] = None,
         errors: Optional[List[str]] = None,
     ):
-        # TODO
         """
 
         Parameters
@@ -470,7 +443,6 @@ class MaveDataset:
         self._errors = None if errors is None else list(errors)
 
     def __repr__(self):
-        # TODO
         """
 
         Returns
@@ -488,7 +460,6 @@ class MaveDataset:
 
     @property
     def _column_order(self) -> Dict[str, int]:
-        # TODO
         """
 
         Returns
@@ -509,7 +480,6 @@ class MaveDataset:
         )
 
     def _validate_columns(self) -> "MaveDataset":
-        # TODO
         """
 
         Returns
@@ -561,7 +531,6 @@ class MaveDataset:
         return self
 
     def _normalize_data(self) -> "MaveDataset":
-        # TODO
         """
 
         Returns
@@ -585,7 +554,6 @@ class MaveDataset:
     def _validate_genomic_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
-        # TODO
         """
 
         Parameters
@@ -639,7 +607,6 @@ class MaveDataset:
     def _validate_transcript_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
-        # TODO
         """
 
         Parameters
@@ -686,7 +653,6 @@ class MaveDataset:
     def _validate_protein_variants(
         self, targetseq: Optional[str] = None, relaxed_ordering: bool = False
     ) -> "MaveDataset":
-        # TODO
         """
 
         Parameters
@@ -738,7 +704,6 @@ class MaveDataset:
         return self
 
     def _validate_index_column(self, allow_duplicates: bool = False) -> "MaveDataset":
-        # TODO
         """
 
         Parameters
@@ -790,7 +755,6 @@ class MaveDataset:
         targetseq: Optional[str] = None,
         relaxed_ordering: bool = False,
     ) -> Tuple[pd.Series, Set[str], List[str]]:
-        # TODO
         """
 
         Parameters
@@ -813,7 +777,6 @@ class MaveDataset:
         errors = []
 
         def validate_variant(variant: str):
-            # TODO
             # TODO: logic mirrors that in validate_hgvs_string, which is kept
             #   as a standalone function for backwards compatibility with
             #   django's model validator field. Merge at some point.
@@ -861,7 +824,6 @@ class MaveDataset:
         return validated_variants, prefixes, errors
 
     def _column_is_null(self, column) -> bool:
-        # TODO
         """
 
         Parameters
@@ -875,7 +837,6 @@ class MaveDataset:
         return len(self._df[self._df[column].isna()]) == len(self._df)
 
     def _column_is_partially_null(self, column) -> bool:
-        # TODO
         """
 
         Parameters
@@ -889,7 +850,6 @@ class MaveDataset:
         return 0 < len(self._df[self._df[column].isna()]) < len(self._df)
 
     def _column_is_fully_specified(self, column) -> bool:
-        # TODO
         """
 
         Parameters
@@ -905,7 +865,6 @@ class MaveDataset:
     def _validate_variant_prefix_for_column(
         self, variant: Variant, prefix: str, column: str, splice_defined: bool
     ) -> Optional[str]:
-        # TODO
         """
 
         Parameters
@@ -969,12 +928,10 @@ class MaveDataset:
 
 
 class MaveScoresDataset(MaveDataset):
-    # TODO
     """
 
     """
     class AdditionalColumns:
-        # TODO
         """
 
         """
@@ -982,7 +939,6 @@ class MaveScoresDataset(MaveDataset):
 
         @classmethod
         def options(cls) -> List[str]:
-            # TODO
             """
 
             Returns
@@ -993,7 +949,6 @@ class MaveScoresDataset(MaveDataset):
 
     @property
     def label(self) -> str:
-        # TODO
         """
 
         Returns
@@ -1003,7 +958,6 @@ class MaveScoresDataset(MaveDataset):
         return "scores"
 
     def _validate_columns(self) -> "MaveDataset":
-        # TODO
         """
 
         Returns
@@ -1026,7 +980,6 @@ class MaveScoresDataset(MaveDataset):
         return self
 
     def _normalize_data(self) -> "MaveDataset":
-        # TODO
         """
 
         Returns
@@ -1052,13 +1005,11 @@ class MaveScoresDataset(MaveDataset):
 
 
 class MaveCountsDataset(MaveDataset):
-    # TODO
     """
 
     """
     @property
     def label(self) -> str:
-        # TODO
         """
 
         Returns

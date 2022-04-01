@@ -1,6 +1,5 @@
 from mavecore.validation.constants import null_values_re
 
-
 def is_null(value):
     """
     Returns True if a stripped/lowercase value in in `nan_col_values`.
