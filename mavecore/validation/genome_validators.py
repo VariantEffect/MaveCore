@@ -1,3 +1,4 @@
+# TODO Django dependent, Django forms, whole file needs to be refactored
 """
 Validator functions for the fields of the following classes:
     WildTypeSequence
