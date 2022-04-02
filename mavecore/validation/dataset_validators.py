@@ -375,11 +375,4 @@ def validate_scoreset_json(dict_):
         extras = [k for k in dict_.keys() if k not in required_columns]
         raise ValidationError("Encountered unexpected keys extras")
 
-# TODO reimplement file extension validators from MaveDB
-# validate_csv_extension
-# validate_gz_extension
-# validate_json_extension
 
-#validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
-#validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
-#validate_json_extension = FileExtensionValidator(allowed_extensions=["json"])
