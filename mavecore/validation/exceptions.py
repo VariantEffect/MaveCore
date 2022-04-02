@@ -5,6 +5,10 @@ NON_FIELD_ERRORS = "__all__"
 
 
 class ValidationError(Exception):
+    None
+
+
+class ValidationError2(Exception):
     """An error while validating data."""
 
     def __init__(self, message, code=None, params=None):
