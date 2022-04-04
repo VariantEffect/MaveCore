@@ -26,9 +26,6 @@ from mavecore.validation.utilities import is_null
 
 
 class MaveDataset:
-    # TODO Django dependent
-    """
-
     class DatasetType:
         # TODO
         """ """
@@ -54,8 +51,6 @@ class MaveDataset:
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
     class AdditionalColumns:
-        # TODO Django dependent
-        """
         @classmethod
         def options(cls) -> List[str]:
             # TODO Django dependent
@@ -814,7 +809,9 @@ class MaveDataset:
                         return variant
 
                     validated = Variant(
-                        variant, targetseq=targetseq, relaxed_ordering=relaxed_ordering
+                        variant,
+                        targetseq=targetseq,
+                        relaxed_ordering=relaxed_ordering,
                     )
                     prefix = validated.prefix.lower()
                     prefixes.add(prefix)
@@ -949,6 +946,7 @@ class MaveDataset:
 class MaveScoresDataset(MaveDataset):
     # TODO
     """ """
+
     class AdditionalColumns:
         # TODO
         """ """
@@ -1028,6 +1026,7 @@ class MaveScoresDataset(MaveDataset):
 class MaveCountsDataset(MaveDataset):
     # TODO
     """ """
+
     @property
     def label(self) -> str:
         # TODO Django dependent

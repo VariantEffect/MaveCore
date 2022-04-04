@@ -9,6 +9,7 @@ from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation.utilities import is_null
 
+
 def is_null(value):
     """
     Checks if a stripped/lowercase value is one of the recognized NA or NULL string values.
@@ -27,9 +28,6 @@ def is_null(value):
     value = str(value).strip().lower()
     return constants.null_values_re.fullmatch(value) or not value
 
-validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
-validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
-validate_json_extension = FileExtensionValidator(allowed_extensions=["json"])
 
 class WordLimitValidator:
     """
@@ -354,9 +352,7 @@ def validate_scoreset_json(dict_):
 
     for key in required_columns:
         if key not in dict_.keys():
-            raise ValidationError(
-                "Scoreset data is missing the required key " + key
-            )
+            raise ValidationError("Scoreset data is missing the required key " + key)
 
         columns = dict_[key]
         if not all([isinstance(c, str) for c in columns]):
@@ -365,10 +361,7 @@ def validate_scoreset_json(dict_):
         if not isinstance(columns, list):
             type_ = type(columns).__name__
             raise ValidationError(
-                "Value for "
-                + key.replace("_", " ")
-                + " must be a list not "
-                + type_
+                "Value for " + key.replace("_", " ") + " must be a list not " + type_
             )
 
         # Check score columns is not-empty and at least contains hgvs and score
@@ -385,5 +378,3 @@ def validate_scoreset_json(dict_):
     if len(extras) > 0:
         extras = [k for k in dict_.keys() if k not in required_columns]
         raise ValidationError("Encountered unexpected keys extras")
-
-

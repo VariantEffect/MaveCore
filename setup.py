@@ -15,9 +15,7 @@ setuptools.setup(
     version="0.1.4",
     author="MaveDB Developers",
     author_email="alan.rubin@wehi.edu.au",
-    description=(
-        "MaveCore implements shared functionality for MaveTools and MaveDB."
-    ),
+    description=("MaveCore implements shared functionality for MaveTools and MaveDB."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/VariantEffect/MaveCore/tree/testMaveCore",
