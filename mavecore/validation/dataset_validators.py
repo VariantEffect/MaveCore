@@ -352,9 +352,7 @@ def validate_scoreset_json(dict_):
 
     for key in required_columns:
         if key not in dict_.keys():
-            raise ValidationError(
-                "Scoreset data is missing the required key " + key
-            )
+            raise ValidationError("Scoreset data is missing the required key " + key)
 
         columns = dict_[key]
         if not all([isinstance(c, str) for c in columns]):
@@ -363,10 +361,7 @@ def validate_scoreset_json(dict_):
         if not isinstance(columns, list):
             type_ = type(columns).__name__
             raise ValidationError(
-                "Value for "
-                + key.replace("_", " ")
-                + " must be a list not "
-                + type_
+                "Value for " + key.replace("_", " ") + " must be a list not " + type_
             )
 
         # Check score columns is not-empty and at least contains hgvs and score
