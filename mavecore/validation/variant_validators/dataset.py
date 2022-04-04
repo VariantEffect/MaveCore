@@ -26,9 +26,6 @@ from mavecore.validation.utilities import is_null
 
 
 class MaveDataset:
-    # TODO Django dependent
-    """
-
     class DatasetType:
         # TODO
         """ """
@@ -54,8 +51,6 @@ class MaveDataset:
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
     class AdditionalColumns:
-        # TODO Django dependent
-        """
         @classmethod
         def options(cls) -> List[str]:
             # TODO Django dependent
@@ -69,7 +64,9 @@ class MaveDataset:
 
     # ---------------------- Construction------------------------------------ #
     @classmethod
-    def for_scores(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveScoresDataset":
+    def for_scores(
+        cls, file: Union[str, TextIO, BinaryIO]
+    ) -> "MaveScoresDataset":
         # TODO Django dependent
         """
 
@@ -85,7 +82,9 @@ class MaveDataset:
         return cls._for_type(file=file, dataset_type=cls.DatasetType.SCORES)
 
     @classmethod
-    def for_counts(cls, file: Union[str, TextIO, BinaryIO]) -> "MaveCountsDataset":
+    def for_counts(
+        cls, file: Union[str, TextIO, BinaryIO]
+    ) -> "MaveCountsDataset":
         # TODO Django dependent
         """
 
@@ -132,7 +131,8 @@ class MaveDataset:
             handle = StringIO(file_contents)
         else:
             raise TypeError(
-                f"Expected file path or buffer object. " f"Got '{type(file).__name__}'"
+                f"Expected file path or buffer object. "
+                f"Got '{type(file).__name__}'"
             )
 
         extra_na_values = set(
@@ -161,7 +161,9 @@ class MaveDataset:
         elif dataset_type == cls.DatasetType.COUNTS:
             return MaveCountsDataset(df)
         else:
-            raise ValueError(f"'{dataset_type}' is not a recognised dataset type.")
+            raise ValueError(
+                f"'{dataset_type}' is not a recognised dataset type."
+            )
 
     # ---------------------- Public ----------------------------------------- #
     @property
@@ -322,7 +324,9 @@ class MaveDataset:
         if serializable:
             # need to force "object" type to allow None values
             return_df = self._df.astype(object, copy=True)
-            return_df.where(cond=pd.notnull(return_df), other=None, inplace=True)
+            return_df.where(
+                cond=pd.notnull(return_df), other=None, inplace=True
+            )
             return return_df
         return self._df.copy(deep=True)
 
@@ -406,7 +410,9 @@ class MaveDataset:
                 ._validate_genomic_variants(targetseq, relaxed_ordering)
                 ._validate_transcript_variants(targetseq, relaxed_ordering)
                 ._validate_protein_variants(targetseq, relaxed_ordering)
-                ._validate_index_column(allow_duplicates=allow_index_duplicates)
+                ._validate_index_column(
+                    allow_duplicates=allow_index_duplicates
+                )
             )
 
         if self.is_empty:
@@ -481,7 +487,9 @@ class MaveDataset:
                 self.HGVSColumns.PROTEIN: 2,
                 **{
                     c: (2 + i)
-                    for (i, c) in enumerate(self.AdditionalColumns.options(), start=1)
+                    for (i, c) in enumerate(
+                        self.AdditionalColumns.options(), start=1
+                    )
                 },
             },
         )
@@ -555,7 +563,9 @@ class MaveDataset:
                 self._df[c] = np.NaN
 
         column_order = self._column_order
-        sorted_columns = list(sorted(self.columns, key=lambda x: column_order[x]))
+        sorted_columns = list(
+            sorted(self.columns, key=lambda x: column_order[x])
+        )
 
         self._df = self._df[sorted_columns]
         return self
@@ -715,7 +725,9 @@ class MaveDataset:
 
         return self
 
-    def _validate_index_column(self, allow_duplicates: bool = False) -> "MaveDataset":
+    def _validate_index_column(
+        self, allow_duplicates: bool = False
+    ) -> "MaveDataset":
         # TODO Django dependent
         """
 
@@ -814,7 +826,9 @@ class MaveDataset:
                         return variant
 
                     validated = Variant(
-                        variant, targetseq=targetseq, relaxed_ordering=relaxed_ordering
+                        variant,
+                        targetseq=targetseq,
+                        relaxed_ordering=relaxed_ordering,
                     )
                     prefix = validated.prefix.lower()
                     prefixes.add(prefix)
@@ -949,6 +963,7 @@ class MaveDataset:
 class MaveScoresDataset(MaveDataset):
     # TODO
     """ """
+
     class AdditionalColumns:
         # TODO
         """ """
@@ -1018,7 +1033,9 @@ class MaveScoresDataset(MaveDataset):
         for c in should_be_numeric:
             if c in self.columns:
                 try:
-                    self._df[c] = self._df[c].astype(dtype=float, errors="raise")
+                    self._df[c] = self._df[c].astype(
+                        dtype=float, errors="raise"
+                    )
                 except ValueError as e:
                     self._errors.append(f"{c}: {str(e)}")
 
@@ -1028,6 +1045,7 @@ class MaveScoresDataset(MaveDataset):
 class MaveCountsDataset(MaveDataset):
     # TODO
     """ """
+
     @property
     def label(self) -> str:
         # TODO Django dependent
