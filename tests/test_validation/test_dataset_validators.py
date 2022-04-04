@@ -90,7 +90,9 @@ class TestNoNullInColumnsValidator(TestCase):
                 header = read_header_from_io(file)
                 validate_header_contains_no_null_columns(header)
 
-    def test_does_not_raise_valuerror_when_non_null_values_in_column(self,):
+    def test_does_not_raise_valuerror_when_non_null_values_in_column(
+        self,
+    ):
         file = BytesIO("{},score\n".format(constants.hgvs_nt_column).encode())
         header = read_header_from_io(file)
         validate_header_contains_no_null_columns(header)  # Should pass

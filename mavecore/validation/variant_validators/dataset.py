@@ -19,7 +19,7 @@ from mavecore.validation.constants import (
     required_score_column,
     null_values_list,
     null_values_re,
-    readable_null_values
+    readable_null_values_list,
 )
 
 from mavecore.validation.utilities import is_null
@@ -29,20 +29,15 @@ class MaveDataset:
     # TODO Django dependent
     """
 
-    """
     class DatasetType:
-        # TODO Django dependent
-        """
-
-        """
+        # TODO
+        """ """
         SCORES = "scores"
         COUNTS = "counts"
 
     class HGVSColumns:
-        # TODO Django dependent
-        """
-
-        """
+        # TODO
+        """ """
         NUCLEOTIDE: str = hgvs_nt_column
         TRANSCRIPT: str = hgvs_splice_column
         PROTEIN: str = hgvs_pro_column
@@ -60,8 +55,6 @@ class MaveDataset:
 
     class AdditionalColumns:
         # TODO Django dependent
-        """
-
         """
         @classmethod
         def options(cls) -> List[str]:
@@ -515,7 +508,7 @@ class MaveDataset:
             self._errors.append(
                 f"Column names in your {self.label} file cannot values "
                 f"considered null such as the following: "
-                f"{', '.join(readable_null_values)}"
+                f"{', '.join(readable_null_values_list)}"
             )
 
         columns = [c for c in columns if not is_null(c)]
@@ -748,7 +741,7 @@ class MaveDataset:
             self._errors.append(
                 f"Primary column (inferred as '{self._index_column}') "
                 f"cannot contain any null values from "
-                f"{', '.join(readable_null_values)} (case-insensitive)"
+                f"{', '.join(readable_null_values_list)} (case-insensitive)"
             )
 
         if not allow_duplicates:
@@ -954,15 +947,11 @@ class MaveDataset:
 
 
 class MaveScoresDataset(MaveDataset):
-    # TODO Django dependent
-    """
-
-    """
+    # TODO
+    """ """
     class AdditionalColumns:
-        # TODO Django dependent
-        """
-
-        """
+        # TODO
+        """ """
         SCORES = required_score_column
 
         @classmethod
@@ -1037,10 +1026,8 @@ class MaveScoresDataset(MaveDataset):
 
 
 class MaveCountsDataset(MaveDataset):
-    # TODO Django dependent
-    """
-
-    """
+    # TODO
+    """ """
     @property
     def label(self) -> str:
         # TODO Django dependent

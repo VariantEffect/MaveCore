@@ -9,12 +9,23 @@ from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation.utilities import is_null
 
-from mavecore.validation.general_validators import FileExtensionValidator
+def is_null(value):
+    """
+    Checks if a stripped/lowercase value is one of the recognized NA or NULL string values.
 
-# TODO reimplement file extension validators from MaveDB
-# validate_csv_extension
-# validate_gz_extension
-# validate_json_extension
+    Parameters
+    __________
+    value : str
+        The value to be checked as null or not.
+
+    Returns
+    _______
+    bool
+        True value is NoneType, is an empty string, or if value matches the stated regex patterns in
+        constants.null_values_re.
+    """
+    value = str(value).strip().lower()
+    return constants.null_values_re.fullmatch(value) or not value
 
 validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
 validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
@@ -224,7 +235,7 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
                 "values: {}.".format(
-                    label, ", ".join(constants.readable_null_values)
+                    label, ", ".join(constants.readable_null_values_list)
                 )
             )
         raise ValidationError(msg)

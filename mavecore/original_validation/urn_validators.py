@@ -70,9 +70,7 @@ def validate_mavedb_urn(urn):
         If the MaveDB urn is not valid.
     """
     if not MAVEDB_ANY_URN_RE.match(urn):
-        raise ValidationError(
-            "%(urn)s is not a valid urn.", params={"urn": urn}
-        )
+        raise ValidationError("%(urn)s is not a valid urn.", params={"urn": urn})
 
 
 def validate_mavedb_urn_experimentset(urn):
