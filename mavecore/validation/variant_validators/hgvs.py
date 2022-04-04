@@ -4,31 +4,15 @@ from typing import Optional, Union
 from mavehgvs import Variant, MaveHgvsParseError
 from mavecore.validation.exceptions import ValidationError
 
-from mavecore.validation.constants import null_values_re
-
 from mavecore.validation.constants import (
     hgvs_nt_column,
     hgvs_splice_column,
     hgvs_pro_column,
 )
 
+__all__ = ["validate_hgvs_string"]
 
-# from core.utilities import is_null
-def is_null(value):
-    """
-    Returns True if a stripped/lowercase value in in `nan_col_values`.
-
-    Parameters
-    __________
-    value
-
-    Returns
-    _______
-
-    """
-    value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
-
+from mavecore.validation.utilities import is_null
 
 def validate_hgvs_string(
     value: Union[str, bytes],
@@ -41,8 +25,8 @@ def validate_hgvs_string(
 
     Parameters
     __________
-    value :
-    column :
+    value : Union[str, bytes]
+    column : Optional[str] = None
     splice_present :
     targetseq :
     relaxed_ordering :
@@ -124,7 +108,9 @@ def validate_hgvs_string(
                 f"protein variant prefix is 'p.'."
             )
     else:
-        raise ValueError("Unknown column '{}'. Expected nt, splice or p".format(column))
+        raise ValueError(
+            "Unknown column '{}'. Expected nt, splice or p".format(column)
+        )
 
     return str(variant)
 

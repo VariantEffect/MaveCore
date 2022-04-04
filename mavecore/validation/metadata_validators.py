@@ -1,27 +1,8 @@
+# TODO Django dependent, Django forms, whole file needs to be refactored
 import idutils
 
 from mavecore.validation.exceptions import ValidationError
-from mavecore.validation.constants import null_values_re
-
-
-def is_null(value):
-    # TODO
-    # check that parameter type is accurate
-    """
-    This function checks that the passed value is null.
-
-    Parameters
-    __________
-    value : str
-        Value to be checked if null.
-
-    Returns
-    _______
-    bool
-        True if a stripped/lowercase value in in `nan_col_values`.
-    """
-    value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
+from mavecore.validation.utilities import is_null
 
 
 def validate_sra_identifier(identifier):

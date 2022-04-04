@@ -1,3 +1,4 @@
+# TODO Django dependent, Django forms, whole file needs to be refactored
 """
 Validator functions for the fields of the following classes:
     WildTypeSequence
@@ -14,23 +15,7 @@ from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation import constants
 
-
-def is_null(value):
-    """
-    This function checks if the value exists or is null.
-
-    Parameters
-    __________
-    value :
-        The value to be checked.
-
-    Returns
-    _______
-    bool
-        True if a stripped/lowercase value in `nan_col_values`.
-    """
-    value = str(value).strip().lower()
-    return constants.null_values_re.fullmatch(value) or not value
+from mavecore.validation.utilities import is_null
 
 
 # min_start_validator = MinValueValidator(
