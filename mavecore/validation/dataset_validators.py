@@ -140,7 +140,7 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
     header : str
         The first line of the file being validated.
     label :
-        default = None
+        (default = None)
     msg :
         default = None
 
