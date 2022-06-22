@@ -4,7 +4,7 @@ import operator
 NON_FIELD_ERRORS = "__all__"
 
 
-class ValidationError(Exception):
+class ValidationError(ValueError):
     None
 
 
