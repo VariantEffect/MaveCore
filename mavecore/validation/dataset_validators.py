@@ -175,11 +175,13 @@ def validate_at_least_one_additional_column(header, label=None, msg=None):
 
     Parameters
     __________
-    header :
-    label :
-        default = None
-    msg :
-        default = None
+    header : str
+        The first line of the file being validated.
+    label : str
+        (default = None)
+    msg : str
+        (default = None) The message that is printed in the event of an error is raised. The value is updated within
+        the function.
 
     Raises
     ______
