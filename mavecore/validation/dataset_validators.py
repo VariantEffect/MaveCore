@@ -22,7 +22,7 @@ from mavecore.validation.utilities import is_null
 
 class WordLimitValidator:
     """
-    This class
+    This class validates the word limit set for a given object.
 
     Attributes
     __________
