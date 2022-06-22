@@ -133,6 +133,8 @@ def read_header_from_io(file, label=None, msg=None):
 
 def validate_has_hgvs_in_header(header, label=None, msg=None):
     """
+    Determines whether or not hgvs is in a header.
+
     Parameters
     __________
     header :
