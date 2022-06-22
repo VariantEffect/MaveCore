@@ -142,7 +142,8 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
     label :
         (default = None)
     msg :
-        default = None
+        (default = None) The message that is printed in the event of an error is raised. The value is updated within
+        the function.
 
     Raises
     ______
