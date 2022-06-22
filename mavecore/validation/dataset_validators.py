@@ -9,7 +9,7 @@ from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation.utilities import is_null
 
-from mavecore.validation.general_validators import FileExtensionValidator
+#from mavecore.validation.general_validators import FileExtensionValidator
 
 # TODO reimplement file extension validators from MaveDB
 # validate_csv_extension
