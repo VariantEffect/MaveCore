@@ -213,11 +213,13 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
 
     Parameters
     __________
-    header :
-    label :
+    header : str
+        The first line of the file being validated.
+    label : str
         (default = None)
-    msg :
-        (default = None)
+    msg : str
+        (default = None) The message that is printed in the event of an error is raised. The value is updated within
+        the function.
 
     Raises
     ______
