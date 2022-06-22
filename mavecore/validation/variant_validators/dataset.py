@@ -27,7 +27,6 @@ from mavecore.validation.utilities import is_null
 
 class MaveDataset:
     # TODO Django dependent
-    """
 
     class DatasetType:
         # TODO
@@ -55,7 +54,6 @@ class MaveDataset:
 
     class AdditionalColumns:
         # TODO Django dependent
-        """
         @classmethod
         def options(cls) -> List[str]:
             # TODO Django dependent
