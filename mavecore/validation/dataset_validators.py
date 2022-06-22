@@ -71,6 +71,7 @@ class WordLimitValidator:
 
         Returns
         _______
+            If value is not empty or false.
 
         Raises
         ______
