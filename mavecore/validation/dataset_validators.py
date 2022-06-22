@@ -60,6 +60,10 @@ class WordLimitValidator:
 
     def __call__(self, value):
         """
+        This special method will raise a ValidationError if the number of times the regex pattern (defined by the
+        counter attribute) found in the value parameter exceeds the word_limit attribute value. In short, __call__
+        checks if the number of words exceeds the word_limit.
+
         Parameters
         __________
         value :
