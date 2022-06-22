@@ -29,9 +29,9 @@ class WordLimitValidator:
     message : str
         Message template to describe how many words a field is limited to.
     code : str
-
-    counter : str
-
+        code attribute is set to invalid
+    counter : `re.Pattern`
+        The regex pattern that will be used to identify the number of words.
     """
 
     message = "This field is limited to {} words."
