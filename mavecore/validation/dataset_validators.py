@@ -66,7 +66,8 @@ class WordLimitValidator:
 
         Parameters
         __________
-        value :
+        value : str
+            The string in which the pattern defined in the counter attribute will be found.
 
         Returns
         _______
