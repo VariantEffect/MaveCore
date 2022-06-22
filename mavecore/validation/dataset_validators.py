@@ -15,10 +15,10 @@ from mavecore.validation.utilities import is_null
 # validate_csv_extension
 # validate_gz_extension
 # validate_json_extension
-
-validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
-validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
-validate_json_extension = FileExtensionValidator(allowed_extensions=["json"])
+#TODO find another way to validate file extensions
+#validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
+#validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
+#validate_json_extension = FileExtensionValidator(allowed_extensions=["json"])
 
 class WordLimitValidator:
     """
