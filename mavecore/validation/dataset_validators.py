@@ -148,7 +148,7 @@ def validate_has_hgvs_in_header(header, label=None, msg=None):
     Raises
     ______
     ValidationError
-        If
+        If the header is empty and there exists a value for the constants.hgvs_columns parameter.
     """
     if label is None:
         label = "Uploaded"
