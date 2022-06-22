@@ -224,7 +224,7 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
                 "values: {}.".format(
-                    label, ", ".join(constants.readable_null_values)
+                    label, ", ".join(constants.readable_null_values_list)
                 )
             )
         raise ValidationError(msg)
