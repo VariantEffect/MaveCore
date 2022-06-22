@@ -7,19 +7,21 @@ NON_FIELD_ERRORS = "__all__"
 class ValidationError(ValueError):
     None
 
-
+"""
 class ValidationError2(Exception):
-    """An error while validating data."""
 
-    def __init__(self, message, code=None, params=None):
-        """
-        The `message` argument can be a single error, a list of errors, or a
-        dictionary that maps field names to lists of errors. What we define as
-        an "error" can be either a simple string or an instance of
-        ValidationError with its message attribute set, and what we define as
-        list or dictionary can be an actual `list` or `dict` or an instance
-        of ValidationError with its `error_list` or `error_dict` attribute set.
-        """
+    #An error while validating data.
+
+
+   #def __init__(self, message, code=None, params=None):
+
+        #The `message` argument can be a single error, a list of errors, or a
+        #dictionary that maps field names to lists of errors. What we define as
+        #an "error" can be either a simple string or an instance of
+        #ValidationError with its message attribute set, and what we define as
+        #list or dictionary can be an actual `list` or `dict` or an instance
+        #of ValidationError with its `error_list` or `error_dict` attribute set.
+
         super().__init__(message, code, params)
 
         if isinstance(message, ValidationError):
@@ -115,11 +117,11 @@ class ValidationError2(Exception):
 
 
 def make_hashable(value):
-    """
-    Attempt to make value hashable or raise a TypeError if it fails.
 
-    The returned value should generate the same hash for equal values.
-    """
+    #Attempt to make value hashable or raise a TypeError if it fails.
+
+    #The returned value should generate the same hash for equal values.
+
     if isinstance(value, dict):
         return tuple([
             (key, make_hashable(nested_value))
@@ -138,12 +140,13 @@ def make_hashable(value):
 
 
 def is_iterable(x):
-    """
-    An implementation independent way of checking for iterables
-    """
+
+    #An implementation independent way of checking for iterables
+
     try:
         iter(x)
     except TypeError:
         return False
     else:
         return True
+"""
