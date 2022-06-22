@@ -76,7 +76,8 @@ class WordLimitValidator:
         Raises
         ______
         ValidationError
-            If
+            If the number of times the regex pattern (defined by the counter attribute) found in the value parameter
+            exceeds the word_limit attribute value.
         """
         if not value:
             return
