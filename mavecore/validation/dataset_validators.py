@@ -97,7 +97,8 @@ def read_header_from_io(file, label=None, msg=None):
     label : str
         (default = None)
     msg : str
-        (default = None) The message that is printed in the event of an error is raised.
+        (default = None) The message that is printed in the event of an error is raised. The value is updated within
+        the function.
 
     Returns
     _______
