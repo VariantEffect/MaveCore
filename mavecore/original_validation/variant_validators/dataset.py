@@ -18,7 +18,7 @@ from mavecore.validation.constants import (
     required_score_column,
     null_values_list,
     null_values_re,
-    readable_null_values
+    readable_null_values_list,
 )
 
 
@@ -40,20 +40,17 @@ def is_null(value):
 
 
 class MaveDataset:
-    """
+    """ """
 
-    """
     class DatasetType:
-        """
+        """ """
 
-        """
         SCORES = "scores"
         COUNTS = "counts"
 
     class HGVSColumns:
-        """
+        """ """
 
-        """
         NUCLEOTIDE: str = hgvs_nt_column
         TRANSCRIPT: str = hgvs_splice_column
         PROTEIN: str = hgvs_pro_column
@@ -69,9 +66,8 @@ class MaveDataset:
             return [cls.NUCLEOTIDE, cls.TRANSCRIPT, cls.PROTEIN]
 
     class AdditionalColumns:
-        """
+        """ """
 
-        """
         @classmethod
         def options(cls) -> List[str]:
             """
@@ -500,7 +496,7 @@ class MaveDataset:
             self._errors.append(
                 f"Column names in your {self.label} file cannot values "
                 f"considered null such as the following: "
-                f"{', '.join(readable_null_values)}"
+                f"{', '.join(readable_null_values_list)}"
             )
 
         columns = [c for c in columns if not is_null(c)]
@@ -728,7 +724,7 @@ class MaveDataset:
             self._errors.append(
                 f"Primary column (inferred as '{self._index_column}') "
                 f"cannot contain any null values from "
-                f"{', '.join(readable_null_values)} (case-insensitive)"
+                f"{', '.join(readable_null_values_list)} (case-insensitive)"
             )
 
         if not allow_duplicates:
@@ -928,13 +924,11 @@ class MaveDataset:
 
 
 class MaveScoresDataset(MaveDataset):
-    """
+    """ """
 
-    """
     class AdditionalColumns:
-        """
+        """ """
 
-        """
         SCORES = required_score_column
 
         @classmethod
@@ -1005,9 +999,8 @@ class MaveScoresDataset(MaveDataset):
 
 
 class MaveCountsDataset(MaveDataset):
-    """
+    """ """
 
-    """
     @property
     def label(self) -> str:
         """

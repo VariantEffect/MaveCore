@@ -41,9 +41,8 @@ class WildTypeSequence:
     """
 
     class SequenceType:
-        """
+        """ """
 
-        """
         DNA = "dna"
         PROTEIN = "protein"
         INFER = "infer"
@@ -118,9 +117,8 @@ class WildTypeSequence:
             return [(cls.INFER, "Infer"), (cls.DNA, "DNA"), (cls.PROTEIN, "Protein")]
 
     class Meta:
-        """
+        """ """
 
-        """
         verbose_name = "Reference sequence"
         verbose_name_plural = "Reference sequences"
 
@@ -504,7 +502,9 @@ def validate_map_has_unique_reference_genome(annotations):
     """
     genomes = set([str(a.get_reference_genome_name()).lower() for a in annotations])
     if len(genomes) < len(annotations):
-        raise ValidationError("Each reference map must specify a different reference genome.")
+        raise ValidationError(
+            "Each reference map must specify a different reference genome."
+        )
 
 
 def validate_map_has_at_least_one_interval(reference_map):
@@ -523,7 +523,9 @@ def validate_map_has_at_least_one_interval(reference_map):
         If the reference_map does not have at least one interval.
     """
     if not reference_map.get_intervals().count():
-        raise ValidationError("You must specify at least one interval for each reference map.")
+        raise ValidationError(
+            "You must specify at least one interval for each reference map."
+        )
 
 
 def validate_at_least_one_map(reference_maps):
@@ -542,7 +544,9 @@ def validate_at_least_one_map(reference_maps):
         If the target does not have at least one reference map specified.
     """
     if not len(reference_maps):
-        raise ValidationError("A target must have at least one reference map specified.")
+        raise ValidationError(
+            "A target must have at least one reference map specified."
+        )
 
 
 def validate_one_primary_map(reference_maps):

@@ -1,4 +1,4 @@
-from io import  StringIO
+from io import StringIO
 import unittest
 from unittest import TestCase
 from random import choice

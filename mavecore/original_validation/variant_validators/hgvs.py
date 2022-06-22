@@ -4,7 +4,7 @@ from typing import Optional, Union
 from mavehgvs import Variant, MaveHgvsParseError
 from mavecore.validation.exceptions import ValidationError
 
-from mavecore.validation.constants import NA_value, null_values_re
+from mavecore.validation.constants import NA_STRING, null_values_re
 
 from mavecore.validation.constants import (
     hgvs_nt_column,

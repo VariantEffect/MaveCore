@@ -38,6 +38,7 @@ class WordLimitValidator:
     counter : str
 
     """
+
     message = "This field is limited to {} words."
     code = "invalid"
     counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
@@ -228,7 +229,9 @@ def validate_header_contains_no_null_columns(header, label=None, msg=None):
             msg = (
                 "%(label)s file header cannot contain blank/empty/whitespace "
                 "only columns or the following case-insensitive null "
-                "values: {}.".format(label, ", ".join(constants.readable_null_values))
+                "values: {}.".format(
+                    label, ", ".join(constants.readable_null_values_list)
+                )
             )
         raise ValueError(msg)
 
