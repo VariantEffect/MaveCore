@@ -9,16 +9,6 @@ from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation.utilities import is_null
 
-#from mavecore.validation.general_validators import FileExtensionValidator
-
-# TODO reimplement file extension validators from MaveDB
-# validate_csv_extension
-# validate_gz_extension
-# validate_json_extension
-#TODO find another way to validate file extensions
-#validate_csv_extension = FileExtensionValidator(allowed_extensions=["csv"])
-#validate_gz_extension = FileExtensionValidator(allowed_extensions=["gz"])
-#validate_json_extension = FileExtensionValidator(allowed_extensions=["json"])
 
 class WordLimitValidator:
     """
