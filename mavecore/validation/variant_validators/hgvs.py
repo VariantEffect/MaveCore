@@ -34,6 +34,7 @@ def validate_hgvs_string(
 
     Returns
     _______
+    Optional[str]
 
     Raises
     ______
