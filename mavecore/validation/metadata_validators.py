@@ -112,8 +112,15 @@ def validate_uniprot_identifier(identifier):
     """
     Validates whether the identifier is a valid UniProt identifier.
 
-    :param identifier:
-    :return:
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid UniProt identifier.
     """
     if not idutils.is_uniprot(identifier):
         raise ValidationError(f"'{identifier}' is not a valid UniProt accession.")
