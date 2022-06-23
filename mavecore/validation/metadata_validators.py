@@ -216,9 +216,17 @@ def validate_ensembl_list(values):
 
 def validate_refseq_list(values):
     """
+    Validates whether each identifier in a list of identifiers (values) is a valid RefSeq identifier.
 
-    :param values:
-    :return:
+    Parameters
+    __________
+    identifier: List[str]
+        The list of identifiers to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If at least one of the identifiers is not a valid RefSeq identifier.
     """
     for value in values:
         if not is_null(value):
