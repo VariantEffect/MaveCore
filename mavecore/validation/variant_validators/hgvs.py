@@ -22,6 +22,7 @@ def validate_hgvs_string(
     relaxed_ordering: bool = False,
 ) -> Optional[str]:
     """
+    Validates hgvs string.
 
     Parameters
     __________
