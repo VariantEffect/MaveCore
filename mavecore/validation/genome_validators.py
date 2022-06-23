@@ -26,7 +26,7 @@ from mavecore.validation.utilities import is_null
 # )
 
 
-class WildTypeSequence:
+class WildTypeSequence:#g
     """
     Basic model specifying a wild-type sequence.
 
@@ -40,7 +40,7 @@ class WildTypeSequence:
         Protein sequence (amino acids) or DNA (nucleotides)
     """
 
-    class SequenceType:
+    class SequenceType:#g
         """ """
 
         DNA = "dna"
@@ -48,7 +48,7 @@ class WildTypeSequence:
         INFER = "infer"
 
         @classmethod
-        def detect_sequence_type(cls, sequence):
+        def detect_sequence_type(cls, sequence):#g
             # TODO
             # confirm sequence parameter type
             """
@@ -80,7 +80,7 @@ class WildTypeSequence:
                 )
 
         @classmethod
-        def is_protein(cls, value):
+        def is_protein(cls, value):#g
             """
 
             Parameters
@@ -94,7 +94,7 @@ class WildTypeSequence:
             return value == cls.PROTEIN
 
         @classmethod
-        def is_dna(cls, value):
+        def is_dna(cls, value): #g
             """
 
             Parameters
@@ -108,7 +108,7 @@ class WildTypeSequence:
             return value == cls.DNA
 
         @classmethod
-        def choices(cls):
+        def choices(cls):#g
             """
 
             Returns
@@ -116,13 +116,13 @@ class WildTypeSequence:
             """
             return [(cls.INFER, "Infer"), (cls.DNA, "DNA"), (cls.PROTEIN, "Protein")]
 
-    class Meta:
+    class Meta:#g
         """ """
 
         verbose_name = "Reference sequence"
         verbose_name_plural = "Reference sequences"
 
-    def __str__(self):
+    def __str__(self):#g
         """
 
         Returns
@@ -155,7 +155,7 @@ class WildTypeSequence:
         _______
 
         """
-        return self.__class__.SequenceType.is_dna(self.sequence_type)
+        return #self.__class__.SequenceType.is_dna(self.sequence_type)
 
     @property
     def is_protein(self):
@@ -165,7 +165,7 @@ class WildTypeSequence:
         _______
 
         """
-        return self.__class__.SequenceType.is_protein(self.sequence_type)
+        return #self.__class__.SequenceType.is_protein(self.sequence_type)
 
     def save(self, *args, **kwargs):
         """
@@ -371,7 +371,7 @@ def validate_wildtype_sequence(seq, as_type="any"):
         )
 
 
-def sequence_is_dna(seq):
+def sequence_is_dna(seq):#g
     """
     This function checks if seq is a DNA sequence.
 
@@ -392,7 +392,7 @@ def sequence_is_dna(seq):
     return dna_bases_validator(seq) is not None
 
 
-def sequence_is_protein(seq):
+def sequence_is_protein(seq):#g
     """
     This function check if seq is a protein sequence.
 
@@ -418,8 +418,6 @@ def sequence_is_protein(seq):
 # ReferenceGenome
 # ------------------------------------------------------------------------- #
 def validate_organism_name(organism_name):
-    # TODO
-    # confirm organism_name type
     """
     This function validates the organism name by checking that the name is not null.
 
