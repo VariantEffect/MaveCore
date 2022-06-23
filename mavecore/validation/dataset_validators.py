@@ -77,7 +77,7 @@ class WordLimitValidator:
 
 def read_header_from_io(file, label=None, msg=None):
     # TODO
-    # confirm types for parameters
+    # confirm type for the file parameter
     """
     This takes a file and reads the header from that file.
 
