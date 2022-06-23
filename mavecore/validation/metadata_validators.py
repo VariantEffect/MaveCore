@@ -228,8 +228,15 @@ def validate_refseq_list(values):
 def validate_uniprot_list(values):
     """
 
-    :param values:
-    :return:
+    Parameters
+    __________
+    identifier: List[str]
+        The list of identifiers to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If at least one of the identifiers is not a valid UniProt identifier.
     """
     for value in values:
         if not is_null(value):
