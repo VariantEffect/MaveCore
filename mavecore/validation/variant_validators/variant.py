@@ -24,6 +24,8 @@ def validate_columns_match(variant, scoreset) -> None:
         If variant score columns do not match scoreset score columns.
     ValidationError
         If variant count columns do not match scoreset count columns.
+    ValidationError
+        If try fails within try except block.
     """
     try:
         if variant.score_columns != scoreset.score_columns:
