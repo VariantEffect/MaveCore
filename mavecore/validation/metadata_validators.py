@@ -129,8 +129,15 @@ def validate_uniprot_identifier(identifier):
 def validate_refseq_identifier(identifier):
     """
 
-    :param identifier:
-    :return:
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid RefSeq identifier.
     """
     if not idutils.is_refseq(identifier):
         raise ValidationError(f"'{identifier}' is not a valid RefSeq accession.")
