@@ -277,6 +277,7 @@ def validate_refseq_list(values):
 
 def validate_uniprot_list(values):
     """
+    Validates whether each identifer in a list of identifiers (values) is a valid UniProt identifier.
 
     Parameters
     __________
