@@ -145,9 +145,17 @@ def validate_refseq_identifier(identifier):
 
 def validate_genome_identifier(identifier):
     """
+    Validates whether the identifier is a valid genome identifier.
 
-    :param identifier:
-    :return:
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid genome identifier.
     """
     if not idutils.is_genome(identifier):
         raise ValidationError(
