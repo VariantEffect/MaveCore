@@ -67,6 +67,7 @@ def validate_pubmed_identifier(identifier):
 
 def validate_doi_identifier(identifier):
     """
+    Validates whether the identifier is a valid DOI identifier.
 
     :param identifier:
     :return:
