@@ -28,9 +28,9 @@ def validate_hgvs_string(
     __________
     value : Union[str, bytes]
     column : Optional[str] = None
-    splice_present :
-    targetseq :
-    relaxed_ordering :
+    splice_present : bool = False
+    targetseq : Optional[str] = None
+    relaxed_ordering : bool = False
 
     Returns
     _______
