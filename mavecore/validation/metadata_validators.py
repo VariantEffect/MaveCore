@@ -94,8 +94,15 @@ def validate_ensembl_identifier(identifier):
     """
     Validates whether the identifier is a valid Ensembl identifier.
 
-    :param identifier:
-    :return:
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid Ensembl identifier.
     """
     if not idutils.is_ensembl(identifier):
         raise ValidationError(f"'{identifier}' is not a valid Ensembl accession.")
