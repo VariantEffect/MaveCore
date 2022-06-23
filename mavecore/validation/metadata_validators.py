@@ -128,6 +128,7 @@ def validate_uniprot_identifier(identifier):
 
 def validate_refseq_identifier(identifier):
     """
+    Validates whether the identifier is a valid RefSeq identifier.
 
     Parameters
     __________
