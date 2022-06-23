@@ -58,8 +58,15 @@ def validate_pubmed_identifier(identifier):
     """
     Validates whether the identifier is a valid PubMed identifier.
 
-    :param identifier:
-    :return:
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid PubMed identifier.
     """
     if not idutils.is_pmid(identifier):
         raise ValidationError(f"'{identifier} is not a valid PubMed identifier.")
