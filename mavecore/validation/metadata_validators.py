@@ -78,6 +78,7 @@ def validate_doi_identifier(identifier):
 
 def validate_ensembl_identifier(identifier):
     """
+    Validates whether the identifier is a valid Ensembl identifier.
 
     :param identifier:
     :return:
