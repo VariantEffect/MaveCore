@@ -56,6 +56,7 @@ def validate_keyword(kw):
 
 def validate_pubmed_identifier(identifier):
     """
+    Validates whether the identifier is a valid PubMed identifier.
 
     :param identifier:
     :return:
