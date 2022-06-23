@@ -6,6 +6,19 @@ from mavecore.validation.utilities import is_null
 
 
 def validate_sra_identifier(identifier):
+    """
+    Validates whether the identifier is a valid SRA identifier.
+
+    Parameters
+    __________
+    identifier: str
+        The identifier to be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the identifier is not a valid SRA identifier.
+    """
     if not (
         idutils.is_sra(identifier)
         or idutils.is_bioproject(identifier)
