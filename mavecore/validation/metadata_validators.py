@@ -110,6 +110,7 @@ def validate_ensembl_identifier(identifier):
 
 def validate_uniprot_identifier(identifier):
     """
+    Validates whether the identifier is a valid UniProt identifier.
 
     :param identifier:
     :return:
