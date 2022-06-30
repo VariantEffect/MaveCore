@@ -12,7 +12,7 @@ requirements = [
 
 setuptools.setup(
     name="mavecore",
-    version="0.1.4",
+    version="0.1.7",
     author="MaveDB Developers",
     author_email="alan.rubin@wehi.edu.au",
     description=(

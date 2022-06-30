@@ -10,71 +10,6 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.utilities import is_null
 
 
-class WordLimitValidator:
-    """
-    This class validates the word limit set for a given object.
-
-    Attributes
-    __________
-    message : str
-        Message template to describe how many words a field is limited to.
-    code : str
-        code attribute is set to invalid
-    counter : `re.Pattern`
-        The regex pattern that will be used to identify the number of words.
-    """
-
-    message = "This field is limited to {} words."
-    code = "invalid"
-    counter = re.compile(r"\w+\b", flags=re.IGNORECASE)
-
-    def __init__(self, word_limit, message=None, code=None):
-        """
-        This constructor sets the values of the WordLimitValidator class attributes
-        message, code, and counter.
-
-        Parameters
-        __________
-        word_limit : int
-            The word limit assigned to the word limit attribute.
-        message : str
-            (default = None) The value assigned to the message attribute that is displayed when an error is raised.
-        code : str
-            (default = None) The code assigned to the code attribute.
-        """
-        if message is not None:
-            self.message = message
-        if code is not None:
-            self.code = code
-        self.word_limit = int(word_limit)
-
-    def __call__(self, value):
-        """
-        This special method will raise a ValidationError if the number of times the regex pattern (defined by the
-        counter attribute) found in the value parameter exceeds the word_limit attribute value. In short, __call__
-        checks if the number of words exceeds the word_limit.
-
-        Parameters
-        __________
-        value : str
-            The string in which the pattern defined in the counter attribute will be found.
-
-        Returns
-        _______
-            If value is not empty or false.
-
-        Raises
-        ______
-        ValidationError
-            If the number of times the regex pattern (defined by the counter attribute) found in the value parameter
-            exceeds the word_limit attribute value.
-        """
-        if not value:
-            return
-        if len(self.counter.findall(value)) > self.word_limit:
-            raise ValidationError(self.message.format(self.word_limit))
-
-
 def read_header_from_io(file, label=None, msg=None):
     # TODO
     # confirm type for the file parameter
@@ -377,5 +312,3 @@ def validate_scoreset_json(dict_):
     if len(extras) > 0:
         extras = [k for k in dict_.keys() if k not in required_columns]
         raise ValidationError("Encountered unexpected keys extras")
-
-
