@@ -1,3 +1,4 @@
+from exceptions import ValidationError
 def validate_title(title):
     """
     Validates a title to an experiment set, an experiment, or a scoreset.
@@ -12,6 +13,7 @@ def validate_title(title):
     ValidationError if the title is not valid.
     """
     # check if title is a string
+    if type(title) != str: raise ValidationError("{}'s is not a valid title.".format(title))
 
     # check that title is not too long
 
