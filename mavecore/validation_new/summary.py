@@ -1,4 +1,19 @@
 def validate_title(title):
+    """
+    Validates a title to an experiment set, an experiment, or a scoreset.
+
+    Parameters:
+    __________
+    title: str
+        The title to be validated.
+
+    Raises:
+    ______
+    ValidationError if the title is not valid.
+    """
+    # check if title is a string
+
+    # check that title is not too long
 
 def validate_short_description(shortDescription):
 
