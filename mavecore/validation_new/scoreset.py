@@ -1,3 +1,24 @@
+def validate_scoreset(scoreset, files):
+    """
+    Validates a scoreset represented as a dictionary.
+
+    Parameters:
+    __________
+    scoreset: Dict
+        The scoreset that will be validated.
+    files: path
+        The path to the files belonging to the scoreset.
+
+    Raises:
+    ______
+    ValidationError
+        If any validation fails.
+    """
+    try:
+        validate_urn(scoreset.get("urn"))
+        validate_title(title)
+
+
 {
   "urn": "string",
   "title": "string",
