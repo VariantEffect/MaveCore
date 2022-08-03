@@ -12,12 +12,14 @@ def validate_title(title):
 
     Raises:
     ______
-    ValidationError if the title is not valid.
+    ValidationError
+        If the title is not valid.
     """
     # check if title is a string
     if type(title) != str: raise ValidationError("The title must be a string.")
 
     # check that title is not too long
+
 
 def validate_short_description(shortDescription):
     """
@@ -30,7 +32,8 @@ def validate_short_description(shortDescription):
 
     Raises:
     ______
-    ValidationError if the short description is too long or is not a string.
+    ValidationError
+        If the short description is too long or is not a string.
     """
     # check if short description is a string
     if type(shortDescription) != str: raise ValidationError("The short description must be a string.")
@@ -50,7 +53,8 @@ def validate_abstract(abstractText):
 
     Raises:
     ______
-    ValidationError if the abstract is too long or is not a string.
+    ValidationError
+        If the abstract is too long or is not a string.
     """
     # check if short description is a string
     if type(abstractText) != str: raise ValidationError("The abstract must be a string.")
@@ -58,6 +62,7 @@ def validate_abstract(abstractText):
     # check if short description is too long
     count = len(abstractText.split(" "))
     if count > 200: raise ValidationError("The abstract must be less than or equal to 200 words.")
+
 
 def validate_methods(methodText):
     """
@@ -70,7 +75,8 @@ def validate_methods(methodText):
 
     Raises:
     ______
-    ValidationError if the abstract is too long or is not a string.
+    ValidationError
+        If the methods are too long or is not a string.
     """
     # check if short description is a string
     if type(methodText) != str: raise ValidationError("The methods must be a string.")
@@ -78,6 +84,7 @@ def validate_methods(methodText):
     # check if short description is too long
     count = len(methodText.split(" "))
     if count > 200: raise ValidationError("The methods must be less than or equal to 200 words.")
+
 
 def validate_keywords(keywords):
     """
@@ -90,7 +97,8 @@ def validate_keywords(keywords):
 
     Raises:
     ______
-    ValidationError if the abstract is too long or is not a string.
+    ValidationError
+        If the keywords object is not a list of strings.
     """
     "keywords": [
 def validate_num_scoresets(numScoresets):
