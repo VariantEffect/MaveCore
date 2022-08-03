@@ -74,6 +74,8 @@ def validate_experiment(experiment):
     #        "referenceHtml": "string"
     #      }
     #    ],
+    identifiers.validate_doi_identifiers(experiment.get("doiIdentifiers"))
+    identifiers.validate_pubmed_identifiers(experiment.get("pubmedIdentifiers"))
     #    "processingState": "string"
     general.validate_processing_state(experiment.get("processingState"))
     #  },
