@@ -49,6 +49,8 @@ def validate_experiment(experiment):
     #      "lastName": "string",
     #      "email": "string"
     #    },
+    user.validate_user(experiment.get("createdBy"))
+    user.validate_user(experiment.get("modifiedBy"))
     #    "creationDate": "2022-08-02",
     #    "modificationDate": "2022-08-02",
     #    "publishedDate": "2022-08-02",
