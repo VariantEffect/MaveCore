@@ -16,6 +16,7 @@ def validate_target_gene(targetGene):
     ValidationError
         If the target gene is not represented as a dictionary or if any of the key value pairs are invalid.
     """
+    is_dictionary(targetGene)
     #  "targetGene": {
     #    "name": "string",
     #    "category": "string",
