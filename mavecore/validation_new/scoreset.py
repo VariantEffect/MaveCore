@@ -31,7 +31,7 @@ def validate_scoreset(scoreset, files):
     summary.validate_methods(scoreset.get("methodText"))
     summary.validate_abstract(scoreset.get("abstractText"))
     summary.validate_short_description(scoreset.get("shortDescription"))
-    #"extraMetadata": {},
+    #  "extraMetadata": {},
     metadata.validate_metadata(scoreset.get("extraMetadata"))
     #"dataUsagePolicy": "string",
     #"licenceId": 0,
