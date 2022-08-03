@@ -62,6 +62,9 @@ def validate_scoreset(scoreset, files):
     #  "publishedDate": "2022-08-02",
     #  "creationDate": "2022-08-02",
     #  "modificationDate": "2022-08-02",
+    general.validate_date(scoreset.get("publishedDate"))
+    general.validate_date(scoreset.get("creationDate"))
+    general.validate_date(scoreset.get("modificationDate"))
     #  "createdBy": {
     #    "orcid_id": "string",
     #    "firstName": "string",
