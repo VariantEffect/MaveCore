@@ -75,4 +75,5 @@ def validate_experiment(experiment):
     #      }
     #    ],
     #    "processingState": "string"
+    general.validate_processing_state(experiment.get("processingState"))
     #  },
