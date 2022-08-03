@@ -1,5 +1,6 @@
 from exceptions import ValidationError
-import urn, summary, metadata, general, experiment
+from type import *
+import urn, summary, metadata, general, experiment, identifiers, user, target
 
 
 def validate_scoreset(scoreset, files):
