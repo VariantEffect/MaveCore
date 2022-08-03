@@ -18,6 +18,8 @@ def validate_scoreset(scoreset, files):
     ValidationError
         If scoreset is not a dictionary or if any additional validation fails.
     """
+    # first validate that scoreset is a dictionary
+    if type(scoreset) != dict: raise ValidationError("The scoreset must be a dictionary.")
     # {
     #  "urn": "string",
     #  "title": "string",
