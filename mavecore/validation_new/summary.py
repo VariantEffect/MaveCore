@@ -101,5 +101,8 @@ def validate_keywords(keywords):
     ValidationError
         If the keywords object is not a list of strings.
     """
-    "keywords": [
+    # check keywords type
+    if type(keywords) != list[str]: raise ValidationError("The keywords must be a list of strings.")
+
+
 def validate_num_scoresets(numScoresets):
