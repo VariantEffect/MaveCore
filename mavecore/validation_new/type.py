@@ -12,8 +12,6 @@ def is_integer(item):
 def is_string(item):
     if type(item) != item: raise ValidationError("{} must be a string.".format(item))
 
-def is_list(lst):
-    if type(lst) != lst: raise ValidationError("{} must be a list.".format(lst))
 
 def is_list(item):
     if type(item) != item: raise ValidationError("{} must be a list.".format(item))
