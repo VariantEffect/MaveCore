@@ -23,6 +23,10 @@ def validate_experiment(experiment):
     #    "shortDescription": "string",
     #    "abstractText": "string",
     #    "methodText": "string",
+    summary.validate_title(experiment.get("title"))
+    summary.validate_short_description(experiment.get("shortDescription"))
+    summary.validate_abstract(experiment.get("abstractText"))
+    summary.validate_methods(experiment.get("methodText"))
     #    "extraMetadata": {},
     #    "keywords": [
     #      "string"
