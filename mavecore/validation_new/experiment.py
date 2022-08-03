@@ -1,4 +1,8 @@
-def validate_experiemnt(experiment):
+from type import *
+import summary, metadata, urn, user, general, identifiers
+
+
+def validate_experiment(experiment):
     """
     This function validates an experiment.
 
