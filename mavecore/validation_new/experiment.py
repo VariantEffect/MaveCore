@@ -53,6 +53,7 @@ def validate_experiment(experiment):
     #    "modificationDate": "2022-08-02",
     #    "publishedDate": "2022-08-02",
     #    "experimentSetUrn": "string",
+    urn.validate_experimentset_urn(experiment.get("experimentSetUrn"))
     #    "doiIdentifiers": [
     #      {
     #        "identifier": "string",
