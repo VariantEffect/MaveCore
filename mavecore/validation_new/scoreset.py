@@ -83,5 +83,7 @@ def validate_scoreset(scoreset, files):
     #  },
     target.validate_target_gene(scoreset.get("targetGene"))
     #  "datasetColumns": {},
+    summary.validate_dataset_columns(scoreset.get("datasetColumns"))
     #  "private": true
+    general.validate_private(scoreset.get("private"))
     # }
