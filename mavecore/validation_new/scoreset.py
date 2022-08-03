@@ -81,6 +81,7 @@ def validate_scoreset(scoreset, files):
     user.validate_user(scoreset.get("modifiedBy"))
     #  "targetGene": {
     #  },
+    target.validate_target_gene(scoreset.get("targetGene"))
     #  "datasetColumns": {},
     #  "private": true
     # }
