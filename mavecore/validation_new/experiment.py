@@ -1,3 +1,17 @@
+def validate_experiemnt(experiment):
+    """
+    This function validates an experiment.
+
+    Parameters:
+    __________
+    experiment: dict
+        The experiment represented as a dictionary.
+
+    Raises:
+    ______
+    ValidationError
+        If the experiment is not a dictionary or if any key:value pair in the experiment is not valid.
+    """
 [
   {
     "title": "string",
