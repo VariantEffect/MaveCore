@@ -39,11 +39,23 @@ def validate_short_description(shortDescription):
 
 def validate_abstract(abstractText):
     """
+    Validates the abstract of an experiment set, an experiment, or a scoreset.
 
-    :param absract:
-    :return:
+    Parameters:
+    __________
+    abstractText: str
+        The abstract to be validated.
+
+    Raises:
+    ______
+    ValidationError if the abstract is too long or is not a string.
     """
-    return None
+    # check if short description is a string
+    if type(abstractText) != str: raise ValidationError("The abstract must be a string.")
+
+    # check if short description is too long
+    count = len(abstractText.split(" "))
+    if count > 200: raise ValidationError("The abstract must be less than or equal to 200 words.")
 
 def validate_methods(methodText):
 
