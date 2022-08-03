@@ -106,3 +106,12 @@ def validate_keywords(keywords):
 
 
 def validate_num_scoresets(numScoresets):
+    return
+
+
+def validate_num_variants(numVariants):
+    return
+
+
+def validate_dataset_columns(datasetColumns):
+    return
