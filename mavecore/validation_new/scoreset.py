@@ -17,21 +17,22 @@ def validate_scoreset(scoreset, files):
     ValidationError
         If any validation fails.
     """
-    try:
-        validate_urn(scoreset.get("urn"))
-        validate_title(title)
-
-
-{
-  "urn": "string",
-  "title": "string",
-  "methodText": "string",
-  "abstractText": "string",
-  "shortDescription": "string",
-  "extraMetadata": {},
-  "dataUsagePolicy": "string",
-  "licenceId": 0,
-  "replacesId": 0,
+    # {
+    #  "urn": "string",
+    #  "title": "string",
+    #  "methodText": "string",
+    #  "abstractText": "string",
+    #  "shortDescription": "string",
+    urn.validate_scoreset_urn(scoreset.get("urn"))
+    summary.validate_title(scoreset.get("title"))
+    summary.validate_methods(scoreset.get("methodText"))
+    summary.validate_abstract(scoreset.get("abstractText"))
+    summary.validate_short_description(scoreset.get("shortDescription"))
+    #"extraMetadata": {},
+    metadata.validate_metadata(scoreset.get("extraMetadata"))
+    #"dataUsagePolicy": "string",
+    #"licenceId": 0,
+    #"replacesId": 0,
   "keywords": [
     "string"
   ],
