@@ -34,6 +34,7 @@ def validate_experiment(experiment):
     #    ],
     summary.validate_keywords(experiment.get("keywords"))
     #    "urn": "string",
+    urn.validate_experiment_urn(experiment.get("urn"))
     #    "numScoresets": 0,
     summary.validate_num_scoresets(experiment.get("numScoresets"))
     #    "createdBy": {
