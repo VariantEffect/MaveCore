@@ -27,9 +27,13 @@ def validate_replaces_id(replacesId):
 
 
 def validate_processing_state(processingState):
-    "creationDate": "2022-08-02",
-    "modificationDate": "2022-08-02",
-    "publishedDate": "2022-08-02",
+    """
+
+    :param processingState:
+    :return:
+    """
+    return
+
 
 def validate_date(date):
 
