@@ -12,13 +12,14 @@ def validate_doi_identifiers(doiIdentifiers):
     ValidationError
         If any identifier is found to be invalid or if doiIdentifiers is not a list of dictionaries.
     """
-"doiIdentifiers": [
-      {
-        "identifier": "string",
-        "id": 0,
-        "url": "string"
-      }
-    ],
+    return
+#"doiIdentifiers": [
+ #     {
+  #      "identifier": "string",
+   #     "id": 0,
+    #    "url": "string"
+     # }
+   # ],
 
 
 def validate_pubmed_identifiers(pubmedIdentifiers):
@@ -35,10 +36,11 @@ def validate_pubmed_identifiers(pubmedIdentifiers):
     ValidationError
         If any identifier is found to be invalid or if pubMed Identifiers is not a list of dictionaries.
     """
-    "pubmedIdentifiers": [
-      {
-        "identifier": "string",
-        "id": 0,
-        "url": "string",
-        "referenceHtml": "string"
-      }
+    #"pubmedIdentifiers": [
+    #  {
+    #    "identifier": "string",
+    #    "id": 0,
+      #  "url": "string",
+     #   "referenceHtml": "string"
+      #}
+    return
