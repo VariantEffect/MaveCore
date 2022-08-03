@@ -78,7 +78,17 @@ def validate_methods(methodText):
     if count > 200: raise ValidationError("The methods must be less than or equal to 200 words.")
 
 def validate_keywords(keywords):
-"methodText": "string",
-    "extraMetadata": {},
+    """
+    Validates the methods of an experiment set, an experiment, or a scoreset.
+
+    Parameters:
+    __________
+    methodText: str
+        The methods to be validated.
+
+    Raises:
+    ______
+    ValidationError if the abstract is too long or is not a string.
+    """
     "keywords": [
 def validate_num_scoresets(numScoresets):
