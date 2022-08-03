@@ -1,4 +1,6 @@
 from exceptions import ValidationError
+
+
 def validate_title(title):
     """
     Validates a title of an experiment set, an experiment, or a scoreset.
