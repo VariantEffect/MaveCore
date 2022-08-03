@@ -54,6 +54,9 @@ def validate_experiment(experiment):
     #    "creationDate": "2022-08-02",
     #    "modificationDate": "2022-08-02",
     #    "publishedDate": "2022-08-02",
+    general.validate_date(experiment.get("creationDate"))
+    general.validate_date(experiment.get("modificationDate"))
+    general.validate_date(experiment.get("publishedDate"))
     #    "experimentSetUrn": "string",
     urn.validate_experimentset_urn(experiment.get("experimentSetUrn"))
     #    "doiIdentifiers": [
