@@ -57,6 +57,8 @@ def validate_scoreset(scoreset, files):
     #    {
     #    }
     #  ],
+    identifiers.validate_doi_identifiers(scoreset.get("doiIdentifiers"))
+    identifiers.validate_pubmed_identifiers(scoreset.get("pubmedIdentifiers"))
     #  "publishedDate": "2022-08-02",
     #  "creationDate": "2022-08-02",
     #  "modificationDate": "2022-08-02",
