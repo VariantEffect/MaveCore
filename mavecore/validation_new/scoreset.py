@@ -16,7 +16,7 @@ def validate_scoreset(scoreset, files):
     Raises:
     ______
     ValidationError
-        If any validation fails.
+        If scoreset is not a dictionary or if any additional validation fails.
     """
     # {
     #  "urn": "string",
