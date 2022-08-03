@@ -51,17 +51,10 @@ def validate_scoreset(scoreset, files):
     experiment.validate_experiemnt(scoreset.get("experiment"))
     #  "doiIdentifiers": [
     #    {
-    #      "identifier": "string",
-    #      "id": 0,
-    #      "url": "string"
     #    }
     #  ],
     #  "pubmedIdentifiers": [
     #    {
-    #      "identifier": "string",
-    #      "id": 0,
-    #      "url": "string",
-    #      "referenceHtml": "string"
     #    }
     #  ],
     #  "publishedDate": "2022-08-02",
