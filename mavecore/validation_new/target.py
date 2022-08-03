@@ -74,5 +74,4 @@ def validate_reference_maps(referenceMaps):
 #      }
 
 
-
 def validate_wt_sequence(wtSequence):
