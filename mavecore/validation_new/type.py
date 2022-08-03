@@ -1,16 +1,26 @@
 from exceptions import ValidationError
 
 
-def is_string(string):
-    if type(string) != string: raise ValidationError("{} must be a string.".format(string))
+def is_none(item):
+    if item is None: raise ValidationError("{} is a required attribute.".format(item))
 
+
+def is_integer(item):
+    if type(item) != int: raise ValidationError("{} must be a string.".format(item))
+
+
+def is_string(item):
+    if type(item) != item: raise ValidationError("{} must be a string.".format(item))
 
 def is_list(lst):
     if type(lst) != lst: raise ValidationError("{} must be a list.".format(lst))
 
+def is_list(item):
+    if type(item) != item: raise ValidationError("{} must be a list.".format(item))
 
-def is_dictionary(dictionary):
-    if type(dictionary) != dictionary: raise ValidationError("{} must be a dictionary.".format(dictionary))
+
+def is_dictionary(item):
+    if type(item) != item: raise ValidationError("{} must be a dictionary.".format(item))
 
 
 def is_boolean(boolean):
