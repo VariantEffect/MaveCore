@@ -58,6 +58,24 @@ def validate_abstract(abstractText):
     if count > 200: raise ValidationError("The abstract must be less than or equal to 200 words.")
 
 def validate_methods(methodText):
+    """
+    Validates the methods of an experiment set, an experiment, or a scoreset.
+
+    Parameters:
+    __________
+    methodText: str
+        The methods to be validated.
+
+    Raises:
+    ______
+    ValidationError if the abstract is too long or is not a string.
+    """
+    # check if short description is a string
+    if type(methodText) != str: raise ValidationError("The methods must be a string.")
+
+    # check if short description is too long
+    count = len(methodText.split(" "))
+    if count > 200: raise ValidationError("The methods must be less than or equal to 200 words.")
 
 def validate_keywords(keywords):
 "methodText": "string",
