@@ -48,8 +48,7 @@ def validate_scoreset(scoreset, files):
     summary.validate_num_variants(scoreset.get("numVariants"))
     #  "experiment": {
     #  },
-    experiment.
-
+    experiment.validate_experiemnt(scoreset.get("experiment"))
     #  "doiIdentifiers": [
     #    {
     #      "identifier": "string",
