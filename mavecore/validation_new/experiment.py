@@ -27,8 +27,10 @@ def validate_experiment(experiment):
     #    "keywords": [
     #      "string"
     #    ],
+    summary.validate_keywords(experiment.get("keywords"))
     #    "urn": "string",
     #    "numScoresets": 0,
+    summary.validate_num_scoresets(experiment.get("numScoresets"))
     #    "createdBy": {
     #      "orcid_id": "string",
     #      "firstName": "string",
