@@ -77,6 +77,8 @@ def validate_scoreset(scoreset, files):
     #    "lastName": "string",
     #    "email": "string"
     #  },
+    user.validate_user(scoreset.get("createdBy"))
+    user.validate_user(scoreset.get("modifiedBy"))
     #  "targetGene": {
     #    "name": "string",
     #    "category": "string",
