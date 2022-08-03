@@ -1,3 +1,6 @@
+import urn, summary, metadata
+
+
 def validate_scoreset(scoreset, files):
     """
     Validates a scoreset represented as a dictionary.
