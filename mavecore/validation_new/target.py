@@ -52,6 +52,8 @@ def validate_reference_maps(referenceMaps):
         or if any of the key value pairs in the dictionary are invalid
     """
     is_list(referenceMaps)
+    is_integer(referenceMaps.get("id"))
+    is_integer(referenceMaps.get("genomeId"))
 
 # {
 #        "id": 0,
