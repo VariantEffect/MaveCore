@@ -13,7 +13,7 @@ def validate_title(title):
     ValidationError if the title is not valid.
     """
     # check if title is a string
-    if type(title) != str: raise ValidationError("{}'s is not a valid title.".format(title))
+    if type(title) != str: raise ValidationError("The title must be a string.")
 
     # check that title is not too long
 
