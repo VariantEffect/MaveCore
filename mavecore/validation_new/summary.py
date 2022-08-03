@@ -42,6 +42,7 @@ def validate_short_description(shortDescription):
     count = len(shortDescription.split(" "))
     if count > 50: raise ValidationError("The short description must be less than or equal to 50 words.")
 
+
 def validate_abstract(abstractText):
     """
     Validates the abstract of an experiment set, an experiment, or a scoreset.
