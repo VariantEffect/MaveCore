@@ -8,6 +8,17 @@ from target import Target
 
 
 class DataSet(BaseModel):
+    urn: str
+    title: str
+    shortDescription: str
+    abstractText: str
+    methodText: str
+    extraMetadata: dict
+    creationDate: datetime
+    publishedDate: datetime
+    modificationDate: datetime
+    createdBy: User
+    modifiedBy: User
 
 class ExperimentSet(DataSet):
 
