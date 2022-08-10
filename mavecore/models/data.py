@@ -20,7 +20,6 @@ class DataSet(BaseModel):
     createdBy: User
     modifiedBy: User
 
-class ExperimentSet(DataSet):
 
 class Experiment(DataSet):
     keywords: list[str]
