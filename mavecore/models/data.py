@@ -38,3 +38,14 @@ class ExperimentSet(DataSet):
 
 
 class ScoreSet(DataSet):
+    dataUsagePolicy: str
+    licenceId: int
+    replacesId: int
+    keywords: list[str]
+    numVariants: int
+    experiment: Experiment
+    doiIdentifiers: DoiIdentifier
+    pubmedIdentifiers: PubmedIdentifier
+    targetGene: Target
+    datasetColumns: dict
+    private: bool
