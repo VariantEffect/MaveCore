@@ -23,5 +23,18 @@ class DataSet(BaseModel):
 class ExperimentSet(DataSet):
 
 class Experiment(DataSet):
+    keywords: list[str]
+    numScoresets: int
+    experimentSetUrn: Urn
+    doiIdentifiers: DoiIdentifier
+    pubmedIdentifiers: PubmedIdentifier
+    processingState: str
+
+
+class ExperimentSet(DataSet):
+    id: int
+    experiments: list[Experiment]
+    numExperiments: int
+
 
 class ScoreSet(DataSet):
