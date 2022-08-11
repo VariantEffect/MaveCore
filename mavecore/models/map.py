@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
-from genome import Genome
+from .genome import Genome
 
 
 class ReferenceMap(BaseModel):
