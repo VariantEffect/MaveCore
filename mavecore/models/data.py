@@ -9,7 +9,6 @@ from urn import ExperimentUrn, ExperimentSetUrn, ScoreSetUrn
 
 
 class DataSet(BaseModel):
-    urn: Urn
     title: str
     shortDescription: str
     abstractText: str
