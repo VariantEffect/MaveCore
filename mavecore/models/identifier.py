@@ -8,11 +8,8 @@ class Identifier(BaseModel):
 
 
 class DoiIdentifier(Identifier):
-    {
-        "identifier": "string",
-        "id": 0,
-        "url": "string"
-    }
+    pass
+
 
 class PubmedIdentifier(Identifier):
     {
