@@ -9,7 +9,7 @@ from urn import Urn
 
 
 class DataSet(BaseModel):
-    urn: str
+    urn: Urn
     title: str
     shortDescription: str
     abstractText: str
