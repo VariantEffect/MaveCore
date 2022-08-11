@@ -46,6 +46,6 @@ class ScoreSet(DataSet):
     experiment: Experiment
     doiIdentifiers: DoiIdentifier
     pubmedIdentifiers: PubmedIdentifier
-    targetGene: Target
+    targetGene: TargetGene
     datasetColumns: dict
     private: bool
