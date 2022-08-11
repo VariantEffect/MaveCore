@@ -34,7 +34,7 @@ class Experiment(DataSet):
 class ExperimentSet(DataSet):
     urn: ExperimentSetUrn
     id: int
-    experiments: list[Experiment]
+    experiments: List[Experiment]
     numExperiments: int
 
 
@@ -49,5 +49,5 @@ class ScoreSet(DataSet):
     doiIdentifiers: Optional[DoiIdentifier]
     pubmedIdentifiers: Optional[PubmedIdentifier]
     targetGene: TargetGene
-    datasetColumns: dict
+    datasetColumns: Dict
     private: bool
