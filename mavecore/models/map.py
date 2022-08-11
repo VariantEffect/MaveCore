@@ -12,4 +12,4 @@ class ReferenceMap(BaseModel):
     isPrimary: bool
     genome: Genome
     creationDate: datetime
-    modificationDate: datetime
+    modificationDate: Optional[datetime]
