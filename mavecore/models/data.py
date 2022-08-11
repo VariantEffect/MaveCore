@@ -3,8 +3,7 @@ from datetime import datetime
 from typing import List, Dict, Optional
 
 from user import User
-from urn import Urn
-from identifier import *
+from identifier import DoiIdentifier, PubmedIdentifier
 from target import TargetGene
 from urn import Urn
 
