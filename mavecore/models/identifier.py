@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
+
 
 class Identifier(BaseModel):
 
