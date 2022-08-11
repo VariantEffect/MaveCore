@@ -5,7 +5,7 @@ from typing import List, Dict, Optional
 from user import User
 from identifier import DoiIdentifier, PubmedIdentifier
 from target import TargetGene
-from urn import Urn
+from urn import ExperimentUrn, ExperimentSetUrn, ScoreSetUrn
 
 
 class DataSet(BaseModel):
