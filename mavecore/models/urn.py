@@ -1,6 +1,7 @@
 from pydantic import BaseModel, ValidationError, validator
 
 from ..validation_new.constants.urn import *
+from ..validation_new.exceptions import ValidationError
 
 
 class Urn(BaseModel):
