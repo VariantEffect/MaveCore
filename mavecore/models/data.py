@@ -22,7 +22,8 @@ class DataSet(BaseModel):
 
 
 class Experiment(DataSet):
-    keywords: list[str]
+    urn: ExperimentUrn
+    keywords: List[str]
     numScoresets: int
     experimentSetUrn: Urn
     doiIdentifiers: DoiIdentifier
@@ -31,12 +32,14 @@ class Experiment(DataSet):
 
 
 class ExperimentSet(DataSet):
+    urn: ExperimentSetUrn
     id: int
     experiments: list[Experiment]
     numExperiments: int
 
 
 class ScoreSet(DataSet):
+    urn: ScoreSetUrn
     dataUsagePolicy: str
     licenceId: int
     replacesId: int
