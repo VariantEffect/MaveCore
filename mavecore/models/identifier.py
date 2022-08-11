@@ -12,9 +12,4 @@ class DoiIdentifier(Identifier):
 
 
 class PubmedIdentifier(Identifier):
-    {
-        "identifier": "string",
-        "id": 0,
-        "url": "string",
-        "referenceHtml": "string"
-    }
+    referenceHtml: str
