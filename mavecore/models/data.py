@@ -4,7 +4,8 @@ from datetime import datetime
 from user import User
 from urn import Urn
 from identifier import *
-from target import Target
+from target import TargetGene
+from urn import Urn
 
 
 class DataSet(BaseModel):
