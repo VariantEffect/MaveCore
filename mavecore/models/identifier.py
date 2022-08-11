@@ -4,8 +4,8 @@ from typing import Optional
 
 class Identifier(BaseModel):
     identifier: str
-    id: 0
-    url: HttpUrl
+    id: Optional[0]
+    url: Optional[HttpUrl]
 
 
 class DoiIdentifier(Identifier):
@@ -13,4 +13,4 @@ class DoiIdentifier(Identifier):
 
 
 class PubmedIdentifier(Identifier):
-    referenceHtml: str
+    referenceHtml: Optional[str]
