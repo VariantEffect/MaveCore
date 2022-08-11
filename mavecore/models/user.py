@@ -1,4 +1,7 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
+import re
+
+from ..validation_new.exceptions import ValidationError
 
 
 class User(BaseModel):
