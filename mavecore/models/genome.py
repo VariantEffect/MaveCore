@@ -8,5 +8,5 @@ class Genome(BaseModel):
     organismName: str
     genomeId: int
     creationDate: datetime
-    modificationDate: datetime
+    modificationDate: Optional[datetime]
     id: int
