@@ -8,5 +8,5 @@ from sequence import WildType
 class TargetGene(BaseModel):
     name: str
     category: str
-    referenceMaps: list[ReferenceMap]
+    referenceMaps: List[ReferenceMap]
     wtSequence: WildType
