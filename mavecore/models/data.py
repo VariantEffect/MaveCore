@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import List, Dict, Optional
 
 from user import User
 from urn import Urn
