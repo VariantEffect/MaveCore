@@ -13,21 +13,21 @@ class DataSet(BaseModel):
     shortDescription: str
     abstractText: str
     methodText: str
-    extraMetadata: dict
+    extraMetadata: Optional[Dict]
     creationDate: datetime
-    publishedDate: datetime
-    modificationDate: datetime
-    createdBy: User
-    modifiedBy: User
+    publishedDate: Optional[datetime]
+    modificationDate: Optional[datetime]
+    createdBy: Optional[User]
+    modifiedBy: Optional[User]
 
 
 class Experiment(DataSet):
     urn: ExperimentUrn
     keywords: List[str]
     numScoresets: int
-    experimentSetUrn: Urn
-    doiIdentifiers: DoiIdentifier
-    pubmedIdentifiers: PubmedIdentifier
+    experimentSetUrn: ExperimentSetUrn
+    doiIdentifiers: Optional[DoiIdentifier]
+    pubmedIdentifiers: Optional[PubmedIdentifier]
     processingState: str
 
 
@@ -42,12 +42,12 @@ class ScoreSet(DataSet):
     urn: ScoreSetUrn
     dataUsagePolicy: str
     licenceId: int
-    replacesId: int
-    keywords: list[str]
+    replacesId: Optional[int]
+    keywords: Optional[List[str]]
     numVariants: int
     experiment: Experiment
-    doiIdentifiers: DoiIdentifier
-    pubmedIdentifiers: PubmedIdentifier
+    doiIdentifiers: Optional[DoiIdentifier]
+    pubmedIdentifiers: Optional[PubmedIdentifier]
     targetGene: TargetGene
     datasetColumns: dict
     private: bool
