@@ -65,15 +65,15 @@ class ExperimentSet(DataSet):
 
 
 class ScoreSet(DataSet):
-    urn: ScoreSetUrn
+    urn: Optional[str]
     dataUsagePolicy: str
     licenceId: int
     replacesId: Optional[int]
     keywords: Optional[List[str]]
     numVariants: int
     experiment: Experiment
-    doiIdentifiers: Optional[DoiIdentifier]
-    pubmedIdentifiers: Optional[PubmedIdentifier]
+    doiIdentifiers: Optional[List[DoiIdentifier]]
+    pubmedIdentifiers: Optional[List[PubmedIdentifier]]
     targetGene: TargetGene
     datasetColumns: Dict
     private: bool
