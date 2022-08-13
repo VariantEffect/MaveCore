@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
 from typing import List
 
 from .map import ReferenceMap
