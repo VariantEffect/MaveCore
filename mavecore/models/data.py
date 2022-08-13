@@ -58,6 +58,11 @@ class ExperimentSet(DataSet):
     experiments: List[Experiment]
     numExperiments: int
 
+    @validator('urn')
+    def must_match_regular_expression(cls, v):
+        if not (MAVEDB_EXPERIMENT_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
+            raise ValidationError("{}'s is not a valid Experiment urn.".format(v))
+
 
 class ScoreSet(DataSet):
     urn: ScoreSetUrn
