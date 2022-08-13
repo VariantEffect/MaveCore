@@ -1,11 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
 from datetime import datetime
 from typing import List, Dict, Optional
 
-from user import User
-from identifier import DoiIdentifier, PubmedIdentifier
-from target import TargetGene
-from urn import ExperimentUrn, ExperimentSetUrn, ScoreSetUrn
+from .user import User
+from .identifier import DoiIdentifier, PubmedIdentifier
+from .target import TargetGene
+
+from mavecore.validation_new.constants.urn import *
 
 
 class DataSet(BaseModel):
