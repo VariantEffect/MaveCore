@@ -53,7 +53,7 @@ class Experiment(DataSet):
 
 
 class ExperimentSet(DataSet):
-    urn: ExperimentSetUrn
+    urn: Optional[str]
     id: int
     experiments: List[Experiment]
     numExperiments: int
