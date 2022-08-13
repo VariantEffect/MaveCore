@@ -4,7 +4,7 @@ from typing import Optional
 
 class Identifier(BaseModel):
     identifier: str
-    id: Optional[0]
+    id: Optional[int]
     url: Optional[HttpUrl]
 
 
