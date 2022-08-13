@@ -30,13 +30,26 @@ class DataSet(BaseModel):
 
 
 class Experiment(DataSet):
-    urn: ExperimentUrn
-    keywords: List[str]
-    numScoresets: int
-    experimentSetUrn: ExperimentSetUrn
-    doiIdentifiers: Optional[DoiIdentifier]
-    pubmedIdentifiers: Optional[PubmedIdentifier]
-    processingState: str
+    urn: Optional[str]
+    keywords: Optional[List[str]]
+    numScoresets: Optional[int]
+    experimentSetUrn: Optional[str]
+    doiIdentifiers: Optional[List[DoiIdentifier]]
+    pubmedIdentifiers: Optional[List[PubmedIdentifier]]
+    processingState: Optional[str]
+
+    @validator('urn')
+    def urn_must_match_regex(cls, v):
+        regex = MAVEDB_TMP_URN_RE
+        if not (re.fullmatch(regex, v)):
+            raise ValidationError("{}'s is not a valid Experiment Set urn.".format(v))
+        #if not (MAVEDB_EXPERIMENTSET_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
+        #    raise ValidationError("{}'s is not a valid Experiment Set urn.".format(v))
+
+    @validator('experimentSetUrn')
+    def experiment_set_urn_must_match_regex(cls, v):
+        if not (MAVEDB_EXPERIMENT_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
+            raise ValidationError("{}'s is not a valid Experiment urn.".format(v))
 
 
 class ExperimentSet(DataSet):
