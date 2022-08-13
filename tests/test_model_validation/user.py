@@ -3,8 +3,8 @@ from pydantic import ValidationError
 from mavecore.models.user import User
 
 
-class Test(TestCase):
-    def test_valid(self):
+class TestUser(TestCase):
+    def test_valid_all_fields(self):
         user = {
           "orcid_id": "idididid",
           "firstName": "first",
