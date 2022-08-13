@@ -21,6 +21,13 @@ class DataSet(BaseModel):
     createdBy: Optional[User]
     modifiedBy: Optional[User]
 
+    @validator('creationDate', 'publishedDate', 'modificationDate')
+    def date_must_match_regex(cls, v):
+        # regular expression for validating a date
+        regex = '%Y-%m-%d'
+        if not bool(datetime.strptime(v, regex)):
+            raise ValidationError("{}'s is not a valid date.".format(v))
+
 
 class Experiment(DataSet):
     urn: ExperimentUrn
