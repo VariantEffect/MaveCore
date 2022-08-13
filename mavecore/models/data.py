@@ -15,9 +15,9 @@ class DataSet(BaseModel):
     abstractText: str
     methodText: str
     extraMetadata: Optional[Dict]
-    creationDate: datetime
-    publishedDate: Optional[datetime]
-    modificationDate: Optional[datetime]
+    creationDate: Optional[str]
+    publishedDate: Optional[str]
+    modificationDate: Optional[str]
     createdBy: Optional[User]
     modifiedBy: Optional[User]
 
