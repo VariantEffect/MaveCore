@@ -20,5 +20,5 @@ class TestUser(TestCase):
             "lastName": "last",
             "email": "firstlastemail.edu",
         }
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             User.parse_obj(user)
