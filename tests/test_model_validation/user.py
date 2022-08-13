@@ -6,10 +6,10 @@ from mavecore.models.user import User
 class TestUser(TestCase):
     def test_valid_all_fields(self):
         user = {
-          "orcid_id": "idididid",
-          "firstName": "first",
-          "lastName": "last",
-          "email": "firstlast@email.edu",
+            "orcid_id": "idididid",
+            "firstName": "first",
+            "lastName": "last",
+            "email": "firstlast@email.edu",
         }
         User.parse_obj(user)
 
