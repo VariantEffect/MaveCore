@@ -20,14 +20,14 @@ class TestDataSet(TestCase):
         }
         DataSet.parse_obj(dataset)
 
-class Test(TestCase):
-    def test_no_change(self):
-        """
-        class DataSet(BaseModel):
-            title: str
-            shortDescription: str
-            abstractText: str
-            methodText: str"""
+    def test_valid_exclude_optional(self):
+        dataset = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+        }
+        DataSet.parse_obj(dataset)
 
         dictionary ={
           "title": "string",
