@@ -1,5 +1,6 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, ValidationError, validator, HttpUrl
 from typing import Optional
+import idutils
 
 
 class Identifier(BaseModel):
