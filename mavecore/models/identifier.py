@@ -19,3 +19,8 @@ class DoiIdentifier(Identifier):
 
 class PubmedIdentifier(Identifier):
     referenceHtml: Optional[str]
+
+    @validator('identifier')
+    def must_match_regular_expression(cls, v):
+        if not idutils.is_pmid(v):
+            raise ValidationError("{} is not a valid PubMed identifier.".format(v))
