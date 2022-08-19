@@ -10,7 +10,11 @@ class Identifier(BaseModel):
 
 
 class DoiIdentifier(Identifier):
-    pass
+
+    @validator('identifier')
+    def must_match_regular_expression(cls, v):
+        if not idutils.is_doi(v):
+            raise ValidationError("{} is not a valid DOI identifier.".format(v))
 
 
 class PubmedIdentifier(Identifier):
