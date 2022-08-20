@@ -40,7 +40,7 @@ class Experiment(DataSet):
     processingState: Optional[str]
 
     @validator('urn')
-    def urn_must_match_regex(cls, v):
+    def validate_urn_matches_regex(cls, v):
         regex = MAVEDB_TMP_URN_RE
         if not (re.fullmatch(regex, v)):
             raise ValidationError("{}'s is not a valid Experiment Set urn.".format(v))
@@ -48,7 +48,7 @@ class Experiment(DataSet):
         #    raise ValidationError("{}'s is not a valid Experiment Set urn.".format(v))
 
     @validator('experimentSetUrn')
-    def experiment_set_urn_must_match_regex(cls, v):
+    def validate_experiment_set_urn_matches_regex(cls, v):
         if not (MAVEDB_EXPERIMENT_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
             raise ValidationError("{}'s is not a valid Experiment urn.".format(v))
 
@@ -60,7 +60,7 @@ class ExperimentSet(DataSet):
     numExperiments: int
 
     @validator('urn')
-    def must_match_regular_expression(cls, v):
+    def validate_matches_regular_expression(cls, v):
         if not (MAVEDB_EXPERIMENT_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
             raise ValidationError("{}'s is not a valid Experiment urn.".format(v))
 
@@ -80,6 +80,6 @@ class ScoreSet(DataSet):
     private: bool
 
     @validator('urn')
-    def must_match_regular_expression(cls, v):
+    def validate_matches_regular_expression(cls, v):
         if not (MAVEDB_SCORESET_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
             raise ValidationError("{}'s is not a valid score set urn.".format(v))
