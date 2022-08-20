@@ -47,6 +47,15 @@ class Experiment(DataSet):
         #if not (MAVEDB_EXPERIMENTSET_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
         #    raise ValidationError("{}'s is not a valid Experiment Set urn.".format(v))
 
+    @validator('keywords')
+    def validate_keywords(cls, v):
+        if is_null(v):
+            raise ValidationError("{} are not valid keywords. Keywords must be a valid list of strings.".format(v))
+        else:
+            for keyword in v:
+                if is_null(keyword) or not isinstance(keyword, str):
+                    raise ValidationError("{} not a valid keyword. Keywords must be valid strings.".format(keyword))
+
     @validator('experimentSetUrn')
     def validate_experiment_set_urn_matches_regex(cls, v):
         if not (MAVEDB_EXPERIMENT_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
