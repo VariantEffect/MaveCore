@@ -56,7 +56,7 @@ class TestPubmedIdentifier(TestCase):
 
     def test_valid_exclude_optional(self):
         pubmed_identifier = {
-            "identifier": "id",
+            "identifier": "29785012",
         }
         PubmedIdentifier.parse_obj(pubmed_identifier)
 
