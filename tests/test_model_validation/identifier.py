@@ -36,6 +36,13 @@ class TestDoiIdentifier(TestCase):
         }
         DoiIdentifier.parse_obj(doi_identifier)
 
+    def test_invalid_type_of_identifier(self):
+        identifier = {
+            "identifier": "29785012",
+        }
+        with self.assertRaises(ValueError):
+            DoiIdentifier.parse_obj(identifier)
+
 
 class TestPubmedIdentifier(TestCase):
     def test_valid_all_fields(self):
@@ -52,3 +59,10 @@ class TestPubmedIdentifier(TestCase):
             "identifier": "id",
         }
         PubmedIdentifier.parse_obj(pubmed_identifier)
+
+    def test_invalid_type_of_identifier(self):
+        identifier = {
+            "identifier": "10.1038/s41588-018-0122-z",
+        }
+        with self.assertRaises(ValueError):
+            PubmedIdentifier.parse_obj(identifier)
