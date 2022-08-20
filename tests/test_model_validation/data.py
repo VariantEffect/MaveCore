@@ -100,6 +100,17 @@ class TestExperiment(TestCase):
         }
         Experiment.parse_obj(experiment)
 
+    def test_invalid_keywords(self):
+        experiment = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "keywords": ["null"],
+        }
+        with self.assertRaises(ValidationError):
+            Experiment.parse_obj(experiment)
+
 
 class TestExperimentSet(TestCase):
     def test_valid(self):
