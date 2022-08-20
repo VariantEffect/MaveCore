@@ -68,8 +68,8 @@ class TestDataSet(TestCase):
 class TestExperiment(TestCase):
     def test_valid_all_fields(self):
         user = {"orcid_id": "id", "firstName": "first", "lastName": "last", "email": "firstlast@email.edu"}
-        doi_identifier = {"identifier": "id"}
-        pubmed_identifier = {"identifier": "id"}
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
         experiment = {
             "title": "title",
             "shortDescription": "short description",
@@ -128,8 +128,8 @@ class TestScoreSet(TestCase):
     def test_valid_all_fields(self):
         user = {"orcid_id": "id", "firstName": "first", "lastName": "last", "email": "firstlast@email.edu"}
         experiment = {"title": "title", "shortDescription": "short description", "abstractText": "abstract", "methodText": "methods"}
-        doi_identifier = {"identifier": "id"}
-        pubmed_identifier = {"identifier": "id"}
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
         genome = {"shortName": "name", "organismName": "organism", "genomeId": 0, "id": 0}
         reference_map = {"id": 0, "genomeId": 0, "targetId": 0, "isPrimary": True, "genome": genome}
         sequence = {"sequenceType": "DNA", "sequence": "ATCG"}
