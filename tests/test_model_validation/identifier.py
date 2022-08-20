@@ -24,7 +24,7 @@ class TestIdentifier(TestCase):
             "id": 0,
             "url": "www.uw.edu",
         }
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             Identifier.parse_obj(identifier)
 
 
@@ -41,7 +41,7 @@ class TestDoiIdentifier(TestCase):
         identifier = {
             "identifier": "29785012",
         }
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             DoiIdentifier.parse_obj(identifier)
 
 
@@ -65,5 +65,5 @@ class TestPubmedIdentifier(TestCase):
         identifier = {
             "identifier": "10.1038/s41588-018-0122-z",
         }
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             PubmedIdentifier.parse_obj(identifier)
