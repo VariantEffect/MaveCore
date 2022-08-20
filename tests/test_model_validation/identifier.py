@@ -5,7 +5,7 @@ from mavecore.models.identifier import Identifier, DoiIdentifier, PubmedIdentifi
 class TestIdentifier(TestCase):
     def test_valid_all_fields(self):
         identifier = {
-            "identifier": "id",
+            "identifier": "10.1038/s41588-018-0122-z",
             "id": 0,
             "url": "https://www.uw.edu",
         }
@@ -13,13 +13,13 @@ class TestIdentifier(TestCase):
 
     def test_valid_exclude_optional(self):
         identifier = {
-            "identifier": "id",
+            "identifier": "29785012",
         }
         Identifier.parse_obj(identifier)
 
     def test_invalid_url(self):
         identifier = {
-            "identifier": "id",
+            "identifier": "29785012",
             "id": 0,
             "url": "www.uw.edu",
         }
@@ -30,7 +30,7 @@ class TestIdentifier(TestCase):
 class TestDoiIdentifier(TestCase):
     def test_valid_all_fields(self):
         doi_identifier = {
-            "identifier": "id",
+            "identifier": "10.1038/s41588-018-0122-z",
             "id": 0,
             "url": "https://www.uw.edu",
         }
@@ -40,7 +40,7 @@ class TestDoiIdentifier(TestCase):
 class TestPubmedIdentifier(TestCase):
     def test_valid_all_fields(self):
         pubmed_identifier = {
-            "identifier": "id",
+            "identifier": "29785012",
             "id": 0,
             "url": "https://www.uw.edu",
             "referenceHtml": "referencehtml",
