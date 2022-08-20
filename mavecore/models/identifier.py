@@ -12,7 +12,7 @@ class Identifier(BaseModel):
 class DoiIdentifier(Identifier):
 
     @validator('identifier')
-    def must_match_regular_expression(cls, v):
+    def must_be_valid_doi(cls, v):
         if not idutils.is_doi(v):
             raise ValidationError("{} is not a valid DOI identifier.".format(v))
 
@@ -21,6 +21,6 @@ class PubmedIdentifier(Identifier):
     referenceHtml: Optional[str]
 
     @validator('identifier')
-    def must_match_regular_expression(cls, v):
+    def must_be_valid_pubmed(cls, v):
         if not idutils.is_pmid(v):
             raise ValidationError("{} is not a valid PubMed identifier.".format(v))
