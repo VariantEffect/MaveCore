@@ -1,4 +1,5 @@
 from unittest import TestCase
+from pydantic import ValidationError
 from mavecore.models.identifier import Identifier, DoiIdentifier, PubmedIdentifier
 
 
