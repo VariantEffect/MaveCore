@@ -7,6 +7,7 @@ from .identifier import DoiIdentifier, PubmedIdentifier
 from .target import TargetGene
 
 from mavecore.validation_new.constants.urn import *
+from mavecore.validation.utilities import is_null
 
 
 class DataSet(BaseModel):
