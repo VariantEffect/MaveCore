@@ -81,7 +81,7 @@ class TestExperiment(TestCase):
             "modificationDate": "2022-02-02",
             "createdBy": user,
             "modifiedBy": user,
-            "urn": "tmp:070b3886-ed72-4ce9-a574-6754ad00310b",
+            #"urn": "tmp:070b3886-ed72-4ce9-a574-6754ad00310b",
             "keywords": ["string"],
             "numScoresets": 0,
             #"experimentSetUrn": "urn",
