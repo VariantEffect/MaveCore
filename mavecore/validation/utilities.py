@@ -1,4 +1,5 @@
-from mavecore.validation.constants import null_values_re
+from mavecore.validation.constants.general import null_values_re
+
 
 def is_null(value):
     """
