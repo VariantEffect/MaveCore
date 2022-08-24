@@ -170,3 +170,16 @@ class TestScoreSet(TestCase):
             "private": True,
         }
         ScoreSet.parse_obj(scoreset)
+
+    def test_invalid_keywords(self):
+        #TODO make sure all required fields are present - as written, this should not pass
+        scoreset = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            #"keywords": ["null"],
+        }
+        with self.assertRaises(ValidationError):
+            ScoreSet.parse_obj(scoreset)
+
