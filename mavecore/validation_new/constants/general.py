@@ -1,2 +1,0 @@
-# valid data usage policies
-
