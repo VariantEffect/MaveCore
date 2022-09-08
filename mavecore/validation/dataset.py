@@ -110,8 +110,14 @@ def validate_variants(variants, column_name=None):
         If any variant in the list of variants does not adhere to the mavehgvs specifications.
     """
     # variant strings will be cast into hgvs variant objects to validate
-    # variants should align with the hgvs column names
-    pass
+    for variant in variants:
+        try:
+            v = Variant(variant)
+            # variants should align with the hgvs column names
+            # check this by seeing if the prefix makes sense with regards to the hgvs column name
+            validate_variant_matches_hgvs_column_name(column_name, v.prefix)
+        except ValidationError:
+            raise ValidationError(variant + " does not adhere to mavehgvs variant guidelines.")
 
 
 def validate_variants_match_hgvs_column_name(dataframe):
