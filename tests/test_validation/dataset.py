@@ -73,7 +73,13 @@ class TestValidateColumnNames(TestCase):
             validate_column_names(dataframe.columns)
 
     def test_no_additional_columns_beyond_hgvs(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_column_names(dataframe.columns)
 
     def test_null_column_name(self):
         pass
