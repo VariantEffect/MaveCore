@@ -123,7 +123,72 @@ class TestHgvsColumnsDefineSameVariants(TestCase):
 
 class TestDataframesDefineSameVariants(TestCase):
     def test_valid(self):
-        pass
+        scores = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                general.hgvs_pro_column: ["p.Leu5Glu"],
+                general.hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+        counts = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                general.hgvs_pro_column: ["p.Leu5Glu"],
+                general.hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+        validate_dataframes_define_same_variants(scores, counts)
 
-    def test_dataframes_do_not_define_same_variants(self):
-        pass
+    def test_counts_defines_different_nt_variants(self):
+        scores = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                general.hgvs_pro_column: [None],
+                general.hgvs_splice_column: [None],
+            }
+        )
+        counts = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.2A>G"],
+                general.hgvs_pro_column: [None],
+                general.hgvs_splice_column: [None],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_dataframes_define_same_variants(scores, counts)
+
+    def test_counts_defines_different_splice_variants(self):
+        scores = pd.DataFrame(
+            {
+                general.hgvs_nt_column: [None],
+                general.hgvs_splice_column: ["c.1A>G"],
+                general.hgvs_pro_column: [None],
+            }
+        )
+        counts = pd.DataFrame(
+            {
+                general.hgvs_nt_column: [None],
+                general.hgvs_splice_column: ["c.2A>G"],
+                general.hgvs_pro_column: [None],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_dataframes_define_same_variants(scores, counts)
+
+    def test_counts_defines_different_pro_variants(self):
+        scores = pd.DataFrame(
+            {
+                general.hgvs_nt_column: [None],
+                general.hgvs_splice_column: [None],
+                general.hgvs_pro_column: ["p.Leu5Glu"],
+            }
+        )
+        counts = pd.DataFrame(
+            {
+                general.hgvs_nt_column: [None],
+                general.hgvs_splice_column: [None],
+                general.hgvs_pro_column: ["p.Leu75Glu"],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_dataframes_define_same_variants(scores, counts)
