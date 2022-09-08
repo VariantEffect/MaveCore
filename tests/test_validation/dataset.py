@@ -29,7 +29,15 @@ class TestValidateNoNullColumnsOrRows(TestCase):
             validate_no_null_columns_or_rows(dataframe)
 
     def test_null_column(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G", None],
+                general.hgvs_pro_column: [None, None],
+                general.hgvs_splice_column: ["c.1A>G", None],
+            }
+        )
+        with self.assertRaises(AssertionError):
+            validate_no_null_columns_or_rows(dataframe)
 
 
 class TestValidateColumnNames(TestCase):
