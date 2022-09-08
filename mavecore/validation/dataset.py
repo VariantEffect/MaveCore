@@ -94,9 +94,20 @@ def validate_column_names(columns):
 
 def validate_variants(variants, column_name=None):
     """
+    Validates a string of variants and verifies that the variant type in the column name makes
+    sense with regards to the actual variants.
 
-    :param dataframe:
-    :return:
+    Parameters
+    __________
+    variants: list[str]
+        List of mavehgvs formatted strings.
+    column_name: str
+        The hgvs column name from which the variants parameter originates.
+
+    Raises
+    ______
+    ValidationError
+        If any variant in the list of variants does not adhere to the mavehgvs specifications.
     """
     # variant strings will be cast into hgvs variant objects to validate
     # variants should align with the hgvs column names
