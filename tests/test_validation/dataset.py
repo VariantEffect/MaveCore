@@ -62,7 +62,15 @@ class TestValidateColumnNames(TestCase):
             validate_column_names(dataframe.columns)
 
     def test_hgvs_in_wrong_location(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                "scores": [1.000],
+                general.hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_column_names(dataframe.columns)
 
     def test_no_additional_columns_beyond_hgvs(self):
         pass
