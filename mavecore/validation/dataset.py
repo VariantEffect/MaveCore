@@ -74,9 +74,21 @@ def validate_column_names(columns):
     ValidationError
         If the column names are not formatted correctly.
     """
+    # count instances of hgvs columns
+    count = 0
+    for i in range(len(columns)):
+        # there should not be any null columns
+        if columns[i] in readable_null_values_list: raise ValidationError("Column names must not be null.")
+        if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]: count+=1
+    # there should be at least one hgvs column
+    if count == 0: raise ValidationError("Must include hgvs_nt, hgvs_pro, or hgvs_splice column.")
     # first columns should be hgvs columns
+    for i in range(count):
+        if columns[i] not in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
+            raise ValidationError("First columns must be hgvs columns.")
     # there should be at least one additional column beyond the hgvs columns
-    # there should not be any null columns
+    if len(columns) == count:
+        raise ValidationError("There must be at least one additional column beyond the hgvs columns.")
     # validate against UTF-8byte ordering marks
     pass
 
