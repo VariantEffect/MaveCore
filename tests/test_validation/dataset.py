@@ -8,7 +8,14 @@ from mavecore.validation.dataset import *
 
 class TestValidateNoNullColumnsOrRows(TestCase):
     def test_valid(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                general.hgvs_pro_column: ["p.Leu5Glu"],
+                general.hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+        validate_no_null_columns_or_rows(dataframe)
 
     def test_null_row(self):
         pass
