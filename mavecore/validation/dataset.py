@@ -141,7 +141,7 @@ def validate_variant_matches_hgvs_column_name(variant, column_name):
 
 def validate_hgvs_columns_define_same_variants(nt=None, pro=None):
     """
-    Checks that, when both hgvs_nt and hgvs_pro columns exist, the variant strings within
+    Checks that, when two or more of hgvs_nt, hgvs_pro, and hgvs_splice columns exist, the variant strings within
     those columns are representing the same change.
 
     Parameters
