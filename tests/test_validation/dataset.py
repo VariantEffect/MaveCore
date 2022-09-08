@@ -82,7 +82,15 @@ class TestValidateColumnNames(TestCase):
             validate_column_names(dataframe.columns)
 
     def test_null_column_name(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                "null": ["c.1A>G"],
+                "scores": [1.000],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_column_names(dataframe.columns)
 
 
 class TestValidateVariants(TestCase):
