@@ -30,7 +30,7 @@ null_values_re = re.compile(
     flags=re.IGNORECASE,
 )
 
-readable_null_values_list = [f"'{s}'" for s in null_values_list] + ["whitespace"]
+readable_null_values_list = [f"{s}" for s in null_values_list] + ["whitespace"]
 
 hgvs_nt_column = "hgvs_nt"
 hgvs_splice_column = "hgvs_splice"
