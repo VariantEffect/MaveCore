@@ -22,11 +22,11 @@ def validate_dataframes(scores=None, counts=None):
     ValidationError
         If any of the validation fails.
     """
-    validate_no_null_columns_rows(scores)
+    validate_no_null_columns_or_rows(scores)
     validate_column_names(scores.columns)
     validate_variants(scores)
     if counts is not None:
-        validate_no_null_columns_rows(counts)
+        validate_no_null_columns_or_rows(counts)
         validate_column_names(counts.columns)
         validate_variants(counts)
         validate_dataframes_define_same_variants(scores, counts)
