@@ -122,9 +122,19 @@ def validate_variants(variants, column_name=None):
 
 def validate_variant_matches_hgvs_column_name(variant, column_name):
     """
+    Checks that a variant makes sense with regards to the hgvs column name.
 
-    :param dataframe:
-    :return:
+    Parameters
+    __________
+    variants: list[str]
+        List of mavehgvs formatted strings.
+    column_name: str
+        The hgvs column name from which the variants parameter originates.
+
+    Raises
+    ______
+    ValidationError
+        If the variant does not make sense with regards to the hgvs column name.
     """
     pass
 
