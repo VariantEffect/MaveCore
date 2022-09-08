@@ -120,7 +120,7 @@ def validate_variants(variants, column_name=None):
             raise ValidationError(variant + " does not adhere to mavehgvs variant guidelines.")
 
 
-def validate_variants_match_hgvs_column_name(dataframe):
+def validate_variant_matches_hgvs_column_name(variant, column_name):
     """
 
     :param dataframe:
