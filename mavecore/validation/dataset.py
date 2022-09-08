@@ -92,7 +92,7 @@ def validate_column_names(columns):
     # validate against UTF-8byte ordering marks
 
 
-def validate_variants(dataframe):
+def validate_variants(variants, column_name=None):
     """
 
     :param dataframe:
