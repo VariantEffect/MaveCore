@@ -6,7 +6,7 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.dataset import *
 
 
-class TestValidateNoNullColumnsRows(TestCase):
+class TestValidateNoNullColumnsOrRows(TestCase):
     def test_valid(self):
         pass
 
