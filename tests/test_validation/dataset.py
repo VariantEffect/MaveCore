@@ -95,7 +95,14 @@ class TestValidateColumnNames(TestCase):
 
 class TestValidateVariants(TestCase):
     def test_valid_variants(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
+                general.hgvs_pro_column: ["p.Leu5Glu", "p.Leu5Glu", "p.Leu5Glu"],
+                general.hgvs_splice_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
+            }
+        )
+        validate_variants(dataframe["hgvs_nt"])
 
     def test_invalid_variants(self):
         pass
