@@ -1,4 +1,6 @@
 from numpy.testing import assert_array_equal
+from pandas.testing import assert_frame_equal
+from mavehgvs import Variant
 from mavecore.validation.constants.general import *
 from mavecore.validation.exceptions import ValidationError
 
