@@ -42,7 +42,15 @@ class TestValidateNoNullColumnsOrRows(TestCase):
 
 class TestValidateColumnNames(TestCase):
     def test_valid_column_names(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                general.hgvs_nt_column: ["c.1A>G"],
+                general.hgvs_pro_column: ["p.Leu5Glu"],
+                general.hgvs_splice_column: ["c.1A>G"],
+                "scores": [1.000],
+            }
+        )
+        validate_column_names(dataframe.columns)
 
     def test_missing_hgvs_column(self):
         pass
