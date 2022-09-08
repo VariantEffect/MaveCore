@@ -116,6 +116,11 @@ class TestVariantsMatchHgvsColumnNames(TestCase):
         pass
 
 
+class TestHgvsColumnsDefineSameVariants(TestCase):
+    def test_valid(self):
+        pass
+
+
 class TestDataframesDefineSameVariants(TestCase):
     def test_valid(self):
         pass
