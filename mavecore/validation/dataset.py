@@ -47,7 +47,12 @@ def validate_no_null_columns_or_rows(dataframe):
     ValidationError
         If there are null columns or rows in the dataframe
     """
-    pass
+    df = dataframe.dropna(axis=0, how='all')
+    df = df.dropna(axis=1, how='all')
+    try:
+        assert_frame_equal(df, dataframe)
+    except AssertionError:
+        raise ValidationError("Dataset should not contain null columns or rows.")
 
 
 def validate_column_names(columns):
