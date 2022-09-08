@@ -53,7 +53,13 @@ class TestValidateColumnNames(TestCase):
         validate_column_names(dataframe.columns)
 
     def test_missing_hgvs_column(self):
-        pass
+        dataframe = pd.DataFrame(
+            {
+                "scores": [1.000],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_column_names(dataframe.columns)
 
     def test_hgvs_in_wrong_location(self):
         pass
