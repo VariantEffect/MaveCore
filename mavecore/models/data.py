@@ -1,8 +1,6 @@
 from pydantic import BaseModel, ValidationError, validator
-from datetime import datetime
 from typing import List, Dict, Optional
 
-from .user import User
 from .identifier import DoiIdentifier, PubmedIdentifier
 from .target import TargetGene
 
