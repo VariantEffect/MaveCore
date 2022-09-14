@@ -5,6 +5,15 @@ from mavecore.validation.dataframe import *
 
 
 class TestValidateNoNullColumnsOrRows(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu"],
+                hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+
     def test_valid(self):
         dataframe = pd.DataFrame(
             {
@@ -39,6 +48,16 @@ class TestValidateNoNullColumnsOrRows(TestCase):
 
 
 class TestValidateColumnNames(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu"],
+                hgvs_splice_column: ["c.1A>G"],
+                required_score_column: [1.000],
+            }
+        )
+
     def test_valid_column_names(self):
         dataframe = pd.DataFrame(
             {
@@ -92,6 +111,15 @@ class TestValidateColumnNames(TestCase):
 
 
 class TestValidateVariants(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu", "p.Leu5Glu", "p.Leu5Glu"],
+                hgvs_splice_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
+            }
+        )
+
     def test_valid_variants(self):
         dataframe = pd.DataFrame(
             {
@@ -120,6 +148,22 @@ class TestHgvsColumnsDefineSameVariants(TestCase):
 
 
 class TestDataframesDefineSameVariants(TestCase):
+    def setUp(self):
+        self.scores = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu"],
+                hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+        self.counts = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu"],
+                hgvs_splice_column: ["c.1A>G"],
+            }
+        )
+
     def test_valid(self):
         scores = pd.DataFrame(
             {
