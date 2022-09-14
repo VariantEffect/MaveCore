@@ -59,8 +59,7 @@ class ScoreSet(DataSet):
     licenceId: int
     replacesId: Optional[int]
     keywords: Optional[List[str]]
-    numVariants: int
-    experiment: Experiment
+    experimentUrn: str
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
     targetGene: TargetGene
