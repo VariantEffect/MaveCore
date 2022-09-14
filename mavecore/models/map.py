@@ -2,8 +2,6 @@ from pydantic import BaseModel, ValidationError, validator
 from datetime import datetime
 from typing import Optional
 
-from .genome import Genome
-
 
 class ReferenceMap(BaseModel):
     genomeId: int
