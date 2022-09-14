@@ -4,6 +4,16 @@ from mavecore.models.data import DataSet, Experiment, ExperimentSet, ScoreSet
 
 
 class TestDataSet(TestCase):
+    def setUp(self):
+        self.dataset = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "extraMetadata": {},
+            "keywords": ["string"],
+        }
+
     def test_valid_all_fields(self):
         user = {"orcid_id": "id", "firstName": "first", "lastName": "last", "email": "firstlast@email.edu"}
         dataset = {
@@ -66,6 +76,20 @@ class TestDataSet(TestCase):
 
 
 class TestExperiment(TestCase):
+    def setUp(self):
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
+        self.experiment = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "extraMetadata": {},
+            "keywords": ["string"],
+            "doiIdentifiers": [doi_identifier],
+            "pubmedIdentifiers": [pubmed_identifier],
+        }
+
     def test_valid_all_fields(self):
         user = {"orcid_id": "id", "firstName": "first", "lastName": "last", "email": "firstlast@email.edu"}
         doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
@@ -136,6 +160,35 @@ class TestExperimentSet(TestCase):
 
 
 class TestScoreSet(TestCase):
+    def setUp(self):
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
+        reference_map = {"genomeId": 0, "targetId": 0}
+        sequence = {"sequenceType": "DNA", "sequence": "ATCG"}
+        target = {"name": "name",
+                  "category": "Protein coding",
+                  "ensembleIdId": 0,
+                  "refseqIdId": 0,
+                  "uniprotIdId": 0,
+                  "referenceMaps": [reference_map],
+                  "wtSequence": sequence}
+        self.scoreset = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "extraMetadata": {},
+            # "urn": "urn",
+            "dataUsagePolicy": "policy",
+            "licenceId": 0,
+            "replacesId": 0,
+            "keywords": ["string"],
+            "experimentUrn": "urn",
+            "doiIdentifiers": [doi_identifier],
+            "pubmedIdentifiers": [pubmed_identifier],
+            "targetGene": target,
+        }
+
     def test_valid_all_fields(self):
         user = {"orcid_id": "id", "firstName": "first", "lastName": "last", "email": "firstlast@email.edu"}
         experiment = {"title": "title", "shortDescription": "short description", "abstractText": "abstract", "methodText": "methods"}
