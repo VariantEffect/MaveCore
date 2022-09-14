@@ -14,13 +14,16 @@ class DataSet(BaseModel):
     abstractText: str
     methodText: str
     extraMetadata: Optional[Dict]
+    keywords: Optional[List[str]]
 
-    @validator('creationDate', 'publishedDate', 'modificationDate')
-    def date_must_match_regex(cls, v):
-        # regular expression for validating a date
-        regex = '%Y-%m-%d'
-        if not bool(datetime.strptime(v, regex)):
-            raise ValidationError("{}'s is not a valid date.".format(v))
+    @validator('keywords')
+    def validate_keywords(cls, v):
+        if is_null(v):
+            raise ValidationError("{} are not valid keywords. Keywords must be a valid list of strings.".format(v))
+        else:
+            for keyword in v:
+                if is_null(keyword) or not isinstance(keyword, str):
+                    raise ValidationError("{} not a valid keyword. Keywords must be valid strings.".format(keyword))
 
 
 class Experiment(DataSet):
