@@ -16,11 +16,6 @@ class DataSet(BaseModel):
     abstractText: str
     methodText: str
     extraMetadata: Optional[Dict]
-    creationDate: Optional[str]
-    publishedDate: Optional[str]
-    modificationDate: Optional[str]
-    createdBy: Optional[User]
-    modifiedBy: Optional[User]
 
     @validator('creationDate', 'publishedDate', 'modificationDate')
     def date_must_match_regex(cls, v):
@@ -31,13 +26,9 @@ class DataSet(BaseModel):
 
 
 class Experiment(DataSet):
-    urn: Optional[str]
     keywords: Optional[List[str]]
-    numScoresets: Optional[int]
-    experimentSetUrn: Optional[str]
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
-    processingState: Optional[str]
 
     @validator('urn')
     def validate_urn_matches_regex(cls, v):
@@ -85,8 +76,6 @@ class ScoreSet(DataSet):
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
     targetGene: TargetGene
-    datasetColumns: Dict
-    private: bool
 
     @validator('urn')
     def validate_matches_regular_expression(cls, v):

@@ -6,13 +6,8 @@ from .genome import Genome
 
 
 class ReferenceMap(BaseModel):
-    id: int
     genomeId: int
     targetId: int
-    isPrimary: bool
-    genome: Genome
-    creationDate: Optional[str]
-    modificationDate: Optional[str]
 
     @validator('creationDate', 'modificationDate')
     def date_must_match_regex(cls, v):
