@@ -1,6 +1,6 @@
 from unittest import TestCase
 from pydantic import ValidationError
-from mavecore.models.data import DataSet, Experiment, ExperimentSet, ScoreSet
+from mavecore.models.data import DataSet, Experiment, ScoreSet
 
 
 class TestDataSet(TestCase):
