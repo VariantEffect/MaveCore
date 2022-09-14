@@ -27,7 +27,6 @@ class DataSet(BaseModel):
 
 
 class Experiment(DataSet):
-    keywords: Optional[List[str]]
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
 
@@ -59,7 +58,6 @@ class ScoreSet(DataSet):
     dataUsagePolicy: str
     licenceId: int
     replacesId: Optional[int]
-    keywords: Optional[List[str]]
     experimentUrn: str
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
