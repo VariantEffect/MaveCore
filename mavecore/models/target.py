@@ -8,6 +8,9 @@ from .sequence import WildType
 class TargetGene(BaseModel):
     name: str
     category: str
+    ensembleIdId: Optional[int]
+    refseqIdId: Optional[int]
+    uniprotIdId: Optional[int]
     referenceMaps: List[ReferenceMap]
     wtSequence: WildType
 
