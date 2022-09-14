@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ValidationError, validator
-from typing import List
+from typing import List, Optional
 
 from .map import ReferenceMap
 from .sequence import WildType
