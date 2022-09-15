@@ -4,6 +4,13 @@ from mavecore.models.identifier import Identifier, DoiIdentifier, PubmedIdentifi
 
 
 class TestIdentifier(TestCase):
+    def setUp(self):
+        self.identifier = {
+            "identifier": "10.1038/s41588-018-0122-z",
+            "id": 0,
+            "url": "https://www.uw.edu",
+        }
+
     def test_valid_all_fields(self):
         identifier = {
             "identifier": "10.1038/s41588-018-0122-z",
@@ -29,6 +36,13 @@ class TestIdentifier(TestCase):
 
 
 class TestDoiIdentifier(TestCase):
+    def setUp(self):
+        self.doi_identifier = {
+            "identifier": "10.1038/s41588-018-0122-z",
+            "id": 0,
+            "url": "https://www.uw.edu",
+        }
+
     def test_valid_all_fields(self):
         doi_identifier = {
             "identifier": "10.1038/s41588-018-0122-z",
@@ -46,6 +60,14 @@ class TestDoiIdentifier(TestCase):
 
 
 class TestPubmedIdentifier(TestCase):
+    def setUp(self):
+        self.pubmed_identifier = {
+            "identifier": "29785012",
+            "id": 0,
+            "url": "https://www.uw.edu",
+            "referenceHtml": "referencehtml",
+        }
+
     def test_valid_all_fields(self):
         pubmed_identifier = {
             "identifier": "29785012",
