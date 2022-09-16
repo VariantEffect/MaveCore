@@ -19,12 +19,7 @@ class DataSet(BaseModel):
 
     @validator('keywords')
     def validate_keywords(cls, v):
-        if is_null(v):
-            raise ValidationError("{} are not valid keywords. Keywords must be a valid list of strings.".format(v))
-        else:
-            for keyword in v:
-                if is_null(keyword) or not isinstance(keyword, str):
-                    raise ValidationError("{} not a valid keyword. Keywords must be valid strings.".format(keyword))
+        keywords.validate_keywords(v)
 
 
 class Experiment(DataSet):
