@@ -46,7 +46,8 @@ def validate_pubmed_identifier(identifier):
         If the identifier is not a valid PubMed identifier.
     """
     if not idutils.is_pmid(identifier):
-        raise ValidationError(f"'{identifier} is not a valid PubMed identifier.")
+        #raise ValidationError(f"'{identifier} is not a valid PubMed identifier.")
+        raise ValidationError("{} is not a valid PubMed identifier.".format(identifier))
 
 
 def validate_doi_identifier(identifier):
@@ -64,7 +65,8 @@ def validate_doi_identifier(identifier):
         If the identifier is not a valid DOI identifier.
     """
     if not idutils.is_doi(identifier):
-        raise ValidationError(f"'{identifier}' is not a valid DOI.")
+        #raise ValidationError(f"'{identifier}' is not a valid DOI.")
+        raise ValidationError("{} is not a valid DOI identifier.".format(identifier))
 
 
 def validate_ensembl_identifier(identifier):
