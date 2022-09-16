@@ -18,7 +18,4 @@ class TargetGene(BaseModel):
 
     @validator('category')
     def validate_category(cls, v):
-        valid_categories = ["Protein coding", "Regulatory", "Other noncoding"]
-        if v not in valid_categories:
-            raise ValidationError("{}'s is not a valid target category. Valid categories are "
-                                  "Protein coding, Regulatory, and Other noncoding".format(v))
+        target.validate_target_category(v)
