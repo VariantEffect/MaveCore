@@ -4,8 +4,6 @@ from typing import List, Dict, Optional
 from .identifier import DoiIdentifier, PubmedIdentifier
 from .target import TargetGene
 
-from mavecore.validation.constants.urn import *
-from mavecore.validation.utilities import is_null
 from mavecore.validation import keywords, urn
 
 
