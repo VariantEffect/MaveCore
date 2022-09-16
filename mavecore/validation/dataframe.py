@@ -94,6 +94,7 @@ def validate_column_names(columns):
         raise ValidationError("There must be at least one additional column beyond the hgvs columns.")
     # validate against UTF-8byte ordering marks
     # TODO if dataframe is a scores df make sure it has a score column
+    # also make sure counts df has a counts column
 
 
 def validate_variants(variants, column_name=None):
