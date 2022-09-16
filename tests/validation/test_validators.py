@@ -10,7 +10,6 @@ from pandas.testing import assert_index_equal
 from mavecore.validation import constants
 from mavecore.validation.exceptions import ValidationError
 
-# from ..factories import generate_hgvs, VariantFactory
 from mavecore.validation.variant_validators import (
     MaveDataset,
     validate_variant_json,
