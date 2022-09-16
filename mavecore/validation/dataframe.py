@@ -95,40 +95,34 @@ def validate_column_names(columns):
     # also make sure counts df has a counts column
 
 
-def validate_variants(variants, column_name=None):
+def validate_values_by_column(dataset):
     """
-    Validates a string of variants and verifies that the variant type in the column name makes
-    sense with regards to the actual variants.
+        Validates a string of variants and verifies that the variant type in the column name makes
+        sense with regards to the actual variants.
 
-    Parameters
-    __________
-    variants: list[str]
-        List of mavehgvs formatted strings.
-    column_name: str
-        The hgvs column name from which the variants parameter originates.
+        Parameters
+        __________
+        variants: list[str]
+            List of mavehgvs formatted strings.
+        column_name: str
+            The hgvs column name from which the variants parameter originates.
 
-    Raises
-    ______
-    ValidationError
-        If any variant in the list of variants does not adhere to the mavehgvs specifications.
-    """
-    # variant strings will be cast into hgvs variant objects to validate
-    for variant in variants:
-        if column_name == "hgvs_nt":
-            column = "nt"
-        elif column_name == "hgvs_pro":
-            column = "p"
-        elif column_name == "hgvs_splice":
-            column = "splice"
-        validate_hgvs_string(variant, column=column)
-        '''try:
-            v = Variant(variant)
-            # variants should align with the hgvs column names
-            # check this by seeing if the prefix makes sense with regards to the hgvs column name
-            validate_variant_matches_hgvs_column_name(column_name, v.prefix)
-        except ValidationError:
-            raise ValidationError(variant + " does not adhere to mavehgvs variant guidelines.")'''
-
+        Raises
+        ______
+        ValidationError
+            If any variant in the list of variants does not adhere to the mavehgvs specifications.
+        """
+    for column in dataset.columns:
+        if column == hgvs_nt_column:
+            dataset[[hgvs_nt_column]].apply(validate_hgvs_string(column="nt"))
+        elif column == hgvs_pro_column:
+            dataset[[hgvs_pro_column]].apply(validate_hgvs_string(column="p"))
+        elif column == hgvs_splice_column:
+            dataset[[hgvs_splice_column]].apply(validate_hgvs_string(column="splice"))
+        elif column == required_score_column:
+            dataset[[required_score_column]].apply(validate_score())
+        else:
+            pass
 
 def validate_variant_matches_hgvs_column_name(variant, column_name):
     """
