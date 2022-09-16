@@ -15,64 +15,7 @@ from mavecore.validation.dataset_validators import (
     read_header_from_io,
     validate_scoreset_json,
     validate_datasets_define_same_variants,
-    WordLimitValidator,
 )
-
-
-class TestWordLimitValidator(TestCase):
-    def test_validation_error_more_than_word_limit(self):
-        with self.assertRaises(ValueError):
-            n = 5
-            WordLimitValidator(n)("Word " * (n + 1))
-
-    def test_passes_equal_to_word_limit(self):
-        n = 5
-        WordLimitValidator(n)("Word " * n)
-
-    def test_passes_less_than_word_limit(self):
-        n = 5
-        WordLimitValidator(n)("Word " * (n - 1))
-
-
-class TestHeaderFromIO(TestCase):
-    """
-    Tests to ensure that a file in bytes or string mode can be read and then
-    returned to the start so there are no side effects for later reading the
-    files.
-    """
-
-    def test_can_read_header_from_bytes(self):
-        file = BytesIO("{},score,count\n".format(constants.hgvs_nt_column).encode())
-        header = read_header_from_io(file)
-        expected = [constants.hgvs_nt_column, "score", "count"]
-        self.assertEqual(expected, header)
-
-    def test_removes_quotes_from_header(self):
-        file = BytesIO(
-            '"{}","score","count,nt"\n'.format(constants.hgvs_nt_column).encode()
-        )
-        header = read_header_from_io(file)
-        expected = [constants.hgvs_nt_column, "score", "count,nt"]
-        self.assertEqual(expected, header)
-
-    def test_can_read_header_from_string(self):
-        file = StringIO("{},score,count\n".format(constants.hgvs_nt_column))
-        header = read_header_from_io(file)
-        expected = [constants.hgvs_nt_column, "score", "count"]
-        self.assertEqual(expected, header)
-
-    def test_strips_whitespace(self):
-        file = StringIO(" {} ,   score ,  count\n".format(constants.hgvs_nt_column))
-        header = read_header_from_io(file)
-        expected = [constants.hgvs_nt_column, "score", "count"]
-        self.assertEqual(expected, header)
-
-    def test_returns_file_position_to_begining(self):
-        file = BytesIO("{},score,count\n".format(constants.hgvs_nt_column).encode())
-        read_header_from_io(file)
-        self.assertEqual(
-            file.read(), "{},score,count\n".format(constants.hgvs_nt_column).encode()
-        )
 
 
 class TestNoNullInColumnsValidator(TestCase):
