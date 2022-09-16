@@ -42,8 +42,9 @@ class TestValidateUrn(TestCase):
 
 
 class TestValidateTmpUrn(TestCase):
+    # TODO consider the way we are making the tmp urn strings
     def test_valid_tmp_mavedb_urn(self):
-        validate_mavedb_urn("urn:mavedb:00000002-a-1")
+        validate_mavedb_urn("tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5")
 
     def test_invalid_tmp_mavedb_urn(self):
         with self.assertRaises(ValidationError):
@@ -65,7 +66,7 @@ class TestValidateTmpUrn(TestCase):
             validate_mavedb_urn_experiment("")
 
     def test_valid_tmp_mavedb_urn_scoreset(self):
-        validate_mavedb_urn_scoreset("urn:mavedb:00000001-a-1")
+        validate_mavedb_urn_scoreset("tmp:a56b8eb08e190490")
 
     def test_invalid_tmp_mavedb_urn_scoreset(self):
         with self.assertRaises(ValidationError):
