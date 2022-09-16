@@ -1,4 +1,3 @@
-# from core.utilities import null_values_list
 from unittest import TestCase
 
 from mavecore.validation.variant import validate_hgvs_string
