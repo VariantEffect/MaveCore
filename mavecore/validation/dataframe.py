@@ -128,7 +128,7 @@ def validate_variants(variants, column_name=None):
             # check this by seeing if the prefix makes sense with regards to the hgvs column name
             validate_variant_matches_hgvs_column_name(column_name, v.prefix)
         except ValidationError:
-            raise ValidationError(variant + " does not adhere to mavehgvs variant guidelines.")
+            raise ValidationError(variant + " does not adhere to mavehgvs variant guidelines.")'''
 
 
 def validate_variant_matches_hgvs_column_name(variant, column_name):
