@@ -1,6 +1,5 @@
 from pydantic import BaseModel, ValidationError, validator, HttpUrl
 from typing import Optional
-import idutils
 
 from mavecore.validation import identifier
 
