@@ -4,6 +4,8 @@ from typing import List, Optional
 from .map import ReferenceMap
 from .sequence import WildType
 
+from mavecore.validation import target
+
 
 class TargetGene(BaseModel):
     name: str

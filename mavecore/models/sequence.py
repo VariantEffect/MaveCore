@@ -1,5 +1,7 @@
 from pydantic import BaseModel, ValidationError, validator
 
+from mavecore.validation import target
+
 
 class WildType(BaseModel):
     sequenceType: str
