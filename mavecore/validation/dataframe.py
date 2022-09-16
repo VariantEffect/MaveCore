@@ -24,14 +24,12 @@ def validate_dataframes(scores=None, counts=None):
         If any of the validation fails.
     """
     validate_no_null_columns_or_rows(scores)
-    hgvs_columns = validate_column_names(scores.columns)
-    for column in hgvs_columns:
-        validate_variants(scores[column])
+    validate_column_names(scores.columns)
+    validate_values_by_column(scores)
     if counts is not None:
         validate_no_null_columns_or_rows(counts)
-        hgvs_columns = validate_column_names(counts.columns)
-        for column in hgvs_columns:
-            validate_variants(counts[column])
+        validate_column_names(counts.columns)
+        validate_values_by_column(counts)
         validate_dataframes_define_same_variants(scores, counts)
 
 
