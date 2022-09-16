@@ -1,5 +1,4 @@
 from unittest import TestCase
-from pydantic import ValidationError
 from mavecore.models.map import ReferenceMap
 
 
