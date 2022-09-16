@@ -16,4 +16,4 @@ class TestKeywordValidators(TestCase):
 
     def test_ve_invalid_keyword_in_list(self):
         with self.assertRaises(ValidationError):
-            validate_keyword_list(["protein", 555])
+            validate_keywords(["protein", 555])
