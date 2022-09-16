@@ -1,15 +1,14 @@
 from unittest import TestCase
 
-from mavecore.validation.metadata_validators import (
+from mavecore.validation.identifier import (
     validate_doi_identifier,
     validate_doi_list,
-    validate_keyword,
-    validate_keyword_list,
     validate_pubmed_identifier,
     validate_pubmed_list,
     validate_sra_identifier,
     validate_sra_list,
     validate_uniprot_identifier,
+    validate_uniprot_list,
     validate_refseq_identifier,
     validate_refseq_list,
     validate_genome_identifier,
