@@ -115,7 +115,14 @@ def validate_variants(variants, column_name=None):
     """
     # variant strings will be cast into hgvs variant objects to validate
     for variant in variants:
-        try:
+        if column_name == "hgvs_nt":
+            column = "nt"
+        elif column_name == "hgvs_pro":
+            column = "p"
+        elif column_name == "hgvs_splice":
+            column = "splice"
+        validate_hgvs_string(variant, column=column)
+        '''try:
             v = Variant(variant)
             # variants should align with the hgvs column names
             # check this by seeing if the prefix makes sense with regards to the hgvs column name
