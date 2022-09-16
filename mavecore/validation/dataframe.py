@@ -3,6 +3,7 @@ from pandas.testing import assert_frame_equal
 from mavehgvs import Variant
 from mavecore.validation.constants.general import *
 from mavecore.validation.exceptions import ValidationError
+from mavecore.validation.variant import validate_hgvs_string
 
 
 def validate_dataframes(scores=None, counts=None):
