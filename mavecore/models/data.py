@@ -39,5 +39,4 @@ class ScoreSet(DataSet):
 
     @validator('urn')
     def validate_matches_regular_expression(cls, v):
-        if not (MAVEDB_SCORESET_URN_RE.match(v) or MAVEDB_TMP_URN_RE.match(v)):
-            raise ValidationError("{}'s is not a valid score set urn.".format(v))
+        urn.validate_mavedb_urn_scoreset(v)
