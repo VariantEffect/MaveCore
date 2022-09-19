@@ -60,11 +60,11 @@ class TestScoreSet(TestCase):
         pubmed_identifier = {"identifier": "29785012"}
         reference_map = {"genomeId": 0, "targetId": 0}
         sequence = {"sequenceType": "DNA", "sequence": "ATCG"}
+        external_identifier_id = {"dbname": "str", "identifier": "str"}
+        external_identifier = {"identifier": external_identifier_id, "offset": 0}
         target = {"name": "name",
                   "category": "Protein coding",
-                  "ensembleIdId": 0,
-                  "refseqIdId": 0,
-                  "uniprotIdId": 0,
+                  "externalIdentifiers": [external_identifier],
                   "referenceMaps": [reference_map],
                   "wtSequence": sequence}
         self.scoreset = {
@@ -73,12 +73,12 @@ class TestScoreSet(TestCase):
             "abstractText": "abstract",
             "methodText": "methods",
             "extraMetadata": {},
-            # "urn": "urn",
             "dataUsagePolicy": "policy",
             "licenceId": 0,
-            "replacesId": 0,
             "keywords": ["string"],
-            "experimentUrn": "urn",
+            "experimentUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "supersededScoresetUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "metaAnalysisSourceScoresetUrns": ["tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5"],
             "doiIdentifiers": [doi_identifier],
             "pubmedIdentifiers": [pubmed_identifier],
             "targetGene": target,
