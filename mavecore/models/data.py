@@ -26,15 +26,15 @@ class Experiment(DataSet):
 
 
 class ScoreSet(DataSet):
-    urn: Optional[str]
     dataUsagePolicy: str
     licenceId: int
-    replacesId: Optional[int]
     experimentUrn: str
+    supersededScoresetUrn: Optional[str]
+    metaAnalysisSourceScoresetUrns: Optional[List[str]]
     doiIdentifiers: Optional[List[DoiIdentifier]]
     pubmedIdentifiers: Optional[List[PubmedIdentifier]]
     targetGene: TargetGene
 
-    @validator('urn')
+    @validator('experimentUrn', 'supersededScoresetUrn')
     def validate_matches_regular_expression(cls, v):
         urn.validate_mavedb_urn_scoreset(v)
