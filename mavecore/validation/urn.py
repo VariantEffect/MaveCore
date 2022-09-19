@@ -18,8 +18,16 @@ def validate_mavedb_urn(urn):
     ValidationError
         If the MaveDB urn is not valid.
     """
-    if not MAVEDB_ANY_URN_RE.match(urn):
-        raise ValidationError("{}'s is not a valid urn.".format(urn))
+    if urn.startswith("tmp:"):
+        try:
+            uuid.UUID(urn[4:])
+        except ValueError:
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
+    else:
+        if not MAVEDB_ANY_URN_RE.match(urn):
+            raise ValidationError("{}'s is not a valid urn.".format(urn))
 
 
 def validate_mavedb_urn_experimentset(urn):
@@ -36,11 +44,18 @@ def validate_mavedb_urn_experimentset(urn):
     ValidationError
         If the Experiment Set urn is not valid.
     """
-    if not (MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError(
-            # "Error test"
-            "{}'s is not a valid Experiment Set urn.".format(urn)
-        )
+    if urn.startswith("tmp:"):
+        try:
+            uuid.UUID(urn[4:])
+        except ValueError:
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
+    else:
+        if not (MAVEDB_EXPERIMENTSET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
 
 
 def validate_mavedb_urn_experiment(urn):
@@ -57,10 +72,18 @@ def validate_mavedb_urn_experiment(urn):
     ValidationError
         If the Experiemnt urn is not valid.
     """
-    if not (MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError(
-            "{}'s is not a valid Experiment urn.".format(urn)
-        )
+    if urn.startswith("tmp:"):
+        try:
+            uuid.UUID(urn[4:])
+        except ValueError:
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
+    else:
+        if not (MAVEDB_EXPERIMENT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+            raise ValidationError(
+                "{}'s is not a valid Experiment urn.".format(urn)
+            )
 
 
 def validate_mavedb_urn_scoreset(urn):
@@ -77,8 +100,16 @@ def validate_mavedb_urn_scoreset(urn):
     ValidationError
         If the Scoreset urn is not valid.
     """
-    if not (MAVEDB_SCORESET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError("{}'s is not a valid score set urn.".format(urn))
+    if urn.startswith("tmp:"):
+        try:
+            uuid.UUID(urn[4:])
+        except ValueError:
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
+    else:
+        if not (MAVEDB_SCORESET_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+            raise ValidationError("{}'s is not a valid score set urn.".format(urn))
 
 
 def validate_mavedb_urn_variant(urn):
@@ -95,5 +126,13 @@ def validate_mavedb_urn_variant(urn):
     ValidationError
         If the MaveDB Variant urn is not valid.
     """
-    if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
-        raise ValidationError("{}'s is not a valid Variant urn.".format(urn))
+    if urn.startswith("tmp:"):
+        try:
+            uuid.UUID(urn[4:])
+        except ValueError:
+            raise ValidationError(
+                "{}'s is not a valid Experiment Set urn.".format(urn)
+            )
+    else:
+        if not (MAVEDB_VARIANT_URN_RE.match(urn) or MAVEDB_TMP_URN_RE.match(urn)):
+            raise ValidationError("{}'s is not a valid Variant urn.".format(urn))
