@@ -24,9 +24,15 @@ def validate(dataset, dataset_type, scores=None, counts=None):
         If the dataset_type attribute is not a string that reads `experiments` or `scoresets`.
     """
     if dataset_type == "experiments":
-        Experiment.parse_obj(dataset)
+        try:
+            Experiment.parse_obj(dataset)
+        except ValidationError as e:
+            print(e.json())
     elif dataset_type == "scoresets":
-        ScoreSet.parse_obj(dataset)
+        try:
+            ScoreSet.parse_obj(dataset)
+        except ValidationError as e:
+            print(e.json())
         validate_dataframes(scores=scores, counts=counts)
     else:
         raise ValueError("The dataset_type must be a string that reads `experiments` or `scoresets`.")
