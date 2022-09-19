@@ -8,10 +8,11 @@ MAVEDB_URN_NAMESPACE = "mavedb"
 
 # Temp URN patterns
 # --------------------------------------------------------------------------- #
-MAVEDB_TMP_URN_PATTERN = r"^tmp:[A-Za-z0-9]{{{width}}}$".format(
-    width=MAVEDB_TMP_URN_DIGITS
-)
-MAVEDB_TMP_URN_RE = re.compile(MAVEDB_TMP_URN_PATTERN)
+#TODO get tmp pattern from UUID4 regex
+#MAVEDB_TMP_URN_PATTERN = r"^tmp:[A-Za-z0-9]{{{width}}}$".format(
+#    width=MAVEDB_TMP_URN_DIGITS
+#)
+#MAVEDB_TMP_URN_RE = re.compile(MAVEDB_TMP_URN_PATTERN)
 
 
 # Experimentset Pattern/Compiled RE
