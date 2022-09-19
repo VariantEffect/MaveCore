@@ -5,6 +5,7 @@ from .map import ReferenceMap
 from .sequence import WildType
 
 from mavecore.validation import target
+from mavecore.models.identifier import ExternalIdentifier
 
 
 class TargetGene(BaseModel):
