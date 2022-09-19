@@ -10,9 +10,7 @@ from mavecore.validation import target
 class TargetGene(BaseModel):
     name: str
     category: str
-    ensembleIdId: Optional[int]
-    refseqIdId: Optional[int]
-    uniprotIdId: Optional[int]
+    externalIdentifiers: List[ExternalIdentifier]
     referenceMaps: List[ReferenceMap]
     wtSequence: WildType
 
