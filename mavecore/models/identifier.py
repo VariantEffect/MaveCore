@@ -20,3 +20,13 @@ class PubmedIdentifier(Identifier):
     @validator('identifier')
     def must_be_valid_pubmed(cls, v):
         identifier.validate_pubmed_identifier(v)
+
+
+class ExternalIdentifierId(BaseModel):
+    dbname: str
+    identifier: str
+
+
+class ExternalIdentifier(BaseModel):
+    identifier: ExternalIdentifierId
+    offset: int
