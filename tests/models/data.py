@@ -90,8 +90,9 @@ class TestScoreSet(TestCase):
     def test_valid_exclude_optional(self):
         self.scoreset.pop("extraMetadata")
         self.scoreset.pop("keywords")
-        self.scoreset.pop("replacesId")
         self.scoreset.pop("doiIdentifiers")
         self.scoreset.pop("pubmedIdentifiers")
+        self.scoreset.pop("supersededScoresetUrn")
+        self.scoreset.pop("metaAnalysisSourceScoresetUrns")
         ScoreSet.parse_obj(self.scoreset)
 
