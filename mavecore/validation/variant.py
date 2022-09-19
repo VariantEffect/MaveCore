@@ -14,6 +14,7 @@ __all__ = ["validate_hgvs_string"]
 
 from mavecore.validation.utilities import is_null
 
+
 def validate_hgvs_string(
     value: Union[str, bytes],
     column: Optional[str] = None,
