@@ -1,4 +1,4 @@
-import re
+import uuid
 from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.constants.urn import *
 
