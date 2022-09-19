@@ -1,3 +1,4 @@
+from exceptions import ValidationError
 from mavecore.models.data import Experiment, ScoreSet
 from mavecore.validation.dataframe import validate_dataframes
 
