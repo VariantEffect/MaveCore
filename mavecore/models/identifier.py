@@ -6,8 +6,6 @@ from mavecore.validation import identifier
 
 class Identifier(BaseModel):
     identifier: str
-    id: Optional[int]
-    url: Optional[HttpUrl]
 
 
 class DoiIdentifier(Identifier):
@@ -18,7 +16,6 @@ class DoiIdentifier(Identifier):
 
 
 class PubmedIdentifier(Identifier):
-    referenceHtml: Optional[str]
 
     @validator('identifier')
     def must_be_valid_pubmed(cls, v):
