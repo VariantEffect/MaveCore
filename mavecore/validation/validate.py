@@ -34,6 +34,7 @@ def validate(dataset, dataset_type, scores=None, counts=None):
             ScoreSet.parse_obj(dataset)
         except ValidationError as e:
             print(e.json())
-        validate_dataframes(scores=scores, counts=counts)
+        target_seq = dataset["targetGene"]["wtSequence"]["sequence"]
+        validate_dataframes(target_seq=target_seq, scores=scores, counts=counts)
     else:
         raise ValueError("The dataset_type must be a string that reads `experiments` or `scoresets`.")
