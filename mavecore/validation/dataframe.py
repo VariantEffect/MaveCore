@@ -128,8 +128,11 @@ def validate_values_by_column(dataset, target_seq):
 
 
 def validate_score(score):
-    # should be a float
-    pass
+    if type(score) != float:
+        raise ValidationError(
+            "Each value in score column must by a float. "
+            "'{}' has the type '{}'.".format(score, type(score).__name__)
+        )
 
 # is the variant an actual variant with regards to the wt sequence
 
