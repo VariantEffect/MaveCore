@@ -7,15 +7,13 @@ class TestTargetGene(TestCase):
     def setUp(self):
         reference_map = {"genomeId": 0, "targetId": 0}
         sequence = {"sequenceType": "Protein", "sequence": "ATCG"}
-        self.target = {
-            "name": "name",
-            "category": "Protein coding",
-            "ensembleIdId": 0,
-            "refseqIdId": 0,
-            "uniprotIdId": 0,
-            "referenceMaps": [reference_map],
-            "wtSequence": sequence,
-        }
+        external_identifier_id = {"dbname": "str", "identifier": "str"}
+        external_identifier = {"identifier": external_identifier_id, "offset": 0}
+        self.target = {"name": "name",
+                       "category": "Protein coding",
+                       "externalIdentifiers": [external_identifier],
+                       "referenceMaps": [reference_map],
+                       "wtSequence": sequence}
 
     def test_valid_all_fields(self):
         TargetGene.parse_obj(self.target)
