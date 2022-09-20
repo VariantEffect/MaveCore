@@ -6,7 +6,7 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.variant import validate_hgvs_string
 
 
-def validate_dataframes(scores=None, counts=None):
+def validate_dataframes(target_seq, scores, counts=None):
     """
     Validates scores and counts dataframes for MaveDB upload. This function performs
     comprehensive validation.
