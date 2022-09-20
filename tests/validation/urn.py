@@ -42,7 +42,6 @@ class TestValidateUrn(TestCase):
 
 
 class TestValidateTmpUrn(TestCase):
-    # TODO consider the way we are making the tmp urn strings
     def test_valid_tmp_mavedb_urn(self):
         validate_mavedb_urn("tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5")
 
