@@ -95,7 +95,7 @@ def validate_column_names(columns):
     # also make sure counts df has a counts column
 
 
-def validate_values_by_column(dataset):
+def validate_values_by_column(dataset, target_seq):
     """
         Validates a string of variants and verifies that the variant type in the column name makes
         sense with regards to the actual variants.
@@ -112,13 +112,15 @@ def validate_values_by_column(dataset):
         ValidationError
             If any variant in the list of variants does not adhere to the mavehgvs specifications.
         """
+    # make sure target seq is the right type
+    # no protein target with just nt variants
     for column in dataset.columns:
         if column == hgvs_nt_column:
-            dataset[[hgvs_nt_column]].apply(validate_hgvs_string(column="nt"))
+            dataset[[hgvs_nt_column]].apply(validate_hgvs_string(column="nt", targetseq=target_seq))
         elif column == hgvs_pro_column:
-            dataset[[hgvs_pro_column]].apply(validate_hgvs_string(column="p"))
+            dataset[[hgvs_pro_column]].apply(validate_hgvs_string(column="p", targetseq=target_seq))
         elif column == hgvs_splice_column:
-            dataset[[hgvs_splice_column]].apply(validate_hgvs_string(column="splice"))
+            dataset[[hgvs_splice_column]].apply(validate_hgvs_string(column="splice", targetseq=target_seq))
         elif column == required_score_column:
             dataset[[required_score_column]].apply(validate_score())
         else:
