@@ -128,8 +128,10 @@ def validate_values_by_column(dataset, target_seq):
 
 
 def validate_score(score):
+    # should be a float
     pass
 
+# is the variant an actual variant with regards to the wt sequence
 
 def validate_hgvs_columns_define_same_variants(nt=None, pro=None):
     """
