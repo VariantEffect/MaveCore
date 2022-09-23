@@ -7,7 +7,7 @@ class TestTargetGene(TestCase):
     def setUp(self):
         reference_map = {"genomeId": 0, "targetId": 0}
         sequence = {"sequenceType": "Protein", "sequence": "ATCG"}
-        external_identifier_id = {"dbname": "str", "identifier": "str"}
+        external_identifier_id = {"dbname": "uniprot", "identifier": "P01133"}
         external_identifier = {"identifier": external_identifier_id, "offset": 0}
         self.target = {"name": "name",
                        "category": "Protein coding",
