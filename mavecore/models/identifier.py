@@ -1,8 +1,7 @@
-from pydantic import BaseModel, ValidationError, validator, HttpUrl
+from pydantic import BaseModel, validator, root_validator
 from typing import Optional
 
-from mavecore.validation import identifier
-
+from mavecore.validation import identifier as id
 
 class Identifier(BaseModel):
     identifier: str
