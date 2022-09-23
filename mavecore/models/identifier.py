@@ -48,5 +48,12 @@ class PubmedIdentifier(Identifier):
 
 
 class ExternalIdentifier(BaseModel):
-    identifier: ExternalIdentifierId
-    offset: int
+    identifier: dict
+    offset: Optional[int]
+
+    # TODO validate the offset in relation to the ExternalIdentifier
+    @validator('identifier')
+    def validate_identifier(cls, v):
+        id.validate_external_identifier(v)
+
+
