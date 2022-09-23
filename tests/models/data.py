@@ -95,4 +95,3 @@ class TestScoreSet(TestCase):
         self.scoreset.pop("supersededScoresetUrn")
         self.scoreset.pop("metaAnalysisSourceScoresetUrns")
         ScoreSet.parse_obj(self.scoreset)
-
