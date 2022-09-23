@@ -66,6 +66,14 @@ class TestValidateColumnNames(TestCase):
     def test_valid_column_names(self):
         validate_column_names(self.dataframe.columns)
 
+    def test_valid_just_hgvs_nt_hgvs_column(self):
+        self.dataframe = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column], axis=1)
+        validate_column_names(self.dataframe.columns)
+
+    def test_valid_just_hgvs_pro_hgvs_column(self):
+        self.dataframe = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
+        validate_column_names(self.dataframe.columns)
+
     def test_missing_hgvs_column(self):
         self.dataframe = self.dataframe.drop([hgvs_nt_column, hgvs_pro_column, hgvs_splice_column], axis=1)
         with self.assertRaises(ValidationError):
@@ -81,10 +89,16 @@ class TestValidateColumnNames(TestCase):
         with self.assertRaises(ValidationError):
             validate_column_names(self.dataframe.columns)
 
-    def test_null_column_name(self):
-        self.dataframe.rename(columns={hgvs_splice_column: 'null'}, inplace=True)
-        with self.assertRaises(ValidationError):
+    def test_hgvs_columns_must_be_lowercase(self):
+        self.dataframe.rename(columns={hgvs_nt_column: hgvs_nt_column.upper()}, inplace=True)
+        with self.assertRaises(ValueError):
             validate_column_names(self.dataframe.columns)
+
+    def test_null_column_name(self):
+        for value in null_values_list:
+            self.dataframe.rename(columns={hgvs_splice_column: value}, inplace=True)
+            with self.assertRaises(ValidationError):
+                validate_column_names(self.dataframe.columns)
 
 
 class TestValidateVariants(TestCase):
