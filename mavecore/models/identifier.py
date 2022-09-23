@@ -11,14 +11,14 @@ class DoiIdentifier(Identifier):
 
     @validator('identifier')
     def must_be_valid_doi(cls, v):
-        identifier.validate_doi_identifier(v)
+        id.validate_doi_identifier(v)
 
 
 class PubmedIdentifier(Identifier):
 
     @validator('identifier')
     def must_be_valid_pubmed(cls, v):
-        identifier.validate_pubmed_identifier(v)
+        id.validate_pubmed_identifier(v)
 
 
 class ExternalIdentifierId(BaseModel):
