@@ -155,10 +155,10 @@ def validate_values_by_column(dataset, target_seq):
         if score:
             validate_score(dataset.loc[i, required_score_column])
         if hgvs_nt and hgvs_pro:
-            validate_hgvs_columns_define_same_variants(target_seq=target_seq,
-                                                       nt=dataset.loc[i, hgvs_nt_column],
-                                                       pro=dataset.loc[i, hgvs_pro_column],
-                                                       row=i)
+            validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=target_seq,
+                                                                nt=dataset.loc[i, hgvs_nt_column],
+                                                                pro=dataset.loc[i, hgvs_pro_column],
+                                                                row=i)
 
     # make sure target seq is the right type
     # no protein target with just nt variants
