@@ -259,16 +259,12 @@ class TestDataframesDefineSameVariants(TestCase):
 
 """
 from io import StringIO
-import unittest
-from unittest import TestCase
-from random import choice
 
 import pandas as pd
 from pandas.testing import assert_index_equal
 
 # from dataset import constants
 from mavecore.validation import constants
-from mavecore.validation.exceptions import ValidationError
 
 from mavecore.validation.variant_validators import (
     MaveDataset,
