@@ -10,7 +10,7 @@ from mavecore.validation.constants.general import (
     hgvs_pro_column,
 )
 
-__all__ = ["validate_hgvs_string"]
+__all__ = ["validate_hgvs_string", "validate_nt_variant", "validate_pro_variant", "validate_splice_variant"]
 
 from mavecore.validation.utilities import is_null
 
