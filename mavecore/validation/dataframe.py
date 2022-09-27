@@ -104,21 +104,30 @@ def validate_column_names(columns, scores=True):
 
 def validate_values_by_column(dataset, target_seq: str):
     """
-        Validates a string of variants and verifies that the variant type in the column name makes
-        sense with regards to the actual variants.
+    Validates that the values in each column labeled `hgvs_nt`, `hgvs_pro`, `hgvs_splice`, and `score` make sense
+    with regards to their column name. It also validates via a helper function that if both an `hgvs_nt` column and
+    an `hgvs_pro` column exist, they are consistent with one another.
 
-        Parameters
-        __________
-        variants: list[str]
-            List of mavehgvs formatted strings.
-        column_name: str
-            The hgvs column name from which the variants parameter originates.
+    Parameters
+    __________
+    dataset: pandas.DataFrame
+        A scores or counts dataframe.
+    target_seq: str
+        The hgvs column name from which the variants parameter originates.
 
-        Raises
-        ______
-        ValidationError
-            If any variant in the list of variants does not adhere to the mavehgvs specifications.
-        """
+    Raises
+    ______
+    ValidationError
+        If the target sequence does not contain solely the bases ACTG.
+    ValidationError
+        If any variant fails validation or if the variants are not consistent with one another.
+    """
+    # check for ValueError
+    # if target_seq is not made solely of characters ACTG
+    check_chars = [letter in "ACTG" for letter in target_seq]
+    if False in check_chars:
+        raise ValidationError("target_seq is invalid, must be composed only of bases ACTG.")
+
     # first check the column names, establish the order or the hgvs and score columns
     hgvs_nt = False
     hgvs_pro = False
