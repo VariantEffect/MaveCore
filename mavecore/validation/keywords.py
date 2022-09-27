@@ -10,7 +10,7 @@ def validate_keywords(v):
             validate_keyword(keyword)
 
 
-def validate_keyword(keyword):
+def validate_keyword(keyword: str):
     """
     This function validates whether or not the kw parameter is valid by
     checking that it is a string that is not null. If kw is null
