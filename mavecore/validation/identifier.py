@@ -192,7 +192,7 @@ def validate_pubmed_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
@@ -211,7 +211,7 @@ def validate_sra_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
@@ -230,7 +230,7 @@ def validate_doi_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
@@ -249,7 +249,7 @@ def validate_ensembl_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
@@ -268,7 +268,7 @@ def validate_refseq_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
@@ -287,7 +287,7 @@ def validate_uniprot_list(values: list[str]):
 
     Parameters
     __________
-    identifier: List[str]
+    identifier: list[str]
         The list of identifiers to be validated.
 
     Raises
