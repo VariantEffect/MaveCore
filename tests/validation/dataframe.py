@@ -135,6 +135,80 @@ class TestValidateVariants(TestCase):
         pass
 
 
+class TestValidateValuesByColumn(TestCase):
+    def setUp(self):
+        self.target_seq = "ACA"
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Thr1Ala"],
+                hgvs_splice_column: ["c.1A>G"],
+                required_score_column: [1.000],
+            }
+        )
+
+    def test_non_numeric_values_in_score_column(self):
+        self.dataframe[required_score_column][0] = "not a float"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        '''data = "{},{}\n{},{}".format(
+            self.HGVS_NT_COL,
+            self.SCORE_COL,
+            generate_hgvs(prefix="c"),
+            "I am not a number",
+        )
+
+        with self.assertRaises(ValueError):
+            MaveDataset.for_scores(StringIO(data))'''
+        #pass
+
+    def test_invalid_row_hgvs_is_not_a_string(self):
+        '''data = "{},{}\n1.0,1.0".format(self.HGVS_NT_COL, self.SCORE_COL)
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertFalse(dataset.is_valid)
+        self.assertEqual(len(dataset.errors), 1)
+        print(dataset.errors)'''
+        pass
+
+    def test_empty_no_variants_parsed(self):
+        '''data = "{},{}\n".format(self.HGVS_NT_COL, self.SCORE_COL)
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertTrue(dataset.is_empty)
+        self.assertFalse(dataset.is_valid)
+        self.assertEqual(len(dataset.errors), 1)
+        print(dataset.errors)'''
+        pass
+
+    def test_invalid_same_hgvs_nt_defined_in_two_rows(self):
+        '''hgvs = generate_hgvs(prefix="c")
+        data = "{},{}\n{},1.0\n{},1.0".format(
+            self.HGVS_NT_COL, self.SCORE_COL, hgvs, hgvs
+        )
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertFalse(dataset.is_valid)
+        self.assertEqual(len(dataset.errors), 1)
+        print(dataset.errors)'''
+        pass
+
+
+class TestValidateScore(TestCase):
+    def test_valid_score(self):
+        validate_score(1.1)
+
+    def test_invalid_score(self):
+        with self.assertRaises(ValidationError):
+            validate_score("a")
+
+
 class TestVariantsMatchHgvsColumnNames(TestCase):
     def test_valid(self):
         pass
