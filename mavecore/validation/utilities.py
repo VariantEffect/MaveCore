@@ -51,8 +51,26 @@ def generate_hgvs(prefix: str = "c") -> str:
         return f"{prefix}.{choice(range(1, 100))}{ref}>{alt}"
 
 
-def construct_hgvs_pro(wt, mutant, position: int):
-    #if pd.isna(position): return None
+def construct_hgvs_pro(wt: str, mutant: str, position: int):
+    """
+    Given the wt and mutant codons as well as the position, this function generates a validated
+    hgvs_pro string.
+
+    Parameters
+    __________
+    wt: str
+        The wt codon.
+    mutant: str
+        The mutant codon.
+    position: int
+        The position of the change.
+
+    Returns
+    _______
+    hgvs
+        The constructed hgvs_pro string.
+    """
+    # TODO account for when variant codon is None, a deletion event
     if wt == mutant:
         hgvs = "p." + wt + str(position) + "="
     else:
