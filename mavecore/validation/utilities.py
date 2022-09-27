@@ -103,13 +103,13 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
     # check for TypeError
     # if target_seq is not string
     if not isinstance(target_seq, str):
-        raise TypeError("target_seq must be string")
+        raise TypeError("target_seq must be string.")
 
     # check for ValueError
     # if target_seq is not made solely of characters ACTG
     check_chars = [letter in "ACTG" for letter in target_seq]
     if False in check_chars:
-        raise ValueError("target_seq is invalid")
+        raise ValueError("target_seq is invalid, must be composed only of bases ACTG.")
 
     # identify variant_position and get codon_number associated with it
 
