@@ -80,23 +80,25 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int):
     return hgvs
 
 
-def get_codon_data_from_nt_variants(hgvs_nt, target_seq):
+def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
+    # TODO note that this only works for codon changes and single mutants
     """
-    This method takes in a target sequence and converts coding variants into codon changes.
-    These changes are stored in three additional MaveDf columns: target_codon, codon_number, and variant_codon.
-    This method also updates the hgvs from legacy to mave hgvs, if it is not already done.
+    This function takes a hgvs_nt variant string and its associated target sequence and returns
+    a validated hgvs_pro equivalent.
 
     Parameters
     __________
-    target_seq : string
-        target sequence
+    hgvs_nt: string
+        The hgvs_nt string that will be converted.
+    target_seq:
+        The target sequence associated with the hgvs_nt variant.
 
     Raises
     ______
     TypeError
-        if target_seq is not string
+        If target_seq is not string.
     ValueError
-        if target_seq is not made solely of characters ACTG
+        If target_seq is not made solely of characters ACTG.
     """
     # check for TypeError
     # if target_seq is not string
