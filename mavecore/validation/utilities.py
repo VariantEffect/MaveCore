@@ -231,8 +231,14 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
         else:
             variant_codon = variant_codon + target_codon[2]
 
-    # add values for target_codon, codon_number, and variant_codon to this row
-    return target_codon, codon_number, variant_codon
+    # convert to 3 letter amino acid code
+    target_aa = codon_dict_DNA[target_codon]
+    if variant_codon:
+        variant_aa = codon_dict_DNA[variant_codon]
+    else:
+        variant_aa = None
+
+    return construct_hgvs_pro(wt=target_aa, mutant=variant_aa, position=codon_number)
 
 
 def is_wild_type(hgvs):
