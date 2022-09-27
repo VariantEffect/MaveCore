@@ -58,7 +58,7 @@ def validate_no_null_columns_or_rows(dataframe):
         raise ValidationError("Dataset should not contain null columns or rows.")
 
 
-def validate_column_names(columns):
+def validate_column_names(columns, scores=True):
     """
     This function validates the columns in a dataframe. The first columns should be
     an hgvs column such as hgvs_nt, hgvs_pro, and hgvs_splice. There should be at least
@@ -79,10 +79,12 @@ def validate_column_names(columns):
     """
     # count instances of hgvs columns
     count = 0
+    score_column = False
     for i in range(len(columns)):
         # there should not be any null columns
         if columns[i] in readable_null_values_list: raise ValidationError("Column names must not be null.")
         if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]: count+=1
+        if columns[i] == required_score_column: score_column = True
     # there should be at least one hgvs column
     if count == 0: raise ValidationError("Must include hgvs_nt, hgvs_pro, or hgvs_splice column.")
     # first columns should be hgvs columns
@@ -95,6 +97,11 @@ def validate_column_names(columns):
     # validate against UTF-8byte ordering marks
     # TODO if dataframe is a scores df make sure it has a score column
     # also make sure counts df has a counts column
+    if scores and not score_column:
+        raise ValidationError("A scores dataframe must include a `score` column.")
+    if not scores and score_column:
+        raise ValidationError("A counts dataframe should not include a `score` column, include `score` "
+                              "column in a scores dataframe.")
 
 
 def validate_values_by_column(dataset, target_seq):
