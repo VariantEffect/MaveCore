@@ -1,1 +1,1 @@
-valid_dbnames = ["uniprot"]
+valid_dbnames = ["UniProt", "RefSeq", "Ensembl"]
