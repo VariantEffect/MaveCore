@@ -179,20 +179,22 @@ def validate_score(score: float):
 
 def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str, pro: str, row: int):
     """
-    Checks that, when two or more of hgvs_nt, hgvs_pro, and hgvs_splice columns exist, the variant strings within
+    Checks that, when both an `hgvs_nt` and an `hgvs_pro` exist, the variant strings within
     those columns are representing the same change.
 
     Parameters
     __________
-    nt: list
-        The hgvs_nt column represented as a list.
+    target_seq: str
+        The target sequence associated withe variants.
+    nt: str
+        The hgvs_nt string.
     pro: list
-        The hgvs_pro column represented as a list.
+        The hgvs_pro string.
 
     Raises
     ______
     ValidationError
-        If any of the variants within each column do not represent the same change.
+        If the variants do not represent the same change.
     """
     nt_converted = convert_hgvs_nt_to_hgvs_pro(nt, target_seq)
     # compare nt_converted with pro
