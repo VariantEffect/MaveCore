@@ -131,6 +131,18 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
         # use codon_number to get target_codon from target_seq
         target_codon = target_seq[(codon_number - 1) * 3 : codon_number * 3]
 
+    # declare variables for codon data
+    # keep track of the number and location of the changes within the codon
+    sub_one = None
+    sub_two = None
+    sub_three = None
+    # keep tack of the number and value of the changes within the codon
+    sub_one_nuc = None
+    sub_two_nuc = None
+    sub_three_nuc = None
+    # keep track of the full codon changes
+    variant_codon = None
+
     # determine sequence of variant_codon
 
     if is_wild_type(hgvs_nt):  # variant_codon is wild-type
