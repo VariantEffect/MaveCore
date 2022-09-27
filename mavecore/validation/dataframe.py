@@ -168,7 +168,8 @@ def validate_values_by_column(dataset, target_seq: str):
     # no protein target with just nt variants
 
 
-def validate_score(score):
+def validate_score(score: float):
+    # TODO we probably dont need this
     if type(score) != float:
         raise ValidationError(
             "Each value in score column must by a float. "
