@@ -121,6 +121,45 @@ def validate_values_by_column(dataset, target_seq):
         ValidationError
             If any variant in the list of variants does not adhere to the mavehgvs specifications.
         """
+    # first check the column names, establish the order or the hgvs and score columns
+    hgvs_nt = False
+    hgvs_pro = False
+    hgvs_splice = False
+    score = False
+    for column in dataset.columns:
+        if column == hgvs_nt_column:
+            hgvs_nt = True
+        elif column == hgvs_pro_column:
+            hgvs_pro = True
+        elif column == hgvs_splice_column:
+            hgvs_splice = True
+        elif column == required_score_column:
+            score = True
+        else:
+            raise ValidationError("Missing required hgvs and/or score columns.")
+
+    # loop through row by row, validate hgvs strings, make sure nt and pro are consistent with one another
+    for i in range(len(dataset)):
+        if hgvs_nt:
+            validate_hgvs_string(value=dataset.loc[i, hgvs_nt_column],
+                                 column="nt",
+                                 targetseq=target_seq)
+        if hgvs_pro:
+            validate_hgvs_string(value=dataset.loc[i, hgvs_pro_column],
+                                 column="p",
+                                 targetseq=target_seq)
+        if hgvs_splice:
+            validate_hgvs_string(value=dataset.loc[i, hgvs_splice_column],
+                                 column="splice",
+                                 targetseq=target_seq)
+        if score:
+            validate_score(dataset.loc[i, required_score_column])
+        if hgvs_nt and hgvs_pro:
+            validate_hgvs_columns_define_same_variants(target_seq=target_seq,
+                                                       nt=dataset.loc[i, hgvs_nt_column],
+                                                       pro=dataset.loc[i, hgvs_pro_column],
+                                                       row=i)
+
     # make sure target seq is the right type
     # no protein target with just nt variants
     for column in dataset.columns:
