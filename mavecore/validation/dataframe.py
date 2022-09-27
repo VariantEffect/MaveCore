@@ -4,7 +4,7 @@ from mavehgvs import Variant
 from mavecore.validation.constants.general import *
 from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.variant import validate_hgvs_string
-from mavecore.validation.utilities import construct_hgvs_pro, get_codon_data_from_nt_variants
+from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro
 from mavecore.validation.constants.conversion import codon_dict_DNA
 
 
