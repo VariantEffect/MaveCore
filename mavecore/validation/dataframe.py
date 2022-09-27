@@ -30,7 +30,7 @@ def validate_dataframes(target_seq, scores, counts=None):
     validate_values_by_column(scores, target_seq)
     if counts is not None:
         validate_no_null_columns_or_rows(counts)
-        validate_column_names(counts.columns)
+        validate_column_names(counts.columns, scores=False)
         validate_values_by_column(counts, target_seq)
         validate_dataframes_define_same_variants(scores, counts)
 
