@@ -1,4 +1,10 @@
 from mavecore.validation.constants.general import null_values_re
+from random import choice
+
+from mavehgvs.variant import Variant
+from mavecore.validation.variant import validate_hgvs_string
+from mavecore.validation.constants.conversion import aa_dict_key_3, codon_dict_DNA
+#from mavetools.mavedf.mutation_type import *
 
 
 def is_null(value):
