@@ -60,7 +60,7 @@ class TestScoreSet(TestCase):
         pubmed_identifier = {"identifier": "29785012"}
         reference_map = {"genomeId": 0, "targetId": 0}
         sequence = {"sequenceType": "DNA", "sequence": "ATCG"}
-        external_identifier_id = {"dbname": "str", "identifier": "str"}
+        external_identifier_id = {"dbname": "uniprot", "identifier": "P01133"}
         external_identifier = {"identifier": external_identifier_id, "offset": 0}
         target = {"name": "name",
                   "category": "Protein coding",
