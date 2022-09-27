@@ -162,17 +162,6 @@ def validate_values_by_column(dataset, target_seq):
 
     # make sure target seq is the right type
     # no protein target with just nt variants
-    for column in dataset.columns:
-        if column == hgvs_nt_column:
-            dataset[[hgvs_nt_column]].apply(validate_hgvs_string(column="nt", targetseq=target_seq))
-        elif column == hgvs_pro_column:
-            dataset[[hgvs_pro_column]].apply(validate_hgvs_string(column="p", targetseq=target_seq))
-        elif column == hgvs_splice_column:
-            dataset[[hgvs_splice_column]].apply(validate_hgvs_string(column="splice", targetseq=target_seq))
-        elif column == required_score_column:
-            dataset[[required_score_column]].apply(validate_score())
-        else:
-            pass
 
 
 def validate_score(score):
