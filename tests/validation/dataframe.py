@@ -271,31 +271,6 @@ from mavecore.validation.variant_validators import (
 )
 """
 
-def generate_hgvs(prefix: str = "c") -> str:
-    """'''Generates a random hgvs string from a small sample.'''"""
-    '''if prefix == "p":
-        # Subset of 3-letter codes, chosen at random.
-        amino_acids = [
-            "Ala",
-            "Leu",
-            "Gly",
-            "Val",
-            "Tyr",
-            "Met",
-            "Cys",
-            "His",
-            "Glu",
-            "Phe",
-        ]
-        ref = choice(amino_acids)
-        alt = choice(amino_acids)
-        return f"{prefix}.{ref}{choice(range(1, 100))}{alt}"
-    else:
-        alt = choice("ATCG")
-        ref = choice("ATCG")
-        return f"{prefix}.{choice(range(1, 100))}{ref}>{alt}"'''
-
-
 
 class TestMaveDataset(TestCase):
     """
