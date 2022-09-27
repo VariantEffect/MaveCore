@@ -2,11 +2,26 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.utilities import is_null
 
 
-def validate_keywords(v):
-    if is_null(v):
-        raise ValidationError("{} are not valid keywords. Keywords must be a non null list of strings.".format(v))
+def validate_keywords(keywords: list[str]):
+    """
+    Validates a list of keywords.
+
+    Parameters
+    __________
+    keywords: list[str]
+        A list of keywords.
+
+    Raises
+    ______
+    ValidationError
+        If the list is invalid or null or if any individual keyword is invalid or null.
+    """
+    if is_null(keywords):
+        raise ValidationError(
+            "{} are not valid keywords. Keywords must be a non null list of strings.".format(keywords)
+        )
     else:
-        for keyword in v:
+        for keyword in keywords:
             validate_keyword(keyword)
 
 
