@@ -172,7 +172,7 @@ def validate_score(score):
         )
 
 
-def validate_hgvs_columns_define_same_variants(nt=None, pro=None):
+def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq, nt, pro, row):
     """
     Checks that, when two or more of hgvs_nt, hgvs_pro, and hgvs_splice columns exist, the variant strings within
     those columns are representing the same change.
@@ -189,7 +189,17 @@ def validate_hgvs_columns_define_same_variants(nt=None, pro=None):
     ValidationError
         If any of the variants within each column do not represent the same change.
     """
-    pass
+    # first get data from nt variant
+    target_codon, codon_number, variant_codon = get_codon_data_from_nt_variants(hgvs_nt=nt, target_seq=target_seq)
+    # convert to 3 letter amino acid code
+    target_aa = codon_dict_DNA[target_codon]
+    variant_aa = codon_dict_DNA[variant_codon]
+    # then construct a protein variant from the data
+    nt_converted = construct_hgvs_pro(wt=target_aa, mutant=variant_aa, position=codon_number)
+    # compare nt_converted with pro
+    if nt_converted != pro:
+        raise ValidationError("The hgvs_nt variant {} and the hgvs_pro variant {} on row {} do not represent the "
+                              "same change.".format(nt, pro, row))
 
 
 def validate_dataframes_define_same_variants(scores, counts):
