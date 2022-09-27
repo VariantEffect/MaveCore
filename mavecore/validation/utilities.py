@@ -113,7 +113,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
 
     # identify variant_position and get codon_number associated with it
 
-    if is_wild_type(hgvs_nt):  # variant_codon is wild-type
+    if _is_wild_type(hgvs_nt):  # variant_codon is wild-type
         codon_number = None
         target_codon = None
     else:  # any other variant change
@@ -145,13 +145,13 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
 
     # determine sequence of variant_codon
 
-    if is_wild_type(hgvs_nt):  # variant_codon is wild-type
+    if _is_wild_type(hgvs_nt):  # variant_codon is wild-type
         variant_codon = target_codon
         sub_one = None  # no nucleotide substitutions
-    elif is_deletion(hgvs_nt):  # target_codon was deleted
+    elif _is_deletion(hgvs_nt):  # target_codon was deleted
         variant_codon = None
         sub_one = None  # no nucleotide substitutions
-    elif is_substitution_one_base(
+    elif _is_substitution_one_base(
         hgvs_nt
     ):  # variant_codon has one nucleotide substitution
         # instantiate Variant object
@@ -163,7 +163,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
         # set other possible indices for codon substitution to None
         sub_two = None
         sub_three = None
-    elif is_substitution_two_bases_nonadjacent(
+    elif _is_substitution_two_bases_nonadjacent(
         hgvs_nt
     ):  # variant has two nucleotide substitutions, non-adjacent
         # instantiate Variant object
