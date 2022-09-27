@@ -3,7 +3,7 @@ from mavecore.models.data import Experiment, ScoreSet
 from mavecore.validation.dataframe import validate_dataframes
 
 
-def validate(dataset, dataset_type, scores=None, counts=None):
+def validate(dataset: dict, dataset_type: str, scores=None, counts=None):
     """
     This function validates data to by uploaded to MaveDB. Descriptive errors will be raised if any of the validation
     fails. Scores and counts are optional as this function accepts both experiments and scoresets.

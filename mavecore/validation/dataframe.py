@@ -8,7 +8,7 @@ from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro
 from mavecore.validation.constants.conversion import codon_dict_DNA
 
 
-def validate_dataframes(target_seq, scores, counts=None):
+def validate_dataframes(target_seq: str, scores, counts=None):
     """
     Validates scores and counts dataframes for MaveDB upload. This function performs
     comprehensive validation.
@@ -103,7 +103,7 @@ def validate_column_names(columns, scores=True):
                               "column in a scores dataframe.")
 
 
-def validate_values_by_column(dataset, target_seq):
+def validate_values_by_column(dataset, target_seq: str):
     """
         Validates a string of variants and verifies that the variant type in the column name makes
         sense with regards to the actual variants.
@@ -171,7 +171,7 @@ def validate_score(score):
         )
 
 
-def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq, nt, pro, row):
+def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str, pro: str, row: int):
     """
     Checks that, when two or more of hgvs_nt, hgvs_pro, and hgvs_splice columns exist, the variant strings within
     those columns are representing the same change.

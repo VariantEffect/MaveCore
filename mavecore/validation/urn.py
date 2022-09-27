@@ -3,7 +3,7 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.constants.urn import *
 
 
-def validate_mavedb_urn(urn):
+def validate_mavedb_urn(urn: str):
     """
     This function validates a MaveDB urn and raises an error if it is not valid.
 
@@ -29,7 +29,7 @@ def validate_mavedb_urn(urn):
             raise ValidationError("{}'s is not a valid urn.".format(urn))
 
 
-def validate_mavedb_urn_experimentset(urn):
+def validate_mavedb_urn_experimentset(urn: str):
     """
     This function validates a Experiment Set urn and raises an error if it is not valid.
 
@@ -57,7 +57,7 @@ def validate_mavedb_urn_experimentset(urn):
             )
 
 
-def validate_mavedb_urn_experiment(urn):
+def validate_mavedb_urn_experiment(urn: str):
     """
     This function validates an Experiment urn and raises an error if it is not valid.
 
@@ -85,7 +85,7 @@ def validate_mavedb_urn_experiment(urn):
             )
 
 
-def validate_mavedb_urn_scoreset(urn):
+def validate_mavedb_urn_scoreset(urn: str):
     """
     This function validates a Scoreset urn and raises an error if it is not valid.
 
@@ -111,7 +111,7 @@ def validate_mavedb_urn_scoreset(urn):
             raise ValidationError("{}'s is not a valid score set urn.".format(urn))
 
 
-def validate_mavedb_urn_variant(urn):
+def validate_mavedb_urn_variant(urn: str):
     """
     This function validates a MaveDB Variant urn and raises an error if it is not valid.
 

@@ -5,7 +5,7 @@ from mavecore.validation.utilities import is_null
 from mavecore.validation.constants.identifier import valid_dbnames
 
 
-def validate_external_identifier(identifier):
+def validate_external_identifier(identifier: dict):
     """
     Validates an external identifier represented as a dictionary. The dictionary should have a length of 2
     and have the keys `dbname` and `identifier`, both with str values. The valid values for these keys are
@@ -47,7 +47,7 @@ def validate_external_identifier(identifier):
     # TODO add other conditions like the one above
 
 
-def validate_sra_identifier(identifier):
+def validate_sra_identifier(identifier: str):
     """
     Validates whether the identifier is a valid SRA identifier.
 
@@ -74,7 +74,7 @@ def validate_sra_identifier(identifier):
         )
 
 
-def validate_pubmed_identifier(identifier):
+def validate_pubmed_identifier(identifier: str):
     """
     Validates whether the identifier is a valid PubMed identifier.
 
@@ -93,7 +93,7 @@ def validate_pubmed_identifier(identifier):
         raise ValidationError("{} is not a valid PubMed identifier.".format(identifier))
 
 
-def validate_doi_identifier(identifier):
+def validate_doi_identifier(identifier: str):
     """
     Validates whether the identifier is a valid DOI identifier.
 
@@ -112,7 +112,7 @@ def validate_doi_identifier(identifier):
         raise ValidationError("{} is not a valid DOI identifier.".format(identifier))
 
 
-def validate_ensembl_identifier(identifier):
+def validate_ensembl_identifier(identifier: str):
     """
     Validates whether the identifier is a valid Ensembl identifier.
 
@@ -130,7 +130,7 @@ def validate_ensembl_identifier(identifier):
         raise ValidationError(f"'{identifier}' is not a valid Ensembl accession.")
 
 
-def validate_uniprot_identifier(identifier):
+def validate_uniprot_identifier(identifier: str):
     """
     Validates whether the identifier is a valid UniProt identifier.
 
@@ -148,7 +148,7 @@ def validate_uniprot_identifier(identifier):
         raise ValidationError(f"'{identifier}' is not a valid UniProt accession.")
 
 
-def validate_refseq_identifier(identifier):
+def validate_refseq_identifier(identifier: str):
     """
     Validates whether the identifier is a valid RefSeq identifier.
 
@@ -166,7 +166,7 @@ def validate_refseq_identifier(identifier):
         raise ValidationError(f"'{identifier}' is not a valid RefSeq accession.")
 
 
-def validate_genome_identifier(identifier):
+def validate_genome_identifier(identifier: str):
     """
     Validates whether the identifier is a valid genome identifier.
 
@@ -186,7 +186,7 @@ def validate_genome_identifier(identifier):
         )
 
 
-def validate_pubmed_list(values):
+def validate_pubmed_list(values: list[str]):
     """
     Validates whether each identifier in a list of identifiers (values) is a valid PubMed identifier.
 
@@ -205,7 +205,7 @@ def validate_pubmed_list(values):
             validate_pubmed_identifier(value)
 
 
-def validate_sra_list(values):
+def validate_sra_list(values: list[str]):
     """
     Validates whether each identifier in a list of identifiers (values) is a valid SRA identifier.
 
@@ -224,7 +224,7 @@ def validate_sra_list(values):
             validate_sra_identifier(value)
 
 
-def validate_doi_list(values):
+def validate_doi_list(values: list[str]):
     """
     Validates whether each identifier in a list of identifiers (values) is a valid DOI identifier.
 
@@ -243,7 +243,7 @@ def validate_doi_list(values):
             validate_doi_identifier(value)
 
 
-def validate_ensembl_list(values):
+def validate_ensembl_list(values: list[str]):
     """
     Validates whether each identifier in a list of identifiers (values) is a valid Ensembl identifier.
 
@@ -262,7 +262,7 @@ def validate_ensembl_list(values):
             validate_ensembl_identifier(value)
 
 
-def validate_refseq_list(values):
+def validate_refseq_list(values: list[str]):
     """
     Validates whether each identifier in a list of identifiers (values) is a valid RefSeq identifier.
 
@@ -281,7 +281,7 @@ def validate_refseq_list(values):
             validate_refseq_identifier(value)
 
 
-def validate_uniprot_list(values):
+def validate_uniprot_list(values: list[str]):
     """
     Validates whether each identifer in a list of identifiers (values) is a valid UniProt identifier.
 
