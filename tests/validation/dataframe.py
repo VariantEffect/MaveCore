@@ -6,10 +6,6 @@ from mavecore.validation.constants.general import null_values_list
 
 """
 from io import BytesIO, StringIO
-from unittest import TestCase
-
-
-import pandas as pd
 
 from mavecore.validation import constants
 
