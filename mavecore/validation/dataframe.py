@@ -94,9 +94,8 @@ def validate_column_names(columns, scores=True):
     # there should be at least one additional column beyond the hgvs columns
     if len(columns) == count:
         raise ValidationError("There must be at least one additional column beyond the hgvs columns.")
-    # validate against UTF-8byte ordering marks
-    # TODO if dataframe is a scores df make sure it has a score column
-    # also make sure counts df has a counts column
+    # if dataframe is a scores df make sure it has a score column
+    # also make sure counts df has a counts column and not a score column
     if scores and not score_column:
         raise ValidationError("A scores dataframe must include a `score` column.")
     if not scores and score_column:
