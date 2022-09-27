@@ -77,7 +77,7 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int):
         hgvs = "p." + wt + str(position) + mutant
     # validate variant
     validate_hgvs_string(hgvs)
-    return hgvs #, hgvs_validate
+    return hgvs
 
 
 def get_codon_data_from_nt_variants(hgvs_nt, target_seq):
