@@ -171,7 +171,6 @@ def validate_score(score):
             "'{}' has the type '{}'.".format(score, type(score).__name__)
         )
 
-# is the variant an actual variant with regards to the wt sequence
 
 def validate_hgvs_columns_define_same_variants(nt=None, pro=None):
     """
