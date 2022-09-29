@@ -77,7 +77,7 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional
     else:
         hgvs = "p." + wt + str(position) + mutant
     # validate variant
-    validate_hgvs_string(hgvs)
+    validate_hgvs_string(value=hgvs, column="p", targetseq=target_seq)
     return hgvs
 
 
