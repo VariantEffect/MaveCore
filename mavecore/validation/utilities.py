@@ -242,7 +242,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
     return construct_hgvs_pro(wt=target_aa, mutant=variant_aa, position=codon_number, target_seq=target_seq)
 
 
-def _is_wild_type(hgvs):
+def _is_wild_type(hgvs: str):
     """
     This function takes an hgvs formatted string and returns True if the hgvs string indicates
     there was no change from the target sequence.
@@ -263,7 +263,7 @@ def _is_wild_type(hgvs):
     return wt
 
 
-def _is_deletion(hgvs):
+def _is_deletion(hgvs: str):
     """
     This function takes an hgvs formatted string and returns True if the hgvs string indicates
     there was a deletion.
@@ -284,7 +284,7 @@ def _is_deletion(hgvs):
     return deletion
 
 
-def _is_substitution_one_base(hgvs):
+def _is_substitution_one_base(hgvs: str):
     """
     This function takes an hgvs formatted string and returns True if the hgvs string indicates
     there was a substitution at one base of the codon.
@@ -305,7 +305,7 @@ def _is_substitution_one_base(hgvs):
     return sub_one
 
 
-def _is_substitution_two_bases_nonadjacent(hgvs):
+def _is_substitution_two_bases_nonadjacent(hgvs: str):
     """
     This function takes an hgvs formatted string and returns True if the hgvs string indicates
     there were substitutions (non-adjacent) in the codon.
