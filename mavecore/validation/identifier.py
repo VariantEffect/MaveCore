@@ -27,24 +27,31 @@ def validate_external_identifier(identifier: dict):
     ValidationError
         If the `identifier` value is not correct as it relates to the `dbname` value.
     """
+    # check that identifier dict only has two keys
     if len(identifier) != 2:
         raise ValidationError("The identifier attribute of the external identifier should have two keys, `dbname` "
                               "and `identifier`.")
+
     # check that the keys are the right name
-    elif "dbname" not in identifier:
+    if "dbname" not in identifier:
         raise ValidationError("The identifier attribute of the external identifier should have two Keys, `dbname` "
                               "and `identifier`.")
-    elif "identifier" not in identifier:
+    if "identifier" not in identifier:
         raise ValidationError("The identifier attribute of the external identifier should have two Keys, `dbname` "
                               "and `identifier`.")
+
     # check that dbname is valid
-    elif identifier.get("dbname") not in valid_dbnames:
+    if identifier.get("dbname") not in valid_dbnames:
         raise ValidationError(f"The `dbname` key within the identifier attribute of the external identifier should "
                               f"take one of the following values: {valid_dbnames}.")
-    # validate identifier based on dbname
-    elif identifier.get("dbname") == "uniprot":
+
+    # validate identifier based on dbname: could be one of UniProt, RefSeq, or Ensembl
+    if identifier.get("dbname") == "UniProt":
         validate_uniprot_identifier(identifier.get("identifier"))
-    # TODO add other conditions like the one above
+    elif identifier.get("dbname") == "RefSeq":
+        validate_refseq_identifier(identifier.get("identifier"))
+    elif identifier.get("dbname") == "Ensembl":
+        validate_ensembl_identifier(identifier.get("identifier"))
 
 
 def validate_sra_identifier(identifier: str):
