@@ -81,7 +81,7 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional
     return hgvs
 
 
-def convert_hgvs_nt_to_hgvs_pro(hgvs_nt, target_seq):
+def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
     # TODO note that this only works for codon changes and single mutants
     """
     This function takes a hgvs_nt variant string and its associated target sequence and returns
