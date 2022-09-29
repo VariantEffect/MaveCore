@@ -3,6 +3,7 @@ from typing import Optional
 
 from mavecore.validation import identifier as id
 
+
 class Identifier(BaseModel):
     identifier: str
 
