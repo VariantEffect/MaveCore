@@ -166,7 +166,7 @@ def validate_values_by_column(dataset, target_seq: str):
                                     targetseq=target_seq)
         if score:
             validate_score(dataset.loc[i, required_score_column])
-        if hgvs_nt and hgvs_pro:
+        if hgvs_nt and not Variant(hgvs_pro).is_multi_variant():  # can only convert to single hgvs_pro variants
             validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=target_seq,
                                                                 nt=dataset.loc[i, hgvs_nt_column],
                                                                 pro=dataset.loc[i, hgvs_pro_column],
