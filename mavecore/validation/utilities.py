@@ -52,7 +52,7 @@ def generate_hgvs(prefix: str = "c") -> str:
         return f"{prefix}.{choice(range(1, 100))}{ref}>{alt}"
 
 
-def construct_hgvs_pro(wt: str, mutant: str, position: int):
+def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional[str] = None):
     """
     Given the wt and mutant codons as well as the position, this function generates a validated
     hgvs_pro string.
