@@ -239,7 +239,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
     else:
         variant_aa = None
 
-    return construct_hgvs_pro(wt=target_aa, mutant=variant_aa, position=codon_number)
+    return construct_hgvs_pro(wt=target_aa, mutant=variant_aa, position=codon_number, target_seq=target_seq)
 
 
 def _is_wild_type(hgvs):
