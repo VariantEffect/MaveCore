@@ -92,7 +92,8 @@ def validate_column_names(columns, scores=True):
         if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]: count+=1
         if columns[i] == required_score_column: score_column = True
     # there should be at least one hgvs column
-    if count == 0: raise ValidationError("Must include hgvs_nt, hgvs_pro, or hgvs_splice column.")
+    if count == 0:
+        raise ValidationError("Must include hgvs_nt, hgvs_pro, or hgvs_splice column.")
     # first columns should be hgvs columns
     for i in range(count):
         if columns[i] not in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
