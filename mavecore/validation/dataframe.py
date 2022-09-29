@@ -14,9 +14,9 @@ def validate_dataframes(target_seq: str, scores, counts=None):
 
     Parameters
     __________
-    scores: pandas.DataFrame
+    scores : pandas.DataFrame
         The scores data as a pandas dataframe.
-    counts: pandas.DataFrame
+    counts : pandas.DataFrame
         The counts data as a pandas dataframe.
 
     Raises
@@ -41,7 +41,7 @@ def validate_no_null_columns_or_rows(dataframe):
 
     Parameters
     __________
-    dataframe: pandas.DataFrame
+    dataframe : pandas.DataFrame
         The scores or counts dataframe being validated
 
     Raises
@@ -68,7 +68,7 @@ def validate_column_names(columns, scores=True):
 
     Parameters
     __________
-    dataframe: pandas.DataFrame
+    dataframe : pandas.DataFrame
         The scores or counts dataframe to be validated.
 
     Raises
@@ -110,7 +110,7 @@ def validate_values_by_column(dataset, target_seq: str):
 
     Parameters
     __________
-    dataset: pandas.DataFrame
+    dataset : pandas.DataFrame
         A scores or counts dataframe.
     target_seq: str
         The hgvs column name from which the variants parameter originates.
@@ -184,11 +184,11 @@ def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str
 
     Parameters
     __________
-    target_seq: str
+    target_seq : str
         The target sequence associated withe variants.
-    nt: str
+    nt : str
         The hgvs_nt string.
-    pro: list
+    pro : list
         The hgvs_pro string.
 
     Raises
@@ -210,9 +210,9 @@ def validate_dataframes_define_same_variants(scores, counts):
 
     Parameters
     ----------
-    scores: pandas.DataFrame
+    scores : pandas.DataFrame
         Scores dataframe parsed from an uploaded scores file.
-    counts: pandas.DataFrame
+    counts : pandas.DataFrame
         Scores dataframe parsed from an uploaded counts file.
 
     Raises

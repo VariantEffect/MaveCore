@@ -10,13 +10,13 @@ def validate(dataset: dict, dataset_type: str, scores=None, counts=None):
 
     Parameters
     __________
-    dataset: dict
+    dataset : dict
         The scoreset or experiment to be uploaded. This will be cast into a pydantic object.
-    dataset_type: str
+    dataset_type : str
         The type of dataset that the first argument is, either "experiments" or "scoresets".
-    scores: Pandas.DataFrame
+    scores : Pandas.DataFrame
         The scores dataframe as a Pandas DataFrame.
-    counts: Pandas.DataFrame
+    counts : Pandas.DataFrame
         The counts dataframe as a Pandas DataFrame.
 
     Raises
