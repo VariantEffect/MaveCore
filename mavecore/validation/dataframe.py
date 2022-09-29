@@ -1,7 +1,14 @@
 from numpy.testing import assert_array_equal
 from pandas.testing import assert_frame_equal
+from mavehgvs.variant import Variant
 
-from mavecore.validation.constants.general import *
+from mavecore.validation.constants.general import (
+    readable_null_values_list,
+    hgvs_nt_column,
+    hgvs_pro_column,
+    hgvs_splice_column,
+    required_score_column
+)
 from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.variant import validate_nt_variant, validate_pro_variant, validate_splice_variant
 from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro
