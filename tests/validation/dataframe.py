@@ -136,7 +136,28 @@ class TestValidateColumnNames(TestCase):
     def test_no_additional_column_with_counts_df(self):
         self.dataframe = self.dataframe.drop([required_score_column], axis=1)
         with self.assertRaises(ValidationError):
-            validate_column_names(self.dataframe.columns, scores=False)
+            validate_column_names(self.dataframe, scores=False)
+
+    def test_invalid_missing_either_required_hgvs_column(self):
+        self.dataframe = self.dataframe.drop([hgvs_pro_column, hgvs_nt_column], axis=1)
+        with self.assertRaises(ValidationError):
+            validate_column_names(self.dataframe, scores=False)
+
+    def test_sort_column_names(self):
+        self.dataframe = pd.DataFrame(
+            {
+                "other": 5,
+                required_score_column: [1.000],
+                hgvs_splice_column: ["c.1A>G"],
+                hgvs_pro_column: ["p.Leu5Glu"],
+                hgvs_nt_column: ["c.1A>G"],
+            }
+        )
+        dataset = validate_column_names(self.dataframe)
+        self.assertTrue(dataset.columns[0] == hgvs_nt_column)
+        self.assertTrue(dataset.columns[1] == hgvs_pro_column)
+        self.assertTrue(dataset.columns[2] == hgvs_splice_column)
+        self.assertTrue(dataset.columns[3] == required_score_column)
 
 
 class TestValidateVariants(TestCase):
