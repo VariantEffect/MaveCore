@@ -83,24 +83,64 @@ def validate_column_names(dataframe, scores=True):
     ValidationError
         If the column names are not formatted correctly.
     """
+    # get columns from dataframe
+    columns = dataframe.columns
+    # TODO do one of either hgvs_pro and hgvs_nt have to be present?
     # count instances of hgvs columns
     count = 0
+    # note presence of different columns
+    hgvs_nt = False
+    hgvs_pro = False
+    hgvs_splice = False
     score_column = False
     for i in range(len(columns)):
         # there should not be any null columns
-        if columns[i] in readable_null_values_list: raise ValidationError("Column names must not be null.")
-        if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]: count+=1
-        if columns[i] == required_score_column: score_column = True
-    # there should be at least one hgvs column
-    if count == 0:
-        raise ValidationError("Must include hgvs_nt, hgvs_pro, or hgvs_splice column.")
-    # first columns should be hgvs columns
-    for i in range(count):
-        if columns[i] not in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
-            raise ValidationError("First columns must be hgvs columns.")
+        if is_null(columns[i]) or columns[i] is None:
+            raise ValidationError("Column names must not be null.")  # in readable_null_values_list:
+        if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
+            count += 1
+        # mark what type of column the current column is
+        if columns[i] == hgvs_nt_column:
+            hgvs_nt = True
+        elif columns[i] == hgvs_pro_column:
+            hgvs_pro = True
+        elif columns[i] == hgvs_splice_column:
+            hgvs_splice = True
+        elif columns[i] == required_score_column:
+            score_column = True
+        # check for uppercase and raise error
+        elif (columns[i] == hgvs_nt_column.upper() or
+              columns[i] == hgvs_pro_column.upper() or
+              columns[i] == hgvs_splice_column.upper() or
+              columns[i] == required_score_column.upper()):
+            raise ValidationError("hgvs columns and score column should be lowercase.")
+
+    # there should be at least one of hgvs_nt or hgvs_pro column
+    # if count == 0:
+    if not hgvs_nt and not hgvs_pro:
+        raise ValidationError("Must include hgvs_nt or hgvs_pro column.")  # or hgvs_splice column.")
+
+    # first columns should be hgvs columns, reorder columns to meet this requirement
+    if score_column:
+        score = dataframe.pop(required_score_column)
+        dataframe.insert(0, required_score_column, score)
+    if hgvs_splice:
+        splice_column = dataframe.pop(hgvs_splice_column)
+        dataframe.insert(0, hgvs_splice_column, splice_column)
+    if hgvs_pro:
+        pro_column = dataframe.pop(hgvs_pro_column)
+        dataframe.insert(0, hgvs_pro_column, pro_column)
+    if hgvs_nt:
+        nt_column = dataframe.pop(hgvs_nt_column)
+        dataframe.insert(0, hgvs_nt_column, nt_column)
+    #for i in range(count):
+    #    if columns[i] not in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
+    #        raise ValidationError("First columns must be hgvs columns.")
+
     # there should be at least one additional column beyond the hgvs columns
     if len(columns) == count:
         raise ValidationError("There must be at least one additional column beyond the hgvs columns.")
+
     # if dataframe is a scores df make sure it has a score column
     # also make sure counts df has a counts column and not a score column
     if scores and not score_column:
@@ -108,6 +148,8 @@ def validate_column_names(dataframe, scores=True):
     if not scores and score_column:
         raise ValidationError("A counts dataframe should not include a `score` column, include `score` "
                               "column in a scores dataframe.")
+
+    return dataframe
 
 
 def validate_values_by_column(dataset, target_seq: str):
