@@ -193,39 +193,39 @@ class TestValidateValuesByColumn(TestCase):
         self.dataframe[required_score_column][0] = "not a float"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
-        '''data = "{},{}\n{},{}".format(
-            self.HGVS_NT_COL,
-            self.SCORE_COL,
-            generate_hgvs(prefix="c"),
-            "I am not a number",
-        )
-
-        with self.assertRaises(ValueError):
-            MaveDataset.for_scores(StringIO(data))'''
-        #pass
 
     def test_invalid_row_hgvs_is_not_a_string(self):
-        '''data = "{},{}\n1.0,1.0".format(self.HGVS_NT_COL, self.SCORE_COL)
-
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
-
-        self.assertFalse(dataset.is_valid)
-        self.assertEqual(len(dataset.errors), 1)
-        print(dataset.errors)'''
-        pass
+        self.dataframe[hgvs_nt_column][0] = 1.0
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_empty_no_variants_parsed(self):
-        '''data = "{},{}\n".format(self.HGVS_NT_COL, self.SCORE_COL)
+        self.dataframe = self.dataframe.drop(axis='rows', index=0)
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
+    def test_invalid_hgvs_in_column(self):
+        # invalid hgvs_nt
+        nt_test = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column], axis=1)
+        nt_test[hgvs_nt_column][0] = "p.Thr1Ala"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(nt_test, target_seq=self.target_seq)
+        # invalid hgvs_pro
+        pro_test = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
+        pro_test[hgvs_pro_column][0] = "c.1A>G"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(pro_test, target_seq=self.target_seq)
+        # invalid hgvs_splice
+        splice_test = self.dataframe.drop([hgvs_pro_column], axis=1)
+        splice_test[hgvs_splice_column][0] = "g.1A>G"
+        splice_test[hgvs_splice_column][0] = "g.1A>G"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(splice_test, target_seq=self.target_seq)
 
-        self.assertTrue(dataset.is_empty)
-        self.assertFalse(dataset.is_valid)
-        self.assertEqual(len(dataset.errors), 1)
-        print(dataset.errors)'''
-        pass
+    def test_invalid_variants_do_not_represent_same_change(self):
+        self.dataframe[hgvs_nt_column][0] = "c.3A>G"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_same_hgvs_nt_defined_in_two_rows(self):
         '''hgvs = generate_hgvs(prefix="c")
