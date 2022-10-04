@@ -1,7 +1,22 @@
 from unittest import TestCase
 import pandas as pd
 
-from mavecore.validation.dataframe import *
+from mavecore.validation.exceptions import ValidationError
+
+from mavecore.validation.constants.general import (
+    hgvs_nt_column,
+    hgvs_pro_column,
+    hgvs_splice_column,
+    required_score_column
+)
+
+from mavecore.validation.dataframe import (
+    validate_no_null_columns_or_rows,
+    validate_column_names,
+    validate_values_by_column,
+    validate_score,
+    validate_dataframes_define_same_variants
+)
 from mavecore.validation.constants.general import null_values_list
 
 """
