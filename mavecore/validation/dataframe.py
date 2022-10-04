@@ -64,7 +64,7 @@ def validate_no_null_columns_or_rows(dataframe):
         raise ValidationError("Dataset should not contain null columns or rows.")
 
 
-def validate_column_names(columns, scores=True):
+def validate_column_names(dataframe, scores=True):
     """
     This function validates the columns in a dataframe. The first columns should be
     an hgvs column such as hgvs_nt, hgvs_pro, and hgvs_splice. There should be at least
