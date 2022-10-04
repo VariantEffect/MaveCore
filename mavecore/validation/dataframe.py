@@ -172,6 +172,10 @@ def validate_values_by_column(dataset, target_seq: str):
     ValidationError
         If any variant fails validation or if the variants are not consistent with one another.
     """
+    # first check that dataframe is not empty
+    if dataset.empty:
+        raise ValidationError("Dataset must not be empty.")
+
     # check for ValueError
     # if target_seq is not made solely of characters ACTG
     check_chars = [letter in "ACTG" for letter in target_seq]
