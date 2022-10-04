@@ -202,14 +202,17 @@ def validate_values_by_column(dataset, target_seq: str):
     # loop through row by row, validate hgvs strings, make sure nt and pro are consistent with one another
     for i in range(len(dataset)):
         if hgvs_nt:
-            validate_nt_variant(value=dataset.loc[i, hgvs_nt_column],
-                                targetseq=target_seq)
+            validate_hgvs_string(value=dataset.loc[i, hgvs_nt_column],
+                                 column="nt",
+                                 targetseq=target_seq)
         if hgvs_pro:
-            validate_pro_variant(value=dataset.loc[i, hgvs_pro_column],
+            validate_hgvs_string(value=dataset.loc[i, hgvs_pro_column],
+                                 column="p",
                                  targetseq=target_seq)
         if hgvs_splice:
-            validate_splice_variant(value=dataset.loc[i, hgvs_splice_column],
-                                    targetseq=target_seq)
+            validate_hgvs_string(value=dataset.loc[i, hgvs_splice_column],
+                                 column="splice",
+                                 targetseq=target_seq)
         if score:
             validate_score(dataset.loc[i, required_score_column])
         if hgvs_nt and not Variant(hgvs_pro).is_multi_variant():  # can only convert to single hgvs_pro variants
