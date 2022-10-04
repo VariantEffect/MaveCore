@@ -10,8 +10,8 @@ from mavecore.validation.constants.general import (
     required_score_column
 )
 from mavecore.validation.exceptions import ValidationError
-from mavecore.validation.variant import validate_nt_variant, validate_pro_variant, validate_splice_variant
-from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro
+from mavecore.validation.variant import validate_hgvs_string
+from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro, is_null
 
 
 def validate_dataframes(target_seq: str, scores, counts=None):
