@@ -241,6 +241,64 @@ class TestValidateValuesByColumn(TestCase):
         print(dataset.errors)'''
         pass
 
+    def test_invalid_same_variant_defined_in_two_rows_in_hgvs_pro(self):
+        '''hgvs = generate_hgvs(prefix="p")
+        data = "{},{}\n{},1.0\n{},1.0".format(self.HGVS_PRO_COL, "count", hgvs, hgvs)
+
+        dataset = MaveDataset.for_counts(StringIO(data))
+        dataset.validate()
+
+        self.assertFalse(dataset.is_valid)
+        self.assertEqual(len(dataset.errors), 1)
+        print(dataset.errors)'''
+
+    def test_does_not_allow_wt_and_sy(self):
+        self.dataframe[hgvs_nt_column][0] = "_wt"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.dataframe[hgvs_nt_column][0] = "c.1A>G"
+        self.dataframe[hgvs_pro_column][0] = "_sy"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
+        '''for v in constants.null_values_list:
+            with self.subTest(msg=v):
+                data = (
+                    "{},{},{}\n"
+                    "{},{},1.0\n"
+                    "{},{},1.0".format(
+                        self.HGVS_NT_COL,
+                        self.HGVS_PRO_COL,
+                        self.SCORE_COL,
+                        generate_hgvs(prefix="c"),
+                        generate_hgvs(prefix="p"),
+                        v,
+                        generate_hgvs(prefix="p"),
+                    )
+                )
+
+                dataset = MaveDataset.for_scores(StringIO(data))
+                dataset.validate()
+
+                self.assertFalse(dataset.is_valid)
+                self.assertEqual(len(dataset.errors), 1)
+                print(dataset.errors)'''
+
+    def test_error_missing_value_in_pro_column_when_pro_is_primary(self):
+        '''for v in constants.null_values_list:
+            with self.subTest(msg=v):
+                data = "{},{}\n{},1.0\n{},1.0".format(
+                    self.HGVS_PRO_COL, self.SCORE_COL, generate_hgvs(prefix="p"), v
+                )
+
+                dataset = MaveDataset.for_scores(StringIO(data))
+                dataset.validate()
+
+                self.assertFalse(dataset.is_valid)
+                self.assertEqual(len(dataset.errors), 1)
+                print(dataset.errors)'''
+
 
 class TestValidateScore(TestCase):
     def test_valid_score(self):
