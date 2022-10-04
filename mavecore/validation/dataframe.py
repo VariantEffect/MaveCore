@@ -221,6 +221,7 @@ def validate_values_by_column(dataset, target_seq: str):
                                                                 pro=dataset.loc[i, hgvs_pro_column],
                                                                 row=i)
 
+        # check that primary column, whether hgvs_nt or hgvs_pro, does not contain None values
     # make sure target seq is the right type
     # no protein target with just nt variants
 
