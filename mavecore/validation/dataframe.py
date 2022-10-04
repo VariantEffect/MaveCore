@@ -32,11 +32,11 @@ def validate_dataframes(target_seq: str, scores, counts=None):
         If any of the validation fails.
     """
     validate_no_null_columns_or_rows(scores)
-    validate_column_names(scores.columns)
+    scores = validate_column_names(scores)
     validate_values_by_column(scores, target_seq)
     if counts is not None:
         validate_no_null_columns_or_rows(counts)
-        validate_column_names(counts.columns, scores=False)
+        counts = validate_column_names(counts, scores=False)
         validate_values_by_column(counts, target_seq)
         validate_dataframes_define_same_variants(scores, counts)
 
