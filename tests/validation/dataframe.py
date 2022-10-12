@@ -20,25 +20,7 @@ from mavecore.validation.dataframe import (
     validate_index_column
 )
 from mavecore.validation.constants.general import null_values_list
-
-"""
-from io import BytesIO, StringIO
-
-from mavecore.validation import constants
-
-from mavecore.validation.dataset_validators import (
-    validate_scoreset_count_data_input,
-    validate_scoreset_score_data_input,
-    validate_at_least_one_additional_column,
-    validate_has_hgvs_in_header,
-    validate_header_contains_no_null_columns,
-    read_header_from_io,
-    validate_scoreset_json,
-    validate_datasets_define_same_variants,
-)
-
-
-"""
+# let pandas handle the types of null values to allow
 
 
 class TestValidateNoNullColumnsOrRows(TestCase):
