@@ -14,6 +14,10 @@ from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.variant import validate_hgvs_string
 from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro, is_null
 
+# handle with pandas all null strings
+# provide a csv or a pandas dataframe
+# take dataframe, output as csv to temp directory, use standard library
+
 
 def validate_dataframes(target_seq: str, scores, counts=None):
     """
