@@ -195,18 +195,19 @@ class TestValidateValuesByColumn(TestCase):
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
-    def test_invalid_hgvs_in_column(self):
-        # invalid hgvs_nt
+    def test_invalid_hgvs_nt_in_column(self):
         nt_test = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column], axis=1)
         nt_test[hgvs_nt_column][0] = "p.Thr1Ala"
         with self.assertRaises(ValidationError):
             validate_values_by_column(nt_test, target_seq=self.target_seq)
-        # invalid hgvs_pro
+
+    def test_invalid_hgvs_pro_in_column(self):
         pro_test = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
         pro_test[hgvs_pro_column][0] = "c.1A>G"
         with self.assertRaises(ValidationError):
             validate_values_by_column(pro_test, target_seq=self.target_seq)
-        # invalid hgvs_splice
+
+    def test_invalid_hgvs_splice_in_column(self):
         splice_test = self.dataframe.drop([hgvs_pro_column], axis=1)
         splice_test[hgvs_splice_column][0] = "g.1A>G"
         splice_test[hgvs_splice_column][0] = "g.1A>G"
