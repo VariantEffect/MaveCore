@@ -220,15 +220,25 @@ def validate_values_by_column(dataset, target_seq: str):
         if hgvs_nt:
             validate_hgvs_string(value=dataset.loc[i, hgvs_nt_column],
                                  column="nt",
-                                 targetseq=target_seq)
+                                 targetseq=target_seq,
+                                 splice_present=hgvs_splice)
+            if hgvs_nt_prefix:
+                if Variant(dataset.loc[i, hgvs_nt_column]).prefix != hgvs_nt_prefix:
+                    raise ValidationError("All prefixes within the hgvs_nt column must be the same.")
+            else: # assign the prefix value since it has not yet been assigned
+                hgvs_nt_prefix = Variant(dataset.loc[i, hgvs_nt_column]).prefix
         if hgvs_pro:
             validate_hgvs_string(value=dataset.loc[i, hgvs_pro_column],
                                  column="p",
-                                 targetseq=target_seq)
+                                 targetseq=target_seq,
+                                 splice_present=hgvs_splice)
         if hgvs_splice:
             validate_hgvs_string(value=dataset.loc[i, hgvs_splice_column],
                                  column="splice",
-                                 targetseq=target_seq)
+                                 targetseq=target_seq,
+                                 splice_present=hgvs_splice)
+            if hgvs_nt_prefix != 'g':
+                raise ValidationError("hgvs_nt prefix must be genomic when splice present.")
         if score:
             validate_score(dataset.loc[i, required_score_column])
         if hgvs_nt and not Variant(hgvs_pro).is_multi_variant():  # can only convert to single hgvs_pro variants
