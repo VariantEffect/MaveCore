@@ -287,11 +287,12 @@ def validate_index_column(column, hgvs: str):
 
 def validate_score(score):
     # TODO we probably dont need this
-    if type(score) != float:
-        raise ValidationError(
-            "Each value in score column must by a float. "
-            "'{}' has the type '{}'.".format(score, type(score).__name__)
-        )
+    try:
+        score = float(score)
+    except ValueError:
+        raise ValidationError("Each value in score column must by a float. "
+                              "'{}' has the type '{}'.".format(score, type(score).__name__))
+    return score
 
 
 def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str, pro: str, row: int):
