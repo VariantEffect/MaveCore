@@ -16,7 +16,8 @@ from mavecore.validation.dataframe import (
     validate_column_names,
     validate_values_by_column,
     validate_score,
-    validate_dataframes_define_same_variants
+    validate_dataframes_define_same_variants,
+    validate_index_column
 )
 from mavecore.validation.constants.general import null_values_list
 
