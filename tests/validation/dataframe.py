@@ -177,6 +177,9 @@ class TestValidateValuesByColumn(TestCase):
             }
         )
 
+    def test_valid(self):
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
     def test_non_numeric_values_in_score_column(self):
         self.dataframe[required_score_column][0] = "not a float"
         with self.assertRaises(ValidationError):
