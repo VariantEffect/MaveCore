@@ -431,21 +431,7 @@ class TestDataframesDefineSameVariants(TestCase):
             validate_dataframes_define_same_variants(self.scores, self.counts)
 
 
-        self.assertTrue(dataset.is_valid)
-        df = dataset.data()
-        self.assertEqual(df[self.SCORE_COL].values[0], 0)'''
-
-    def test_invalid_close_to_zero_is_not_parsed_as_none(self):
-        '''hgvs = generate_hgvs(prefix="c")
-        data = "{},{}\n{},5.6e-15".format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
-
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
-
-        self.assertTrue(dataset.is_valid)
-        df = dataset.data()
-        self.assertEqual(df[self.SCORE_COL].values[0], 5.6e-15)'''
-
+class TestTargetSeqIsValidWithRegardsToVariants(TestCase):
 
     def test_valid_targetseq_validation_fails(self):
         '''data = "{},{},{}\nc.1A>G,p.Ile1Val,0.5".format(
