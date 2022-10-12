@@ -360,7 +360,6 @@ class TestValidateIndexColumn(TestCase):
 
     def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
         self.dataframe[hgvs_nt_column][0] = np.nan
-        print(self.dataframe)
         with self.assertRaises(ValidationError):
             validate_index_column(self.dataframe["hgvs_nt"], "nt")
 
