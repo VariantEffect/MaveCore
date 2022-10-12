@@ -191,7 +191,7 @@ class TestValidateValuesByColumn(TestCase):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_empty_no_variants_parsed(self):
-        self.dataframe = self.dataframe.drop(axis='rows', index=0)
+        self.dataframe = self.dataframe.drop(axis='rows', index=[0, 1, 2])
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
