@@ -1,6 +1,7 @@
 from numpy.testing import assert_array_equal
 from pandas.testing import assert_frame_equal
 from mavehgvs.variant import Variant
+import numpy as np
 
 from mavecore.validation.constants.general import (
     readable_null_values_list,
