@@ -279,7 +279,6 @@ def validate_index_column(column, hgvs: str):
             "Each value in hgvs_'{}' column must be unique.".format(hgvs)
         )
     if np.nan in col_set:
-        print("lasjdfljsadl;jflsjf;sjdlfj")
         raise ValidationError(
             "Primary column (hgvs_'{}') must not contain missing values.".format(hgvs)
         )
