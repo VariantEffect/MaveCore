@@ -361,42 +361,16 @@ class TestValidateIndexColumn(TestCase):
             validate_index_column(self.dataframe["hgvs_pro"], "pro")
 
     def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
-        '''for v in constants.null_values_list:
-            with self.subTest(msg=v):
-                data = (
-                    "{},{},{}\n"
-                    "{},{},1.0\n"
-                    "{},{},1.0".format(
-                        self.HGVS_NT_COL,
-                        self.HGVS_PRO_COL,
-                        self.SCORE_COL,
-                        generate_hgvs(prefix="c"),
-                        generate_hgvs(prefix="p"),
-                        v,
-                        generate_hgvs(prefix="p"),
-                    )
-                )
-
-                dataset = MaveDataset.for_scores(StringIO(data))
-                dataset.validate()
-
-                self.assertFalse(dataset.is_valid)
-                self.assertEqual(len(dataset.errors), 1)
-                print(dataset.errors)'''
+        self.dataframe[hgvs_nt_column][0] = np.nan
+        print(self.dataframe)
+        with self.assertRaises(ValidationError):
+            validate_index_column(self.dataframe["hgvs_nt"], "nt")
 
     def test_error_missing_value_in_pro_column_when_pro_is_primary(self):
-        '''for v in constants.null_values_list:
-            with self.subTest(msg=v):
-                data = "{},{}\n{},1.0\n{},1.0".format(
-                    self.HGVS_PRO_COL, self.SCORE_COL, generate_hgvs(prefix="p"), v
-                )
-
-                dataset = MaveDataset.for_scores(StringIO(data))
-                dataset.validate()
-
-                self.assertFalse(dataset.is_valid)
-                self.assertEqual(len(dataset.errors), 1)
-                print(dataset.errors)'''
+        self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
+        self.dataframe[hgvs_pro_column][0] = np.nan
+        with self.assertRaises(ValidationError):
+            validate_index_column(self.dataframe["hgvs_pro"], "pro")
 
 
 class TestValidateScore(TestCase):
