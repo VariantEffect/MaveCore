@@ -138,7 +138,7 @@ class TestValidateColumnNames(TestCase):
                 required_score_column: [1.000],
                 hgvs_splice_column: ["c.1A>G"],
                 hgvs_pro_column: ["p.Leu5Glu"],
-                hgvs_nt_column: ["c.1A>G"],
+                hgvs_nt_column: ["g.1A>G"],
             }
         )
         dataset = validate_column_names(self.dataframe)
