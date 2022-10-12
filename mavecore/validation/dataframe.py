@@ -204,6 +204,17 @@ def validate_values_by_column(dataset, target_seq: str):
         else:
             raise ValidationError("Missing required hgvs and/or score columns.")
 
+    # check that the first column, hgvs_nt or hgvs_pro, is valid
+    if hgvs_nt:
+        validate_index_column(dataset["hgvs_nt"], hgvs="nt")
+    elif hgvs_pro:
+        validate_index_column(dataset["hgvs_pro"], hgvs="pro")
+    else:
+        raise ValidationError("Must include either hgvs_nt or hgvs_pro column.")
+
+    # check that prefixes all match and are consistent with one another
+    hgvs_nt_prefix = None
+
     # loop through row by row, validate hgvs strings, make sure nt and pro are consistent with one another
     for i in range(len(dataset)):
         if hgvs_nt:
