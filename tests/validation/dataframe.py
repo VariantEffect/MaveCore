@@ -181,12 +181,12 @@ class TestValidateValuesByColumn(TestCase):
         validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_non_numeric_values_in_score_column(self):
-        self.dataframe[required_score_column][0] = "not a float"
+        self.dataframe.loc[0, [required_score_column]] = "not a float"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_row_hgvs_is_not_a_string(self):
-        self.dataframe[hgvs_nt_column][0] = 1.0
+        self.dataframe.loc[0, [hgvs_nt_column]] = 1.0
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
@@ -196,37 +196,35 @@ class TestValidateValuesByColumn(TestCase):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_hgvs_nt_in_column(self):
-        nt_test = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column], axis=1)
-        nt_test[hgvs_nt_column][0] = "p.Thr1Ala"
+        self.dataframe = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column], axis=1)
+        self.dataframe.loc[0, [hgvs_nt_column]] = "p.Thr1Ala"
         with self.assertRaises(ValidationError):
-            validate_values_by_column(nt_test, target_seq=self.target_seq)
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_hgvs_pro_in_column(self):
-        pro_test = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
-        pro_test[hgvs_pro_column][0] = "c.1A>G"
+        self.dataframe = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
+        self.dataframe.loc[0, [hgvs_pro_column]] = "c.1A>G"
         with self.assertRaises(ValidationError):
-            validate_values_by_column(pro_test, target_seq=self.target_seq)
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_hgvs_splice_in_column(self):
-        splice_test = self.dataframe.drop([hgvs_pro_column], axis=1)
-        splice_test[hgvs_splice_column][0] = "g.1A>G"
-        splice_test[hgvs_splice_column][0] = "g.1A>G"
+        self.dataframe = self.dataframe.drop([hgvs_pro_column], axis=1)
+        self.dataframe.loc[0, [hgvs_splice_column]] = "g.1A>G"
         with self.assertRaises(ValidationError):
-            validate_values_by_column(splice_test, target_seq=self.target_seq)
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_variants_do_not_represent_same_change(self):
-        self.dataframe[hgvs_nt_column][0] = "c.3A>G"
+        self.dataframe.loc[0, [hgvs_nt_column]] = "c.3A>G"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_does_not_allow_wt(self):
-        self.dataframe[hgvs_nt_column][0] = "_wt"
+        self.dataframe.loc[0, [hgvs_nt_column]] = "_wt"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_does_not_allow_sy(self):
-        self.dataframe[hgvs_nt_column][0] = "c.1A>G"
-        self.dataframe[hgvs_pro_column][0] = "_sy"
+        self.dataframe.loc[0, [hgvs_pro_column]] = "_sy"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
@@ -250,11 +248,11 @@ class TestValidateValuesByColumn(TestCase):
 
     # TODO not sure if we want to do this
     def test_parses_numeric_column_values_into_float(self):
-        self.dataframe[required_score_column][0] = "1.1"
+        self.dataframe.loc[0, [required_score_column]] = "1.1"
         self.assertTrue(type(self.dataframe[required_score_column][0]) == str)
         validate_values_by_column(self.dataframe, target_seq=self.target_seq)
         self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
-        self.dataframe[required_score_column][0] = 1
+        self.dataframe.loc[0, [required_score_column]] = 1
         self.assertTrue(type(self.dataframe[required_score_column][0]) == int)
         validate_values_by_column(self.dataframe, target_seq=self.target_seq)
         self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
@@ -294,15 +292,15 @@ class TestValidateValuesByColumn(TestCase):
         assert_index_equal(dataset.data().index, dataset.index)'''
 
     def test_invalid_genomic_and_transcript_mixed_in_nt_column(self):
-        self.dataframe[hgvs_nt_column][0] = "c.4A>G"
+        self.dataframe.loc[0, [hgvs_nt_column]] = "c.4A>G"
         self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_nt_not_genomic_when_splice_present(self):
-        self.dataframe[hgvs_nt_column][0] = "c.4A>G"
-        self.dataframe[hgvs_nt_column][1] = "c.5C>G"
-        self.dataframe[hgvs_nt_column][2] = "c.6A>G"
+        self.dataframe.loc[0, [hgvs_nt_column]] = "c.4A>G"
+        self.dataframe.loc[1, [hgvs_nt_column]] = "c.5C>G"
+        self.dataframe.loc[2, [hgvs_nt_column]] = "c.6A>G"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
