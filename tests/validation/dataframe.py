@@ -348,24 +348,24 @@ class TestValidateIndexColumn(TestCase):
         validate_index_column(self.dataframe["hgvs_pro"], "pro")
 
     def test_invalid_same_hgvs_nt_defined_in_two_rows(self):
-        self.dataframe[hgvs_nt_column][0] = "c.2C>G"
+        self.dataframe.loc[0, [hgvs_nt_column]] = "c.2C>G"
         with self.assertRaises(ValidationError):
             validate_index_column(self.dataframe["hgvs_nt"], "nt")
 
     def test_invalid_same_variant_defined_in_two_rows_in_hgvs_pro_when_pro_is_primary_column(self):
         self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
-        self.dataframe[hgvs_pro_column][0] = "p.Thr1Arg"
+        self.dataframe.loc[0, [hgvs_pro_column]] = "p.Thr1Arg"
         with self.assertRaises(ValidationError):
             validate_index_column(self.dataframe["hgvs_pro"], "pro")
 
     def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
-        self.dataframe[hgvs_nt_column][0] = np.nan
+        self.dataframe.loc[0, [hgvs_nt_column]] = np.nan
         with self.assertRaises(ValidationError):
             validate_index_column(self.dataframe["hgvs_nt"], "nt")
 
     def test_error_missing_value_in_pro_column_when_pro_is_primary(self):
         self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
-        self.dataframe[hgvs_pro_column][0] = np.nan
+        self.dataframe.loc[0, [hgvs_pro_column]] = np.nan
         with self.assertRaises(ValidationError):
             validate_index_column(self.dataframe["hgvs_pro"], "pro")
 
