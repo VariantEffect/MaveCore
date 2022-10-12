@@ -126,6 +126,11 @@ class TestValidateColumnNames(TestCase):
         with self.assertRaises(ValidationError):
             validate_column_names(self.dataframe, scores=False)
 
+    def test_invalid_splice_column_defined_when_nt_column_is_not(self):
+        self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
+        with self.assertRaises(ValidationError):
+            validate_column_names(self.dataframe, scores=False)
+
     def test_sort_column_names(self):
         self.dataframe = pd.DataFrame(
             {
