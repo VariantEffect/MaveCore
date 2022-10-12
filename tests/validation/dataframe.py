@@ -167,13 +167,13 @@ class TestValidateVariants(TestCase):
 
 class TestValidateValuesByColumn(TestCase):
     def setUp(self):
-        self.target_seq = "ACA"
+        self.target_seq = "ATGACA"
         self.dataframe = pd.DataFrame(
             {
-                hgvs_nt_column: ["c.1A>G"],
-                hgvs_pro_column: ["p.Thr1Ala"],
-                hgvs_splice_column: ["c.1A>G"],
-                required_score_column: [1.000],
+                hgvs_nt_column: ["g.4A>G", "g.5C>G", "g.6A>G"],
+                hgvs_pro_column: ["p.Thr2Ala", "p.Thr2Arg", "p.Thr2="],
+                hgvs_splice_column: ["c.4A>G", "c.5C>G", "c.6A>G"],
+                required_score_column: [1.000, 0.5, 1.5],
             }
         )
 
