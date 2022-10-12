@@ -254,7 +254,38 @@ def validate_values_by_column(dataset, target_seq: str):
     # no protein target with just nt variants
 
 
-def validate_score(score: float):
+def validate_index_column(column, hgvs: str):
+    """
+    Validates the first column in a dataframe, should be hgvs_nt or hgvs_pro. All values in the column should be
+    unique and there should be no missing values.
+
+    Parameters
+    __________
+    column : list
+        The column that will be validated.
+    hgvs : str
+        Indicates whether or not the column is an hgvs_nt or hgvs_pro column. Can have value "nt" or "pro".
+
+    Raises
+    ______
+    ValidationError
+        If there are duplicate values in the column.
+    ValidationError
+        If there are missing values in the column.
+    """
+    col_set = set(column)
+    if len(col_set) != len(column):
+        raise ValidationError(
+            "Each value in hgvs_'{}' column must be unique.".format(hgvs)
+        )
+    if np.nan in col_set:
+        print("lasjdfljsadl;jflsjf;sjdlfj")
+        raise ValidationError(
+            "Primary column (hgvs_'{}') must not contain missing values.".format(hgvs)
+        )
+
+
+def validate_score(score):
     # TODO we probably dont need this
     if type(score) != float:
         raise ValidationError(
