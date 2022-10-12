@@ -230,6 +230,136 @@ class TestValidateValuesByColumn(TestCase):
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
+    # TODO this should be handled by pandas
+    def test_data_method_converts_null_values_to_None(self):
+        '''hgvs = generate_hgvs()
+        for value in constants.null_values_list:
+            with self.subTest(msg=value):
+                data = "{},{}\n{},{}".format(
+                    self.HGVS_NT_COL, self.SCORE_COL, hgvs, value
+                )
+
+                dataset = MaveDataset.for_scores(StringIO(data))
+                dataset.validate()
+
+                self.assertTrue(dataset.is_valid)
+
+                df = dataset.data(serializable=True)
+                self.assertIsNotNone(df[self.HGVS_NT_COL].values[0])
+                self.assertIsNone(df[self.SCORE_COL].values[0])'''
+
+    # TODO not sure if we want to do this
+    def test_parses_numeric_column_values_into_float(self):
+        self.dataframe[required_score_column][0] = "1.1"
+        self.assertTrue(type(self.dataframe[required_score_column][0]) == str)
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
+        self.dataframe[required_score_column][0] = 1
+        self.assertTrue(type(self.dataframe[required_score_column][0]) == int)
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
+
+    def test_does_not_split_double_quoted_variants(self):
+        '''hgvs = "c.[123A>G;124A>G]"
+        data = '{},{}\n"{}",1.0'.format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertTrue(dataset.is_valid)
+        self.assertIn(hgvs, dataset.data()[self.HGVS_NT_COL])
+
+    # def test_invalid_non_double_quoted_multi_variant_row(self):
+    #     hgvs = "{},{}".format(generate_hgvs(), generate_hgvs())
+    #     data = "{},{}\n'{}',1.0".format(
+    #         constants.hgvs_nt_column, required_score_column, hgvs
+    #     )
+    #     with self.assertRaises(ValidationError):
+    #         _ = validate_variant_rows(BytesIO(data.encode()))'''
+
+    # TODO may not need to include this
+    def test_df_indexed_by_primary_column(self):
+        '''data = "{},{},{}\n{},{},1.0".format(
+            self.HGVS_NT_COL,
+            self.HGVS_PRO_COL,
+            self.SCORE_COL,
+            generate_hgvs(prefix="c"),
+            generate_hgvs(prefix="p"),
+        )
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertTrue(dataset.is_valid)
+        assert_index_equal(dataset.data().index, dataset.index)'''
+
+    def test_invalid_genomic_and_transcript_mixed_in_nt_column(self):
+        self.dataframe[hgvs_nt_column][0] = "c.4A>G"
+        self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_invalid_nt_not_genomic_when_splice_present(self):
+        self.dataframe[hgvs_nt_column][0] = "c.4A>G"
+        self.dataframe[hgvs_nt_column][1] = "c.5C>G"
+        self.dataframe[hgvs_nt_column][2] = "c.6A>G"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_invalid_splice_not_defined_when_nt_is_genomic(self):
+        self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_invalid_zero_is_not_parsed_as_none(self):
+        '''hgvs = generate_hgvs(prefix="c")
+        data = "{},{}\n{},0.0".format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertTrue(dataset.is_valid)
+        df = dataset.data()
+        self.assertEqual(df[self.SCORE_COL].values[0], 0)'''
+
+    def test_invalid_close_to_zero_is_not_parsed_as_none(self):
+        '''hgvs = generate_hgvs(prefix="c")
+        data = "{},{}\n{},5.6e-15".format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
+
+        dataset = MaveDataset.for_scores(StringIO(data))
+        dataset.validate()
+
+        self.assertTrue(dataset.is_valid)
+        df = dataset.data()
+        self.assertEqual(df[self.SCORE_COL].values[0], 5.6e-15)'''
+
+
+class TestValidateIndexColumn(TestCase):
+    def setUp(self):
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["c.1A>G", "c.2C>G", "c.3A>G"],
+                hgvs_pro_column: ["p.Thr1Ala", "p.Thr1Arg", "p.="],
+                required_score_column: [1.0, 0.5, 1.5],
+            }
+        )
+
+    def test_valid(self):
+        validate_index_column(self.dataframe["hgvs_nt"], "nt")
+        self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
+        validate_index_column(self.dataframe["hgvs_pro"], "pro")
+
+    def test_invalid_same_hgvs_nt_defined_in_two_rows(self):
+        self.dataframe[hgvs_nt_column][0] = "c.2C>G"
+        with self.assertRaises(ValidationError):
+            validate_index_column(self.dataframe["hgvs_nt"], "nt")
+
+    def test_invalid_same_variant_defined_in_two_rows_in_hgvs_pro_when_pro_is_primary_column(self):
+        self.dataframe = self.dataframe.drop([hgvs_nt_column], axis=1)
+        self.dataframe[hgvs_pro_column][0] = "p.Thr1Arg"
+        with self.assertRaises(ValidationError):
+            validate_index_column(self.dataframe["hgvs_pro"], "pro")
+
     def test_error_missing_value_in_nt_column_when_nt_is_primary(self):
         '''for v in constants.null_values_list:
             with self.subTest(msg=v):
