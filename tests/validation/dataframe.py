@@ -75,8 +75,8 @@ class TestValidateColumnNames(TestCase):
         validate_column_names(self.dataframe)
 
     def test_primary_column_is_pro_when_nt_is_not_defined(self):
-        self.dataframe = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column], axis=1)
-        self.dataframe.insert(0, hgvs_splice_column, ["c.1A>G"], True)
+        self.dataframe = self.dataframe.drop([hgvs_nt_column, hgvs_splice_column, required_score_column], axis=1)
+        self.dataframe.insert(0, required_score_column, [1.000], True)
         self.dataframe = validate_column_names(self.dataframe)
         self.assertTrue(self.dataframe.columns[0] == hgvs_pro_column)
 
