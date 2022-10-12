@@ -219,35 +219,12 @@ class TestValidateValuesByColumn(TestCase):
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
-    def test_invalid_same_hgvs_nt_defined_in_two_rows(self):
-        '''hgvs = generate_hgvs(prefix="c")
-        data = "{},{}\n{},1.0\n{},1.0".format(
-            self.HGVS_NT_COL, self.SCORE_COL, hgvs, hgvs
-        )
-
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
-
-        self.assertFalse(dataset.is_valid)
-        self.assertEqual(len(dataset.errors), 1)
-        print(dataset.errors)'''
-        pass
-
-    def test_invalid_same_variant_defined_in_two_rows_in_hgvs_pro(self):
-        '''hgvs = generate_hgvs(prefix="p")
-        data = "{},{}\n{},1.0\n{},1.0".format(self.HGVS_PRO_COL, "count", hgvs, hgvs)
-
-        dataset = MaveDataset.for_counts(StringIO(data))
-        dataset.validate()
-
-        self.assertFalse(dataset.is_valid)
-        self.assertEqual(len(dataset.errors), 1)
-        print(dataset.errors)'''
-
-    def test_does_not_allow_wt_and_sy(self):
+    def test_does_not_allow_wt(self):
         self.dataframe[hgvs_nt_column][0] = "_wt"
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_does_not_allow_sy(self):
         self.dataframe[hgvs_nt_column][0] = "c.1A>G"
         self.dataframe[hgvs_pro_column][0] = "_sy"
         with self.assertRaises(ValidationError):
