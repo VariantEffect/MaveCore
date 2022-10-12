@@ -121,6 +121,10 @@ def validate_column_names(dataframe, scores=True):
     if not hgvs_nt and not hgvs_pro:
         raise ValidationError("Must include hgvs_nt or hgvs_pro column.")  # or hgvs_splice column.")
 
+    # splice should not be defined in nt is not
+    if hgvs_splice and not hgvs_nt:
+        raise ValidationError("Must define hgvs_nt column if defining hgvs_splice column.")
+
     # first columns should be hgvs columns, reorder columns to meet this requirement
     if score_column:
         score = dataframe.pop(required_score_column)
