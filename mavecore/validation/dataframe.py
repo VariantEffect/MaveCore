@@ -186,11 +186,8 @@ def validate_values_by_column(dataset, target_seq: str):
     if dataset.empty:
         raise ValidationError("Dataset must not be empty.")
 
-    # check for ValueError
-    # if target_seq is not made solely of characters ACTG
-    check_chars = [letter in "ACTG" for letter in target_seq]
-    if False in check_chars:
-        raise ValidationError("target_seq is invalid, must be composed only of bases ACTG.")
+    # validate target sequence
+    validate_target_sequence(target_seq)
 
     # first check the column names, establish the order or the hgvs and score columns
     hgvs_nt = False
