@@ -332,6 +332,18 @@ class TestValidateValuesByColumn(TestCase):
         df = dataset.data()
         self.assertEqual(df[self.SCORE_COL].values[0], 5.6e-15)'''
 
+    def test_mismatched_variants_and_column_names(self):
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["p.Thr2Ala", "p.Thr2Arg", "p.Thr2="],
+                hgvs_pro_column: ["g.4A>G", "g.5C>G", "g.6A>G"],
+                hgvs_splice_column: ["c.4A>G", "c.5C>G", "c.6A>G"],
+                required_score_column: [1.000, 0.5, 1.5],
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
 
 class TestValidateIndexColumn(TestCase):
     def setUp(self):
