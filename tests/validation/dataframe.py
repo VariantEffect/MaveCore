@@ -17,7 +17,8 @@ from mavecore.validation.dataframe import (
     validate_values_by_column,
     validate_score,
     validate_dataframes_define_same_variants,
-    validate_index_column
+    validate_index_column,
+    validate_hgvs_nt_and_hgvs_pro_represent_same_change,
 )
 from mavecore.validation.constants.general import null_values_list
 # let pandas handle the types of null values to allow
