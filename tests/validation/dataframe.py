@@ -393,8 +393,31 @@ class TestValidateScore(TestCase):
 
 
 class TestHgvsColumnsDefineSameVariants(TestCase):
+    def setUp(self):
+        self.target_seq = "ATGACA"
+        self.dataframe = pd.DataFrame(
+            {
+                hgvs_nt_column: ["g.4A>G", "g.5C>G", "g.6A>G"],
+                hgvs_pro_column: ["p.Thr2Ala", "p.Thr2Arg", "p.Thr2="],
+                required_score_column: [1.000, 0.5, 1.5],
+            }
+        )
+
     def test_valid(self):
-        pass
+        for i in range(3):
+            validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=self.target_seq,
+                                                                nt=self.dataframe[hgvs_nt_column][i],
+                                                                pro=self.dataframe[hgvs_pro_column][i],
+                                                                row=i)
+
+    def test_invalid_nt_and_pro_do_not_represent_same_change(self):
+        self.dataframe.loc[0, [hgvs_nt_column]] = "g.2C>G"
+        with self.assertRaises(ValidationError):
+            for i in range(3):
+                validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=self.target_seq,
+                                                                    nt=self.dataframe[hgvs_nt_column][i],
+                                                                    pro=self.dataframe[hgvs_pro_column][i],
+                                                                    row=i)
 
 
 class TestDataframesDefineSameVariants(TestCase):
