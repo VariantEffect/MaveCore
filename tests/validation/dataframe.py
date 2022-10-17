@@ -392,14 +392,6 @@ class TestValidateScore(TestCase):
             validate_score("a")
 
 
-class TestVariantsMatchHgvsColumnNames(TestCase):
-    def test_valid(self):
-        pass
-
-    def test_mismatched_variants_and_column_names(self):
-        pass
-
-
 class TestHgvsColumnsDefineSameVariants(TestCase):
     def test_valid(self):
         pass
