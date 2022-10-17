@@ -149,23 +149,6 @@ class TestValidateColumnNames(TestCase):
         self.assertTrue(dataset.columns[3] == required_score_column)
 
 
-class TestValidateVariants(TestCase):
-    def setUp(self):
-        self.dataframe = pd.DataFrame(
-            {
-                hgvs_nt_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
-                hgvs_pro_column: ["p.Leu5Glu", "p.Leu5Glu", "p.Leu5Glu"],
-                hgvs_splice_column: ["c.1A>G", "c.1A>G", "c.1A>G"],
-            }
-        )
-
-    def test_valid_variants(self):
-        pass #validate_variants(self.dataframe[hgvs_nt_column], hgvs_nt_column)
-
-    def test_invalid_variants(self):
-        pass
-
-
 class TestValidateValuesByColumn(TestCase):
     def setUp(self):
         self.target_seq = "ATGACA"
