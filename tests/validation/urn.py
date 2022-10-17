@@ -13,7 +13,6 @@ class TestValidateUrn(TestCase):
 
     def test_valid_mavedb_urn_experimentset(self):
         validate_mavedb_urn_experimentset("")
-        pass
 
     def test_invalid_mavedb_urn_experimentset(self):
         with self.assertRaises(ValidationError):
