@@ -38,3 +38,25 @@ def validate_sequence_category(sequence_type: str):
     if sequence_type not in valid_sequence_types:
         raise ValidationError("{}'s is not a valid sequence type. Valid sequence types are "
                               "Infer, DNA, and Protein".format(sequence_type))
+
+
+def validate_target_sequence(target_seq: str):
+    """
+    Validates a target sequence. The sequence should consists of only ACTG and the length should be a multiple of 3.
+
+    Parameters
+    __________
+    sequence : str
+        The target sequence that will be validated.
+
+    Raises
+    ______
+    ValidationError
+        If the target sequence does not consist of ACTG or if the length of the sequence is not a multiple of 3.
+    """
+    # if target_seq is not made solely of characters ACTG
+    check_chars = [letter in "ACTG" for letter in target_seq]
+    if False in check_chars:
+        raise ValidationError("target_seq is invalid, must be composed only of bases ACTG.")
+    if len(target_seq) % 3 != 0:
+        raise ValidationError("target_seq is invalid, length must be a multiple of three.")
