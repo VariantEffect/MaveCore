@@ -7,14 +7,14 @@ class Test(TestCase):
     def test_valid_all_fields(self):
         sequence = {
             "sequenceType": "Protein",
-            "sequence": "ATCG",
+            "sequence": "ATC",
         }
         WildType.parse_obj(sequence)
 
     def test_invalid_sequence_type(self):
         sequence = {
             "sequenceType": "RNA",
-            "sequence": "ATCG",
+            "sequence": "ATC",
         }
         with self.assertRaises(ValidationError):
             WildType.parse_obj(sequence)
