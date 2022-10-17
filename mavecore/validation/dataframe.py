@@ -309,8 +309,10 @@ def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str
         The target sequence associated withe variants.
     nt : str
         The hgvs_nt string.
-    pro : list
+    pro : str
         The hgvs_pro string.
+    row : int
+        The row that the current hgvs strings being evaluated are in.
 
     Raises
     ______
