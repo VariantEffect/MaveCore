@@ -7,7 +7,6 @@ from mavecore.models.identifier import (Identifier,
                                         ExternalIdentifier)
 
 
-
 class TestIdentifier(TestCase):
     def setUp(self):
         self.identifier = {
