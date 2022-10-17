@@ -13,6 +13,7 @@ from mavecore.validation.constants.general import (
 from mavecore.validation.exceptions import ValidationError
 from mavecore.validation.variant import validate_hgvs_string
 from mavecore.validation.utilities import convert_hgvs_nt_to_hgvs_pro, is_null
+from mavecore.validation.target import validate_target_sequence
 
 # handle with pandas all null strings
 # provide a csv or a pandas dataframe
