@@ -78,6 +78,14 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional
         The constructed hgvs_pro string.
     """
     # TODO account for when variant codon is None, a deletion event
+    # check that the provided 3 letter amino acid codes are valid
+    if wt not in aa_dict_key_1.values():
+        raise ValueError("wt 3 letter amino acid code {} is invalid, "
+                         "must be one of the following: {}".format(wt, list(aa_dict_key_1.values())))
+    if mutant not in aa_dict_key_1.values():
+        raise ValueError("wt 3 letter amino acid code {} is invalid, "
+                         "must be one of the following: {}".format(mutant, list(aa_dict_key_1.values())))
+
     if wt == mutant:
         hgvs = "p." + wt + str(position) + "="
     else:
