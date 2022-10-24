@@ -1,5 +1,8 @@
 from unittest import TestCase
 
+from mavecore.validation.constants.general import null_values_list
+from mavecore.validation.variant import validate_pro_variant, validate_nt_variant
+
 from mavecore.validation.utilities import (
     is_null,
     generate_hgvs,
