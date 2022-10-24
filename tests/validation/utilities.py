@@ -53,35 +53,35 @@ class TestConstructHgvsPro(TestCase):
 
 
 class TestConvertHgvsNtToHgvsPro(TestCase):
-    def invalid_hgvs_nt(self):
+    def test_invalid_hgvs_nt(self):
         pass
 
-    def wt_hgvs_nt(self):
+    def test_wt_hgvs_nt(self):
         pass
 
-    def deletion_hgvs_nt(self):
+    def test_deletion_hgvs_nt(self):
         pass
 
-    def one_base_change_codon_variant(self):
+    def test_one_base_change_codon_variant(self):
         pass
 
-    def two_base_change_codon_variant(self):
+    def test_two_base_change_codon_variant(self):
         pass
 
-    def three_base_change_codon_variant(self):
+    def test_three_base_change_codon_variant(self):
         pass
 
 
 class TestVariantTypeHelperFunctions(TestCase):
 
-    def test_is_wild_type(self):
+    def test_test_is_wild_type(self):
         pass
 
-    def is_deletion(self):
+    def test_is_deletion(self):
         pass
 
-    def test_is_substitution_one_base(self):
+    def test_test_is_substitution_one_base(self):
         pass
 
-    def test_is_substitution_two_bases_nonadjacent(self):
+    def test_test_is_substitution_two_bases_nonadjacent(self):
         pass
