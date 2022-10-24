@@ -3,8 +3,8 @@ from random import choice
 from typing import Optional
 
 from mavehgvs.variant import Variant
-from mavecore.validation.variant import validate_hgvs_string
 from mavecore.validation.constants.conversion import codon_dict_DNA
+from mavecore.validation.constants.conversion import aa_dict_key_1
 
 
 def is_null(value):
