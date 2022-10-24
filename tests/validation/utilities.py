@@ -27,21 +27,25 @@ class TestIsNull(TestCase):
 
 class TestGenerateHgvsPro(TestCase):
     def test_pro(self):
-        pass
+        pro = generate_hgvs("p")
+        validate_pro_variant(pro)
 
     def test_nt(self):
-        pass
+        nt = generate_hgvs()
+        validate_nt_variant(nt)
 
 
 class TestConstructHgvsPro(TestCase):
-    def valid_arguments(self):
-        pass
+    def test_valid_arguments(self):
+        construct_hgvs_pro(wt="Ala", mutant="Gly", position=3)
 
-    def invalid_wt_aa(self):
-        pass
+    def test_invalid_wt_aa(self):
+        with self.assertRaises(ValueError):
+            construct_hgvs_pro(wt="Alr", mutant="Gly", position=3)
 
-    def invalid_mut_aa(self):
-        pass
+    def test_invalid_mut_aa(self):
+        with self.assertRaises(ValueError):
+            construct_hgvs_pro(wt="Ala", mutant="Gla", position=3)
 
     def invalid_position(self):
         pass
