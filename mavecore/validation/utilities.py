@@ -22,7 +22,13 @@ def is_null(value):
         True value is NoneType or if value matches the stated regex patterns in constants.null_values_re.
     """
     value = str(value).strip().lower()
-    return null_values_re.fullmatch(value) or not value
+    if not value:
+        return True
+    match = null_values_re.fullmatch(value)
+    if match:
+        return True
+    else:
+        return False
 
 
 def generate_hgvs(prefix: str = "c") -> str:
