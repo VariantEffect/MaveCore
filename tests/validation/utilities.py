@@ -8,10 +8,10 @@ from mavecore.validation.utilities import (
     generate_hgvs,
     construct_hgvs_pro,
     convert_hgvs_nt_to_hgvs_pro,
-    is_wild_type,
-    is_deletion,
-    is_substitution_one_base,
-    is_substitution_two_bases_nonadjacent
+    _is_wild_type,
+    _is_deletion,
+    _is_substitution_one_base,
+    _is_substitution_two_bases_nonadjacent
 )
 
 
