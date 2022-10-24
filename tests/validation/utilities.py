@@ -47,8 +47,9 @@ class TestConstructHgvsPro(TestCase):
         with self.assertRaises(ValueError):
             construct_hgvs_pro(wt="Ala", mutant="Gla", position=3)
 
-    def invalid_position(self):
-        pass
+    def test_invalid_position(self):
+        # TODO what are the invalid positions we should consider?
+        self.assertFalse(False)
 
 
 class TestConvertHgvsNtToHgvsPro(TestCase):
