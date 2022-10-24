@@ -245,11 +245,12 @@ def validate_values_by_column(dataset, target_seq: str):
             s = validate_score(dataset.loc[i, required_score_column])
             dataset.loc[i, required_score_column] = s
         if hgvs_nt and hgvs_pro:
+            # TODO: ensure this function is implemented correctly before applying, complete unit testing
             if not Variant(dataset.loc[i, hgvs_pro_column]).is_multi_variant():  # can only convert to single hgvs_pro variants
-                validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=target_seq,
+                '''validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=target_seq,
                                                                     nt=dataset.loc[i, hgvs_nt_column],
                                                                     pro=dataset.loc[i, hgvs_pro_column],
-                                                                    row=i)
+                                                                    row=i)'''
 
         # check that primary column, whether hgvs_nt or hgvs_pro, does not contain None values
     # make sure target seq is the right type
