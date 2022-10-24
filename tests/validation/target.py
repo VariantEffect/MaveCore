@@ -1,6 +1,8 @@
 from unittest import TestCase
 
 from mavecore.validation.target import *
+from mavecore.validation.exceptions import ValidationError
+from mavecore.validation.constants.target import valid_categories, valid_sequence_types
 
 
 class TestValidateTargetCategory(TestCase):
