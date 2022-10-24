@@ -11,10 +11,12 @@ class TestValidateTargetCategory(TestCase):
             validate_target_category(category)
 
     def test_invalid_category(self):
-        pass
+        with self.assertRaises(ValidationError):
+            validate_target_category("Protein")
 
     def test_invalid_case(self):
-        pass
+        with self.assertRaises(ValidationError):
+            validate_target_category("protein coding")
 
 
 class TestValidateSequenceCategory(TestCase):
@@ -23,10 +25,12 @@ class TestValidateSequenceCategory(TestCase):
             validate_sequence_category(sequence_type)
 
     def test_invalid_category(self):
-        pass
+        with self.assertRaises(ValidationError):
+            validate_sequence_category("RNA")
 
     def test_invalid_case(self):
-        pass
+        with self.assertRaises(ValidationError):
+            validate_sequence_category("dna")
 
 
 class TestValidateTargetSequence(TestCase):
@@ -37,10 +41,15 @@ class TestValidateTargetSequence(TestCase):
         validate_target_sequence(self.target_seq)
 
     def test_invalid_characters(self):
-        pass
+        self.target_seq = "AUGACCAAACAU"
+        with self.assertRaises(ValidationError):
+            validate_target_sequence(self.target_seq)
 
     def test_invalid_case(self):
-        pass
+        with self.assertRaises(ValidationError):
+            validate_target_sequence(self.target_seq.lower())
 
     def test_invalid_length(self):
-        pass
+        self.target_seq = self.target_seq + "A"
+        with self.assertRaises(ValidationError):
+            validate_target_sequence(self.target_seq)
