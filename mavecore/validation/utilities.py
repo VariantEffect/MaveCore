@@ -60,15 +60,15 @@ def generate_hgvs(prefix: str = "c") -> str:
 
 def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional[str] = None):
     """
-    Given the wt and mutant codons as well as the position, this function generates a validated
+    Given the wt and mutant 3 lette amino acid codes as well as the position, this function generates a validated
     hgvs_pro string.
 
     Parameters
     __________
     wt: str
-        The wt codon.
+        The wt 3 letter amino acid code.
     mutant: str
-        The mutant codon.
+        The mutant 3 letter amino acid code.
     position: int
         The position of the change.
 
