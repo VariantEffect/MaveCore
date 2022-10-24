@@ -16,11 +16,13 @@ from mavecore.validation.utilities import (
 
 
 class TestIsNull(TestCase):
-    def valid_null_values(self):
-        pass
+    def test_valid_null_values(self):
+        for value in null_values_list:
+            self.assertTrue(is_null(value))
 
-    def invalid_null_values(self):
-        pass
+    def test_invalid_null_values(self):
+        self.assertFalse(is_null(1))
+        self.assertFalse(is_null("1"))
 
 
 class TestGenerateHgvsPro(TestCase):
