@@ -334,6 +334,7 @@ def validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq: str, nt: str
     ValidationError
         If the variants do not represent the same change.
     """
+    # TODO think about how double quoted variants are handled here (e.g., "c.[123A>G;124A>G]")
     nt_converted = convert_hgvs_nt_to_hgvs_pro(nt, target_seq)
     # compare nt_converted with pro
     if nt_converted != pro:
