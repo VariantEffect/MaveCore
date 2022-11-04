@@ -150,7 +150,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
         # now that we have the variant_position, get codon_number
         codon_number = round((variant_position / 3) + 0.5)
         # use codon_number to get target_codon from target_seq
-        target_codon = target_seq[(codon_number - 1) * 3 : codon_number * 3]
+        target_codon = target_seq[(codon_number - 1) * 3: codon_number * 3]
 
     # declare variables for codon data
     # keep track of the number and location of the changes within the codon
