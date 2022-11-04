@@ -219,25 +219,6 @@ class TestValidateValuesByColumn(TestCase):
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
-    # TODO this should be handled by pandas
-    def test_data_method_converts_null_values_to_None(self):
-        '''hgvs = generate_hgvs()
-        for value in constants.null_values_list:
-            with self.subTest(msg=value):
-                data = "{},{}\n{},{}".format(
-                    self.HGVS_NT_COL, self.SCORE_COL, hgvs, value
-                )
-
-                dataset = MaveDataset.for_scores(StringIO(data))
-                dataset.validate()
-
-                self.assertTrue(dataset.is_valid)
-
-                df = dataset.data(serializable=True)
-                self.assertIsNotNone(df[self.HGVS_NT_COL].values[0])
-                self.assertIsNone(df[self.SCORE_COL].values[0])'''
-
-    # TODO not sure if we want to do this
     def test_parses_numeric_column_values_into_float(self):
         self.dataframe.loc[0, [required_score_column]] = "1.1"
         self.assertTrue(type(self.dataframe[required_score_column][0]) == str)
