@@ -48,6 +48,7 @@ def validate_dataframes(target_seq: str, scores, counts=None):
 
 
 def validate_no_null_columns_or_rows(dataframe):
+    # TODO: we may not need this - current datasets exist where all values are None
     """
     Checks that there are no null columns or rows in the dataframe. Note that a null
     column may still have a valid column name.
