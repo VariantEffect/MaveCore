@@ -5,6 +5,7 @@ from typing import Optional
 from mavehgvs.variant import Variant
 from mavecore.validation.constants.conversion import codon_dict_DNA
 from mavecore.validation.constants.conversion import aa_dict_key_1
+#from mavecore.validation.variant import validate_hgvs_string
 
 
 def is_null(value):
@@ -59,6 +60,7 @@ def generate_hgvs(prefix: str = "c") -> str:
 
 
 def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional[str] = None):
+    # TODO: the testing on this function needs to be improved
     """
     Given the wt and mutant 3 lette amino acid codes as well as the position, this function generates a validated
     hgvs_pro string.
@@ -121,6 +123,11 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
     ValueError
         If target_seq is not made solely of characters ACTG.
     """
+    # check that the hgvs_nt variant is valid with regards to the target sequence
+    #validate_hgvs_string(value=hgvs_nt,
+    #                     column="nt",
+    #                     targetseq=target_seq)
+
     # check for TypeError
     # if target_seq is not string
     if not isinstance(target_seq, str):
@@ -263,6 +270,7 @@ def convert_hgvs_nt_to_hgvs_pro(hgvs_nt: str, target_seq: str):
 
 
 def _is_wild_type(hgvs: str):
+    # TODO this is no longer valid
     """
     This function takes an hgvs formatted string and returns True if the hgvs string indicates
     there was no change from the target sequence.
