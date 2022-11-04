@@ -240,7 +240,11 @@ def validate_values_by_column(dataset, target_seq: str):
             if hgvs_nt_prefix:
                 if Variant(dataset.loc[i, hgvs_nt_column]).prefix != hgvs_nt_prefix:
                     raise ValidationError("All prefixes within the hgvs_nt column must be the same.")
-            else: # assign the prefix value since it has not yet been assigned
+                # if prefix is non-coding, there should not be an hgvs_pro value
+                if hgvs_nt_prefix == "n":
+                    if hgvs_pro_column and dataset.loc[i, hgvs_pro_column] is not None:
+                        raise ValidationError("Cannot have hgvs_pro value with non-coding hgvs_nt value.")
+            else:  # assign the prefix value since it has not yet been assigned
                 hgvs_nt_prefix = Variant(dataset.loc[i, hgvs_nt_column]).prefix
         if hgvs_pro and dataset.loc[i, hgvs_pro_column] is not None:
             validate_hgvs_string(value=dataset.loc[i, hgvs_pro_column],
