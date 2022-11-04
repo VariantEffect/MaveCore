@@ -159,9 +159,6 @@ def validate_column_names(dataframe, scores=True):
     if hgvs_nt:
         nt_column = dataframe.pop(hgvs_nt_column)
         dataframe.insert(0, hgvs_nt_column, nt_column)
-    #for i in range(count):
-    #    if columns[i] not in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
-    #        raise ValidationError("First columns must be hgvs columns.")
 
     # there should be at least one additional column beyond the hgvs columns
     if len(columns) == count:
