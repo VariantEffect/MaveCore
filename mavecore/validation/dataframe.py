@@ -305,10 +305,9 @@ def validate_index_column(column, hgvs: str):
 
 
 def validate_score(score):
-    # TODO we probably dont need this
-    try:
+    if isinstance(score, float) or isinstance(score, int):
         score = float(score)
-    except ValueError:
+    else:
         raise ValidationError("Each value in score column must by a float. "
                               "'{}' has the type '{}'.".format(score, type(score).__name__))
     return score
