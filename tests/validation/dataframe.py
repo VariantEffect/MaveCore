@@ -89,7 +89,7 @@ class TestValidateColumnNames(TestCase):
 
     def test_hgvs_in_wrong_location(self):
         self.dataframe = self.dataframe[[hgvs_nt_column, required_score_column, hgvs_pro_column, hgvs_splice_column]]
-        validate_column_names(self.dataframe) # validation fixes problem, should pass
+        validate_column_names(self.dataframe)  # validation fixes problem, should pass
 
     def test_no_additional_columns_beyond_hgvs_scores_df(self):
         self.dataframe = self.dataframe.drop([hgvs_pro_column, hgvs_splice_column, required_score_column], axis=1)
