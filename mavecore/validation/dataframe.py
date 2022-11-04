@@ -100,7 +100,11 @@ def validate_column_names(dataframe, scores=True):
     """
     # get columns from dataframe
     columns = dataframe.columns
-    # TODO do one of either hgvs_pro and hgvs_nt have to be present?
+
+    # check that there are no duplicate column names
+    if len(columns) != len(set(columns)):
+        raise ValidationError("There cannot be duplicate column names.")
+
     # count instances of hgvs columns
     count = 0
     # note presence of different columns
