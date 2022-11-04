@@ -106,6 +106,11 @@ class TestValidateColumnNames(TestCase):
         with self.assertRaises(ValueError):
             validate_column_names(self.dataframe)
 
+    def test_duplicate_column_names(self):
+        self.dataframe.rename(columns={hgvs_pro_column: hgvs_nt_column}, inplace=True)
+        with self.assertRaises(ValidationError):
+            validate_column_names(self.dataframe)
+
     def test_null_column_name(self):
         for value in null_values_list:
             self.dataframe.rename(columns={hgvs_splice_column: value}, inplace=True)
