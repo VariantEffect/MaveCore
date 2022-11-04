@@ -222,8 +222,9 @@ class TestValidateValuesByColumn(TestCase):
     def test_parses_numeric_column_values_into_float(self):
         self.dataframe.loc[0, [required_score_column]] = "1.1"
         self.assertTrue(type(self.dataframe[required_score_column][0]) == str)
-        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
-        self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.assertFalse(type(self.dataframe[required_score_column][0]) == float)
         self.dataframe.loc[0, [required_score_column]] = 1
         self.assertTrue(type(self.dataframe[required_score_column][0]) == int)
         validate_values_by_column(self.dataframe, target_seq=self.target_seq)
