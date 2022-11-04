@@ -63,6 +63,13 @@ def validate_no_null_columns_or_rows(dataframe):
     ValidationError
         If there are null columns or rows in the dataframe
     """
+    # first drop any columns where null columns are allowed
+    if hgvs_nt_column:
+        dataframe = dataframe.drop([hgvs_nt_column], axis=1)
+    if hgvs_pro_column:
+        dataframe = dataframe.drop([hgvs_pro_column], axis=1)
+    if hgvs_splice_column:
+        dataframe = dataframe.drop([hgvs_splice_column], axis=1)
     df = dataframe.dropna(axis=0, how='all')
     df = df.dropna(axis=1, how='all')
     try:
