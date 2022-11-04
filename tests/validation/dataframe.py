@@ -262,6 +262,27 @@ class TestValidateValuesByColumn(TestCase):
         with self.assertRaises(ValidationError):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
+    def test_noncoding_hgvs_nt_should_not_have_hgvs_pro_columns(self):
+        self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
+        self.dataframe.loc[0, [hgvs_nt_column]] = "n.4A>G"
+        self.dataframe.loc[1, [hgvs_nt_column]] = "n.5C>G"
+        self.dataframe.loc[2, [hgvs_nt_column]] = "n.6A>G"
+        with self.assertRaises(ValidationError):
+            validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.dataframe.loc[0, [hgvs_pro_column]] = None
+        self.dataframe.loc[1, [hgvs_pro_column]] = None
+        self.dataframe.loc[2, [hgvs_pro_column]] = None
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
+    def test_coding_hgvs_nt_may_have_hgvs_pro_columns(self):
+        self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
+        self.dataframe.loc[0, [hgvs_nt_column]] = "c.4A>G"
+        self.dataframe.loc[1, [hgvs_nt_column]] = "c.5C>G"
+        self.dataframe.loc[2, [hgvs_nt_column]] = "c.6A>G"
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        self.dataframe = self.dataframe.drop([hgvs_pro_column], axis=1)
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+
     def test_invalid_splice_not_defined_when_nt_is_genomic(self):
         self.dataframe = self.dataframe.drop([hgvs_splice_column], axis=1)
         with self.assertRaises(ValidationError):
