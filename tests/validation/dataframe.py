@@ -289,15 +289,13 @@ class TestValidateValuesByColumn(TestCase):
             validate_values_by_column(self.dataframe, target_seq=self.target_seq)
 
     def test_invalid_zero_is_not_parsed_as_none(self):
-        '''hgvs = generate_hgvs(prefix="c")
-        data = "{},{}\n{},0.0".format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
-
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
-
-        self.assertTrue(dataset.is_valid)
-        df = dataset.data()
-        self.assertEqual(df[self.SCORE_COL].values[0], 0)'''
+        self.dataframe.loc[0, [required_score_column]] = 0.0
+        validate_values_by_column(self.dataframe, target_seq=self.target_seq)
+        hgvs = "c.4A>G"
+        data = "{},{}\n{},0.0".format(hgvs_nt_column, required_score_column, hgvs)
+        df = pd.read_csv(StringIO(data), sep=",")
+        validate_values_by_column(df, target_seq=self.target_seq)
+        self.assertEqual(df[required_score_column].values[0], 0)
 
     def test_invalid_close_to_zero_is_not_parsed_as_none(self):
         '''hgvs = generate_hgvs(prefix="c")
