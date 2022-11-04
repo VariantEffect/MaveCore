@@ -261,7 +261,7 @@ def validate_values_by_column(dataset, target_seq: str):
         if score:
             s = validate_score(dataset.loc[i, required_score_column])
             dataset.loc[i, required_score_column] = s
-        if hgvs_nt and hgvs_pro:
+        if hgvs_nt and hgvs_pro and dataset.loc[i, hgvs_nt_column] is not None and dataset.loc[i, hgvs_pro_column] is not None:
             # TODO: ensure this function is implemented correctly before applying, complete unit testing
             if not Variant(dataset.loc[i, hgvs_pro_column]).is_multi_variant():  # can only convert to single hgvs_pro variants
                 '''validate_hgvs_nt_and_hgvs_pro_represent_same_change(target_seq=target_seq,
