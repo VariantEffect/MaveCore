@@ -53,10 +53,16 @@ class TestConstructHgvsPro(TestCase):
 
 
 class TestConvertHgvsNtToHgvsPro(TestCase):
-    def test_invalid_hgvs_nt(self):
-        pass
+    def setUp(self):
+        self.target_seq = "ATGACA"
+        self.hgvs_nt_values = ["g.4A>G", "g.5C>G", "g.6A>G"]
+        self.hgvs_pro_values = ["p.Thr2Ala", "p.Thr2Arg", "p.Thr2="]
 
     def test_wt_hgvs_nt(self):
+        #convert_hgvs_nt_to_hgvs_pro(hgvs_nt="g.4A>G", )
+        pass
+
+    def test_wt_hgvs_pro(self):
         pass
 
     def test_deletion_hgvs_nt(self):
