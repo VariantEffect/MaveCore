@@ -230,6 +230,7 @@ class TestValidateValuesByColumn(TestCase):
         validate_values_by_column(self.dataframe, target_seq=self.target_seq)
         self.assertTrue(type(self.dataframe[required_score_column][0]) == float)
 
+    # TODO: validate hgvs string should check this
     def test_does_not_split_double_quoted_variants(self):
         '''hgvs = "c.[123A>G;124A>G]"
         data = '{},{}\n"{}",1.0'.format(self.HGVS_NT_COL, self.SCORE_COL, hgvs)
@@ -247,22 +248,6 @@ class TestValidateValuesByColumn(TestCase):
     #     )
     #     with self.assertRaises(ValidationError):
     #         _ = validate_variant_rows(BytesIO(data.encode()))'''
-
-    # TODO may not need to include this
-    def test_df_indexed_by_primary_column(self):
-        '''data = "{},{},{}\n{},{},1.0".format(
-            self.HGVS_NT_COL,
-            self.HGVS_PRO_COL,
-            self.SCORE_COL,
-            generate_hgvs(prefix="c"),
-            generate_hgvs(prefix="p"),
-        )
-
-        dataset = MaveDataset.for_scores(StringIO(data))
-        dataset.validate()
-
-        self.assertTrue(dataset.is_valid)
-        assert_index_equal(dataset.data().index, dataset.index)'''
 
     def test_invalid_genomic_and_transcript_mixed_in_nt_column(self):
         self.dataframe.loc[0, [hgvs_nt_column]] = "c.4A>G"
