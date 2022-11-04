@@ -28,11 +28,11 @@ class TestIsNull(TestCase):
 class TestGenerateHgvsPro(TestCase):
     def test_pro(self):
         pro = generate_hgvs("p")
-        validate_pro_variant(pro)
+        validate_hgvs_string(pro)
 
     def test_nt(self):
         nt = generate_hgvs()
-        validate_nt_variant(nt)
+        validate_hgvs_string(nt)
 
 
 class TestConstructHgvsPro(TestCase):
