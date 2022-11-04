@@ -76,6 +76,11 @@ def construct_hgvs_pro(wt: str, mutant: str, position: int, target_seq: Optional
     _______
     hgvs
         The constructed hgvs_pro string.
+
+    Raises
+    ______
+    ValueError
+        If the wt or mutant 3 letter amino acid codes are invalid.
     """
     # TODO account for when variant codon is None, a deletion event
     # check that the provided 3 letter amino acid codes are valid
