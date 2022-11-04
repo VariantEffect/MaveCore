@@ -79,6 +79,7 @@ def validate_no_null_columns_or_rows(dataframe):
 
 
 def validate_column_names(dataframe, scores=True):
+    # TODO: return errors to user regarding column name ordering
     """
     This function validates the columns in a dataframe. The first columns should be
     an hgvs column such as hgvs_nt, hgvs_pro, and hgvs_splice. There should be at least
