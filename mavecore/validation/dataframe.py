@@ -232,7 +232,7 @@ def validate_values_by_column(dataset, target_seq: str):
 
     # loop through row by row, validate hgvs strings, make sure nt and pro are consistent with one another
     for i in range(len(dataset)):
-        if hgvs_nt:
+        if hgvs_nt and dataset.loc[i, hgvs_nt_column] is not None:
             validate_hgvs_string(value=dataset.loc[i, hgvs_nt_column],
                                  column="nt",
                                  targetseq=target_seq,
@@ -242,12 +242,12 @@ def validate_values_by_column(dataset, target_seq: str):
                     raise ValidationError("All prefixes within the hgvs_nt column must be the same.")
             else: # assign the prefix value since it has not yet been assigned
                 hgvs_nt_prefix = Variant(dataset.loc[i, hgvs_nt_column]).prefix
-        if hgvs_pro:
+        if hgvs_pro and dataset.loc[i, hgvs_pro_column] is not None:
             validate_hgvs_string(value=dataset.loc[i, hgvs_pro_column],
                                  column="p",
                                  targetseq=target_seq,
                                  splice_present=hgvs_splice)
-        if hgvs_splice:
+        if hgvs_splice and dataset.loc[i, hgvs_splice_column] is not None:
             validate_hgvs_string(value=dataset.loc[i, hgvs_splice_column],
                                  column="splice",
                                  targetseq=target_seq,
