@@ -1,0 +1,79 @@
+from unittest import TestCase
+from mavecore.validation.dataset import validate_experiment, validate_scoreset
+
+
+class TestValidateExperiment(TestCase):
+    def setUp(self):
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
+        self.experiment = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "extraMetadata": {},
+            "keywords": ["string"],
+            "doiIdentifiers": [doi_identifier],
+            "pubmedIdentifiers": [pubmed_identifier],
+        }
+
+    def test_valid_all_fields(self):
+        validate_experiment(self.experiment)
+        '''try:
+            print(type(json.loads(Experiment.parse_obj(self.experiment).json())))
+            #print(a.json())
+
+            #b = dict()
+            #print(b.json())
+        except ValueError as e:
+            print(e)'''
+
+    def test_valid_exclude_optional(self):
+        self.experiment.pop("extraMetadata")
+        self.experiment.pop("keywords")
+        self.experiment.pop("doiIdentifiers")
+        self.experiment.pop("pubmedIdentifiers")
+        validate_experiment(self.experiment)
+
+
+class TestValidateScoreSet(TestCase):
+    def setUp(self):
+        doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
+        pubmed_identifier = {"identifier": "29785012"}
+        reference_map = {"genomeId": 0, "targetId": 0}
+        sequence = {"sequenceType": "DNA", "sequence": "ATC"}
+        external_identifier_id = {"dbname": "UniProt", "identifier": "P01133"}
+        external_identifier = {"identifier": external_identifier_id, "offset": 0}
+        target = {"name": "name",
+                  "category": "Protein coding",
+                  "externalIdentifiers": [external_identifier],
+                  "referenceMaps": [reference_map],
+                  "wtSequence": sequence}
+        self.scoreset = {
+            "title": "title",
+            "shortDescription": "short description",
+            "abstractText": "abstract",
+            "methodText": "methods",
+            "extraMetadata": {},
+            "dataUsagePolicy": "policy",
+            "licenceId": 0,
+            "keywords": ["string"],
+            "experimentUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "supersededScoresetUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "metaAnalysisSourceScoresetUrns": ["tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5"],
+            "doiIdentifiers": [doi_identifier],
+            "pubmedIdentifiers": [pubmed_identifier],
+            "targetGene": target,
+        }
+
+    def test_valid_all_fields(self):
+        validate_scoreset(self.scoreset)
+
+    def test_valid_exclude_optional(self):
+        self.scoreset.pop("extraMetadata")
+        self.scoreset.pop("keywords")
+        self.scoreset.pop("doiIdentifiers")
+        self.scoreset.pop("pubmedIdentifiers")
+        self.scoreset.pop("supersededScoresetUrn")
+        self.scoreset.pop("metaAnalysisSourceScoresetUrns")
+        validate_scoreset(self.scoreset)
