@@ -12,7 +12,7 @@ class TestValidateUrn(TestCase):
             validate_mavedb_urn("urn:mavedb:00000002-a-1-z")
 
     def test_valid_mavedb_urn_experimentset(self):
-        validate_mavedb_urn_experimentset("")
+        validate_mavedb_urn_experimentset("urn:mavedb:00000001")
 
     def test_invalid_mavedb_urn_experimentset(self):
         with self.assertRaises(ValidationError):
@@ -33,7 +33,9 @@ class TestValidateUrn(TestCase):
             validate_mavedb_urn_scoreset("")
 
     def test_valid_mavedb_urn_variant(self):
-        validate_mavedb_urn_variant("")
+        # TODO find a valid variant urn
+        pass
+        #validate_mavedb_urn_variant("")
 
     def test_invalid_mavedb_urn_variant(self):
         with self.assertRaises(ValidationError):
