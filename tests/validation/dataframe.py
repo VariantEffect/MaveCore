@@ -32,6 +32,7 @@ class TestValidateNoNullColumnsOrRows(TestCase):
                 hgvs_nt_column: ["c.1A>G"],
                 hgvs_pro_column: ["p.Leu5Glu"],
                 hgvs_splice_column: ["c.1A>G"],
+                required_score_column: 1.0,
             }
         )
 
@@ -39,12 +40,12 @@ class TestValidateNoNullColumnsOrRows(TestCase):
         validate_no_null_columns_or_rows(self.dataframe)
 
     def test_null_row(self):
-        self.dataframe.loc[1] = [np.nan, np.nan, np.nan]
+        self.dataframe.loc[1] = [np.nan, np.nan, np.nan, np.nan]
         with self.assertRaises(AssertionError):
             validate_no_null_columns_or_rows(self.dataframe)
 
     def test_null_column(self):
-        self.dataframe[hgvs_pro_column][0] = np.nan
+        self.dataframe[required_score_column][0] = np.nan
         with self.assertRaises(AssertionError):
             validate_no_null_columns_or_rows(self.dataframe)
 
