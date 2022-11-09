@@ -49,7 +49,7 @@ class TestPubmedIdentifier(TestCase):
 
 class TestExternalIdentifier(TestCase):
     def setUp(self):
-        self.external_identifier_id = {"dbname": "uniprot", "identifier": "P01133"}
+        self.external_identifier_id = {"dbname": "UniProt", "identifier": "P01133"}
         self.external_identifier = {"identifier": self.external_identifier_id, "offset": 0}
 
     """def test_valid_external_identifier_id(self):
