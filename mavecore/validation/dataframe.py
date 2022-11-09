@@ -116,7 +116,7 @@ def validate_column_names(dataframe, scores=True):
         # there should not be any null columns
         # check for empty strings, np.nan, and None
         # if is_null(columns[i]) or columns[i] is None:
-        if isinstance(columns[i], str) or columns[i] == "" or columns[i].isspace():
+        if not isinstance(columns[i], str) or columns[i] == "" or columns[i].isspace():
             # above condition will check that value is not None or np.nan also
             raise ValidationError("Column names must not be null.")  # in readable_null_values_list:
         if columns[i] in [hgvs_nt_column, hgvs_pro_column, hgvs_splice_column]:
