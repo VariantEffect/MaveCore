@@ -111,9 +111,7 @@ def validate_hgvs_string(
                 f"protein variant prefix is 'p.'."
             )
     else:
-        raise ValueError(
-            "Unknown column '{}'. Expected nt, splice or p".format(column)
-        )
+        raise ValueError("Unknown column '{}'. Expected nt, splice or p".format(column))
 
     return str(variant)
 

@@ -12,15 +12,13 @@ requirements = [
 
 setuptools.setup(
     name="mavecore",
-    version="0.1.4",
+    version="0.1.5",
     author="MaveDB Developers",
     author_email="alan.rubin@wehi.edu.au",
-    description=(
-        "MaveCore implements shared functionality for MaveTools and MaveDB."
-    ),
+    description=("MaveCore implements shared functionality for MaveTools and MaveDB."),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/VariantEffect/MaveCore/tree/testMaveCore",
+    url="https://github.com/VariantEffect/MaveCore/tree/release/0.1",
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

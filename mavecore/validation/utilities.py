@@ -30,6 +30,7 @@ def is_null(value):
         return True
     else:
         return False
+    #return null_values_re.fullmatch(value) or not value
 
 
 def generate_hgvs(prefix: str = "c") -> str:
