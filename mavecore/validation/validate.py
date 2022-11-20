@@ -1,69 +1,40 @@
-from mavecore.validation import dataset_validators
+from exceptions import ValidationError
+from mavecore.models.data import Experiment, ScoreSet
+from mavecore.validation.dataframe import validate_dataframes
 
 
-def validate_all(countfile=None, scorefile=None, scorejson=None):
+def validate(dataset: dict, dataset_type: str, scores=None, counts=None):
     """
-    By calling other helper functions, this function runs all of the validation code.
+    This function validates data to by uploaded to MaveDB. Descriptive errors will be raised if any of the validation
+    fails. Scores and counts are optional as this function accepts both experiments and scoresets.
 
     Parameters
     __________
-    countfile :
-    scorefile :
-    scorejson :
+    dataset : dict
+        The scoreset or experiment to be uploaded. This will be cast into a pydantic object.
+    dataset_type : str
+        The type of dataset that the first argument is, either "experiments" or "scoresets".
+    scores : Pandas.DataFrame
+        The scores dataframe as a Pandas DataFrame.
+    counts : Pandas.DataFrame
+        The counts dataframe as a Pandas DataFrame.
 
+    Raises
+    ______
+    ValueError
+        If the dataset_type attribute is not a string that reads `experiments` or `scoresets`.
     """
-    validate_dataset(countfile, scorefile, scorejson)
-
-
-def validate_dataset(countfile=None, scorefile=None, scorejson=None):
-    """
-    This function calls all of the validation functions within
-    mavetools/mavetools/validation/dataset_validation.py
-
-    Parameters
-    __________
-    countfile :
-    scorefile :
-    scorejson :
-
-    Returns
-    -------
-
-    """
-
-    # how to incorporate word limit validator?
-
-    if scorefile is not None:
-        # open scorefile
-        open(scorefile)
-        # this one returns header
-        scoreheader = dataset_validators.read_header_from_io(file=scorefile)
-
-        # if the header was returned, do these ones
-        dataset_validators.validate_has_hgvs_in_header(header=scoreheader)
-        dataset_validators.validate_at_least_one_additional_column(header=scoreheader)
-        dataset_validators.validate_header_contains_no_null_columns(header=scoreheader)
-
-        dataset_validators.validate_scoreset_score_data_input(file=scorefile)
-
-        if scorejson is not None:
-            # open scorejson
-            open(scorejson)
-            dataset_validators.validate_scoreset_json(dict_=scorejson)
-
-    if countfile is not None:
-        # open countfile
-        open(countfile)
-        countheader = dataset_validators.read_header_from_io(file=countfile)
-
-        # if the header was returned, do these ones
-        dataset_validators.validate_has_hgvs_in_header(header=countheader)
-        dataset_validators.validate_at_least_one_additional_column(header=countheader)
-        dataset_validators.validate_header_contains_no_null_columns(header=countheader)
-
-        dataset_validators.validate_scoreset_count_data_input(file=countfile)
-
-    if scorefile is not None and countfile is not None:
-        dataset_validators.validate_datasets_define_same_variants(
-            scores=scorefile, counts=countfile
-        )
+    if dataset_type == "experiments":
+        try:
+            Experiment.parse_obj(dataset)
+        except ValidationError as e:
+            print(e.json())
+    elif dataset_type == "scoresets":
+        try:
+            ScoreSet.parse_obj(dataset)
+        except ValidationError as e:
+            print(e.json())
+        target_seq = dataset["targetGene"]["wtSequence"]["sequence"]
+        validate_dataframes(target_seq=target_seq, scores=scores, counts=counts)
+    else:
+        raise ValueError("The dataset_type must be a string that reads `experiments` or `scoresets`.")
