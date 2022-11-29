@@ -16,6 +16,9 @@ class TargetGene(BaseModel):
     reference_maps: List[ReferenceMap]
     wtSequence: WildType
 
+    class Config:
+        alias_generator = to_camel
+
     @validator('category')
     def validate_category(cls, v):
         target.validate_target_category(v)

@@ -53,6 +53,9 @@ class ExternalIdentifier(BaseModel):
     identifier: dict
     offset: Optional[int]
 
+    class Config:
+        alias_generator = to_camel
+
     @validator('identifier')
     def validate_identifier(cls, v):
         id.validate_external_identifier(v)

@@ -16,6 +16,9 @@ class DataSet(BaseModel):
     extra_metadata: Optional[Dict]
     keywords: Optional[List[str]]
 
+    class Config:
+        alias_generator = to_camel
+
     @validator('keywords')
     def validate_keywords(cls, v):
         keywords.validate_keywords(v)
