@@ -5,7 +5,7 @@ from mavecore.validation.utilities import to_camel
 
 
 class WildType(BaseModel):
-    sequenceType: str
+    sequence_type: str
     sequence: str
 
     @validator('sequenceType')

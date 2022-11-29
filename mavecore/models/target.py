@@ -12,8 +12,8 @@ from mavecore.validation.utilities import to_camel
 class TargetGene(BaseModel):
     name: str
     category: str
-    externalIdentifiers: List[ExternalIdentifier]
-    referenceMaps: List[ReferenceMap]
+    external_identifiers: List[ExternalIdentifier]
+    reference_maps: List[ReferenceMap]
     wtSequence: WildType
 
     @validator('category')

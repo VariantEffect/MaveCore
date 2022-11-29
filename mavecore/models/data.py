@@ -10,10 +10,10 @@ from mavecore.validation.utilities import to_camel
 
 class DataSet(BaseModel):
     title: str
-    shortDescription: str
-    abstractText: str
-    methodText: str
-    extraMetadata: Optional[Dict]
+    short_description: str
+    abstract_text: str
+    method_text: str
+    extra_metadata: Optional[Dict]
     keywords: Optional[List[str]]
 
     @validator('keywords')
@@ -22,19 +22,19 @@ class DataSet(BaseModel):
 
 
 class Experiment(DataSet):
-    doiIdentifiers: Optional[List[DoiIdentifier]]
-    pubmedIdentifiers: Optional[List[PubmedIdentifier]]
+    doi_identifiers: Optional[List[DoiIdentifier]]
+    pubmed_identifiers: Optional[List[PubmedIdentifier]]
 
 
 class ScoreSet(DataSet):
-    dataUsagePolicy: str
-    licenceId: int
-    experimentUrn: str
-    supersededScoresetUrn: Optional[str]
-    metaAnalysisSourceScoresetUrns: Optional[List[str]]
-    doiIdentifiers: Optional[List[DoiIdentifier]]
-    pubmedIdentifiers: Optional[List[PubmedIdentifier]]
-    targetGene: TargetGene
+    data_usage_policy: str
+    licence_id: int
+    experiment_urn: str
+    superseded_scoreset_urn: Optional[str]
+    meta_analysis_source_scoreset_urns: Optional[List[str]]
+    doi_identifiers: Optional[List[DoiIdentifier]]
+    pubmed_identifiers: Optional[List[PubmedIdentifier]]
+    target_gene: TargetGene
 
     @validator('supersededScoresetUrn', 'metaAnalysisSourceScoresetUrns')
     def validate_scoreset_urn(cls, v):
