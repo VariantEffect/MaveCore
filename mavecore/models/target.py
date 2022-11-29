@@ -14,7 +14,7 @@ class TargetGene(BaseModel):
     category: str
     external_identifiers: List[ExternalIdentifier]
     reference_maps: List[ReferenceMap]
-    wtSequence: WildType
+    wt_sequence: WildType
 
     class Config:
         alias_generator = to_camel
