@@ -8,6 +8,12 @@ from mavecore.validation.constants.conversion import aa_dict_key_1
 #from mavecore.validation.variant import validate_hgvs_string
 
 
+def to_camel(string: str) -> str:
+    camel = ''.join(word.capitalize() for word in string.split('_'))
+    camel = camel[0].lower() + camel[1:]
+    return camel
+
+
 def is_null(value):
     """
     Returns True if a stripped/lowercase value in in `nan_col_values`.
