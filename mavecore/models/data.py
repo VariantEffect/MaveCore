@@ -39,13 +39,13 @@ class ScoreSet(DataSet):
     pubmed_identifiers: Optional[List[PubmedIdentifier]]
     target_gene: TargetGene
 
-    @validator('supersededScoresetUrn', 'metaAnalysisSourceScoresetUrns')
+    @validator('superseded_scoresetUrn', 'meta_analysis_source_scoreset_urns')
     def validate_scoreset_urn(cls, v):
         if type(v) == str:
             urn.validate_mavedb_urn_scoreset(v)
         else:
             [urn.validate_mavedb_urn_scoreset(s) for s in v]
 
-    @validator('experimentUrn')
+    @validator('experiment_urn')
     def validate_experiment_urn(cls, v):
         urn.validate_mavedb_urn_experiment(v)
