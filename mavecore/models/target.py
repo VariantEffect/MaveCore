@@ -6,6 +6,7 @@ from .sequence import WildType
 
 from mavecore.validation import target
 from mavecore.models.identifier import ExternalIdentifier
+from mavecore.validation.utilities import to_camel
 
 
 class TargetGene(BaseModel):

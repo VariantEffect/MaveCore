@@ -2,6 +2,7 @@ from pydantic import BaseModel, validator, root_validator
 from typing import Optional
 
 from mavecore.validation import identifier as id
+from mavecore.validation.utilities import to_camel
 
 
 class Identifier(BaseModel):

@@ -1,6 +1,7 @@
 from pydantic import BaseModel, validator
 
 from mavecore.validation import target
+from mavecore.validation.utilities import to_camel
 
 
 class WildType(BaseModel):

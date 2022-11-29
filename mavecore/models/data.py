@@ -5,6 +5,7 @@ from .identifier import DoiIdentifier, PubmedIdentifier
 from .target import TargetGene
 
 from mavecore.validation import keywords, urn
+from mavecore.validation.utilities import to_camel
 
 
 class DataSet(BaseModel):
