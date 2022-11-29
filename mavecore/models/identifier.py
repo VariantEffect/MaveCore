@@ -8,6 +8,9 @@ from mavecore.validation.utilities import to_camel
 class Identifier(BaseModel):
     identifier: str
 
+    class Config:
+        alias_generator = to_camel
+
 
 class DoiIdentifier(Identifier):
 
