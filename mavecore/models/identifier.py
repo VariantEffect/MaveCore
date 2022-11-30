@@ -2,10 +2,14 @@ from pydantic import BaseModel, validator, root_validator
 from typing import Optional
 
 from mavecore.validation import identifier as id
+from mavecore.validation.utilities import to_camel
 
 
 class Identifier(BaseModel):
     identifier: str
+
+    class Config:
+        alias_generator = to_camel
 
 
 class DoiIdentifier(Identifier):
@@ -51,6 +55,9 @@ class PubmedIdentifier(Identifier):
 class ExternalIdentifier(BaseModel):
     identifier: dict
     offset: Optional[int]
+
+    class Config:
+        alias_generator = to_camel
 
     @validator('identifier')
     def validate_identifier(cls, v):
