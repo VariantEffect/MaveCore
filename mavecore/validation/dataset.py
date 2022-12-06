@@ -1,6 +1,7 @@
 import json
 
 from mavecore.models.data import Experiment, ScoreSet
+from mavecore.validation.exceptions import ValidationError
 
 
 def validate_experiment(experiment: dict):
@@ -22,7 +23,7 @@ def validate_experiment(experiment: dict):
     try:
         return json.loads(Experiment.parse_obj(experiment).json())
     except ValueError as e:
-        print(e)
+        raise ValidationError(e)
 
 
 def validate_scoreset(scoreset: dict):
@@ -45,4 +46,4 @@ def validate_scoreset(scoreset: dict):
     try:
         return json.loads(ScoreSet.parse_obj(scoreset).json())
     except ValueError as e:
-        print(e)
+        raise ValidationError(e)
