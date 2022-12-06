@@ -8,13 +8,13 @@ class TestValidateExperiment(TestCase):
         pubmed_identifier = {"identifier": "29785012"}
         self.experiment = {
             "title": "title",
-            "shortDescription": "short description",
-            "abstractText": "abstract",
-            "methodText": "methods",
-            "extraMetadata": {},
+            "short_description": "short description",
+            "abstract_text": "abstract",
+            "method_text": "methods",
+            "extra_metadata": {},
             "keywords": ["string"],
-            "doiIdentifiers": [doi_identifier],
-            "pubmedIdentifiers": [pubmed_identifier],
+            "doi_identifiers": [doi_identifier],
+            "pubmed_identifiers": [pubmed_identifier],
         }
 
     def test_valid_all_fields(self):
@@ -29,10 +29,10 @@ class TestValidateExperiment(TestCase):
             print(e)'''
 
     def test_valid_exclude_optional(self):
-        self.experiment.pop("extraMetadata")
+        self.experiment.pop("extra_metadata")
         self.experiment.pop("keywords")
-        self.experiment.pop("doiIdentifiers")
-        self.experiment.pop("pubmedIdentifiers")
+        self.experiment.pop("doi_identifiers")
+        self.experiment.pop("pubmed_identifiers")
         validate_experiment(self.experiment)
 
 
@@ -40,40 +40,40 @@ class TestValidateScoreSet(TestCase):
     def setUp(self):
         doi_identifier = {"identifier": "10.1038/s41588-018-0122-z"}
         pubmed_identifier = {"identifier": "29785012"}
-        reference_map = {"genomeId": 0, "targetId": 0}
-        sequence = {"sequenceType": "DNA", "sequence": "ATC"}
+        reference_map = {"genome_id": 0, "target_id": 0}
+        sequence = {"sequence_type": "DNA", "sequence": "ATC"}
         external_identifier_id = {"dbname": "UniProt", "identifier": "P01133"}
         external_identifier = {"identifier": external_identifier_id, "offset": 0}
         target = {"name": "name",
                   "category": "Protein coding",
-                  "externalIdentifiers": [external_identifier],
-                  "referenceMaps": [reference_map],
-                  "wtSequence": sequence}
+                  "external_identifiers": [external_identifier],
+                  "reference_maps": [reference_map],
+                  "wt_sequence": sequence}
         self.scoreset = {
             "title": "title",
-            "shortDescription": "short description",
-            "abstractText": "abstract",
-            "methodText": "methods",
-            "extraMetadata": {},
-            "dataUsagePolicy": "policy",
-            "licenceId": 0,
+            "short_description": "short description",
+            "abstract_text": "abstract",
+            "method_text": "methods",
+            "extra_metadata": {},
+            "dataUsage_policy": "policy",
+            "licence_id": 0,
             "keywords": ["string"],
-            "experimentUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
-            "supersededScoresetUrn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
-            "metaAnalysisSourceScoresetUrns": ["tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5"],
-            "doiIdentifiers": [doi_identifier],
-            "pubmedIdentifiers": [pubmed_identifier],
-            "targetGene": target,
+            "experiment_urn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "superseded_scoreset_urn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
+            "meta_analysis_source_scoreset_urns": ["tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5"],
+            "doi_identifiers": [doi_identifier],
+            "pubmed_identifiers": [pubmed_identifier],
+            "target_gene": target,
         }
 
     def test_valid_all_fields(self):
         validate_scoreset(self.scoreset)
 
     def test_valid_exclude_optional(self):
-        self.scoreset.pop("extraMetadata")
+        self.scoreset.pop("extra_metadata")
         self.scoreset.pop("keywords")
-        self.scoreset.pop("doiIdentifiers")
-        self.scoreset.pop("pubmedIdentifiers")
-        self.scoreset.pop("supersededScoresetUrn")
-        self.scoreset.pop("metaAnalysisSourceScoresetUrns")
+        self.scoreset.pop("doi_identifiers")
+        self.scoreset.pop("pubmed_identifiers")
+        self.scoreset.pop("superseded_scoreset_urn")
+        self.scoreset.pop("meta_analysis_source_scoreset_urns")
         validate_scoreset(self.scoreset)
