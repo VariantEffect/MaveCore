@@ -10,6 +10,7 @@ class WildType(BaseModel):
 
     class Config:
         alias_generator = to_camel
+        allow_population_by_field_name = True
 
     @validator('sequence_type')
     def validate_category(cls, v):
