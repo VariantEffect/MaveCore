@@ -21,7 +21,7 @@ def validate_experiment(experiment: dict):
         If required keys are missing or any keys contain incorrect values.
     """
     try:
-        return json.loads(Experiment.parse_obj(experiment).json())
+        return Experiment.parse_obj(experiment).dict(by_alias=True, exclude_none=True)
     except ValueError as e:
         raise ValidationError(e)
 
@@ -44,6 +44,7 @@ def validate_scoreset(scoreset: dict):
         If required keys are missing or any keys contain incorrect values.
     """
     try:
-        return json.loads(ScoreSet.parse_obj(scoreset).json())
+        #return json.loads(ScoreSet.parse_obj(scoreset).json())
+        return ScoreSet.parse_obj(scoreset).dict(by_alias=True, exclude_none=True)
     except ValueError as e:
         raise ValidationError(e)
