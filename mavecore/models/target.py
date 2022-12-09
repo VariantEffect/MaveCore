@@ -23,3 +23,4 @@ class TargetGene(BaseModel):
     @validator('category')
     def validate_category(cls, v):
         target.validate_target_category(v)
+        return v
