@@ -55,7 +55,7 @@ class TestValidateScoreSet(TestCase):
             "abstract_text": "abstract",
             "method_text": "methods",
             "extra_metadata": {},
-            "dataUsage_policy": "policy",
+            "data_usage_policy": "policy",
             "licence_id": 0,
             "keywords": ["string"],
             "experiment_urn": "tmp:0a56b8eb-8e19-4906-8cc7-d17d884330a5",
