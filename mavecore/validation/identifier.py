@@ -33,7 +33,7 @@ def validate_external_identifier(identifier: dict):
                               "and `identifier`.")
 
     # check that the keys are the right name
-    if "dbName" or "db_name" not in identifier:
+    if "db_name" not in identifier and "dbName" not in identifier:
         raise ValidationError("The identifier attribute of the external identifier should have the key `dbName` or 'db_name`.")
     if "identifier" not in identifier:
         raise ValidationError("The identifier attribute of the external identifier should have the key `identifier`.")
