@@ -42,7 +42,7 @@ class TestValidateScoreSet(TestCase):
         pubmed_identifier = {"identifier": "29785012"}
         reference_map = {"genome_id": 0, "target_id": 0}
         sequence = {"sequence_type": "DNA", "sequence": "ATC"}
-        external_identifier_id = {"dbname": "UniProt", "identifier": "P01133"}
+        external_identifier_id = {"db_name": "UniProt", "identifier": "P01133"}
         external_identifier = {"identifier": external_identifier_id, "offset": 0}
         target = {"name": "name",
                   "category": "Protein coding",
