@@ -10,6 +10,7 @@ class Identifier(BaseModel):
 
     class Config:
         alias_generator = to_camel
+        allow_population_by_field_name = True
 
 
 class DoiIdentifier(Identifier):
@@ -17,6 +18,7 @@ class DoiIdentifier(Identifier):
     @validator('identifier')
     def must_be_valid_doi(cls, v):
         id.validate_doi_identifier(v)
+        return v
 
 
 class PubmedIdentifier(Identifier):
@@ -24,6 +26,7 @@ class PubmedIdentifier(Identifier):
     @validator('identifier')
     def must_be_valid_pubmed(cls, v):
         id.validate_pubmed_identifier(v)
+        return v
 
 
 '''class ExternalIdentifierId(BaseModel):
@@ -62,3 +65,4 @@ class ExternalIdentifier(BaseModel):
     @validator('identifier')
     def validate_identifier(cls, v):
         id.validate_external_identifier(v)
+        return v

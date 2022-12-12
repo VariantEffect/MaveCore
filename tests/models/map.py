@@ -5,8 +5,8 @@ from mavecore.models.map import ReferenceMap
 class TestReferenceMap(TestCase):
     def setUp(self):
         self.reference_map = {
-            "genomeId": 0,
-            "targetId": 0,
+            "genome_id": 0,
+            "target_id": 0,
         }
 
     def test_valid_all_fields(self):

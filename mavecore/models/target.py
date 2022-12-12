@@ -12,13 +12,15 @@ from mavecore.validation.utilities import to_camel
 class TargetGene(BaseModel):
     name: str
     category: str
-    external_identifiers: List[ExternalIdentifier]
-    reference_maps: List[ReferenceMap]
+    external_identifiers: Optional[List[ExternalIdentifier]]
+    reference_maps: Optional[List[ReferenceMap]]
     wt_sequence: WildType
 
     class Config:
         alias_generator = to_camel
+        allow_population_by_field_name = True
 
     @validator('category')
     def validate_category(cls, v):
         target.validate_target_category(v)
+        return v

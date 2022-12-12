@@ -7,10 +7,10 @@ class TestDataSet(TestCase):
     def setUp(self):
         self.dataset = {
             "title": "title",
-            "shortDescription": "short description",
-            "abstractText": "abstract",
-            "methodText": "methods",
-            "extraMetadata": {},
+            "short_description": "short description",
+            "abstract_text": "abstract",
+            "method_text": "methods",
+            "extra_metadata": {},
             "keywords": ["string"],
         }
 
@@ -18,7 +18,7 @@ class TestDataSet(TestCase):
         DataSet.parse_obj(self.dataset)
 
     def test_valid_exclude_optional(self):
-        self.dataset.pop("extraMetadata")
+        self.dataset.pop("extra_metadata")
         self.dataset.pop("keywords")
         DataSet.parse_obj(self.dataset)
 
@@ -34,23 +34,23 @@ class TestExperiment(TestCase):
         pubmed_identifier = {"identifier": "29785012"}
         self.experiment = {
             "title": "title",
-            "shortDescription": "short description",
-            "abstractText": "abstract",
-            "methodText": "methods",
-            "extraMetadata": {},
+            "short_description": "short description",
+            "abstract_text": "abstract",
+            "method_text": "methods",
+            "extra_metadata": {},
             "keywords": ["string"],
-            "doiIdentifiers": [doi_identifier],
-            "pubmedIdentifiers": [pubmed_identifier],
+            "doi_identifiers": [doi_identifier],
+            "pubmed_identifiers": [pubmed_identifier],
         }
 
     def test_valid_all_fields(self):
         Experiment.parse_obj(self.experiment)
 
     def test_valid_exclude_optional(self):
-        self.experiment.pop("extraMetadata")
+        self.experiment.pop("extra_metadata")
         self.experiment.pop("keywords")
-        self.experiment.pop("doiIdentifiers")
-        self.experiment.pop("pubmedIdentifiers")
+        self.experiment.pop("doi_identifiers")
+        self.experiment.pop("pubmed_identifiers")
         Experiment.parse_obj(self.experiment)
 
 

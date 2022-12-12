@@ -33,24 +33,28 @@ def validate_external_identifier(identifier: dict):
                               "and `identifier`.")
 
     # check that the keys are the right name
-    if "dbname" not in identifier:
-        raise ValidationError("The identifier attribute of the external identifier should have two Keys, `dbname` "
-                              "and `identifier`.")
+    if "db_name" not in identifier and "dbName" not in identifier:
+        raise ValidationError("The identifier attribute of the external identifier should have the key `dbName` or 'db_name`.")
     if "identifier" not in identifier:
-        raise ValidationError("The identifier attribute of the external identifier should have two Keys, `dbname` "
-                              "and `identifier`.")
+        raise ValidationError("The identifier attribute of the external identifier should have the key `identifier`.")
+
+    # assign dbName key to variable
+    if "dbName" in identifier:
+        db_name = "dbName"
+    else:
+        db_name = "db_name"
 
     # check that dbname is valid
-    if identifier.get("dbname") not in valid_dbnames:
-        raise ValidationError(f"The `dbname` key within the identifier attribute of the external identifier should "
+    if identifier.get(db_name) not in valid_dbnames:
+        raise ValidationError(f"The `db_name` key within the identifier attribute of the external identifier should "
                               f"take one of the following values: {valid_dbnames}.")
 
     # validate identifier based on dbname: could be one of UniProt, RefSeq, or Ensembl
-    if identifier.get("dbname") == "UniProt":
+    if identifier.get(db_name) == "UniProt":
         validate_uniprot_identifier(identifier.get("identifier"))
-    elif identifier.get("dbname") == "RefSeq":
+    elif identifier.get(db_name) == "RefSeq":
         validate_refseq_identifier(identifier.get("identifier"))
-    elif identifier.get("dbname") == "Ensembl":
+    elif identifier.get(db_name) == "Ensembl":
         validate_ensembl_identifier(identifier.get("identifier"))
 
 

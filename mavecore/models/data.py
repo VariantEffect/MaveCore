@@ -18,10 +18,12 @@ class DataSet(BaseModel):
 
     class Config:
         alias_generator = to_camel
+        allow_population_by_field_name = True
 
     @validator('keywords')
     def validate_keywords(cls, v):
         keywords.validate_keywords(v)
+        return v
 
 
 class Experiment(DataSet):
@@ -45,7 +47,9 @@ class ScoreSet(DataSet):
             urn.validate_mavedb_urn_scoreset(v)
         else:
             [urn.validate_mavedb_urn_scoreset(s) for s in v]
+        return v
 
     @validator('experiment_urn')
     def validate_experiment_urn(cls, v):
         urn.validate_mavedb_urn_experiment(v)
+        return v
